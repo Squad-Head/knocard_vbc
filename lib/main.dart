@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:knocard_ui/presentation/community/community_page.dart';
-import 'package:knocard_ui/presentation/home_page/home_page.dart';
 
 void main() {
   runApp(MyApp());
