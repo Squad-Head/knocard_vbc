@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:knocard_ui/presentation/knocard_scaffold/knocard_scaffold.dart';
 import 'package:knocard_ui/style/color.dart';
 
 class Messages extends StatelessWidget {
@@ -8,7 +9,7 @@ class Messages extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return KnoCardScaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
@@ -40,7 +41,7 @@ class Messages extends StatelessWidget {
         separatorBuilder: (BuildContext context, int index) {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 70.w),
-            child: Divider(
+            child: const Divider(
               height: 0,
             ),
           );

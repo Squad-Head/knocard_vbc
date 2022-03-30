@@ -1,0 +1,27 @@
+{
+  "no_comments": true,
+  "use_references_list": false,
+  "package": "resources",
+  "groups": [
+    {
+      "path": "assets/images",
+      "class_name": "Assets",
+      "types": [
+        "jpg",
+        "jpeg",
+        "png",
+        "webp",
+        "gif",
+        "bmp",
+        "wbmp"
+      ]
+    },
+    {
+      "path": "assets/icons",
+      "class_name": "AssetIcons",
+      "types": [
+        "png"
+      ]
+    }
+  ]
+}
