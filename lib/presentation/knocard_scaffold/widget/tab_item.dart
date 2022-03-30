@@ -27,7 +27,7 @@ class TabItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: 33.h,
+            height: 32.h,
             child: tabData.icon,
           ),
           Text(
