@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:knocard_ui/presentation/community/community_page.dart';
+import 'package:knocard_ui/presentation/contact/contact_page.dart';
 import 'package:knocard_ui/presentation/messages/messages.dart';
 import 'package:knocard_ui/style/color.dart';
 
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
             child: widget!,
           );
         },
-        home: CommuniyPage(),
+        home: const ContactPage(),
       ),
     );
   }

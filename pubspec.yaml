@@ -31,6 +31,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_hooks: ^0.18.2+1
+  flutter_rating_bar: ^4.0.0
   flutter_screenutil: ^5.3.1
   google_fonts: ^2.3.1
   hooks_riverpod: ^1.0.3
