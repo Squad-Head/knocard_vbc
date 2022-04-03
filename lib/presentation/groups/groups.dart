@@ -4,19 +4,25 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/domain/person/person.dart';
+import 'package:knocard_ui/presentation/messages/messages.dart';
 import 'package:knocard_ui/style/color.dart';
 
-class Messages extends HookConsumerWidget {
-  Messages({Key? key}) : super(key: key);
+class Groups extends HookConsumerWidget {
+  Groups({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ref) {
     var isOpen = useState(false);
+
+    var mockPerson = MockPerson.where(
+      (element) => element.isGroup == true,
+    ).toList();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
-          "Messages",
+          "Groups",
           style: Theme.of(context).textTheme.headline4!.copyWith(
                 fontSize: 20.sp,
                 fontWeight: FontWeight.bold,
@@ -109,7 +115,7 @@ class Messages extends HookConsumerWidget {
         ],
       ),
       body: ListView.separated(
-        itemCount: MockPerson.length,
+        itemCount: mockPerson.length,
         separatorBuilder: (BuildContext context, int index) {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 70.w),
@@ -119,58 +125,12 @@ class Messages extends HookConsumerWidget {
           );
         },
         itemBuilder: (BuildContext context, int index) {
-          return Chats(mockPerson: MockPerson[index]);
+          return Chats(mockPerson: mockPerson[index]);
         },
       ),
     );
   }
 }
-
-List<Person> MockPerson = [
-  Person(
-    avatar: "https://i.pravatar.cc/300",
-    name: "KnoCard Corporation",
-    lastMessage:
-        "what time does it say, Got the message at sharp 10:00pm. Make Sure you don't miss",
-    lastMessageTime: "01:21pm",
-    isGroup: false,
-  ),
-  Person(
-    avatar: "https://i.pravatar.cc/300",
-    name: "Christi Meyers",
-    lastMessage: "Welcome to KnoCard",
-    lastMessageTime: "11:04am",
-    isGroup: false,
-  ),
-  Person(
-    avatar: "https://i.pravatar.cc/300",
-    name: "Kathy Jodrey",
-    lastMessage: "Not this one",
-    lastMessageTime: "Yesterday",
-    isGroup: false,
-  ),
-  Person(
-    avatar: "https://i.pravatar.cc/300",
-    name: "Plumbers",
-    lastMessage: "Yo",
-    lastMessageTime: "Friday",
-    isGroup: true,
-  ),
-  Person(
-    avatar: "https://i.pravatar.cc/300",
-    name: "IT Department",
-    lastMessage: "Contact now",
-    lastMessageTime: "12/02/2022",
-    isGroup: true,
-  ),
-  Person(
-    avatar: "https://i.pravatar.cc/300",
-    name: "Mark Rovendero",
-    lastMessage: "Contact now",
-    lastMessageTime: "11/02/2022",
-    isGroup: false,
-  ),
-];
 
 class Chats extends StatelessWidget {
   const Chats({
