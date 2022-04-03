@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:knocard_ui/style/color.dart';
 import 'tab_item.dart';
 export 'tab_item.dart';
 
@@ -45,7 +46,7 @@ class CustomBottomNavigationState extends State<CustomBottomNavigation>
 
   int currentSelected = 0;
 
-  final Color circleColor = Colors.blueAccent;
+  final Color circleColor = KColor.primaryColor;
   final Color activeIconColor = Colors.white;
   late Color inactiveIconColor;
   late Color barBackgroundColor;
@@ -106,8 +107,8 @@ class CustomBottomNavigationState extends State<CustomBottomNavigation>
               TabItem(tabData: widget.tabs[0]),
               TabItem(tabData: widget.tabs[1]),
               const IconButton(onPressed: null, icon: SizedBox.shrink()),
-              TabItem(tabData: widget.tabs[2]),
-              TabItem(tabData: widget.tabs[3])
+              TabItem(tabData: widget.tabs[3]),
+              TabItem(tabData: widget.tabs[4])
             ],
           ),
         ),

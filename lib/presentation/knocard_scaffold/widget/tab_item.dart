@@ -30,9 +30,12 @@ class TabItem extends StatelessWidget {
             height: 32.h,
             child: tabData.icon,
           ),
+          SizedBox(
+            height: 3.h,
+          ),
           Text(
             tabData.title,
-            style: const TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.white, fontSize: 9.sp),
           )
         ],
       ),

@@ -16,6 +16,7 @@ class Messages extends HookConsumerWidget {
     final isOpen = useState(false);
     return KnoCardScaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         title: Text(
           "Messages",
@@ -43,7 +44,8 @@ class Messages extends HookConsumerWidget {
                     width: 210.w,
                     child: Padding(
                       padding: EdgeInsets.symmetric(vertical: 5.h),
-                      child: Container(
+                      child: AnimatedContainer(
+                        duration: Duration(seconds: 1),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(15.r),
                             boxShadow: [

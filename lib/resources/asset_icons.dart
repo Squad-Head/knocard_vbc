@@ -17,4 +17,9 @@ class AssetIcons {
   static const String srarFill = 'assets/icons/srar_fill.png';
   static const String star = 'assets/icons/star.png';
   static const String sync = 'assets/icons/sync.png';
+  static const String navHome = 'assets/icons/nav_home.png';
+  static const String navReporting = 'assets/icons/nav_reporting.png';
+  static const String navShare = 'assets/icons/nav_share.png';
+  static const String navMessage = 'assets/icons/nav_message.png';
+  static const String navCommunity = 'assets/icons/nav_community.png';
 }

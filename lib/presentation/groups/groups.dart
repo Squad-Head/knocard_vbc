@@ -7,6 +7,8 @@ import 'package:knocard_ui/domain/person/person.dart';
 import 'package:knocard_ui/presentation/messages/messages.dart';
 import 'package:knocard_ui/style/color.dart';
 
+import '../knocard_scaffold/knocard_scaffold.dart';
+
 class Groups extends HookConsumerWidget {
   Groups({Key? key}) : super(key: key);
 
@@ -18,7 +20,7 @@ class Groups extends HookConsumerWidget {
       (element) => element.isGroup == true,
     ).toList();
 
-    return Scaffold(
+    return KnoCardScaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
