@@ -3,16 +3,18 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:knocard_ui/domain/person/person.dart';
+import 'package:knocard_ui/presentation/knocard_scaffold/knocard_scaffold.dart';
 import 'package:knocard_ui/style/color.dart';
+
+import '../../domain/person/person.dart';
 
 class Messages extends HookConsumerWidget {
   Messages({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ref) {
-    var isOpen = useState(false);
-    return Scaffold(
+    final isOpen = useState(false);
+    return KnoCardScaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
@@ -113,7 +115,7 @@ class Messages extends HookConsumerWidget {
         separatorBuilder: (BuildContext context, int index) {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 70.w),
-            child: Divider(
+            child: const Divider(
               height: 0,
             ),
           );
