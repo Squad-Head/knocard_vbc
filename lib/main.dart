@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:knocard_ui/presentation/groups/groups.dart';
 import 'package:knocard_ui/presentation/home/home_page.dart';
+import 'package:knocard_ui/presentation/community/community_page.dart';
+import 'package:knocard_ui/presentation/contact/contact_page.dart';
 import 'package:knocard_ui/presentation/messages/messages.dart';
 import 'package:knocard_ui/style/color.dart';
 
