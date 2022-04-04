@@ -1,10 +1,6 @@
-import 'dart:ui';
-
-import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/presentation/home/widgtes/custom_radio.dart';
@@ -27,10 +23,10 @@ class HomePage extends HookConsumerWidget {
       appBar: AppBar(
         backgroundColor: KColor.backgroundColor,
         centerTitle: true,
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: KColor.greyColor,
         ),
-        leading: Icon(FontAwesomeIcons.bars),
+        leading: const Icon(FontAwesomeIcons.bars),
         title: Image.asset(
           Assets.logo,
           width: 120.w,
@@ -47,8 +43,8 @@ class HomePage extends HookConsumerWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(30.w),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
+          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "Community Search",
@@ -94,8 +90,8 @@ class HomePage extends HookConsumerWidget {
                     ),
                   ),
                   prefixIcon: Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 15.0, vertical: 15),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15.0, vertical: 15),
                     child: Image.asset(
                       AssetIcons.search,
                       fit: BoxFit.fitHeight,
@@ -218,7 +214,7 @@ class HomePage extends HookConsumerWidget {
               height: 25.h,
             ),
             Row(
-              children: [
+              children: const [
                 GraphWidget(),
                 GraphWidget(),
                 GraphWidget(),
@@ -231,13 +227,11 @@ class HomePage extends HookConsumerWidget {
               children: [
                 ContainerShadow(
                   width: MediaQuery.of(context).size.width / 2 - 40,
+                  padding: EdgeInsets.symmetric(vertical: 20.h),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        height: 20.h,
-                      ),
                       Image.asset(
                         "assets/images/home1.png",
                         height: 60.h,
@@ -252,9 +246,6 @@ class HomePage extends HookConsumerWidget {
                           color: KColor.primaryColor,
                         ),
                       ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
                     ],
                   ),
                 ),
@@ -262,14 +253,12 @@ class HomePage extends HookConsumerWidget {
                   width: 15.w,
                 ),
                 ContainerShadow(
+                  padding: EdgeInsets.symmetric(vertical: 20.h),
                   width: MediaQuery.of(context).size.width / 2 - 40,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(
-                        height: 20.h,
-                      ),
                       Image.asset(
                         "assets/images/home2.png",
                         height: 80.h,
@@ -281,13 +270,13 @@ class HomePage extends HookConsumerWidget {
                           color: KColor.primaryColor,
                         ),
                       ),
-                      SizedBox(
-                        height: 20.h,
-                      ),
                     ],
                   ),
                 ),
               ],
+            ),
+            SizedBox(
+              height: 15.h,
             ),
           ],
         ),
