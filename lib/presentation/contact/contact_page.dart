@@ -208,257 +208,8 @@ class ContactPage extends HookConsumerWidget {
                             shrinkWrap: true,
                             itemCount: 2,
                             itemBuilder: (context, index) {
-                              return Column(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.all(5.sp),
-                                    height: 80.h,
-                                    child: ListView(
-                                      scrollDirection: Axis.horizontal,
-                                      //crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        expendedLeading.value
-                                            ? Material(
-                                                shadowColor: Colors.white,
-                                                color: KColor.popUpCardColor,
-                                                borderOnForeground: false,
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        50.sp),
-                                                elevation: 20,
-                                                child: Container(
-                                                  padding: EdgeInsets.symmetric(
-                                                      vertical: 5.h,
-                                                      horizontal: 5.w),
-                                                  // height: 50.h,
-                                                  decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                      color: Theme.of(context)
-                                                          .shadowColor
-                                                          .withOpacity(.2),
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50.sp),
-                                                  ),
-                                                  width: 230.w,
-                                                  child: Row(
-                                                    children: [
-                                                      InkWell(
-                                                        onTap: () {
-                                                          expendedLeading
-                                                                  .value =
-                                                              !expendedLeading
-                                                                  .value;
-                                                        },
-                                                        child: Container(
-                                                          width: 50.w,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            border: Border.all(
-                                                              color: KColor
-                                                                  .primaryColor,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        50.sp),
-                                                          ),
-                                                          child: CircleAvatar(
-                                                            radius: 25.sp,
-                                                            backgroundImage:
-                                                                NetworkImage(
-                                                                    img),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 5.w,
-                                                      ),
-                                                      InkWell(
-                                                        onTap: () {
-                                                          showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (BuildContext
-                                                                      context) {
-                                                                return const ShareHistoryCard();
-                                                              });
-                                                        },
-                                                        child: Material(
-                                                          type:
-                                                              MaterialType.card,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      50.sp),
-                                                          child: Container(
-                                                            height: 50.w,
-                                                            width: 50.w,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: KColor
-                                                                  .backgroundColor,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          50.sp),
-                                                            ),
-                                                            child: Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                ImageIcon(
-                                                                  const AssetImage(
-                                                                      'assets/icons/share.png'),
-                                                                  size: 24.sp,
-                                                                  color: KColor
-                                                                      .primaryColor,
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 5.w,
-                                                      ),
-                                                      Container(
-                                                        height: 50.w,
-                                                        width: 50.w,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: KColor
-                                                              .backgroundColor,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      50.sp),
-                                                        ),
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            ImageIcon(
-                                                              const AssetImage(
-                                                                  'assets/icons/message_outline.png'),
-                                                              size: 24.sp,
-                                                              color: KColor
-                                                                  .primaryColor,
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 5.w,
-                                                      ),
-                                                      Container(
-                                                        height: 50.w,
-                                                        width: 50.w,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: KColor
-                                                              .backgroundColor,
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      50.sp),
-                                                        ),
-                                                        child: Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            ImageIcon(
-                                                              const AssetImage(
-                                                                  'assets/icons/phone.png'),
-                                                              size: 24.sp,
-                                                              color: KColor
-                                                                  .primaryColor,
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              )
-                                            : InkWell(
-                                                onTap: () {
-                                                  expendedLeading.value =
-                                                      !expendedLeading.value;
-                                                },
-                                                child: Container(
-                                                  margin: EdgeInsets.symmetric(
-                                                      vertical: 5.h),
-                                                  // height: 48.h,
-                                                  decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                      color: KColor.primaryColor
-                                                          .withOpacity(1),
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            50),
-                                                  ),
-                                                  child: CircleAvatar(
-                                                    radius: 25.sp,
-                                                    backgroundImage:
-                                                        NetworkImage(img),
-                                                  ),
-                                                ),
-                                              ),
-                                        SizedBox(
-                                          width: 20.w,
-                                        ),
-                                        Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                Text(
-                                                  'Andrew Neals ',
-                                                  style: GoogleFonts.lato(
-                                                    fontSize: 18.sp,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
-                                                ),
-                                                InkWell(
-                                                  child: ImageIcon(
-                                                    const AssetImage(
-                                                        'assets/icons/srar_fill.png'),
-                                                    size: 18.sp,
-                                                    color: KColor.primaryColor,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            InkWell(
-                                              onTap: () {},
-                                              child: Text(
-                                                'View KnoCard',
-                                                style: GoogleFonts.lato(
-                                                  color: KColor.primaryColor,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  Divider(
-                                    indent: 70.w,
-                                    endIndent: 30.w,
-                                    height: 2.h,
-                                    thickness: 2.h,
-                                  ),
-                                ],
-                              );
+                              return ContactRow(
+                                  expendedLeading: expendedLeading, img: img);
                             },
                           ),
                           Padding(
@@ -748,6 +499,217 @@ class ContactPage extends HookConsumerWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class ContactRow extends StatelessWidget {
+  const ContactRow({
+    Key? key,
+    required this.expendedLeading,
+    required this.img,
+  }) : super(key: key);
+
+  final ValueNotifier<bool> expendedLeading;
+  final String img;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          padding: EdgeInsets.all(5.sp),
+          height: 80.h,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            //crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              expendedLeading.value
+                  ? Material(
+                      shadowColor: Colors.white,
+                      color: KColor.popUpCardColor,
+                      borderOnForeground: false,
+                      borderRadius: BorderRadius.circular(50.sp),
+                      elevation: 20,
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 5.h, horizontal: 5.w),
+                        // height: 50.h,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color:
+                                Theme.of(context).shadowColor.withOpacity(.2),
+                          ),
+                          borderRadius: BorderRadius.circular(50.sp),
+                        ),
+                        width: 230.w,
+                        child: Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                expendedLeading.value = !expendedLeading.value;
+                              },
+                              child: Container(
+                                width: 50.w,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: KColor.primaryColor,
+                                  ),
+                                  borderRadius: BorderRadius.circular(50.sp),
+                                ),
+                                child: CircleAvatar(
+                                  radius: 25.sp,
+                                  backgroundImage: NetworkImage(img),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5.w,
+                            ),
+                            InkWell(
+                              onTap: () {
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return const ShareHistoryCard();
+                                    });
+                              },
+                              child: Material(
+                                type: MaterialType.card,
+                                borderRadius: BorderRadius.circular(50.sp),
+                                child: Container(
+                                  height: 50.w,
+                                  width: 50.w,
+                                  decoration: BoxDecoration(
+                                    color: KColor.backgroundColor,
+                                    borderRadius: BorderRadius.circular(50.sp),
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      ImageIcon(
+                                        const AssetImage(
+                                            'assets/icons/share.png'),
+                                        size: 24.sp,
+                                        color: KColor.primaryColor,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5.w,
+                            ),
+                            Container(
+                              height: 50.w,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                color: KColor.backgroundColor,
+                                borderRadius: BorderRadius.circular(50.sp),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ImageIcon(
+                                    const AssetImage(
+                                        'assets/icons/message_outline.png'),
+                                    size: 24.sp,
+                                    color: KColor.primaryColor,
+                                  ),
+                                ],
+                              ),
+                            ),
+                            SizedBox(
+                              width: 5.w,
+                            ),
+                            Container(
+                              height: 50.w,
+                              width: 50.w,
+                              decoration: BoxDecoration(
+                                color: KColor.backgroundColor,
+                                borderRadius: BorderRadius.circular(50.sp),
+                              ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  ImageIcon(
+                                    const AssetImage('assets/icons/phone.png'),
+                                    size: 24.sp,
+                                    color: KColor.primaryColor,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    )
+                  : InkWell(
+                      onTap: () {
+                        expendedLeading.value = !expendedLeading.value;
+                      },
+                      child: Container(
+                        margin: EdgeInsets.symmetric(vertical: 5.h),
+                        // height: 48.h,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: KColor.primaryColor.withOpacity(1),
+                          ),
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                        child: CircleAvatar(
+                          radius: 25.sp,
+                          backgroundImage: NetworkImage(img),
+                        ),
+                      ),
+                    ),
+              SizedBox(
+                width: 20.w,
+              ),
+              Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        'Andrew Neals ',
+                        style: GoogleFonts.lato(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      InkWell(
+                        child: ImageIcon(
+                          const AssetImage('assets/icons/srar_fill.png'),
+                          size: 18.sp,
+                          color: KColor.primaryColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  InkWell(
+                    onTap: () {},
+                    child: Text(
+                      'View KnoCard',
+                      style: GoogleFonts.lato(
+                        color: KColor.primaryColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Divider(
+          indent: 70.w,
+          endIndent: 30.w,
+          height: 2.h,
+          thickness: 2.h,
+        ),
+      ],
     );
   }
 }
