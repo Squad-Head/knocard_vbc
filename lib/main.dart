@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/presentation/groups/groups.dart';
 import 'package:knocard_ui/presentation/home/home_page.dart';
 import 'package:knocard_ui/presentation/community/community_page.dart';
@@ -8,7 +9,7 @@ import 'package:knocard_ui/presentation/messages/message_screen.dart';
 import 'package:knocard_ui/style/color.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -33,7 +34,7 @@ class MyApp extends StatelessWidget {
             child: widget!,
           );
         },
-        home: HomePage(),
+        home: const HomePage(),
       ),
     );
   }

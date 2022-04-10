@@ -225,11 +225,51 @@ class HomePage extends HookConsumerWidget {
           SizedBox(
             height: 15.h,
           ),
+          Row(children: [
+            ContainerShadow(
+              width: MediaQuery.of(context).size.width / 2 - 40,
+              padding: EdgeInsets.symmetric(vertical: 20.h),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    "assets/images/home1.png",
+                    height: 60.h,
+                  ),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Text(
+                    "Edit KnoCard",
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      color: KColor.primaryColor,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ]),
+          SizedBox(
+            height: 25.h,
+          ),
+          Row(
+            children: const [
+              GraphWidget(),
+              GraphWidget(),
+              GraphWidget(),
+            ],
+          ),
+          SizedBox(
+            height: 15.h,
+          ),
           Row(
             children: [
               ContainerShadow(
                 width: MediaQuery.of(context).size.width / 2 - 40,
                 padding: EdgeInsets.symmetric(vertical: 20.h),
+                margin: EdgeInsets.only(left: 2.w),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
