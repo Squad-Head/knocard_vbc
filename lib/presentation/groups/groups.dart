@@ -4,13 +4,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/domain/person/person.dart';
-import 'package:knocard_ui/presentation/messages/messages.dart';
+import 'package:knocard_ui/presentation/knocard_scaffold/widget/knocard_bottom_nav.dart';
+import 'package:knocard_ui/presentation/messages/message_screen.dart';
 import 'package:knocard_ui/style/color.dart';
 
 import '../knocard_scaffold/knocard_scaffold.dart';
 
-class Groups extends HookConsumerWidget {
-  Groups({Key? key}) : super(key: key);
+class GroupPage extends HookConsumerWidget {
+  const GroupPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ref) {
@@ -21,6 +22,8 @@ class Groups extends HookConsumerWidget {
     ).toList();
 
     return KnoCardScaffold(
+      // hasBackground: true,
+      bottomNavigation: KnoCardBottomNav.group(context),
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
@@ -57,7 +60,7 @@ class Groups extends HookConsumerWidget {
                                 color: Colors.grey.shade300,
                                 blurRadius: 2,
                                 spreadRadius: 1,
-                                offset: Offset(2, 2),
+                                offset: const Offset(2, 2),
                               )
                             ]),
                         child: TextField(
@@ -95,7 +98,7 @@ class Groups extends HookConsumerWidget {
                                 isOpen.value = !isOpen.value;
                               },
                               child: Padding(
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     horizontal: 15.0, vertical: 15),
                                 child: Image.asset(
                                   "assets/images/filter.png",
@@ -121,7 +124,7 @@ class Groups extends HookConsumerWidget {
         separatorBuilder: (BuildContext context, int index) {
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 70.w),
-            child: Divider(
+            child: const Divider(
               height: 0,
             ),
           );
@@ -156,7 +159,7 @@ class Chats extends StatelessWidget {
       title: Text(
         mockPerson.name,
         style: GoogleFonts.lato(
-          color: KColor.primaryColor,
+          color: KColor.secondaryColor,
           fontSize: 18.sp,
           fontWeight: FontWeight.w400,
         ),
@@ -174,9 +177,9 @@ class Chats extends StatelessWidget {
           Text(
             mockPerson.lastMessageTime,
             style: TextStyle(
-              color: KColor.primaryColor,
-              fontSize: 14.sp,
-            ),
+                color: KColor.primaryColor,
+                fontSize: 10.sp,
+                fontWeight: FontWeight.bold),
           ),
           SizedBox(
             height: 10.h,
@@ -185,7 +188,7 @@ class Chats extends StatelessWidget {
               ? Image.asset(
                   "assets/images/group.png",
                   fit: BoxFit.scaleDown,
-                  height: 16,
+                  width: 25.w,
                 )
               : const SizedBox.shrink(),
         ],

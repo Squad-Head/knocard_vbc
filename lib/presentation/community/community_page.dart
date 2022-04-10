@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/presentation/knocard_scaffold/knocard_scaffold.dart';
+import 'package:knocard_ui/presentation/knocard_scaffold/widget/knocard_bottom_nav.dart';
 import 'package:knocard_ui/style/color.dart';
 
 class CommuniyPage extends HookConsumerWidget {
@@ -25,6 +26,8 @@ class CommuniyPage extends HookConsumerWidget {
     String img =
         'https://images.pexels.com/photos/9869646/pexels-photo-9869646.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500';
     return KnoCardScaffold(
+      hasBackground: true,
+      bottomNavigation: KnoCardBottomNav.community(context),
       appBar: AppBar(
         backgroundColor: const Color(0xffFAFAFA),
         automaticallyImplyLeading: false,

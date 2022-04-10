@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/presentation/contact/widgets/share_history_card.dart';
 import 'package:knocard_ui/presentation/knocard_scaffold/knocard_scaffold.dart';
+import 'package:knocard_ui/presentation/knocard_scaffold/widget/knocard_bottom_nav.dart';
 import 'package:knocard_ui/style/color.dart';
 
 class ContactPage extends HookConsumerWidget {
@@ -12,17 +13,14 @@ class ContactPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final List<String> words = [
-      'C',
-      'D',
-      'E',
-      'F',
-    ];
+    final List<String> words = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
     String img =
         'https://images.pexels.com/photos/9869646/pexels-photo-9869646.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500';
     final searchTap = useState(false);
     final expendedLeading = useState(false);
     return KnoCardScaffold(
+      hasBackground: true,
+      bottomNavigation: KnoCardBottomNav.contact(context),
       appBar: AppBar(
         backgroundColor: const Color(0xffFAFAFA),
         automaticallyImplyLeading: false,
@@ -131,11 +129,13 @@ class ContactPage extends HookConsumerWidget {
                             ),
                             Text(
                               'Jennifer jon',
-                              style: GoogleFonts.lato(),
+                              style:
+                                  GoogleFonts.lato(fontWeight: FontWeight.bold),
                             ),
                             Text(
                               '14/02/2022',
                               style: GoogleFonts.lato(
+                                fontSize: 12.sp,
                                 color: KColor.primaryColor,
                               ),
                             ),
@@ -149,11 +149,13 @@ class ContactPage extends HookConsumerWidget {
                             ),
                             Text(
                               'Jennifer jon',
-                              style: GoogleFonts.lato(),
+                              style:
+                                  GoogleFonts.lato(fontWeight: FontWeight.bold),
                             ),
                             Text(
                               '14/02/2022',
                               style: GoogleFonts.lato(
+                                fontSize: 12.sp,
                                 color: KColor.primaryColor,
                               ),
                             ),
@@ -167,11 +169,13 @@ class ContactPage extends HookConsumerWidget {
                             ),
                             Text(
                               'Jennifer jon',
-                              style: GoogleFonts.lato(),
+                              style:
+                                  GoogleFonts.lato(fontWeight: FontWeight.bold),
                             ),
                             Text(
                               '14/02/2022',
                               style: GoogleFonts.lato(
+                                fontSize: 12.sp,
                                 color: KColor.primaryColor,
                               ),
                             ),
@@ -725,21 +729,38 @@ class ContactPage extends HookConsumerWidget {
                     Container(
                       margin: EdgeInsets.only(top: 10.h),
                       width: 20.w,
-                      child: ListView.builder(
-                          itemCount: words.length,
-                          itemBuilder: (context, index) {
-                            return SizedBox(
-                              height: 30.h,
-                              child: Text(
-                                words[index],
-                                style: GoogleFonts.lato(
-                                  color: Theme.of(context)
-                                      .shadowColor
-                                      .withOpacity(.6),
-                                ),
-                              ),
-                            );
-                          }),
+
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: List.generate(
+                            words.length,
+                            (index) => SizedBox(
+                                  height: 30.h,
+                                  child: Text(
+                                    words[index],
+                                    style: GoogleFonts.lato(
+                                      color: Theme.of(context)
+                                          .shadowColor
+                                          .withOpacity(.6),
+                                    ),
+                                  ),
+                                )),
+                      ),
+                      // child: ListView.builder(
+                      //     itemCount: words.length,
+                      //     itemBuilder: (context, index) {
+                      //       return SizedBox(
+                      //         height: 30.h,
+                      //         child: Text(
+                      //           words[index],
+                      //           style: GoogleFonts.lato(
+                      //             color: Theme.of(context)
+                      //                 .shadowColor
+                      //                 .withOpacity(.6),
+                      //           ),
+                      //         ),
+                      //       );
+                      //     }),
                     ),
                   ],
                 ),

@@ -4,17 +4,20 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/presentation/knocard_scaffold/knocard_scaffold.dart';
+import 'package:knocard_ui/presentation/knocard_scaffold/widget/knocard_bottom_nav.dart';
+import 'package:knocard_ui/presentation/widgets/search_widget.dart';
 import 'package:knocard_ui/style/color.dart';
 
 import '../../domain/person/person.dart';
 
-class Messages extends HookConsumerWidget {
-  Messages({Key? key}) : super(key: key);
+class MessageScreen extends HookConsumerWidget {
+  const MessageScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ref) {
-    final isOpen = useState(false);
     return KnoCardScaffold(
+      // hasBackground: true,
+      bottomNavigation: KnoCardBottomNav.message(context),
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
@@ -26,87 +29,7 @@ class Messages extends HookConsumerWidget {
               ),
         ),
         actions: [
-          SizedBox(
-            height: 20.h,
-            child: isOpen.value == false
-                ? InkWell(
-                    onTap: () {
-                      isOpen.value = !isOpen.value;
-                    },
-                    child: Image.asset(
-                      "assets/images/search.png",
-                      fit: BoxFit.contain,
-                      height: 20.h,
-                      width: 20.w,
-                    ),
-                  )
-                : SizedBox(
-                    width: 210.w,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 5.h),
-                      child: AnimatedContainer(
-                        duration: Duration(seconds: 1),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15.r),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.shade300,
-                                blurRadius: 2,
-                                spreadRadius: 1,
-                                offset: Offset(2, 2),
-                              )
-                            ]),
-                        child: TextField(
-                          decoration: InputDecoration(
-                            fillColor:
-                                Theme.of(context).scaffoldBackgroundColor,
-                            filled: true,
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 15.w, vertical: 0),
-                            hintText: "Search Message",
-                            hintStyle: TextStyle(
-                              color: KColor.primaryColor,
-                              fontSize: 14.sp,
-                            ),
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.r),
-                              borderSide: BorderSide(
-                                color: Colors.grey.shade300,
-                              ),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.r),
-                              borderSide: BorderSide(
-                                color: Colors.grey.shade300,
-                              ),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15.r),
-                              borderSide: BorderSide(
-                                color: Colors.grey.shade400,
-                              ),
-                            ),
-                            suffixIcon: InkWell(
-                              onTap: () {
-                                isOpen.value = !isOpen.value;
-                              },
-                              child: Padding(
-                                padding: EdgeInsets.symmetric(
-                                    horizontal: 15.0, vertical: 15),
-                                child: Image.asset(
-                                  "assets/images/filter.png",
-                                  fit: BoxFit.fitHeight,
-                                  height: 10,
-                                  width: 10,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-          ),
+          const SearchWidget(),
           SizedBox(
             width: 20.w,
           )
