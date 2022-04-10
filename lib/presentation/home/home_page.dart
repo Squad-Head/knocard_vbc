@@ -228,6 +228,7 @@ class HomePage extends HookConsumerWidget {
                 ContainerShadow(
                   width: MediaQuery.of(context).size.width / 2 - 40,
                   padding: EdgeInsets.symmetric(vertical: 20.h),
+                  margin: EdgeInsets.only(left: 2.w),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
