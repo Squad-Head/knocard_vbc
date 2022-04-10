@@ -40,6 +40,7 @@ dependencies:
   hooks_riverpod: ^1.0.3
   flutter_svg: ^1.0.3
   font_awesome_flutter: ^10.1.0
+  flutter_slidable: ^1.2.0
 
 dev_dependencies:
   flutter_lints: ^1.0.0
