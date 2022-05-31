@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:knocard_ui/presentation/home/home_page.dart';
 import 'package:knocard_ui/presentation/home_services/home_services.dart';
+import 'package:knocard_ui/presentation/review/review_page.dart';
 
 import 'package:knocard_ui/style/color.dart';
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
             child: widget!,
           );
         },
-        home: const HomeService(),
+        home: const ReviewPage(),
       ),
     );
   }
