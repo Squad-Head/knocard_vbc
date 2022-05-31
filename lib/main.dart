@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'package:knocard_ui/presentation/home/home_page.dart';
+import 'package:knocard_ui/presentation/review/review_page.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:knocard_ui/presentation/home/home_page.dart';
-import 'package:knocard_ui/presentation/community/community_page.dart';
-import 'package:knocard_ui/presentation/contact/contact_page.dart';
-import 'package:knocard_ui/presentation/messages/message_screen.dart';
 import 'package:knocard_ui/style/color.dart';
 
 void main() {
@@ -17,7 +13,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -26,9 +21,10 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-            primarySwatch: Colors.blue,
-            primaryColor: KColor.primaryColor,
-            scaffoldBackgroundColor: KColor.backgroundColor),
+          primaryColor: KColor.primaryColor,
+          primarySwatch: const MaterialColor(0xFF088ac6, KColor.mapColor),
+          scaffoldBackgroundColor: KColor.backgroundColor,
+        ),
         builder: (context, widget) {
           ScreenUtil.setContext(context);
           return MediaQuery(
@@ -36,7 +32,7 @@ class MyApp extends StatelessWidget {
             child: widget!,
           );
         },
-        home: const HomePage(),
+        home: const ReviewPage(),
       ),
     );
   }
