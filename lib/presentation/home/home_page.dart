@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:knocard_ui/presentation/home_services/home_services.dart';
 import 'package:knocard_ui/presentation/widgets/k_staggered_gridview.dart';
 
 import '../widgets/k_home_contact.dart';
@@ -122,28 +123,38 @@ class HomePage extends StatelessWidget {
                           const EdgeInsets.only(top: 320, left: 10, right: 10),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
-                          KMenuBar(
-                            icon: Icon(FontAwesomeIcons.mobileScreen),
-                            text: 'Contacts',
+                        children: [
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomeService(),
+                                ),
+                              );
+                            },
+                            child: const KMenuBar(
+                              icon: Icon(FontAwesomeIcons.mobileScreen),
+                              text: 'Contacts',
+                            ),
                           ),
-                          KMenuBar(
+                          const KMenuBar(
                             icon: Icon(FontAwesomeIcons.images),
                             text: 'Gallery',
                           ),
-                          KMenuBar(
+                          const KMenuBar(
                             icon: Icon(FontAwesomeIcons.video),
                             text: 'Videos',
                           ),
-                          KMenuBar(
+                          const KMenuBar(
                             icon: Icon(FontAwesomeIcons.leaf),
                             text: 'Contractor',
                           ),
-                          KMenuBar(
+                          const KMenuBar(
                             icon: Icon(FontAwesomeIcons.handshake),
                             text: 'Reviews',
                           ),
-                          KMenuBar(
+                          const KMenuBar(
                             icon: Icon(FontAwesomeIcons.calendarCheck),
                             text: 'Rates',
                           ),
