@@ -40,8 +40,13 @@ dependencies:
     sdk: flutter
   flutter_hooks: ^0.18.2+1
   flutter_screenutil: ^5.3.1
+  font_awesome_flutter: ^10.1.0
   google_fonts: ^2.3.1
   hooks_riverpod: ^1.0.3
+  image_network: ^2.5.1
+  line_icons: ^2.0.1
+  cached_network_image: ^3.2.0
+  flutter_rating_bar: ^4.0.1
 
 dev_dependencies:
   flutter_lints: ^1.0.0
