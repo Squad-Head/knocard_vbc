@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
             child: widget!,
           );
         },
-        home: HomePage(),
+        home: const HomePage(),
       ),
     );
   }
