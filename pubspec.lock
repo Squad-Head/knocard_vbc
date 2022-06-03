@@ -70,7 +70,7 @@ packages:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.15.0"
+    version: "1.16.0"
   crypto:
     dependency: transitive
     description:
@@ -98,7 +98,7 @@ packages:
       name: fake_async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "1.3.0"
   ffi:
     dependency: transitive
     description:
@@ -159,11 +159,7 @@ packages:
       name: flutter_rating_bar
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
-    version: "4.0.0"
-=======
     version: "4.0.1"
->>>>>>> b806a33787ac1fc5a437d879d56027555f29a828
   flutter_riverpod:
     dependency: transitive
     description:
@@ -266,7 +262,7 @@ packages:
       name: material_color_utilities
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.3"
+    version: "0.1.4"
   meta:
     dependency: transitive
     description:
@@ -287,21 +283,7 @@ packages:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.0"
-  path_drawing:
-    dependency: transitive
-    description:
-      name: path_drawing
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
-  path_parsing:
-    dependency: transitive
-    description:
-      name: path_parsing
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
+    version: "1.8.1"
   path_provider:
     dependency: transitive
     description:
@@ -411,7 +393,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.1"
+    version: "1.8.2"
   sqflite:
     dependency: transitive
     description:
@@ -474,7 +456,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.8"
+    version: "0.4.9"
   typed_data:
     dependency: transitive
     description:
@@ -495,7 +477,7 @@ packages:
       name: vector_math
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.1"
+    version: "2.1.2"
   webview_flutter:
     dependency: transitive
     description:
@@ -554,9 +536,13 @@ packages:
     version: "5.3.1"
 sdks:
 <<<<<<< HEAD
+<<<<<<< HEAD
   dart: ">=2.16.1 <3.0.0"
   flutter: ">=2.10.0-0"
 =======
   dart: ">=2.16.2 <3.0.0"
+=======
+  dart: ">=2.17.0-0 <3.0.0"
+>>>>>>> 243b6c365f1094d2c6374884d8157245172e2f81
   flutter: ">=2.10.0"
 >>>>>>> b806a33787ac1fc5a437d879d56027555f29a828
