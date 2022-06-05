@@ -10,6 +10,7 @@ import 'package:knocard_ui/web/w_home_page/widgets/services_menu_item.dart';
 import 'package:knocard_ui/web/w_home_page/widgets/w_home_contact.dart';
 import 'package:knocard_ui/web/w_home_page/widgets/w_rates_item.dart';
 import 'package:knocard_ui/web/w_home_page/widgets/w_review.dart';
+import 'package:knocard_ui/web/w_home_page/widgets/web_gallery.dart';
 import 'package:knocard_ui/web/w_home_page/widgets/web_video_item.dart';
 
 class WHomePage extends StatelessWidget {
@@ -222,12 +223,20 @@ class WHomePage extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 0.0),
                         child: Column(
                           children: [
-                            Text('Gallery'),
+                            Text(
+                                'Gallery',
+                              style: TextStyle(
+                                color: const Color(0xFF088AC6),
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                             SizedBox(height: 8),
                             Container(
-                              height: height * 0.18,
+                              height: height * 0.19,
                               width: width * 0.1,
-                              color: Colors.grey,
+                              child: const WebGallery(),
+                              //color: Colors.grey,
                             ),
                           ],
                         ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WHomeContact extends StatelessWidget {
   const WHomeContact({Key? key, required this.icon, required this.text})
@@ -17,9 +18,9 @@ class WHomeContact extends StatelessWidget {
         const SizedBox(width: 10),
         Text(
           text,
-          style: const TextStyle(
+          style: TextStyle(
             color: Color(0xFF7A7C79),
-            fontSize: 13,
+            fontSize: 9.sp,
           ),
         ),
       ],
