@@ -24,7 +24,6 @@ class HomeService extends HookConsumerWidget {
             Column(
               children: [
                 //Circle avatar
-
                 Container(
                   height: 190.h,
                   width: double.infinity,
