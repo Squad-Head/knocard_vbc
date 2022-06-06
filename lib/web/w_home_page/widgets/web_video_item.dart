@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-//import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WebVideoItem extends StatelessWidget {
   const WebVideoItem({
@@ -14,14 +14,14 @@ class WebVideoItem extends StatelessWidget {
           '1',
           style: TextStyle(
             color: const Color(0xFF2A2A2A),
-            fontSize: 7,
+            fontSize: 7.sp,
           ),
         ),
-        SizedBox(width: 2),
+        SizedBox(width: 2.w),
         const Image(
           image: AssetImage('assets/images/video.png'),
         ),
-        SizedBox(width: 2),
+        SizedBox(width: 2.w),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -29,7 +29,7 @@ class WebVideoItem extends StatelessWidget {
               'Get MORE With Time Blocking',
               style: TextStyle(
                 color: const Color(0xFF2A2A2A),
-                fontSize: 4,
+                fontSize: 4.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -37,7 +37,7 @@ class WebVideoItem extends StatelessWidget {
               'Matt Bayrom',
               style: TextStyle(
                 color: const Color(0xFF878788),
-                fontSize: 5,
+                fontSize: 5.sp,
               ),
             ),
           ],

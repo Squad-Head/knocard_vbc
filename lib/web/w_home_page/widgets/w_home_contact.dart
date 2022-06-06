@@ -15,12 +15,12 @@ class WHomeContact extends StatelessWidget {
           size: 20,
           color: const Color(0xFF088AC6),
         ),
-        const SizedBox(width: 10),
+         SizedBox(width: 10),
         Text(
           text,
           style: TextStyle(
             color: Color(0xFF7A7C79),
-            fontSize: 9.sp,
+            fontSize: 10.sp,
           ),
         ),
       ],

@@ -196,9 +196,10 @@ class WHomePage extends StatelessWidget {
               children: [
                 Container(
                   width: MediaQuery.of(context).size.width * 0.20,
-                  margin: EdgeInsets.only(left: 30),
+                  padding: EdgeInsets.only(left: 40.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    //mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Column(
                         children: const [
@@ -218,7 +219,7 @@ class WHomePage extends StatelessWidget {
                           ),
                         ],
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 18.h),
                       Padding(
                         padding: const EdgeInsets.only(right: 0.0),
                         child: Column(
@@ -227,11 +228,11 @@ class WHomePage extends StatelessWidget {
                                 'Gallery',
                               style: TextStyle(
                                 color: const Color(0xFF088AC6),
-                                fontSize: 14,
+                                fontSize: 11.sp,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(height: 8),
+                            SizedBox(height: 8.h),
                             Container(
                               height: height * 0.19,
                               width: width * 0.1,
@@ -241,37 +242,37 @@ class WHomePage extends StatelessWidget {
                           ],
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 18.h),
                       Column(
                         children: [
                           Text(
                               'Videos',
                             style: TextStyle(
                               color: const Color(0xFF088AC6),
-                              fontSize: 14,
+                              fontSize: 11.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 8),
+                          SizedBox(height: 8.h),
                           Container(
                             // height: height * 0.20,
                             // width: height * 0.17,
-                            height: 130,
-                            width: 120,
+                            height: 120.h,
+                            width: 105.w,
                             decoration: BoxDecoration(
                               color: const Color(0xFFF1F1F1),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Column(
-                              children: const [
+                              children:  [
                                 WebVideoItem(),
-                                SizedBox(height: 3),
+                                SizedBox(height: 3.h),
                                 WebVideoItem(),
-                                SizedBox(height: 3),
+                                SizedBox(height: 3.h),
                                 WebVideoItem(),
-                                SizedBox(height: 3),
+                                SizedBox(height: 3.h),
                                 WebVideoItem(),
-                                SizedBox(height: 3),
+                                SizedBox(height: 3.h),
                                 WebVideoItem(),
                               ],
                             ),
@@ -300,7 +301,7 @@ class WHomePage extends StatelessWidget {
 
                 Container(
                   width: MediaQuery.of(context).size.width * 0.39,
-                  padding: EdgeInsets.only(left: 18, right: 20),
+                  padding: EdgeInsets.only(left: 18.w, right: 20.w),
                   // color: Colors.orange,
 
                   child: Column(
@@ -365,11 +366,11 @@ class WHomePage extends StatelessWidget {
                         'Rates',
                         style: TextStyle(
                           color: const Color(0xFF088AC6),
-                          fontSize: 14,
+                          fontSize: 11.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      SizedBox(height: 10),
+                      SizedBox(height: 10.h),
                       Padding(
                         padding: const EdgeInsets.all(15),
                         child: Row(
