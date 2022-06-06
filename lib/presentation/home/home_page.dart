@@ -22,8 +22,8 @@ class HomePage extends HookWidget {
           final i = controller.page!.toInt();
           index.value = i;
         });
-        return null;
       });
+      return null;
     }, []);
     return Scaffold(
         body: NestedScrollView(
