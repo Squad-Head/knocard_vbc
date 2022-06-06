@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/presentation/gallery/gallery.dart';
-import 'package:knocard_ui/presentation/home/mobile_home_page.dart';
+import 'package:knocard_ui/presentation/contact/mobile_home_page.dart';
 import 'package:knocard_ui/presentation/home_services/home_services.dart';
 import 'package:knocard_ui/presentation/review/review_page.dart';
 import 'package:knocard_ui/presentation/videos/videos_page.dart';
@@ -26,8 +26,10 @@ class KNavbar extends HookConsumerWidget {
               "Contacts",
               FontAwesomeIcons.mobileScreen,
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const MobileHomePage()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const MobileContactPage()));
               },
             ),
             _navItem(
