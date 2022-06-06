@@ -46,6 +46,9 @@ dependencies:
   image_network: ^2.5.1
   line_icons: ^2.0.1
   youtube_player_flutter: ^8.1.0
+  smooth_star_rating: ^1.1.1
+  percent_indicator: ^4.2.2
+
 
 dev_dependencies:
   flutter_lints: ^1.0.0
