@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class CommentWidget extends StatelessWidget {
@@ -11,19 +12,20 @@ class CommentWidget extends StatelessWidget {
     return Column(
       children: [
         Divider(
-          height: 3,
+          height: 3.h,
           color: Color(0xffDBDBDD),
         ),
-        SizedBox(height: 10),
+        SizedBox(height: 10.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(width: 20.w),
             CircleAvatar(
               backgroundColor: Colors.grey,
-              radius: 15,
+              radius: 15.sp,
             ),
-            SizedBox(width: 20),
+            SizedBox(width: 20.w),
             Column(
               // mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,12 +33,12 @@ class CommentWidget extends StatelessWidget {
                 Row(
                   children: [
                     //const SizedBox(width: 10),
-                    const Text(
+                    Text(
                       "Hasan Rahman",
-                      style:
-                          TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          fontSize: 17.sp, fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(width: 10),
+                    SizedBox(width: 10.w),
                     SmoothStarRating(
                       starCount: 5,
                       color: Color(0xffFFB924),
@@ -44,25 +46,25 @@ class CommentWidget extends StatelessWidget {
                       //   isReadOnly: true,
                       rating: 5,
                       //  spacing: 0.0,
-                      size: 14,
+                      size: 14.sp,
                     )
                   ],
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 Row(
                   children: [
-                    const Text(
+                    Text(
                       "Bangladesh",
-                      style: TextStyle(fontSize: 14),
+                      style: TextStyle(fontSize: 14.sp),
                     ),
                   ],
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 10.h),
                 Text(
                   "Lorem Ipsum is simply dummy text ",
-                  style: TextStyle(fontSize: 14),
+                  style: TextStyle(fontSize: 14.sp),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 10.h),
               ],
             ),
           ],

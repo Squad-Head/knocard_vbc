@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:knocard_ui/presentation/review/widgets/rating.dart';
 
 class ReviewWidget extends StatelessWidget {
@@ -9,20 +10,20 @@ class ReviewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 310,
+      width: 310.h,
       child: Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(10.0.sp),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               "Reviews",
               style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 22.sp,
                   fontWeight: FontWeight.bold,
                   color: Color(0xff0B8AC6)),
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: 30.h),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               // ignore: prefer_const_literals_to_create_immutables
@@ -42,11 +43,11 @@ class ReviewWidget extends StatelessWidget {
           ],
         ),
       ),
-      padding: const EdgeInsets.all(10),
+      padding: EdgeInsets.all(10.sp),
       decoration: BoxDecoration(
         border: Border.all(width: 2, color: const Color(0xffF1F1F1)),
         borderRadius: BorderRadius.all(
-          Radius.circular(10),
+          Radius.circular(10.sp),
         ),
       ),
     );
