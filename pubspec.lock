@@ -145,18 +145,7 @@ packages:
       name: flutter_hooks
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
-    version: "0.18.4"
-  flutter_inappwebview:
-    dependency: transitive
-    description:
-      name: flutter_inappwebview
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "5.4.3+7"
-=======
     version: "0.18.3"
->>>>>>> e1d1f9efd9690b2aad8347755f8ef55d42892572
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -301,25 +290,7 @@ packages:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
-    version: "1.8.1"
-  path_drawing:
-    dependency: transitive
-    description:
-      name: path_drawing
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
-  path_parsing:
-    dependency: transitive
-    description:
-      name: path_parsing
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
-=======
     version: "1.8.0"
->>>>>>> e1d1f9efd9690b2aad8347755f8ef55d42892572
   path_provider:
     dependency: transitive
     description:
@@ -548,11 +519,7 @@ packages:
       name: webview_flutter_wkwebview
       url: "https://pub.dartlang.org"
     source: hosted
-<<<<<<< HEAD
-    version: "2.8.1"
-=======
     version: "2.7.5"
->>>>>>> e1d1f9efd9690b2aad8347755f8ef55d42892572
   webviewimage:
     dependency: transitive
     description:
