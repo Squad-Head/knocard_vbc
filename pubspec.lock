@@ -28,7 +28,7 @@ packages:
       name: cached_network_image
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.2.1"
+    version: "3.2.0"
   cached_network_image_platform_interface:
     dependency: transitive
     description:
@@ -70,7 +70,7 @@ packages:
       name: collection
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.16.0"
+    version: "1.15.0"
   crypto:
     dependency: transitive
     description:
@@ -98,14 +98,14 @@ packages:
       name: fake_async
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.0"
+    version: "1.2.0"
   ffi:
     dependency: transitive
     description:
       name: ffi
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.0.0"
+    version: "1.2.1"
   file:
     dependency: transitive
     description:
@@ -145,6 +145,7 @@ packages:
       name: flutter_hooks
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "0.18.4"
   flutter_inappwebview:
     dependency: transitive
@@ -153,6 +154,9 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "5.4.3+7"
+=======
+    version: "0.18.3"
+>>>>>>> e1d1f9efd9690b2aad8347755f8ef55d42892572
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -173,7 +177,7 @@ packages:
       name: flutter_riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.4"
+    version: "1.0.3"
   flutter_screenutil:
     dependency: "direct main"
     description:
@@ -227,7 +231,7 @@ packages:
       name: hooks_riverpod
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.4"
+    version: "1.0.3"
   http:
     dependency: transitive
     description:
@@ -276,7 +280,7 @@ packages:
       name: material_color_utilities
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.1.4"
+    version: "0.1.3"
   meta:
     dependency: transitive
     description:
@@ -297,6 +301,7 @@ packages:
       name: path
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "1.8.1"
   path_drawing:
     dependency: transitive
@@ -312,6 +317,9 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.0"
+=======
+    version: "1.8.0"
+>>>>>>> e1d1f9efd9690b2aad8347755f8ef55d42892572
   path_provider:
     dependency: transitive
     description:
@@ -360,7 +368,7 @@ packages:
       name: path_provider_windows
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.0"
+    version: "2.0.7"
   pedantic:
     dependency: transitive
     description:
@@ -428,7 +436,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.2"
+    version: "1.8.1"
   sqflite:
     dependency: transitive
     description:
@@ -491,14 +499,14 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.9"
+    version: "0.4.8"
   typed_data:
     dependency: transitive
     description:
       name: typed_data
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.1"
+    version: "1.3.0"
   uuid:
     dependency: transitive
     description:
@@ -512,7 +520,7 @@ packages:
       name: vector_math
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.1.2"
+    version: "2.1.1"
   webview_flutter:
     dependency: transitive
     description:
@@ -540,7 +548,11 @@ packages:
       name: webview_flutter_wkwebview
       url: "https://pub.dartlang.org"
     source: hosted
+<<<<<<< HEAD
     version: "2.8.1"
+=======
+    version: "2.7.5"
+>>>>>>> e1d1f9efd9690b2aad8347755f8ef55d42892572
   webviewimage:
     dependency: transitive
     description:
@@ -554,7 +566,7 @@ packages:
       name: win32
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.7.0"
+    version: "2.5.2"
   xdg_directories:
     dependency: transitive
     description:
@@ -577,5 +589,5 @@ packages:
     source: hosted
     version: "8.1.0"
 sdks:
-  dart: ">=2.17.0 <3.0.0"
-  flutter: ">=3.0.0"
+  dart: ">=2.16.2 <3.0.0"
+  flutter: ">=2.10.0"
