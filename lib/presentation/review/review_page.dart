@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:image_network/image_network.dart';
-import 'package:knocard_ui/presentation/widgets/k_network)image.dart';
+import 'package:knocard_ui/presentation/widgets/k_network_image.dart';
 
 import '../widgets/k_navbar.dart';
 
@@ -170,7 +169,7 @@ class ReviewPage extends HookConsumerWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               CircleAvatar(
-                                child: KNetworkImage(
+                                child: KNetwokImage(
                                   imgUrl: 'https://i.pravatar.cc/300',
                                   height: 24,
                                   width: 24,
@@ -230,14 +229,14 @@ class ReviewPage extends HookConsumerWidget {
 
                                   Row(
                                     children: [
-                                      KNetworkImage(
+                                      KNetwokImage(
                                         imgUrl:
                                             'https://th.bing.com/th/id/R.a3aa863098cadde7811d060c19a577a5?rik=a1xPKyiA6awcbw&pid=ImgRaw&r=0',
                                         height: 12,
                                         width: 15,
                                         borderRadius: 0,
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         width: 5,
                                       ),
                                       Text(

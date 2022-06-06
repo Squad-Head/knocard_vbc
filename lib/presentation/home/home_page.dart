@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:knocard_ui/presentation/home_services/home_services.dart';
-import 'package:knocard_ui/presentation/widgets/k_staggered_gridview.dart';
+import 'package:knocard_ui/presentation/widgets/k_navbar.dart';
 
 import '../widgets/k_home_contact.dart';
 import '../widgets/k_home_menu_item.dart';
-import '../widgets/k_menu_bar.dart';
 import '../widgets/k_rates_item.dart';
 import '../widgets/k_review_articles.dart';
+import '../widgets/k_staggered_gridview.dart';
 import '../widgets/k_video_item.dart';
 
 class HomePage extends StatelessWidget {
@@ -23,7 +22,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: 400.h,
+                height: 420.h,
                 color: const Color(0xFFF6F6FF),
                 child: Stack(
                   alignment: Alignment.topCenter,
@@ -118,48 +117,9 @@ class HomePage extends StatelessWidget {
                         )
                       ],
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsets.only(top: 320, left: 10, right: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const HomeService(),
-                                ),
-                              );
-                            },
-                            child: const KMenuBar(
-                              icon: Icon(FontAwesomeIcons.mobileScreen),
-                              text: 'Contacts',
-                            ),
-                          ),
-                          const KMenuBar(
-                            icon: Icon(FontAwesomeIcons.images),
-                            text: 'Gallery',
-                          ),
-                          const KMenuBar(
-                            icon: Icon(FontAwesomeIcons.video),
-                            text: 'Videos',
-                          ),
-                          const KMenuBar(
-                            icon: Icon(FontAwesomeIcons.leaf),
-                            text: 'Contractor',
-                          ),
-                          const KMenuBar(
-                            icon: Icon(FontAwesomeIcons.handshake),
-                            text: 'Reviews',
-                          ),
-                          const KMenuBar(
-                            icon: Icon(FontAwesomeIcons.calendarCheck),
-                            text: 'Rates',
-                          ),
-                        ],
-                      ),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 320, left: 10, right: 10),
+                      child: KNavbar(),
                     ),
                   ],
                 ),
@@ -347,9 +307,9 @@ class HomePage extends StatelessWidget {
                       iconColor4: Color(0xFFFD4449),
                       buttomTextColor: Color(0xFF01B497),
                       icon1: FontAwesomeIcons.check,
-                      icon2: FontAwesomeIcons.close,
-                      icon3: FontAwesomeIcons.close,
-                      icon4: FontAwesomeIcons.close,
+                      icon2: FontAwesomeIcons.xmark,
+                      icon3: FontAwesomeIcons.xmark,
+                      icon4: FontAwesomeIcons.xmark,
                       headText: 'Basic',
                       buttomText: '\$2.99',
                     ),
@@ -364,7 +324,7 @@ class HomePage extends StatelessWidget {
                       icon1: FontAwesomeIcons.check,
                       icon2: FontAwesomeIcons.check,
                       icon3: FontAwesomeIcons.check,
-                      icon4: FontAwesomeIcons.close,
+                      icon4: FontAwesomeIcons.xmark,
                       headText: 'Standard',
                       buttomText: '\$5.99',
                     ),
