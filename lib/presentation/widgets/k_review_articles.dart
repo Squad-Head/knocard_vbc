@@ -24,7 +24,7 @@ class KReviewArticles extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         CircleAvatar(
-          radius: 15,
+          radius: 20,
           backgroundImage: AssetImage(image),
         ),
         SizedBox(width: 5.w),
@@ -35,7 +35,7 @@ class KReviewArticles extends StatelessWidget {
               text1,
               style: TextStyle(
                 color: const Color(0xFF020714),
-                fontSize: 12.sp,
+                fontSize: 35.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -43,7 +43,7 @@ class KReviewArticles extends StatelessWidget {
               '2 months ago',
               style: TextStyle(
                 color: const Color(0xFF9C9B9E),
-                fontSize: 12.sp,
+                fontSize: 30.sp,
               ),
             ),
             RatingBar.builder(
@@ -63,7 +63,7 @@ class KReviewArticles extends StatelessWidget {
               text: TextSpan(
                 text: text2,
                 style: TextStyle(
-                  fontSize: 7.sp,
+                  fontSize: 20.sp,
                   color: const Color(0xFF020714),
                 ),
                 children: <TextSpan>[
@@ -71,7 +71,7 @@ class KReviewArticles extends StatelessWidget {
                     text: text3,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 7.sp,
+                      fontSize: 20.sp,
                       color: const Color(0xFF8065C6),
                     ),
                   ),
@@ -83,14 +83,14 @@ class KReviewArticles extends StatelessWidget {
               children: [
                 Icon(
                   FontAwesomeIcons.solidThumbsUp,
-                  size: 8.sp,
+                  size: 25.sp,
                   color: const Color(0xFFA3A3A3),
                 ),
                 SizedBox(width: 3.w),
                 Text(
                   'Helpful?',
                   style: TextStyle(
-                    fontSize: 8.sp,
+                    fontSize: 25.sp,
                     color: const Color(0xFFA3A3A3),
                   ),
                 ),
@@ -100,7 +100,7 @@ class KReviewArticles extends StatelessWidget {
             Row(
               children: [
                 Container(
-                  height: 17.h,
+                  height: 20.h,
                   width: 2.w,
                   color: const Color(0xFFA3A3A3),
                 ),
@@ -111,7 +111,7 @@ class KReviewArticles extends StatelessWidget {
                       text: TextSpan(
                         text: 'Response from the owner ',
                         style: TextStyle(
-                          fontSize: 8.sp,
+                          fontSize: 25.sp,
                           fontWeight: FontWeight.bold,
                           color: const Color(0xFF020714),
                         ),
@@ -119,14 +119,14 @@ class KReviewArticles extends StatelessWidget {
                           TextSpan(
                             text: 'a month ago',
                             style: TextStyle(
-                              fontSize: 7.sp,
+                              fontSize: 25.sp,
                               color: const Color(0xFFA3A3A3),
                             ),
                           ),
                           TextSpan(
                             text: text4,
                             style: TextStyle(
-                              fontSize: 7.sp,
+                              fontSize: 25.sp,
                               color: const Color(0xFF020714),
                             ),
                           ),

@@ -12,7 +12,7 @@ class KHomeMenuItem extends StatelessWidget {
       children: [
         IconButton(
           icon: icon,
-          iconSize: 15,
+          iconSize: 18,
           color: const Color(0xFF088AC6),
           onPressed: () {},
         ),
@@ -20,7 +20,7 @@ class KHomeMenuItem extends StatelessWidget {
           text,
           style: TextStyle(
             color: const Color(0xFF525252),
-            fontSize: 12.sp,
+            fontSize: 30.sp,
           ),
         ),
       ],

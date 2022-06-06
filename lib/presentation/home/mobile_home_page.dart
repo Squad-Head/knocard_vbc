@@ -22,13 +22,13 @@ class MobileHomePage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: 420.h,
+                height: 260.h,
                 color: const Color(0xFFF6F6FF),
                 child: Stack(
                   alignment: Alignment.topCenter,
                   children: [
                     SizedBox(
-                      height: 300.h,
+                      height: 180.h,
                       width: double.infinity,
                       child: Image.asset(
                         "assets/images/cover.png",
@@ -62,9 +62,9 @@ class MobileHomePage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.only(top: 250),
-                      padding: const EdgeInsets.only(left: 110),
-                      height: 55.h,
+                      margin: const EdgeInsets.only(top: 180),
+                      padding: const EdgeInsets.only(left: 90, top: 8),
+                      height: 40.h,
                       width: double.infinity,
                       decoration: const BoxDecoration(
                         color: Color(0xFF088AC6),
@@ -83,7 +83,7 @@ class MobileHomePage extends StatelessWidget {
                             'Brett Flemming',
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 20.sp,
+                              fontSize: 50.sp,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -91,7 +91,7 @@ class MobileHomePage extends StatelessWidget {
                             'Contractor',
                             style: TextStyle(
                               color: const Color(0xFFAFADAE),
-                              fontSize: 15.sp,
+                              fontSize: 30.sp,
                             ),
                           ),
                         ],
@@ -100,16 +100,16 @@ class MobileHomePage extends StatelessWidget {
                     Row(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 217),
+                          padding: const EdgeInsets.only(top: 55),
                           child: Container(
-                            height: 95.h,
-                            width: 95.w,
+                            height: 240.h,
+                            width: 240.w,
                             decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                                 border:
-                                    Border.all(width: 2, color: Colors.white)),
+                                    Border.all(width: 1, color: Colors.white)),
                             child: const CircleAvatar(
-                              radius: 45,
+                              radius: 70,
                               backgroundImage:
                                   AssetImage('assets/images/men_1.jpg'),
                             ),
@@ -118,7 +118,7 @@ class MobileHomePage extends StatelessWidget {
                       ],
                     ),
                     const Padding(
-                      padding: EdgeInsets.only(top: 320, left: 10, right: 10),
+                      padding: EdgeInsets.only(top: 240, left: 10, right: 10),
                       child: KNavbar(),
                     ),
                   ],
@@ -132,12 +132,12 @@ class MobileHomePage extends StatelessWidget {
                       icon: Icon(FontAwesomeIcons.mobileScreen),
                       text: '9788355889',
                     ),
-                    SizedBox(height: 5.h),
+                    SizedBox(height: 1.h),
                     const KHomeContact(
                       icon: Icon(FontAwesomeIcons.solidMessage),
                       text: 'bflemming@gmail.com',
                     ),
-                    SizedBox(height: 5.h),
+                    SizedBox(height: 1.h),
                     const KHomeContact(
                       icon: Icon(FontAwesomeIcons.globe),
                       text: 'Tampa, Fl, 33635',
@@ -155,7 +155,7 @@ class MobileHomePage extends StatelessWidget {
                         'Gallery',
                         style: TextStyle(
                           color: const Color(0xFF088AC6),
-                          fontSize: 14.sp,
+                          fontSize: 50.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -170,15 +170,13 @@ class MobileHomePage extends StatelessWidget {
                         'Videos',
                         style: TextStyle(
                           color: const Color(0xFF088AC6),
-                          fontSize: 14.sp,
+                          fontSize: 50.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       SizedBox(height: 5.h),
                       Container(
                         padding: const EdgeInsets.only(left: 3, top: 7),
-                        height: 130.h,
-                        width: 120.w,
                         decoration: BoxDecoration(
                           color: const Color(0xFFF1F1F1),
                           borderRadius: BorderRadius.circular(10),
@@ -186,13 +184,13 @@ class MobileHomePage extends StatelessWidget {
                         child: Column(
                           children: [
                             const KVideoItem(),
-                            SizedBox(height: 3.h),
+                            SizedBox(height: 5.h),
                             const KVideoItem(),
-                            SizedBox(height: 3.h),
+                            SizedBox(height: 5.h),
                             const KVideoItem(),
-                            SizedBox(height: 3.h),
+                            SizedBox(height: 5.h),
                             const KVideoItem(),
-                            SizedBox(height: 3.h),
+                            SizedBox(height: 5.h),
                             const KVideoItem(),
                           ],
                         ),
@@ -206,7 +204,7 @@ class MobileHomePage extends StatelessWidget {
                 'Services/Contractor/Menu',
                 style: TextStyle(
                   color: const Color(0xFF088AC6),
-                  fontSize: 14.sp,
+                  fontSize: 50.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -261,7 +259,7 @@ class MobileHomePage extends StatelessWidget {
                 'Reviews',
                 style: TextStyle(
                   color: const Color(0xFF088AC6),
-                  fontSize: 14.sp,
+                  fontSize: 50.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -269,7 +267,7 @@ class MobileHomePage extends StatelessWidget {
                 image: 'assets/images/rating-1.png',
                 text1: 'Alex Duta',
                 text2:
-                    'To be honest, I was hesitant with joining with 33 Mile Radius... With so many lead gen \ncompanies that offer you everything and end up not fulfilling, 33 Mile Radius sounded too good to be \ntrue. However my opinion completely changed once I ...',
+                    'To be honest, I was hesitant with joining with 33 Mile Radius... With so many lead gen \ncompanies that offer you everything and end up not fulfilling, 33 Mile Radius sounded too good \nto be true. However my opinion completely changed once I ...',
                 text3: 'More',
                 text4: '\nAlex, you are a great partner. Thanks for the review',
               ),
@@ -288,7 +286,7 @@ class MobileHomePage extends StatelessWidget {
                 'Rates',
                 style: TextStyle(
                   color: const Color(0xFF088AC6),
-                  fontSize: 14.sp,
+                  fontSize: 50.sp,
                   fontWeight: FontWeight.bold,
                 ),
               ),

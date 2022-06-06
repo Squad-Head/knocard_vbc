@@ -90,7 +90,7 @@ class KNavbar extends HookConsumerWidget {
             Icon(
               icon,
               color: Theme.of(context).primaryColor,
-              size: 30.sp,
+              size: 60.sp,
             ),
             SizedBox(
               height: 2.h,
@@ -98,7 +98,7 @@ class KNavbar extends HookConsumerWidget {
             Text(
               text,
               style: TextStyle(
-                fontSize: 14.sp,
+                fontSize: 40.sp,
                 fontWeight: FontWeight.w500,
                 color: Colors.black54,
               ),
