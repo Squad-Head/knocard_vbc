@@ -14,7 +14,7 @@ class KVideoItem extends StatelessWidget {
           '1',
           style: TextStyle(
             color: const Color(0xFF2A2A2A),
-            fontSize: 7.sp,
+            fontSize: 20.sp,
           ),
         ),
         SizedBox(width: 2.w),
@@ -29,7 +29,7 @@ class KVideoItem extends StatelessWidget {
               'Get MORE With Time Blocking',
               style: TextStyle(
                 color: const Color(0xFF2A2A2A),
-                fontSize: 4.sp,
+                fontSize: 25.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -37,7 +37,7 @@ class KVideoItem extends StatelessWidget {
               'Matt Bayrom',
               style: TextStyle(
                 color: const Color(0xFF878788),
-                fontSize: 5.sp,
+                fontSize: 20.sp,
               ),
             ),
           ],

@@ -35,8 +35,8 @@ class KRatesItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 130.h,
-      width: 100.w,
+      height: 140.h,
+      width: 300.w,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -52,7 +52,7 @@ class KRatesItem extends StatelessWidget {
         children: [
           Container(
             height: 30.h,
-            width: 100.w,
+            width: 300.w,
             decoration: BoxDecoration(
               color: containerColor,
               borderRadius: const BorderRadius.only(
@@ -65,19 +65,18 @@ class KRatesItem extends StatelessWidget {
                 headText,
                 style: TextStyle(
                     color: headTextColor,
-                    fontSize: 10.sp,
+                    fontSize: 40.sp,
                     fontWeight: FontWeight.bold),
               ),
             ),
           ),
-          SizedBox(height: 8.h),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
                 Container(
-                  height: 2.h,
-                  width: 30.w,
+                  height: 1.h,
+                  width: 60.w,
                   color: const Color(0xFFAFAFAF),
                 ),
                 SizedBox(height: 5.h),
@@ -85,68 +84,71 @@ class KRatesItem extends StatelessWidget {
                   children: [
                     Icon(
                       icon1,
-                      size: 8.sp,
+                      size: 30.sp,
                       color: iconColor1,
                     ),
                     SizedBox(width: 5.w),
                     Text(
                       'Sample Text Here',
                       style: TextStyle(
-                        fontSize: 6.sp,
+                        fontSize: 22.sp,
                         fontWeight: FontWeight.bold,
                         color: const Color(0xFF666666),
                       ),
                     ),
                   ],
                 ),
+                SizedBox(height: 5.h),
                 Row(
                   children: [
                     Icon(
                       icon2,
-                      size: 8.sp,
+                      size: 30.sp,
                       color: iconColor2,
                     ),
                     SizedBox(width: 5.w),
                     Text(
                       'Other Text Title',
                       style: TextStyle(
-                        fontSize: 6.sp,
+                        fontSize: 22.sp,
                         fontWeight: FontWeight.bold,
                         color: const Color(0xFF666666),
                       ),
                     ),
                   ],
                 ),
+                SizedBox(height: 5.h),
                 Row(
                   children: [
                     Icon(
                       icon3,
-                      size: 8.sp,
+                      size: 30.sp,
                       color: iconColor3,
                     ),
                     SizedBox(width: 5.w),
                     Text(
                       'Text Space Goes Here',
                       style: TextStyle(
-                        fontSize: 6.sp,
+                        fontSize: 22.sp,
                         fontWeight: FontWeight.bold,
                         color: const Color(0xFF666666),
                       ),
                     ),
                   ],
                 ),
+                SizedBox(height: 5.h),
                 Row(
                   children: [
                     Icon(
                       icon4,
-                      size: 8.sp,
+                      size: 30.sp,
                       color: iconColor4,
                     ),
                     SizedBox(width: 5.w),
                     Text(
                       'Description Space',
                       style: TextStyle(
-                        fontSize: 6.sp,
+                        fontSize: 22.sp,
                         fontWeight: FontWeight.bold,
                         color: const Color(0xFF666666),
                       ),
@@ -155,8 +157,8 @@ class KRatesItem extends StatelessWidget {
                 ),
                 SizedBox(height: 10.h),
                 Container(
-                  height: 2.h,
-                  width: 30.w,
+                  height: 1.h,
+                  width: 60.w,
                   color: const Color(0xFFAFAFAF),
                 ),
                 SizedBox(height: 5.h),
@@ -164,7 +166,7 @@ class KRatesItem extends StatelessWidget {
                   buttomText,
                   style: TextStyle(
                     color: buttomTextColor,
-                    fontSize: 12.sp,
+                    fontSize: 50.sp,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
