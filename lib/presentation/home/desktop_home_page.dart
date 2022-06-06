@@ -2,18 +2,19 @@ import 'package:flutter/material.dart' hide MenuItem;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:knocard_ui/style/color.dart';
-import 'package:knocard_ui/web/w_home_page/widgets/menu_item.dart';
-import 'package:knocard_ui/web/w_home_page/widgets/services_menu_item.dart';
-import 'package:knocard_ui/web/w_home_page/widgets/w_home_contact.dart';
-import 'package:knocard_ui/web/w_home_page/widgets/w_rates_item.dart';
-import 'package:knocard_ui/web/w_home_page/widgets/w_review.dart';
-import 'package:knocard_ui/web/w_home_page/widgets/web_gallery.dart';
-import 'package:knocard_ui/web/w_home_page/widgets/web_video_item.dart';
 
-class WHomePage extends StatelessWidget {
+import 'widgtes/menu_item.dart';
+import 'widgtes/services_menu_item.dart';
+import 'widgtes/w_home_contact.dart';
+import 'widgtes/w_rates_item.dart';
+import 'widgtes/w_review.dart';
+import 'widgtes/web_gallery.dart';
+import 'widgtes/web_video_item.dart';
+
+class DesktopHomePage extends StatelessWidget {
   final topHeight = 200.0;
 
-  const WHomePage({Key? key}) : super(key: key);
+  const DesktopHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

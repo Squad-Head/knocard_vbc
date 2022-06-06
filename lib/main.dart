@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/presentation/home/home_page.dart';
 import 'package:knocard_ui/style/color.dart';
-import 'package:knocard_ui/web/w_home_page/w_home_page.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -26,7 +25,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: KColor.backgroundColor,
         ),
         //home: const HomePage(),
-        home: WHomePage(),
+        home: const HomePage(),
       ),
     );
   }

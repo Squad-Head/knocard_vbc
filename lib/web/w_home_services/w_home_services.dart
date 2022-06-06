@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:knocard_ui/style/color.dart';
 
 class WHomeServices extends StatelessWidget {
   const WHomeServices({Key? key}) : super(key: key);
@@ -16,16 +15,11 @@ class WHomeServices extends StatelessWidget {
                 height: 70.h,
                 width: double.infinity,
                 // color: Color(0xff63B4DB),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xff1d92c8),
-                      Color(0xffc1ddef),
-                    ],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter
-                  )
-                ),
+                decoration: const BoxDecoration(
+                    gradient: LinearGradient(colors: [
+                  Color(0xff1d92c8),
+                  Color(0xffc1ddef),
+                ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
                 // child: Column(
                 //   children: [
                 //     Container(
