@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:knocard_ui/presentation/review/review_page.dart';
-
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/presentation/home/home_page.dart';
 import 'package:knocard_ui/style/color.dart';
 
 void main() {

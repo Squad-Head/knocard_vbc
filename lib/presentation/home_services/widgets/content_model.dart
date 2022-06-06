@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
+// ignore: must_be_immutable
 class ContentModel extends Equatable {
   final String title;
   final String caption;
@@ -34,6 +35,7 @@ class ContentModel extends Equatable {
   }) {
     return ContentModel(
       title: title ?? this.title,
+      // ignore: unnecessary_this
       caption: captopn ?? this.caption,
       date: date ?? this.date,
       text: text ?? this.text,

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_declarations
+
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,12 +8,13 @@ import 'package:knocard_ui/presentation/home_services/widgets/content_model.dart
 import 'package:knocard_ui/style/color.dart';
 
 import '../widgets/k_navbar.dart';
-import '../widgets/k_network)image.dart';
+import '../widgets/k_network_image.dart';
 
 class HomeService extends HookConsumerWidget {
   const HomeService({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // ignore: unused_local_variable
     final weddingImage =
         'https://www.pexels.com/photo/couple-standing-on-grass-field-while-looking-at-each-other-1603884/';
     var chipSelected = useState(0);
@@ -329,7 +332,7 @@ class HomeService extends HookConsumerWidget {
                         shape: BoxShape.circle,
                         border: Border.all(color: Colors.white),
                       ),
-                      child: KNetworkImage(imgUrl: 'https://i.pravatar.cc/300'),
+                      child: KNetwokImage(imgUrl: 'https://i.pravatar.cc/300'),
                     ),
                   )
                 : const SizedBox.shrink(),

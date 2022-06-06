@@ -2,10 +2,11 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:image_network/image_network.dart';
 
-import '../../style/color.dart';
+import '../../../style/color.dart';
 
-class KNetworkImage extends StatelessWidget {
-  KNetworkImage({
+// ignore: must_be_immutable
+class KNetwokImage extends StatelessWidget {
+  KNetwokImage({
     Key? key,
     required this.imgUrl,
     this.height = 150,

@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/presentation/gallery/gallery.dart';
+import 'package:knocard_ui/presentation/home/home_page.dart';
 import 'package:knocard_ui/presentation/home_services/home_services.dart';
 import 'package:knocard_ui/presentation/review/review_page.dart';
+import 'package:knocard_ui/presentation/videos/videos_page.dart';
 import 'package:line_icons/line_icons.dart';
 
 class KNavbar extends HookConsumerWidget {
@@ -22,27 +25,36 @@ class KNavbar extends HookConsumerWidget {
               context,
               "Contacts",
               FontAwesomeIcons.mobileScreen,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const HomePage()));
+              },
             ),
             _navItem(
               context,
               "Gallery",
               FontAwesomeIcons.image,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const GalleryPage()));
+              },
             ),
             _navItem(
               context,
               "Videos",
               LineIcons.film,
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const VideoPage()));
+              },
             ),
             _navItem(
               context,
               "Contractor",
               Icons.phone_android,
               onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => HomeService()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const HomeService()));
               },
             ),
             _navItem(
@@ -50,8 +62,8 @@ class KNavbar extends HookConsumerWidget {
               "Reviews",
               Icons.phone_android,
               onTap: () {
-                Navigator.push(
-                    context, MaterialPageRoute(builder: (_) => ReviewPage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const ReviewPage()));
               },
             ),
             _navItem(
