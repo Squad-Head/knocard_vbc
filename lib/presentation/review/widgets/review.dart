@@ -12,7 +12,7 @@ class ReviewWidget extends StatelessWidget {
     return Container(
       width: 310.h,
       child: Padding(
-        padding: EdgeInsets.all(10.0.sp),
+        padding: EdgeInsets.all(0.sp),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
