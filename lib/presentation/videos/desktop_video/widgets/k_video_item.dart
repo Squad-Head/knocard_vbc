@@ -2,35 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class KVideoItem extends StatelessWidget {
-  const KVideoItem({
-    Key? key,
-    required String number,
-  }) : super(key: key);
+  const KVideoItem({Key? key, required this.number}) : super(key: key);
+  final String number;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         Text(
-          '1',
+          number,
           style: TextStyle(
             color: const Color(0xFF2A2A2A),
-            fontSize: 20.sp,
+            fontSize: 8.sp,
           ),
         ),
         SizedBox(width: 2.w),
         const Image(
-          image: AssetImage('assets/images/video.png'),
+          image: AssetImage('assets/images/video1.png'),
+          height: 60,
+          width: 90,
         ),
         SizedBox(width: 2.w),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               'Get MORE With Time Blocking',
               style: TextStyle(
                 color: const Color(0xFF2A2A2A),
-                fontSize: 25.sp,
+                fontSize: 5.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -38,7 +39,7 @@ class KVideoItem extends StatelessWidget {
               'Matt Bayrom',
               style: TextStyle(
                 color: const Color(0xFF878788),
-                fontSize: 20.sp,
+                fontSize: 3.sp,
               ),
             ),
           ],

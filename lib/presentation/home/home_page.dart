@@ -2,16 +2,15 @@ import 'package:flutter/material.dart' hide MenuItem;
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'package:knocard_ui/presentation/app/rates_page.dart';
-import 'package:knocard_ui/presentation/app/video_page.dart';
+
 import 'package:knocard_ui/presentation/contact/contact_page.dart';
 import 'package:knocard_ui/presentation/contractor_page/constractor_page.dart';
 import 'package:knocard_ui/presentation/gallery/gallery_page.dart';
 
 import 'package:knocard_ui/presentation/review/review.dart';
+import 'package:knocard_ui/presentation/videos/videos_page.dart';
 import 'package:knocard_ui/presentation/widget/header_background.dart';
 import 'package:knocard_ui/presentation/widget/header_title_bottom.dart';
-
-import '../contractor_page/desktop_contractor_page.dart';
 
 class HomePage extends HookWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -57,7 +56,7 @@ class HomePage extends HookWidget {
         children: const [
           ContactPage(),
           GalleryPage(),
-          BlankVideosPage(),
+          VideoPage(),
           ConstractorPage(),
           Review(),
           BlankRatesPage()

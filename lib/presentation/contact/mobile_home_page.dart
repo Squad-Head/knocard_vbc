@@ -80,15 +80,25 @@ class MobileContactPage extends StatelessWidget {
                       ),
                       child: Column(
                         children: [
-                          const KVideoItem(),
+                          const KVideoItem(
+                            number: '1',
+                          ),
                           SizedBox(height: 5.h),
-                          const KVideoItem(),
+                          const KVideoItem(
+                            number: '2',
+                          ),
                           SizedBox(height: 5.h),
-                          const KVideoItem(),
+                          const KVideoItem(
+                            number: '3',
+                          ),
                           SizedBox(height: 5.h),
-                          const KVideoItem(),
+                          const KVideoItem(
+                            number: '4',
+                          ),
                           SizedBox(height: 5.h),
-                          const KVideoItem(),
+                          const KVideoItem(
+                            number: '5',
+                          ),
                         ],
                       ),
                     ),
