@@ -10,7 +10,7 @@ class Review extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
       final width = constraints.maxWidth;
-      if (width > 700) {
+      if (width > 850) {
         return const DesktopReviewPage();
       } else {
         return const MobileReviewPage();
