@@ -49,7 +49,7 @@ class MobileContractorPage extends HookConsumerWidget {
                                 child: Image.asset(
                                   'assets/images/weddingImage.jpg',
                                   fit: BoxFit.cover,
-                                  height: 160.h,
+                                  // height: 160.h,
                                 ),
                               ),
                               SizedBox(

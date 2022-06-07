@@ -22,7 +22,7 @@ class DesktopContractorPage extends HookConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: 500.w,
+              width: MediaQuery.of(context).size.width,
               child: Column(
                 children: [
                   Flexible(
@@ -50,7 +50,7 @@ class DesktopContractorPage extends HookConsumerWidget {
                                 child: Image.asset(
                                   'assets/images/weddingImage.jpg',
                                   fit: BoxFit.cover,
-                                  height: 160.h,
+                                  // height: 160.h,
                                 ),
                               ),
                               SizedBox(
@@ -86,7 +86,7 @@ class DesktopContractorPage extends HookConsumerWidget {
                               ),
                               SizedBox(
                                 height: 40.h,
-                                width: 400.w,
+                                width: MediaQuery.of(context).size.width,
                                 child: ListView.separated(
                                   scrollDirection: Axis.horizontal,
                                   itemCount: 4,
@@ -160,7 +160,7 @@ class DesktopContractorPage extends HookConsumerWidget {
                                   children: [
                                     Container(
                                       alignment: Alignment.center,
-                                      height: 160.h,
+                                      // height: 160.h,
                                       child: content.imgUrl != null
                                           ? Image.asset(
                                               content.imgUrl!,
