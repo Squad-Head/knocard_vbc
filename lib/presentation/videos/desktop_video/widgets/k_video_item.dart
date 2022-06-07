@@ -19,7 +19,8 @@ class KVideoItemdesktop extends StatelessWidget {
         ),
         SizedBox(width: 2.w),
         Image(
-          image: const AssetImage('assets/images/video.png'),
+          image: const NetworkImage(
+              'https://images.unsplash.com/photo-1654606247118-df8d8a57a20d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80'),
           height: 40.h,
           width: 70.w,
         ),
