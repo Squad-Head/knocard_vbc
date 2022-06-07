@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smooth_star_rating/smooth_star_rating.dart';
+
+import 'package:smooth_star_rating_null_safety/smooth_star_rating_null_safety.dart';
 
 class CommentWidget extends StatelessWidget {
   const CommentWidget({
@@ -13,7 +14,7 @@ class CommentWidget extends StatelessWidget {
       children: [
         Divider(
           height: 3.h,
-          color: Color(0xffDBDBDD),
+          color: const Color(0xffDBDBDD),
         ),
         SizedBox(height: 10.h),
         Row(

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../constant.dart';
+import 'package:knocard_ui/presentation/gallery/desktop_gallery/constant.dart';
 
 class scrolemenu extends StatefulWidget {
   const scrolemenu({Key? key}) : super(key: key);
@@ -22,7 +21,7 @@ class _scrolemenuState extends State<scrolemenu> {
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Stack(
         children: <Widget>[
-          const Divider(
+          Divider(
             height: 2,
             thickness: 0.5,
             color: kTextLightColor,

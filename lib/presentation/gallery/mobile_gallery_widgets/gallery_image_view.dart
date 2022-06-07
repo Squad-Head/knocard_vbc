@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../widgets/k_navbar.dart';
+import '../../widgets/k_navbar.dart';
 
 List<String> values = [
   'assets/images/men_1.jpg',
@@ -45,7 +45,7 @@ class GalleryImageViewPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: KNavbar(),
+                child: const KNavbar(),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:knocard_ui/presentation/gallery/desktop_gallery/desktop_gallery.dart';
-import 'package:knocard_ui/presentation/gallery/mobile_gallery.dart';
-import 'package:knocard_ui/presentation/home/desktop_home_page.dart';
+
+import 'package:knocard_ui/presentation/gallery/desktop_gallery/screens/homepage.dart';
+
+import 'package:knocard_ui/presentation/gallery/mobile_gallery_widgets/mobile_gallery.dart';
 
 class GalleryPage extends StatelessWidget {
   const GalleryPage({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class GalleryPage extends StatelessWidget {
     return LayoutBuilder(builder: (context, constraints) {
       final width = constraints.maxWidth;
       if (width > 700) {
-        return const DesktopGallery();
+        return const DesktopGalleryPage();
       } else {
         return const MobileGalleryPage();
       }

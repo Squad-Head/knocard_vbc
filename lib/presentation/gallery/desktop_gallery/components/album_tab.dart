@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:knocard_ui/presentation/gallery/desktop_gallery/components/albumlist.dart';
 
-import '../../components/albumlist.dart';
-import '../../constant.dart';
+import '../constant.dart';
 
-class Albumtab extends StatefulWidget {
-  const Albumtab({Key? key}) : super(key: key);
+class albumtab extends StatefulWidget {
+  const albumtab({Key? key}) : super(key: key);
 
   @override
-  State<Albumtab> createState() => _AlbumtabState();
+  State<albumtab> createState() => _albumtabState();
 }
 
-class _AlbumtabState extends State<Albumtab> {
+class _albumtabState extends State<albumtab> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(

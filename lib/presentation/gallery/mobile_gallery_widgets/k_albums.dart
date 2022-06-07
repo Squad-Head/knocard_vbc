@@ -9,34 +9,38 @@ class KAlbums extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          padding: const EdgeInsets.all(5),
-          height: 200.h,
-          width: 200.w,
-          decoration: const BoxDecoration(
-            color: Color(0xFFFEFEFC),
-            shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                color: Color(0xFFDBDBDB),
-                offset: Offset.zero,
-                spreadRadius: 2,
+    return Container(
+      margin: const EdgeInsets.all(5),
+      child: Column(
+        children: [
+          Container(
+            padding: const EdgeInsets.all(5),
+            height: 60.h,
+            width: 60.h,
+            decoration: const BoxDecoration(
+              color: Color(0xFFFEFEFC),
+              shape: BoxShape.circle,
+              boxShadow: [
+                BoxShadow(
+                  color: Color(0xFFDBDBDB),
+                  offset: Offset.zero,
+                  spreadRadius: 2,
+                ),
+              ],
+            ),
+            child: Center(
+              child: Image(
+                image: AssetImage(image),
               ),
-            ],
-          ),
-          child: Center(
-            child: Image(
-              image: AssetImage(image),
             ),
           ),
-        ),
-        Text(
-          text,
-          style: TextStyle(color: const Color(0xFF000000), fontSize: 40.sp),
-        ),
-      ],
+          SizedBox(height: 5.h),
+          Text(
+            text,
+            style: TextStyle(color: const Color(0xFF000000), fontSize: 40.sp),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -1,6 +1,5 @@
 import "package:flutter/material.dart";
-
-import '../../components/imagelist.dart';
+import 'package:knocard_ui/presentation/gallery/desktop_gallery/components/imagelist.dart';
 
 class PhotoGrid extends StatelessWidget {
   const PhotoGrid({Key? key}) : super(key: key);

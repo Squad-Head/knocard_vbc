@@ -284,13 +284,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
-  my_app:
-    dependency: "direct main"
-    description:
-      name: my_app
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   octo_image:
     dependency: transitive
     description:
@@ -436,13 +429,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
-  smooth_star_rating:
+  smooth_star_rating_null_safety:
     dependency: "direct main"
     description:
-      name: smooth_star_rating
+      name: smooth_star_rating_null_safety
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.1.1"
+    version: "1.0.4+2"
   source_span:
     dependency: transitive
     description:
