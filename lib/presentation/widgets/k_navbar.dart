@@ -4,11 +4,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'package:knocard_ui/presentation/contact/mobile_home_page.dart';
-import 'package:knocard_ui/presentation/home_services/home_services.dart';
+
 import 'package:knocard_ui/presentation/review/review_page.dart';
 import 'package:knocard_ui/presentation/videos/videos_page.dart';
 import 'package:line_icons/line_icons.dart';
 
+import '../contractor_page/desktop_contractor_page.dart';
 import '../gallery/gallery_page.dart';
 
 class KNavbar extends HookConsumerWidget {
@@ -58,8 +59,10 @@ class KNavbar extends HookConsumerWidget {
               "Contractor",
               Icons.phone_android,
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (_) => const HomeService()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const DesktopContractorPage()));
               },
             ),
             _navItem(
