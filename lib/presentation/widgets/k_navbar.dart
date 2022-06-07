@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:knocard_ui/presentation/gallery/gallery.dart';
+import 'package:knocard_ui/presentation/gallery/gallery_page.dart';
 import 'package:knocard_ui/presentation/home/mobile_home_page.dart';
 import 'package:knocard_ui/presentation/home_services/home_services.dart';
 import 'package:knocard_ui/presentation/review/review_page.dart';
@@ -15,11 +15,12 @@ class KNavbar extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Container(
       color: const Color(0xfff6f6ff),
-      padding: EdgeInsets.symmetric(vertical: 20.h),
+      padding: EdgeInsets.symmetric(vertical: 10.h),
       child: SizedBox(
-        height: 60.h,
-        child: ListView(
-          scrollDirection: Axis.horizontal,
+        height: 35.h,
+        child: Row(
+          // scrollDirection: Axis.horizontal,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             _navItem(
               context,

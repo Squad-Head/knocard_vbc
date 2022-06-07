@@ -22,7 +22,7 @@ class MobileHomePage extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: 260.h,
+                height: 240.h,
                 color: const Color(0xFFF6F6FF),
                 child: Stack(
                   alignment: Alignment.topCenter,
@@ -111,7 +111,7 @@ class MobileHomePage extends StatelessWidget {
                             child: const CircleAvatar(
                               radius: 70,
                               backgroundImage:
-                                  AssetImage('assets/images/men_1.jpg'),
+                                  AssetImage('assets/images/grid0.jpg'),
                             ),
                           ),
                         )

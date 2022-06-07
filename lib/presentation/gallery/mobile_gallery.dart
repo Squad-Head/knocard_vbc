@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:knocard_ui/presentation/gallery/gallery_image_view.dart';
-import 'package:knocard_ui/presentation/gallery/gallery_widgets/k_albums.dart';
+
 import '../widgets/k_navbar.dart';
+import 'mobile_gallery_widgets/k_albums.dart';
 
 List<String> values = [
   'assets/images/men_1.jpg',
@@ -25,8 +26,8 @@ List<String> values = [
   'assets/images/men_1.jpg',
 ];
 
-class GalleryPage extends StatelessWidget {
-  const GalleryPage({Key? key}) : super(key: key);
+class MobileGalleryPage extends StatelessWidget {
+  const MobileGalleryPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,38 +36,36 @@ class GalleryPage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.shade300,
-                      offset: const Offset(0, 2),
-                      blurRadius: 3,
-                      spreadRadius: .5,
-                    ),
-                  ],
-                ),
-                child: const KNavbar(),
-              ),
+              // Container(
+              //   decoration: BoxDecoration(
+              //     boxShadow: [
+              //       BoxShadow(
+              //         color: Colors.grey.shade300,
+              //         offset: const Offset(0, 2),
+              //         blurRadius: 3,
+              //         spreadRadius: .5,
+              //       ),
+              //     ],
+              //   ),
+              //   child: const KNavbar(),
+              // ),
+              // SizedBox(height: 5.h),
               Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: const [
-                        KAlbums(
-                            image: 'assets/images/album.png', text: 'Album 1'),
-                        KAlbums(
-                            image: 'assets/images/album2.png', text: 'Album 2'),
-                        KAlbums(
-                            image: 'assets/images/album3.png', text: 'Album 3'),
-                        KAlbums(
-                            image: 'assets/images/album4.png', text: 'Album 4'),
-                      ],
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      KAlbums(
+                          image: 'assets/images/album.png', text: 'Album 1'),
+                      KAlbums(
+                          image: 'assets/images/album2.png', text: 'Album 2'),
+                      KAlbums(
+                          image: 'assets/images/album3.png', text: 'Album 3'),
+                      KAlbums(
+                          image: 'assets/images/album4.png', text: 'Album 4'),
+                    ],
                   ),
-                  SizedBox(height: 15.h),
+                  SizedBox(height: 5.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: const [

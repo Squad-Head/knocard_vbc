@@ -51,7 +51,7 @@ class GalleryImageViewPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: 450.h,
+                    height: 350.h,
                     width: double.infinity,
                     color: Colors.grey,
                     child: const Image(
@@ -68,13 +68,13 @@ class GalleryImageViewPage extends StatelessWidget {
                         Icon(
                           FontAwesomeIcons.solidHeart,
                           color: Colors.red,
-                          size: 25.sp,
+                          size: 50.sp,
                         ),
                         SizedBox(height: 10.h),
                         Text(
                           '21 likes',
                           style:
-                              TextStyle(fontSize: 14.sp, color: Colors.black),
+                              TextStyle(fontSize: 45.sp, color: Colors.black),
                         ),
                       ],
                     ),

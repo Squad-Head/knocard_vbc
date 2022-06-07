@@ -6,6 +6,7 @@ class KHomeMenuItem extends StatelessWidget {
       : super(key: key);
   final Icon icon;
   final String text;
+
   @override
   Widget build(BuildContext context) {
     return Row(

@@ -12,9 +12,9 @@ class KAlbums extends StatelessWidget {
     return Column(
       children: [
         Container(
-          padding: const EdgeInsets.all(2),
-          height: 60.h,
-          width: 60.w,
+          padding: const EdgeInsets.all(5),
+          height: 200.h,
+          width: 200.w,
           decoration: const BoxDecoration(
             color: Color(0xFFFEFEFC),
             shape: BoxShape.circle,
@@ -22,7 +22,7 @@ class KAlbums extends StatelessWidget {
               BoxShadow(
                 color: Color(0xFFDBDBDB),
                 offset: Offset.zero,
-                spreadRadius: 3,
+                spreadRadius: 2,
               ),
             ],
           ),
@@ -32,10 +32,9 @@ class KAlbums extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 5.h),
         Text(
           text,
-          style: TextStyle(color: const Color(0xFF000000), fontSize: 14.sp),
+          style: TextStyle(color: const Color(0xFF000000), fontSize: 40.sp),
         ),
       ],
     );

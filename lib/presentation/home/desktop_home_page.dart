@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart' hide MenuItem;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:knocard_ui/presentation/home/home_page.dart';
 import 'package:knocard_ui/style/color.dart';
 
+import '../gallery/gallery_page.dart';
 import 'widgtes/menu_item.dart';
 import 'widgtes/services_menu_item.dart';
 import 'widgtes/w_home_contact.dart';
@@ -78,40 +80,76 @@ class DesktopHomePage extends StatelessWidget {
               Positioned(
                 bottom: 0.0,
                 child: Container(
-                  height: 50,
+                  height: 60,
                   width: MediaQuery.of(context).size.width,
                   color: const Color(0xffF6F6FF),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       MenuItem(
                         icon: FontAwesomeIcons.mobileScreen,
                         text: 'Contacts',
+                        onPress: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomePage()));
+                        },
                       ),
-                      SizedBox(width: 12.0),
+                      SizedBox(width: 12.w),
                       MenuItem(
                         icon: FontAwesomeIcons.images,
                         text: 'Gallery',
+                        onPress: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const GalleryPage()));
+                        },
                       ),
                       SizedBox(width: 12.0),
                       MenuItem(
                         icon: FontAwesomeIcons.video,
                         text: 'Videos',
+                        onPress: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomePage()));
+                        },
                       ),
                       SizedBox(width: 12.0),
                       MenuItem(
                         icon: FontAwesomeIcons.leaf,
                         text: 'Contractor',
+                        onPress: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomePage()));
+                        },
                       ),
                       SizedBox(width: 12.0),
                       MenuItem(
                         icon: FontAwesomeIcons.handshake,
                         text: 'Reviews',
+                        onPress: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomePage()));
+                        },
                       ),
                       SizedBox(width: 12.0),
                       MenuItem(
                         icon: FontAwesomeIcons.calendarCheck,
                         text: 'Rates',
+                        onPress: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const HomePage()));
+                        },
                       ),
                     ],
                   ),
