@@ -13,7 +13,8 @@ class MobileContractorPage extends HookConsumerWidget {
     // ignore: unused_local_variable
     const weddingImage =
         'https://www.pexels.com/photo/couple-standing-on-grass-field-while-looking-at-each-other-1603884/';
-    var chipSelected = useState(0);
+    final chipSelected = useState(0);
+    final listScrollController = useScrollController();
     return LayoutBuilder(builder: (context, constraint) {
       return Scaffold(
           body: SafeArea(
@@ -28,6 +29,7 @@ class MobileContractorPage extends HookConsumerWidget {
                     child: Container(
                       margin: EdgeInsets.symmetric(horizontal: 40.w),
                       child: ListView(
+                        controller: listScrollController,
                         children: [
                           SizedBox(
                             height: 10.h,
