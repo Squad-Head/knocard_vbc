@@ -28,7 +28,7 @@ class MobileReviewPage extends StatelessWidget {
                         Text(
                           "Reviews",
                           style: TextStyle(
-                            fontSize: 32.sp,
+                            fontSize: 31.sp,
                             fontWeight: FontWeight.bold,
                             color: const Color(0xff222222),
                           ),
@@ -41,12 +41,12 @@ class MobileReviewPage extends StatelessWidget {
                           //   isReadOnly: true,
                           rating: 5,
                           //  spacing: 0.0,
-                          size: 32.sp,
+                          size: 31.sp,
                         ),
                         Text(
                           "(12223)",
                           style: TextStyle(
-                            fontSize: 28.sp,
+                            fontSize: 27.sp,
                             fontWeight: FontWeight.bold,
                             color: const Color(0xff222222),
                           ),
@@ -58,14 +58,14 @@ class MobileReviewPage extends StatelessWidget {
                         Text(
                           "Most Relevant",
                           style: TextStyle(
-                            fontSize: 30.sp,
+                            fontSize: 29.sp,
                             fontWeight: FontWeight.bold,
                             color: const Color(0xff222222),
                           ),
                         ),
                         Icon(
                           Icons.chevron_right,
-                          size: 30.sp,
+                          size: 29.sp,
                         ),
                       ],
                     ),
@@ -112,7 +112,7 @@ class CommentWidget extends StatelessWidget {
             SizedBox(width: 20.w),
             CircleAvatar(
               backgroundColor: Colors.grey,
-              radius: 30.sp,
+              radius: 20.sp,
             ),
             SizedBox(width: 20.w),
             Column(
@@ -234,7 +234,7 @@ class ReviewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 330.h,
+      width: 350.h,
       child: Padding(
         padding: EdgeInsets.all(0.sp),
         child: Column(
