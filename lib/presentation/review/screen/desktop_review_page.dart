@@ -22,76 +22,79 @@ class DesktopReviewPage extends StatelessWidget {
                     width: 460.w,
                     child: const ReviewWidget(),
                   ),
-                  const Divider(),
-                  SizedBox(width: 30.w),
+                  SizedBox(width: 80.w),
                   Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(height: 20.h),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "Reviews",
-                                  style: TextStyle(
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.bold,
-                                    color: const Color(0xff222222),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 20.h),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "Reviews",
+                                    style: TextStyle(
+                                      fontSize: 12.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: const Color(0xff222222),
+                                    ),
                                   ),
-                                ),
-                                SizedBox(width: 20.w),
-                                SmoothStarRating(
-                                  starCount: 5,
-                                  color: const Color(0xffFFB924),
-                                  borderColor: const Color(0xffFFB924),
-                                  //   isReadOnly: true,
-                                  rating: 5,
-                                  //  spacing: 0.0,
-                                  size: 20.sp,
-                                ),
-                                Text(
-                                  "(12223)",
-                                  style: TextStyle(
-                                    fontSize: 18.sp,
-                                    fontWeight: FontWeight.bold,
-                                    color: const Color(0xff222222),
+                                  SizedBox(width: 20.w),
+                                  SmoothStarRating(
+                                    starCount: 5,
+                                    color: const Color(0xffFFB924),
+                                    borderColor: const Color(0xffFFB924),
+                                    //   isReadOnly: true,
+                                    rating: 5,
+                                    //  spacing: 0.0,
+                                    size: 16.sp,
                                   ),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text(
-                                  "Most Relevant",
-                                  style: TextStyle(
-                                    fontSize: 20.sp,
-                                    fontWeight: FontWeight.bold,
-                                    color: const Color(0xff222222),
+                                  Text(
+                                    "(12223)",
+                                    style: TextStyle(
+                                      fontSize: 10.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: const Color(0xff222222),
+                                    ),
                                   ),
-                                ),
-                                Icon(
-                                  Icons.chevron_right,
-                                  size: 30.sp,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 30.h),
-                        ListView(
-                          scrollDirection: Axis.vertical,
-                          shrinkWrap: true,
-                          children: const [
-                            CommentWidget(),
-                            CommentWidget(),
-                            CommentWidget(),
-                            CommentWidget(),
-                          ],
-                        ),
-                      ],
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text(
+                                    "Most Relevant",
+                                    style: TextStyle(
+                                      fontSize: 10.sp,
+                                      fontWeight: FontWeight.bold,
+                                      color: const Color(0xff222222),
+                                    ),
+                                  ),
+                                  Icon(
+                                    Icons.chevron_right,
+                                    size: 16.sp,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: 30.h),
+                          ListView(
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            children: const [
+                              CommentWidget(),
+                              CommentWidget(),
+                              CommentWidget(),
+                              CommentWidget(),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -125,7 +128,7 @@ class CommentWidget extends StatelessWidget {
             SizedBox(width: 20.w),
             CircleAvatar(
               backgroundColor: Colors.grey,
-              radius: 25.sp,
+              radius: 10.sp,
             ),
             SizedBox(width: 20.w),
             Column(
@@ -138,7 +141,7 @@ class CommentWidget extends StatelessWidget {
                     Text(
                       "Hasan Rahman",
                       style: TextStyle(
-                          fontSize: 27.sp, fontWeight: FontWeight.bold),
+                          fontSize: 12.sp, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(width: 10.w),
                     SmoothStarRating(
@@ -148,7 +151,7 @@ class CommentWidget extends StatelessWidget {
                       //   isReadOnly: true,
                       rating: 5,
                       //  spacing: 0.0,
-                      size: 24.sp,
+                      size: 10.sp,
                     )
                   ],
                 ),
@@ -157,14 +160,14 @@ class CommentWidget extends StatelessWidget {
                   children: [
                     Text(
                       "Bangladesh",
-                      style: TextStyle(fontSize: 24.sp),
+                      style: TextStyle(fontSize: 10.sp),
                     ),
                   ],
                 ),
                 SizedBox(height: 10.h),
                 Text(
                   "Lorem Ipsum is simply dummy text ",
-                  style: TextStyle(fontSize: 24.sp),
+                  style: TextStyle(fontSize: 10.sp),
                 ),
                 SizedBox(height: 10.h),
               ],
@@ -201,7 +204,7 @@ class Rating extends StatelessWidget {
             Text(
               "$percentage %",
               style: TextStyle(
-                fontSize: 26.sp,
+                fontSize: 10.sp,
                 fontWeight: FontWeight.bold,
                 color: const Color(0xff949398),
               ),
@@ -209,7 +212,7 @@ class Rating extends StatelessWidget {
             Text(
               reviewNumber,
               style: TextStyle(
-                fontSize: 26.sp,
+                fontSize: 10.sp,
                 fontWeight: FontWeight.bold,
                 color: const Color(0xff222222),
               ),
@@ -221,13 +224,13 @@ class Rating extends StatelessWidget {
               //   isReadOnly: true,
               rating: rating,
               //  spacing: 0.0,
-              size: 26.sp,
+              size: 10.sp,
             )
           ],
         ),
         SizedBox(height: 20.h),
         LinearPercentIndicator(
-          width: 260.0.h.w,
+          width: 310.w,
           lineHeight: 6.0,
           percent: percentageCovert,
           backgroundColor: const Color(0xffBEBDC2),
@@ -256,7 +259,7 @@ class ReviewWidget extends StatelessWidget {
             Text(
               "Reviews",
               style: TextStyle(
-                  fontSize: 35.sp,
+                  fontSize: 12.sp,
                   fontWeight: FontWeight.bold,
                   color: const Color(0xff0B8AC6)),
             ),
