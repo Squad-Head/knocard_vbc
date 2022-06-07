@@ -19,7 +19,7 @@ class WHomeContact extends StatelessWidget {
         Text(
           text,
           style: TextStyle(
-            color: Color(0xFF7A7C79),
+            color: const Color(0xFF7A7C79),
             fontSize: 10.sp,
           ),
         ),

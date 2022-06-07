@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../style/color.dart';
 
+// ignore: must_be_immutable
 class ContainerShadow extends StatelessWidget {
   final Widget child;
   double? width;
@@ -30,13 +31,13 @@ class ContainerShadow extends StatelessWidget {
             color: Colors.grey.shade300,
             blurRadius: .25,
             spreadRadius: 1,
-            offset: Offset(1, 2),
+            offset: const Offset(1, 2),
           ),
           BoxShadow(
             color: Colors.grey.shade200,
             blurRadius: .25,
             spreadRadius: 1.5,
-            offset: Offset(-.5, -.5),
+            offset: const Offset(-.5, -.5),
           )
         ],
       ),
@@ -45,6 +46,7 @@ class ContainerShadow extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class ContainerShadowRounded extends StatelessWidget {
   final Widget child;
   double? width;
@@ -71,7 +73,7 @@ class ContainerShadowRounded extends StatelessWidget {
             color: Colors.grey.shade300,
             blurRadius: .25,
             spreadRadius: 1,
-            offset: Offset(1, 2),
+            offset: const Offset(1, 2),
           ),
           // BoxShadow(
           //   color: Colors.grey.shade300,

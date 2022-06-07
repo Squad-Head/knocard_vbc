@@ -21,13 +21,13 @@ class ReviewWidget extends StatelessWidget {
               style: TextStyle(
                   fontSize: 22.sp,
                   fontWeight: FontWeight.bold,
-                  color: Color(0xff0B8AC6)),
+                  color: const Color(0xff0B8AC6)),
             ),
             SizedBox(height: 30.h),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               // ignore: prefer_const_literals_to_create_immutables
-              children: [
+              children: const [
                 Rating(
                     percentage: 71.32, rating: 5, reviewNumber: "1800 Reviews"),
                 Rating(
@@ -36,7 +36,7 @@ class ReviewWidget extends StatelessWidget {
                     percentage: 14.32, rating: 3, reviewNumber: "1800 Reviews"),
                 Rating(
                     percentage: 12.32, rating: 2, reviewNumber: "1800 Reviews"),
-                const Rating(
+                Rating(
                     percentage: 10.32, rating: 1, reviewNumber: "1800 Reviews"),
               ],
             ),

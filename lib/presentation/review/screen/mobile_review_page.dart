@@ -30,14 +30,14 @@ class MobileReviewPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xff222222),
+                          color: const Color(0xff222222),
                         ),
                       ),
                       SizedBox(width: 20.w),
                       SmoothStarRating(
                         starCount: 5,
-                        color: Color(0xffFFB924),
-                        borderColor: Color(0xffFFB924),
+                        color: const Color(0xffFFB924),
+                        borderColor: const Color(0xffFFB924),
                         //   isReadOnly: true,
                         rating: 5,
                         //  spacing: 0.0,
@@ -48,7 +48,7 @@ class MobileReviewPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xff222222),
+                          color: const Color(0xff222222),
                         ),
                       ),
                     ],
@@ -60,7 +60,7 @@ class MobileReviewPage extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xff222222),
+                          color: const Color(0xff222222),
                         ),
                       ),
                       Icon(
@@ -75,7 +75,7 @@ class MobileReviewPage extends StatelessWidget {
               ListView(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
-                children: [
+                children: const [
                   CommentWidget(),
                   CommentWidget(),
                   CommentWidget(),

@@ -35,7 +35,7 @@ class WReview extends StatelessWidget {
             Text(
               text1,
               style: TextStyle(
-                color: Color(0xFF020714),
+                color: const Color(0xFF020714),
                 fontSize: 12.sp,
                 fontWeight: FontWeight.bold,
               ),
@@ -43,7 +43,7 @@ class WReview extends StatelessWidget {
             Text(
               '2 months ago',
               style: TextStyle(
-                color: Color(0xFF9C9B9E),
+                color: const Color(0xFF9C9B9E),
                 fontSize: 12.sp,
               ),
             ),

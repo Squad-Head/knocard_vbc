@@ -146,7 +146,7 @@ class WRatesItem extends StatelessWidget {
                             style: TextStyle(
                               fontSize: 9.sp,
                               fontWeight: FontWeight.bold,
-                              color: Color(0xFF666666),
+                              color: const Color(0xFF666666),
                             ),
                           ),
                         ),

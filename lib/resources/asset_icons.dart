@@ -1,7 +1,7 @@
 class AssetIcons {
   AssetIcons._();
 
-  static const String Star = 'assets/icons/5_Star.png';
+  static const String star1 = 'assets/icons/5_Star.png';
   static const String group1 = 'assets/icons/Group 1.png';
   static const String arrowDown = 'assets/icons/arrow_down.png';
   static const String community = 'assets/icons/community.png';

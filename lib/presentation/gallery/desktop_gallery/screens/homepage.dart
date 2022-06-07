@@ -12,12 +12,12 @@ class DesktopGalleryPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Container(
-          constraints: BoxConstraints(
+          constraints: const BoxConstraints(
             maxWidth: 900,
           ),
-          child: ListView(shrinkWrap: true, children: <Widget>[
-            albumtab(),
-            scrolemenu(),
+          child: ListView(shrinkWrap: true, children: const <Widget>[
+            Albumtab(),
+            Scrolemenu(),
             PhotoGrid(),
           ]),
         ),

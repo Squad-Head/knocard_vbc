@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:knocard_ui/presentation/gallery/desktop_gallery/constant.dart';
 
-class scrolemenu extends StatefulWidget {
-  const scrolemenu({Key? key}) : super(key: key);
+class Scrolemenu extends StatefulWidget {
+  const Scrolemenu({Key? key}) : super(key: key);
 
   @override
-  State<scrolemenu> createState() => _scrolemenuState();
+  State<Scrolemenu> createState() => _ScrolemenuState();
 }
 
-class _scrolemenuState extends State<scrolemenu> {
+class _ScrolemenuState extends State<Scrolemenu> {
   List<String> categories = [
     "Posts",
     "Videos",
@@ -21,7 +21,7 @@ class _scrolemenuState extends State<scrolemenu> {
       padding: const EdgeInsets.symmetric(vertical: 20),
       child: Stack(
         children: <Widget>[
-          Divider(
+          const Divider(
             height: 2,
             thickness: 0.5,
             color: kTextLightColor,
@@ -58,7 +58,7 @@ class _scrolemenuState extends State<scrolemenu> {
           child: Column(
             children: <Widget>[
               Container(
-                margin: EdgeInsets.only(bottom: 5),
+                margin: const EdgeInsets.only(bottom: 5),
                 height: 2,
                 width: 50,
                 color: firstscrole == index ? kTextColor : kTextLightColor,

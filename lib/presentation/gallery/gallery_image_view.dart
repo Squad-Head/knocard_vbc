@@ -45,7 +45,7 @@ class GalleryImageViewPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                child: KNavbar(),
+                child: const KNavbar(),
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

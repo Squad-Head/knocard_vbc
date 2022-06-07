@@ -7,19 +7,17 @@ class PhotoGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: GridView.builder(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 5,
-            mainAxisSpacing: 10,
-          ),
-          itemCount: photos.length,
-          itemBuilder: (BuildContext ctx, int index) {
-            return imageBuild(index);
-          }),
-    );
+    return GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 5,
+          mainAxisSpacing: 10,
+        ),
+        itemCount: photos.length,
+        itemBuilder: (BuildContext ctx, int index) {
+          return imageBuild(index);
+        });
   }
 
   Widget imageBuild(int index) => Column(

@@ -1,6 +1,4 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:knocard_ui/presentation/contact/widgtes/menu_item.dart';
 
 import 'package:flutter/material.dart' hide MenuItem;
 import 'package:knocard_ui/style/color.dart';

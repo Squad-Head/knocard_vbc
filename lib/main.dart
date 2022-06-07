@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:knocard_ui/presentation/contact/contact_page.dart';
 import 'package:knocard_ui/style/color.dart';
 
 import 'presentation/home/home_page.dart';

@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Album {
   final String title, images;
   final int id;

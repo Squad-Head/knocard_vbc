@@ -3,14 +3,14 @@ import 'package:knocard_ui/presentation/gallery/desktop_gallery/components/album
 
 import '../constant.dart';
 
-class albumtab extends StatefulWidget {
-  const albumtab({Key? key}) : super(key: key);
+class Albumtab extends StatefulWidget {
+  const Albumtab({Key? key}) : super(key: key);
 
   @override
-  State<albumtab> createState() => _albumtabState();
+  State<Albumtab> createState() => _AlbumtabState();
 }
 
-class _albumtabState extends State<albumtab> {
+class _AlbumtabState extends State<Albumtab> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(

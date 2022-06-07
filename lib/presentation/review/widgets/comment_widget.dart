@@ -42,8 +42,8 @@ class CommentWidget extends StatelessWidget {
                     SizedBox(width: 10.w),
                     SmoothStarRating(
                       starCount: 5,
-                      color: Color(0xffFFB924),
-                      borderColor: Color(0xffFFB924),
+                      color: const Color(0xffFFB924),
+                      borderColor: const Color(0xffFFB924),
                       //   isReadOnly: true,
                       rating: 5,
                       //  spacing: 0.0,
