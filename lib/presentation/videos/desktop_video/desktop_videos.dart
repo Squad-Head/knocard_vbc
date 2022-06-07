@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import '../../widgets/k_video_item.dart';
+import 'package:knocard_ui/presentation/videos/desktop_video/widgets/k_video_item.dart';
 
 class DesktopVideoPage extends StatelessWidget {
   const DesktopVideoPage({Key? key}) : super(key: key);
@@ -22,14 +21,14 @@ class DesktopVideoPage extends StatelessWidget {
                   children: [
                     Container(
                       height: 520,
-                      width: 530,
+                      width: 720,
                       color: Colors.white,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            height: 350,
-                            width: 530,
+                            height: 400,
+                            width: 720,
                             color: Colors.red,
                             child: Text(
                               'Youtube video here',
@@ -77,7 +76,7 @@ class DesktopVideoPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(width: 10.w),
+                    SizedBox(width: 20.w),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -94,23 +93,23 @@ class DesktopVideoPage extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            const KVideoItem(
+                            const KVideoItemdesktop(
                               number: '1',
                             ),
                             SizedBox(height: 5.h),
-                            const KVideoItem(
+                            const KVideoItemdesktop(
                               number: '2',
                             ),
                             SizedBox(height: 5.h),
-                            const KVideoItem(
+                            const KVideoItemdesktop(
                               number: '3',
                             ),
                             SizedBox(height: 5.h),
-                            const KVideoItem(
+                            const KVideoItemdesktop(
                               number: '4',
                             ),
                             SizedBox(height: 5.h),
-                            const KVideoItem(
+                            const KVideoItemdesktop(
                               number: '5',
                             ),
                           ],
@@ -127,15 +126,15 @@ class DesktopVideoPage extends StatelessWidget {
                         SizedBox(height: 15.h),
                         Column(
                           children: [
-                            const KVideoItem(
+                            const KVideoItemdesktop(
                               number: '1',
                             ),
                             SizedBox(height: 5.h),
-                            const KVideoItem(
+                            const KVideoItemdesktop(
                               number: '2',
                             ),
                             SizedBox(height: 5.h),
-                            const KVideoItem(
+                            const KVideoItemdesktop(
                               number: '3',
                             ),
                           ],
