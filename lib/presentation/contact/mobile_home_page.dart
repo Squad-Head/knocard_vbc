@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:knocard_ui/presentation/contact/widgtes/mobile_gallery.dart';
+import 'package:line_icons/line_icons.dart';
 
 import '../widgets/k_home_contact.dart';
 import '../widgets/k_home_menu_item.dart';
 import '../widgets/k_rates_item.dart';
 import '../widgets/k_review_articles.dart';
-import '../widgets/k_staggered_gridview.dart';
 import '../widgets/k_video_item.dart';
 
 class MobileContactPage extends StatelessWidget {
@@ -21,26 +22,33 @@ class MobileContactPage extends StatelessWidget {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 80),
-              child: Column(
-                children: [
-                  const KHomeContact(
-                    icon: Icon(FontAwesomeIcons.mobileScreen),
-                    text: '9788355889',
-                  ),
-                  SizedBox(height: 1.h),
-                  const KHomeContact(
-                    icon: Icon(FontAwesomeIcons.solidMessage),
-                    text: 'bflemming@gmail.com',
-                  ),
-                  SizedBox(height: 1.h),
-                  const KHomeContact(
-                    icon: Icon(FontAwesomeIcons.globe),
-                    text: 'Tampa, Fl, 33635',
-                  ),
-                ],
-              ),
+            SizedBox(
+              height: 30.h,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const KHomeContact(
+                      icon: Icon(FontAwesomeIcons.mobileScreen),
+                      text: '9788355889',
+                    ),
+                    SizedBox(height: 1.h),
+                    const KHomeContact(
+                      icon: Icon(Icons.email),
+                      text: 'bflemming@gmail.com',
+                    ),
+                    SizedBox(height: 1.h),
+                    const KHomeContact(
+                      icon: Icon(LineIcons.globe),
+                      text: 'Tampa, Fl, 33635',
+                    ),
+                  ],
+                ),
+              ],
             ),
             SizedBox(height: 10.h),
             Row(
@@ -57,10 +65,15 @@ class MobileContactPage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 5.h),
-                    const KStaggeredGridView(),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.width * .4,
+                      width: MediaQuery.of(context).size.width * .36,
+                      child: const MobileGallery(),
+                      //color: Colors.grey,
+                    ),
                   ],
                 ),
-                SizedBox(width: 10.w),
+                SizedBox(width: 40.w),
                 Column(
                   children: [
                     Text(

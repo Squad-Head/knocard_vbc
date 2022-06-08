@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:knocard_ui/presentation/videos/desktop_video/widgets/k_video_item.dart';
+import 'package:knocard_ui/presentation/videos/network_video_player.dart';
 
 class DesktopVideoPage extends StatelessWidget {
   const DesktopVideoPage({Key? key}) : super(key: key);
@@ -19,10 +20,9 @@ class DesktopVideoPage extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Container(
+                    SizedBox(
                       height: 520,
                       width: 720,
-                      color: Colors.white,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -30,12 +30,8 @@ class DesktopVideoPage extends StatelessWidget {
                             height: 400,
                             width: 720,
                             color: Colors.red,
-                            child: Text(
-                              'Youtube video here',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontSize: 10.sp, color: Colors.white),
-                            ),
+                            child: const NetworkVideoPlayer(
+                                'https://firebasestorage.googleapis.com/v0/b/knocard-da3f9.appspot.com/o/News%2FKnoCard%20News.mp4?alt=media&token=23aab96c-9ee0-4bf7-b4df-fe9f87a67d3b'),
                           ),
                           SizedBox(height: 5.h),
                           Row(
