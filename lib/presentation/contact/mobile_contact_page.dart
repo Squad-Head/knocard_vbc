@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:knocard_ui/presentation/contact/widgtes/mobile_gallery.dart';
+import 'package:knocard_ui/presentation/gallery/mobile_gallery_widgets/mobile_gallery.dart';
+import 'package:knocard_ui/presentation/videos/mobile_video_page/mobile_video_player.dart';
 import 'package:line_icons/line_icons.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../widgets/k_home_contact.dart';
 import '../widgets/k_home_menu_item.dart';
@@ -11,7 +14,11 @@ import '../widgets/k_review_articles.dart';
 import '../widgets/k_video_item.dart';
 
 class MobileContactPage extends StatelessWidget {
-  const MobileContactPage({Key? key}) : super(key: key);
+  final VoidCallback moveToGallery;
+  final VoidCallback moveToVideo;
+  const MobileContactPage(
+      {Key? key, required this.moveToGallery, required this.moveToVideo})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,19 +40,44 @@ class MobileContactPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const KHomeContact(
-                      icon: Icon(FontAwesomeIcons.mobileScreen),
-                      text: '9788355889',
+                    InkWell(
+                      onTap: () {
+                        final Uri telLaunchUri = Uri(
+                          scheme: 'tel',
+                          path: '9788355889',
+                        );
+
+                        launchUrl(telLaunchUri);
+                      },
+                      child: const KHomeContact(
+                        icon: Icon(FontAwesomeIcons.mobileScreen),
+                        text: '9788355889',
+                      ),
                     ),
                     SizedBox(height: 1.h),
-                    const KHomeContact(
-                      icon: Icon(Icons.email),
-                      text: 'bflemming@gmail.com',
+                    InkWell(
+                      onTap: () {
+                        final Uri emailLaunchUri = Uri(
+                          scheme: 'mailto',
+                          path: 'bflemming@gmail.com',
+                        );
+                        launchUrl(emailLaunchUri);
+                      },
+                      child: const KHomeContact(
+                        icon: Icon(Icons.email),
+                        text: 'bflemming@gmail.com',
+                      ),
                     ),
                     SizedBox(height: 1.h),
-                    const KHomeContact(
-                      icon: Icon(LineIcons.globe),
-                      text: 'Tampa, Fl, 33635',
+                    InkWell(
+                      onTap: () {
+                        launchUrl(
+                            Uri.parse("https://goo.gl/maps/t4nwMCxLNN3kjs1C6"));
+                      },
+                      child: const KHomeContact(
+                        icon: Icon(LineIcons.globe),
+                        text: 'Tampa, Fl, 33635',
+                      ),
                     ),
                   ],
                 ),
@@ -57,12 +89,15 @@ class MobileContactPage extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Text(
-                      'Gallery',
-                      style: TextStyle(
-                        color: const Color(0xFF088AC6),
-                        fontSize: 50.sp,
-                        fontWeight: FontWeight.bold,
+                    TextButton(
+                      onPressed: moveToGallery,
+                      child: Text(
+                        'Gallery',
+                        style: TextStyle(
+                          color: const Color(0xFF088AC6),
+                          fontSize: 50.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     SizedBox(height: 5.h),
@@ -77,12 +112,15 @@ class MobileContactPage extends StatelessWidget {
                 SizedBox(width: 40.w),
                 Column(
                   children: [
-                    Text(
-                      'Videos',
-                      style: TextStyle(
-                        color: const Color(0xFF088AC6),
-                        fontSize: 50.sp,
-                        fontWeight: FontWeight.bold,
+                    TextButton(
+                      onPressed: moveToVideo,
+                      child: Text(
+                        'Videos',
+                        style: TextStyle(
+                          color: const Color(0xFF088AC6),
+                          fontSize: 50.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     SizedBox(height: 5.h),

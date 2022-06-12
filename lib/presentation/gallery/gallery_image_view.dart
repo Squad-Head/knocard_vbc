@@ -3,7 +3,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import '../widgets/k_navbar.dart';
 
 List<String> values = [
   'assets/images/men_1.jpg',
@@ -41,19 +40,6 @@ class GalleryImageViewPage extends HookConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.shade300,
-                      offset: const Offset(0, 2),
-                      blurRadius: 3,
-                      spreadRadius: .5,
-                    ),
-                  ],
-                ),
-                child: const KNavbar(),
-              ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
