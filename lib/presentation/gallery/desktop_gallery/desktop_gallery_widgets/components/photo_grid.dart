@@ -27,7 +27,7 @@ class PhotoGrid extends StatelessWidget {
             child: Text(photos[index].title),
           ),
           Expanded(
-            child: Image.network(
+            child: Image.asset(
               photos[index].images,
               fit: BoxFit.cover,
             ),

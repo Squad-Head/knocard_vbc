@@ -73,8 +73,10 @@ class MobileGalleryPage extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      const GalleryImageViewPage()));
+                                  builder: (context) => GalleryImageViewPage(
+                                        images: values,
+                                        index: index,
+                                      )));
                         },
                         child: Image(
                           image: AssetImage(

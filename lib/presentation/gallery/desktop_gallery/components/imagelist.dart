@@ -9,11 +9,7 @@ class Photo {
 }
 
 List<Photo> photos = [
-  Photo(
-      id: 0,
-      title: "album1",
-      images:
-          "https://images.pexels.com/photos/12070041/pexels-photo-12070041.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"),
+  Photo(id: 0, title: "album1", images: "assets/images/01.jpg"),
   Photo(id: 1, title: "album2", images: "assets/images/01.jpg"),
   Photo(id: 2, title: "album3", images: "assets/images/021.jpg"),
   Photo(id: 3, title: "album4", images: "assets/images/021.jpg"),

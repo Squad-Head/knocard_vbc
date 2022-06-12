@@ -40,7 +40,7 @@ class _AlbumtabState extends State<Albumtab> {
                   ),
                   shape: BoxShape.circle,
                   image: DecorationImage(
-                      image: NetworkImage(albums[index].images),
+                      image: AssetImage(albums[index].images),
                       fit: BoxFit.fill)),
             ),
             Padding(

@@ -25,7 +25,11 @@ List<String> values = [
 ];
 
 class GalleryImageViewPage extends StatelessWidget {
-  const GalleryImageViewPage({Key? key}) : super(key: key);
+  final int index;
+  final List<String> images;
+  const GalleryImageViewPage(
+      {Key? key, required this.images, required this.index})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -50,13 +54,15 @@ class GalleryImageViewPage extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
-                    height: 350.h,
-                    width: double.infinity,
-                    color: Colors.grey,
-                    child: const Image(
-                      image: AssetImage(
-                        'assets/images/grid0.jpg',
+                  GestureDetector(
+                    child: Container(
+                      height: 350.h,
+                      width: double.infinity,
+                      color: Colors.grey,
+                      child: const Image(
+                        image: AssetImage(
+                          'assets/images/grid0.jpg',
+                        ),
                       ),
                     ),
                   ),

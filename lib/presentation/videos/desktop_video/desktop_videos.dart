@@ -31,7 +31,9 @@ class DesktopVideoPage extends StatelessWidget {
                             width: 720,
                             color: Colors.red,
                             child: const NetworkVideoPlayer(
-                                'https://firebasestorage.googleapis.com/v0/b/knocard-da3f9.appspot.com/o/News%2FKnoCard%20News.mp4?alt=media&token=23aab96c-9ee0-4bf7-b4df-fe9f87a67d3b'),
+                              'https://firebasestorage.googleapis.com/v0/b/knocard-da3f9.appspot.com/o/News%2FKnoCard%20News.mp4?alt=media&token=23aab96c-9ee0-4bf7-b4df-fe9f87a67d3b',
+                              autoPlay: false,
+                            ),
                           ),
                           SizedBox(height: 5.h),
                           Row(

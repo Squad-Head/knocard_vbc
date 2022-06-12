@@ -62,7 +62,9 @@ class MobileVideosPage extends StatelessWidget {
               width: double.infinity,
               // color: Colors.black,
               child: NetworkVideoPlayer(
-                  'https://firebasestorage.googleapis.com/v0/b/knocard-da3f9.appspot.com/o/News%2FKnoCard%20News.mp4?alt=media&token=23aab96c-9ee0-4bf7-b4df-fe9f87a67d3b'),
+                'https://firebasestorage.googleapis.com/v0/b/knocard-da3f9.appspot.com/o/News%2FKnoCard%20News.mp4?alt=media&token=23aab96c-9ee0-4bf7-b4df-fe9f87a67d3b',
+                autoPlay: false,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 15),

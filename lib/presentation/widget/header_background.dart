@@ -18,7 +18,7 @@ class HeaderBackground extends StatelessWidget {
           Column(
             children: [
               Container(
-                height: 60,
+                height: 120,
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
@@ -90,17 +90,18 @@ class HeaderBackground extends StatelessWidget {
                 ),
               ],
             ),
-            child: const Text(
+            child: Text(
               'Dale\'s home services',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
+                fontSize: 13.sp,
               ),
             ),
           ),
           Positioned(
             left: 40.w,
-            top: 20.h,
+            top: 60.h,
             child: Container(
               height: 80,
               width: 80,

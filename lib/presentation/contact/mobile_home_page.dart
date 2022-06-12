@@ -19,6 +19,7 @@ class MobileContactPage extends StatelessWidget {
       backgroundColor: Colors.white,
       body: SafeArea(
         child: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 40.w),
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           children: [
@@ -50,7 +51,7 @@ class MobileContactPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 20.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -86,6 +87,8 @@ class MobileContactPage extends StatelessWidget {
                     ),
                     SizedBox(height: 5.h),
                     Container(
+                      height: MediaQuery.of(context).size.width * .4,
+                      // width: MediaQuery.of(context).size.width * .36,
                       padding: const EdgeInsets.only(left: 3, top: 7),
                       decoration: BoxDecoration(
                         color: const Color(0xFFF1F1F1),
@@ -119,7 +122,7 @@ class MobileContactPage extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 20.h),
             Text(
               'Services/Contractor/Menu',
               style: TextStyle(
@@ -201,7 +204,7 @@ class MobileContactPage extends StatelessWidget {
               text4:
                   '\nThank you for the kind words, we are always trying to help our clients out!',
             ),
-            SizedBox(height: 10.h),
+            SizedBox(height: 20.h),
             Text(
               'Rates',
               style: TextStyle(
