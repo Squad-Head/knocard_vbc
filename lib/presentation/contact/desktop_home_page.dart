@@ -27,83 +27,86 @@ class DesktopContactPage extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.only(left: 40.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              //mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const WHomeContact(
-                      icon: FontAwesomeIcons.mobileScreen,
-                      text: '9788355889',
-                    ),
-                    SizedBox(height: 5.w),
-                    const WHomeContact(
-                      icon: Icons.email,
-                      text: 'bflemming@gmail.com',
-                    ),
-                    SizedBox(height: 5.w),
-                    const WHomeContact(
-                      icon: FontAwesomeIcons.globe,
-                      text: 'Tampa, Fl, 33635',
-                    ),
-                  ],
-                ),
-                SizedBox(height: 18.h),
-                Column(
-                  children: [
-                    Text(
-                      'Gallery',
-                      style: TextStyle(
-                        color: const Color(0xFF088AC6),
-                        fontSize: 11.sp,
-                        fontWeight: FontWeight.bold,
+            child: SingleChildScrollView(
+              physics: const NeverScrollableScrollPhysics(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                //mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const WHomeContact(
+                        icon: FontAwesomeIcons.mobileScreen,
+                        text: '9788355889',
                       ),
-                    ),
-                    SizedBox(height: 8.h),
-                    SizedBox(
-                      height: height * 0.19,
-                      width: width * 0.1,
-                      child: const WebGallery(),
-                      //color: Colors.grey,
-                    ),
-                  ],
-                ),
-                SizedBox(height: 18.h),
-                Column(
-                  children: [
-                    Text(
-                      'Videos',
-                      style: TextStyle(
-                        color: const Color(0xFF088AC6),
-                        fontSize: 11.sp,
-                        fontWeight: FontWeight.bold,
+                      SizedBox(height: 5.w),
+                      const WHomeContact(
+                        icon: Icons.email,
+                        text: 'bflemming@gmail.com',
                       ),
-                    ),
-                    SizedBox(height: 8.h),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF1F1F1),
-                        borderRadius: BorderRadius.circular(10),
+                      SizedBox(height: 5.w),
+                      const WHomeContact(
+                        icon: FontAwesomeIcons.globe,
+                        text: 'Tampa, Fl, 33635',
                       ),
-                      child: Column(
-                        children: [
-                          const WebVideoItem(),
-                          SizedBox(height: 3.h),
-                          const WebVideoItem(),
-                          SizedBox(height: 3.h),
-                          const WebVideoItem(),
-                          SizedBox(height: 3.h),
-                          const WebVideoItem(),
-                          SizedBox(height: 3.h),
-                          const WebVideoItem(),
-                        ],
+                    ],
+                  ),
+                  SizedBox(height: 18.h),
+                  Column(
+                    children: [
+                      Text(
+                        'Gallery',
+                        style: TextStyle(
+                          color: const Color(0xFF088AC6),
+                          fontSize: 11.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      SizedBox(height: 8.h),
+                      SizedBox(
+                        height: height * 0.19,
+                        width: width * 0.1,
+                        child: const WebGallery(),
+                        //color: Colors.grey,
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 18.h),
+                  Column(
+                    children: [
+                      Text(
+                        'Videos',
+                        style: TextStyle(
+                          color: const Color(0xFF088AC6),
+                          fontSize: 11.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 8.h),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: const Color(0xFFF1F1F1),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          children: [
+                            const WebVideoItem(),
+                            SizedBox(height: 3.h),
+                            const WebVideoItem(),
+                            SizedBox(height: 3.h),
+                            const WebVideoItem(),
+                            SizedBox(height: 3.h),
+                            const WebVideoItem(),
+                            SizedBox(height: 3.h),
+                            const WebVideoItem(),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
           Container(

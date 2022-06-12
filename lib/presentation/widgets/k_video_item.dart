@@ -23,25 +23,30 @@ class KVideoItem extends StatelessWidget {
           image: AssetImage('assets/images/video.png'),
         ),
         SizedBox(width: 2.w),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Get MORE With Time Blocking',
-              style: TextStyle(
-                color: const Color(0xFF2A2A2A),
-                fontSize: 25.sp,
-                fontWeight: FontWeight.bold,
+        Container(
+          constraints: BoxConstraints(
+            maxWidth: MediaQuery.of(context).size.width * .36,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Get MORE With Time Blocking',
+                style: TextStyle(
+                  color: const Color(0xFF2A2A2A),
+                  fontSize: 25.sp,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            Text(
-              'Matt Bayrom',
-              style: TextStyle(
-                color: const Color(0xFF878788),
-                fontSize: 20.sp,
+              Text(
+                'Matt Bayrom',
+                style: TextStyle(
+                  color: const Color(0xFF878788),
+                  fontSize: 20.sp,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );

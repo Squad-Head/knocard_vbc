@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:knocard_ui/presentation/videos/mobile_video_page/video_item.dart';
+import 'package:knocard_ui/presentation/videos/network_video_player.dart';
 
 class MobileVideosPage extends StatelessWidget {
   MobileVideosPage({Key? key}) : super(key: key);
@@ -27,7 +28,6 @@ class MobileVideosPage extends StatelessWidget {
         "https://images.pexels.com/photos/66134/pexels-photo-66134.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         "Episode 19: Beyond Acts"),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,10 +57,14 @@ class MobileVideosPage extends StatelessWidget {
                 ],
               ),
             ),
-            Container(
+            const SizedBox(
               height: 220,
               width: double.infinity,
-              color: Colors.black,
+              // color: Colors.black,
+              child: NetworkVideoPlayer(
+                'https://firebasestorage.googleapis.com/v0/b/knocard-da3f9.appspot.com/o/News%2FKnoCard%20News.mp4?alt=media&token=23aab96c-9ee0-4bf7-b4df-fe9f87a67d3b',
+                autoPlay: false,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 15),

@@ -9,22 +9,25 @@ class KHomeMenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        IconButton(
-          icon: icon,
-          iconSize: 18,
-          color: const Color(0xFF088AC6),
-          onPressed: () {},
-        ),
-        Text(
-          text,
-          style: TextStyle(
-            color: const Color(0xFF525252),
-            fontSize: 30.sp,
+    return SizedBox(
+      height: 20.h,
+      child: Row(
+        children: [
+          IconButton(
+            icon: icon,
+            iconSize: 18,
+            color: const Color(0xFF088AC6),
+            onPressed: () {},
           ),
-        ),
-      ],
+          Text(
+            text,
+            style: TextStyle(
+              color: const Color(0xFF525252),
+              fontSize: 30.sp,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

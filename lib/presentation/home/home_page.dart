@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart' hide MenuItem;
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-import 'package:knocard_ui/presentation/app/rates_page.dart';
-
 import 'package:knocard_ui/presentation/contact/contact_page.dart';
 import 'package:knocard_ui/presentation/contractor_page/constractor_page.dart';
 import 'package:knocard_ui/presentation/gallery/gallery_page.dart';
@@ -33,7 +31,7 @@ class HomePage extends HookWidget {
       headerSliverBuilder: (context, innerBoxIsScrolled) {
         return [
           SliverAppBar(
-            expandedHeight: 160,
+            expandedHeight: 220,
             toolbarHeight: 50,
             pinned: true,
             bottom: HeaderBottom(
@@ -59,7 +57,7 @@ class HomePage extends HookWidget {
           VideoPage(),
           ConstractorPage(),
           Review(),
-          BlankRatesPage()
+          // BlankRatesPage()
         ],
       ),
     ));

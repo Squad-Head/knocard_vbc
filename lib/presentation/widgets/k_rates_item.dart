@@ -36,7 +36,7 @@ class KRatesItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 140.h,
-      width: 300.w,
+      width: 291.w,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -52,7 +52,7 @@ class KRatesItem extends StatelessWidget {
         children: [
           Container(
             height: 30.h,
-            width: 300.w,
+            width: 291.w,
             decoration: BoxDecoration(
               color: containerColor,
               borderRadius: const BorderRadius.only(
