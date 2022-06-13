@@ -41,9 +41,15 @@ class HomePage extends HookWidget {
                       duration: const Duration(milliseconds: 300),
                       curve: Curves.easeInOut);
                 }),
-            flexibleSpace: const FlexibleSpaceBar(
+            flexibleSpace: FlexibleSpaceBar(
               expandedTitleScale: 1,
               background: HeaderBackground(
+                index: index.value,
+                goHome: () {
+                  controller.animateToPage(0,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeInOut);
+                },
                 coverPhoto:
                     'https://images.pexels.com/photos/2693529/pexels-photo-2693529.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
               ),

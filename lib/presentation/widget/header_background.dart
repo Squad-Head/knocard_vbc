@@ -7,7 +7,13 @@ import 'package:knocard_ui/style/color.dart';
 
 class HeaderBackground extends StatelessWidget {
   final String coverPhoto;
-  const HeaderBackground({Key? key, required this.coverPhoto})
+  final int index;
+  final VoidCallback goHome;
+  const HeaderBackground(
+      {Key? key,
+      required this.coverPhoto,
+      required this.index,
+      required this.goHome})
       : super(key: key);
 
   @override
@@ -116,12 +122,12 @@ class HeaderBackground extends StatelessWidget {
                 ),
               ],
             ),
-            child: Text(
+            child: const Text(
               'Dale\'s home services',
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
-                fontSize: 13.sp,
+                fontSize: 15,
               ),
             ),
           ),
@@ -140,6 +146,20 @@ class HeaderBackground extends StatelessWidget {
               ),
             ),
           ),
+          Positioned(
+              top: 10.h,
+              right: 10.w,
+              child: AnimatedOpacity(
+                opacity: index == 0 ? 0 : 1,
+                duration: const Duration(milliseconds: 500),
+                child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.orange,
+                      shape: const StadiumBorder(),
+                    ),
+                    onPressed: goHome,
+                    child: Text('Go home')),
+              )),
         ],
       ),
     );
