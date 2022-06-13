@@ -63,7 +63,7 @@ class KReviewArticles extends StatelessWidget {
               text: TextSpan(
                 text: text2,
                 style: TextStyle(
-                  fontSize: 20.sp,
+                  fontSize: 19.sp,
                   color: const Color(0xFF020714),
                 ),
                 children: <TextSpan>[

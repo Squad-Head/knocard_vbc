@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:knocard_ui/presentation/gallery/desktop_gallery/components/imagelist.dart';
 
 class PhotoGrid extends StatelessWidget {
@@ -9,7 +10,8 @@ class PhotoGrid extends StatelessWidget {
     return GridView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisSpacing: 10.w,
           crossAxisCount: 5,
           mainAxisSpacing: 10,
         ),
@@ -27,7 +29,7 @@ class PhotoGrid extends StatelessWidget {
           ),
           Expanded(
             child: Image.network(
-              photos[index].images,
+              'https://images.unsplash.com/photo-1511367734837-f2956f0d8020?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1105&q=80',
               fit: BoxFit.cover,
             ),
           ),

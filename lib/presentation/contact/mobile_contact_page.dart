@@ -122,15 +122,12 @@ class MobileContactPage extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: 5.h),
-                    Container(
+                    SizedBox(
                       height: MediaQuery.of(context).size.width * .4,
                       // width: MediaQuery.of(context).size.width * .36,
-                      padding: const EdgeInsets.only(left: 3, top: 7),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFF1F1F1),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
+
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const KVideoItem(
                             number: '1',
