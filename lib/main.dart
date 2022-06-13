@@ -1,20 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-<<<<<<< HEAD
-import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:knocard_ui/style/color.dart';
-
-import 'presentation/home/home_page.dart';
-
-void main() {
-  runApp(const ProviderScope(child: MyApp()));
-=======
 import 'package:go_router/go_router.dart';
 import 'package:knocard_ui/presentation/community/community_page.dart';
 
 void main() {
   runApp(MyApp());
->>>>>>> 224312bc239d32328ff1b0a581fec5940769edd8
 }
 
 class MyApp extends StatelessWidget {
@@ -23,25 +13,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-<<<<<<< HEAD
-      //designSize: const Size(360, 800),
-      designSize: const Size(1034, 620),
-      builder: (context, child) => MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primaryColor: KColor.primaryColor,
-          primarySwatch: const MaterialColor(0xFF088ac6, KColor.mapColor),
-          scaffoldBackgroundColor: KColor.backgroundColor,
-        ),
-        home: const HomePage(),
-        // home: const ContactPage(),
-      ),
-    );
-  }
-=======
       designSize: const Size(360, 690),
-      builder: () {
+      builder: (context, _) {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
@@ -51,7 +24,7 @@ class MyApp extends StatelessWidget {
           routeInformationParser: _goRouter.routeInformationParser,
           routerDelegate: _goRouter.routerDelegate,
           builder: (context, child) {
-            ScreenUtil.setContext(context);
+            ScreenUtil.init(context);
             return MediaQuery(
                 data: MediaQuery.of(context).copyWith(textScaleFactor: 1),
                 child: child!);
@@ -71,5 +44,4 @@ class MyApp extends StatelessWidget {
       ),
     ],
   );
->>>>>>> 224312bc239d32328ff1b0a581fec5940769edd8
 }

@@ -3,8 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import '../gallery/desktop_gallery/screens/homepage.dart';
-import '../videos/desktop_video/desktop_videos.dart';
 import 'widgtes/services_menu_item.dart';
 import 'widgtes/w_home_contact.dart';
 import 'widgtes/w_rates_item.dart';

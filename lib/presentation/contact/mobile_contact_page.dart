@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:knocard_ui/presentation/contact/widgtes/mobile_gallery.dart';
-import 'package:knocard_ui/presentation/gallery/mobile_gallery_widgets/mobile_gallery.dart';
-import 'package:knocard_ui/presentation/videos/mobile_video_page/mobile_video_player.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 

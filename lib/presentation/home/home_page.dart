@@ -60,10 +60,10 @@ class HomePage extends HookWidget {
               controller.jumpToPage(2);
             },
           ),
-          GalleryPage(),
-          VideoPage(),
-          ConstractorPage(),
-          Review(),
+          const GalleryPage(),
+          const VideoPage(),
+          const ConstractorPage(),
+          const Review(),
           // BlankRatesPage()
         ],
       ),
