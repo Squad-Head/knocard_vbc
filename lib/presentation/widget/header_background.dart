@@ -1,12 +1,14 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:flutter/material.dart' hide MenuItem;
+import 'package:image_network/image_network.dart';
 import 'package:knocard_ui/style/color.dart';
 
 class HeaderBackground extends StatelessWidget {
-  const HeaderBackground({
-    Key? key,
-  }) : super(key: key);
+  final String coverPhoto;
+  const HeaderBackground({Key? key, required this.coverPhoto})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,20 +19,44 @@ class HeaderBackground extends StatelessWidget {
         children: <Widget>[
           Column(
             children: [
-              Container(
-                height: 120,
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xff1d92c8),
-                      Color(0xffc1ddef),
-                    ],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    //end: Alignment.bottomCenter,
-                  ),
-                ),
-              ),
+              coverPhoto.isEmpty
+                  ? Container(
+                      height: 120,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [
+                            Color(0xff1d92c8),
+                            Color(0xffc1ddef),
+                          ],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          //end: Alignment.bottomCenter,
+                        ),
+                      ),
+                    )
+                  : ImageNetwork(
+                      image: coverPhoto,
+                      imageCache: CachedNetworkImageProvider(coverPhoto),
+                      height: 120,
+                      width: MediaQuery.of(context).size.width,
+                      // duration: 1500,
+                      curve: Curves.easeIn,
+                      // onPointer: true,
+                      // debugPrint: false,
+                      // fullScreen: false,
+                      fitAndroidIos: BoxFit.cover,
+                      fitWeb: BoxFitWeb.cover,
+                      onLoading: const CircularProgressIndicator(
+                        color: Colors.indigoAccent,
+                      ),
+                      onError: const Icon(
+                        Icons.error,
+                        color: Colors.red,
+                      ),
+                      onTap: () {
+                        debugPrint("©gabriel_patrick_souza");
+                      },
+                    ),
               Container(
                 height: 50,
                 width: double.infinity,

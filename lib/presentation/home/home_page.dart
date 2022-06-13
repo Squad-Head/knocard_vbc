@@ -43,7 +43,10 @@ class HomePage extends HookWidget {
                 }),
             flexibleSpace: const FlexibleSpaceBar(
               expandedTitleScale: 1,
-              background: HeaderBackground(),
+              background: HeaderBackground(
+                coverPhoto:
+                    'https://images.pexels.com/photos/2693529/pexels-photo-2693529.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
+              ),
             ),
           ),
         ];
