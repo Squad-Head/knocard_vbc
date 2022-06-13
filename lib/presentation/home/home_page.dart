@@ -51,12 +51,19 @@ class HomePage extends HookWidget {
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: controller,
-        children: const [
-          ContactPage(),
-          GalleryPage(),
-          VideoPage(),
-          ConstractorPage(),
-          Review(),
+        children: [
+          ContactPage(
+            moveToGallery: () {
+              controller.jumpToPage(1);
+            },
+            moveToVideo: () {
+              controller.jumpToPage(2);
+            },
+          ),
+          const GalleryPage(),
+          const VideoPage(),
+          const ConstractorPage(),
+          const Review(),
           // BlankRatesPage()
         ],
       ),

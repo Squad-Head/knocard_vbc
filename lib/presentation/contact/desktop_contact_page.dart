@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' hide MenuItem;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'widgtes/services_menu_item.dart';
 import 'widgtes/w_home_contact.dart';
@@ -10,9 +11,13 @@ import 'widgtes/web_gallery.dart';
 import 'widgtes/web_video_item.dart';
 
 class DesktopContactPage extends StatelessWidget {
+  final VoidCallback moveToGallery;
+  final VoidCallback moveToVideo;
   final topHeight = 200.0;
 
-  const DesktopContactPage({Key? key}) : super(key: key);
+  const DesktopContactPage(
+      {Key? key, required this.moveToGallery, required this.moveToVideo})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -36,32 +41,60 @@ class DesktopContactPage extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const WHomeContact(
-                        icon: FontAwesomeIcons.mobileScreen,
-                        text: '9788355889',
+                      InkWell(
+                        onTap: () {
+                          final Uri telLaunchUri = Uri(
+                            scheme: 'tel',
+                            path: '9788355889',
+                          );
+
+                          launchUrl(telLaunchUri);
+                        },
+                        child: const WHomeContact(
+                          icon: FontAwesomeIcons.mobileScreen,
+                          text: '9788355889',
+                        ),
                       ),
                       SizedBox(height: 5.w),
-                      const WHomeContact(
-                        icon: Icons.email,
-                        text: 'bflemming@gmail.com',
+                      InkWell(
+                        onTap: () {
+                          final Uri emailLaunchUri = Uri(
+                            scheme: 'mailto',
+                            path: 'bflemming@gmail.com',
+                          );
+                          launchUrl(emailLaunchUri);
+                        },
+                        child: const WHomeContact(
+                          icon: Icons.email,
+                          text: 'bflemming@gmail.com',
+                        ),
                       ),
                       SizedBox(height: 5.w),
-                      const WHomeContact(
-                        icon: FontAwesomeIcons.globe,
-                        text: 'Tampa, Fl, 33635',
+                      InkWell(
+                        onTap: () {
+                          launchUrl(Uri.parse(
+                              "https://goo.gl/maps/t4nwMCxLNN3kjs1C6"));
+                        },
+                        child: const WHomeContact(
+                          icon: FontAwesomeIcons.globe,
+                          text: 'Tampa, Fl, 33635',
+                        ),
                       ),
                     ],
                   ),
                   SizedBox(height: 18.h),
                   Column(
                     children: [
-                      Text(
-                        'Gallery',
-                        style: TextStyle(
-                          color: const Color(0xFF088AC6),
-                          fontSize: 11.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      TextButton(
+                        onPressed: moveToGallery,
+                        child: (Text(
+                          'Gallery',
+                          style: TextStyle(
+                            color: const Color(0xFF088AC6),
+                            fontSize: 11.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )),
                       ),
                       SizedBox(height: 8.h),
                       SizedBox(
@@ -75,12 +108,15 @@ class DesktopContactPage extends StatelessWidget {
                   SizedBox(height: 18.h),
                   Column(
                     children: [
-                      Text(
-                        'Videos',
-                        style: TextStyle(
-                          color: const Color(0xFF088AC6),
-                          fontSize: 11.sp,
-                          fontWeight: FontWeight.bold,
+                      TextButton(
+                        onPressed: moveToVideo,
+                        child: Text(
+                          'Videos',
+                          style: TextStyle(
+                            color: const Color(0xFF088AC6),
+                            fontSize: 11.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                       SizedBox(height: 8.h),

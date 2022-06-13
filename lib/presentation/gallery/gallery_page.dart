@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 
-import 'package:knocard_ui/presentation/gallery/desktop_gallery/screens/homepage.dart';
+import 'package:knocard_ui/presentation/gallery/desktop_gallery/screens/desktop_gallery_page.dart';
 
 import 'package:knocard_ui/presentation/gallery/mobile_gallery_widgets/mobile_gallery.dart';
 

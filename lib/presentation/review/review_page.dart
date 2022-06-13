@@ -4,8 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/presentation/widgets/k_network_image.dart';
 
-import '../widgets/k_navbar.dart';
-
 class ReviewPage extends HookConsumerWidget {
   const ReviewPage({Key? key}) : super(key: key);
   @override
@@ -15,20 +13,6 @@ class ReviewPage extends HookConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.shade300,
-                      offset: const Offset(0, 2),
-                      blurRadius: 3,
-                      spreadRadius: .5,
-                    ),
-                  ],
-                ),
-                child: const KNavbar(),
-              ),
-
               // Review Table
               Column(
                 children: [
