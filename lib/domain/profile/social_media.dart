@@ -94,8 +94,8 @@ class SocialMedia extends Equatable {
       name: map['name'] ?? '',
       user_handle: map['user_handle'],
       link: map['link'] ?? '',
-      created_at: DateTime.fromMillisecondsSinceEpoch(map['created_at']),
-      updated_at: DateTime.fromMillisecondsSinceEpoch(map['updated_at']),
+      created_at: DateTime.parse(map['created_at']),
+      updated_at: DateTime.parse(map['updated_at']),
     );
   }
 }

@@ -49,8 +49,8 @@ class ExternalPageFile extends Equatable {
       id: map['id']?.toInt() ?? 0,
       external_page_id: map['external_page_id']?.toInt() ?? 0,
       link: map['link'] ?? '',
-      created_at: DateTime.fromMillisecondsSinceEpoch(map['created_at']),
-      updated_at: DateTime.fromMillisecondsSinceEpoch(map['updated_at']),
+      created_at: DateTime.parse(map['created_at']),
+      updated_at: DateTime.parse(map['updated_at']),
     );
   }
 

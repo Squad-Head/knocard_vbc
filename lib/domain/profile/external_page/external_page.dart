@@ -85,8 +85,8 @@ class ExternalPageData extends Equatable {
       link: map['link'] ?? '',
       icon: map['icon'] ?? '',
       is_selected: map['is_selected']?.toInt() ?? 0,
-      created_at: DateTime.fromMillisecondsSinceEpoch(map['created_at']),
-      updated_at: DateTime.fromMillisecondsSinceEpoch(map['updated_at']),
+      created_at: DateTime.parse(map['created_at']),
+      updated_at: DateTime.parse(map['updated_at']),
       external_page_files: List<ExternalPageFile>.from(
           map['external_page_files']?.map((x) => ExternalPageFile.fromMap(x))),
     );
