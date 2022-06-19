@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/presentation/videos/desktop_video/widgets/k_video_item.dart';
 import 'package:knocard_ui/presentation/videos/network_video_player.dart';
 
-class DesktopVideoPage extends StatelessWidget {
+class DesktopVideoPage extends HookConsumerWidget {
   const DesktopVideoPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    final state = ref.watch(profileProvider).userProfile;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -30,8 +33,9 @@ class DesktopVideoPage extends StatelessWidget {
                             height: 400,
                             width: 720,
                             color: Colors.red,
-                            child: const NetworkVideoPlayer(
-                              'https://firebasestorage.googleapis.com/v0/b/knocard-da3f9.appspot.com/o/News%2FKnoCard%20News.mp4?alt=media&token=23aab96c-9ee0-4bf7-b4df-fe9f87a67d3b',
+                            child: NetworkVideoPlayer(
+                              state.playlists[0].videos[0].link,
+                              // 'https://firebasestorage.googleapis.com/v0/b/knocard-da3f9.appspot.com/o/News%2FKnoCard%20News.mp4?alt=media&token=23aab96c-9ee0-4bf7-b4df-fe9f87a67d3b',
                               autoPlay: false,
                             ),
                           ),
@@ -43,13 +47,16 @@ class DesktopVideoPage extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'Video Title',
+                                    state.playlists[0].videos[0].title,
+                                    // 'Video Title',
                                     style: TextStyle(
                                         color: Colors.black, fontSize: 15.sp),
                                   ),
                                   SizedBox(height: 5.h),
                                   Text(
-                                    'view count : upload time',
+                                    'view count : ' +
+                                        state.playlists[0].videos[0].created_at
+                                            .toString(),
                                     style: TextStyle(
                                         color: Colors.grey, fontSize: 12.sp),
                                   ),
@@ -87,30 +94,33 @@ class DesktopVideoPage extends StatelessWidget {
                           ),
                         ),
                         SizedBox(height: 15.h),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            const KVideoItemdesktop(
-                              number: '1',
-                            ),
-                            SizedBox(height: 5.h),
-                            const KVideoItemdesktop(
-                              number: '2',
-                            ),
-                            SizedBox(height: 5.h),
-                            const KVideoItemdesktop(
-                              number: '3',
-                            ),
-                            SizedBox(height: 5.h),
-                            const KVideoItemdesktop(
-                              number: '4',
-                            ),
-                            SizedBox(height: 5.h),
-                            const KVideoItemdesktop(
-                              number: '5',
-                            ),
-                          ],
+                        SizedBox(
+                          height: 220.h,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              const KVideoItemdesktop(
+                                number: '1',
+                              ),
+                              SizedBox(height: 5.h),
+                              const KVideoItemdesktop(
+                                number: '2',
+                              ),
+                              SizedBox(height: 5.h),
+                              const KVideoItemdesktop(
+                                number: '3',
+                              ),
+                              SizedBox(height: 5.h),
+                              const KVideoItemdesktop(
+                                number: '4',
+                              ),
+                              SizedBox(height: 5.h),
+                              const KVideoItemdesktop(
+                                number: '5',
+                              ),
+                            ],
+                          ),
                         ),
                         SizedBox(height: 20.h),
                         Text(

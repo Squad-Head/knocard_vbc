@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/presentation/contact/widgtes/mobile_gallery.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -11,7 +13,7 @@ import '../widgets/k_rates_item.dart';
 import '../widgets/k_review_articles.dart';
 import '../widgets/k_video_item.dart';
 
-class MobileContactPage extends StatelessWidget {
+class MobileContactPage extends HookConsumerWidget {
   final VoidCallback moveToGallery;
   final VoidCallback moveToVideo;
   const MobileContactPage(
@@ -19,7 +21,8 @@ class MobileContactPage extends StatelessWidget {
       : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    final state = ref.watch(profileProvider).userProfile;
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -42,14 +45,14 @@ class MobileContactPage extends StatelessWidget {
                       onTap: () {
                         final Uri telLaunchUri = Uri(
                           scheme: 'tel',
-                          path: '9788355889',
+                          path: state.mobile_number,
                         );
 
                         launchUrl(telLaunchUri);
                       },
-                      child: const KHomeContact(
-                        icon: Icon(FontAwesomeIcons.mobileScreen),
-                        text: '9788355889',
+                      child: KHomeContact(
+                        icon: const Icon(FontAwesomeIcons.mobileScreen),
+                        text: state.mobile_number,
                       ),
                     ),
                     SizedBox(height: 1.h),
@@ -57,13 +60,13 @@ class MobileContactPage extends StatelessWidget {
                       onTap: () {
                         final Uri emailLaunchUri = Uri(
                           scheme: 'mailto',
-                          path: 'bflemming@gmail.com',
+                          path: state.email,
                         );
                         launchUrl(emailLaunchUri);
                       },
-                      child: const KHomeContact(
-                        icon: Icon(Icons.email),
-                        text: 'bflemming@gmail.com',
+                      child: KHomeContact(
+                        icon: const Icon(Icons.email),
+                        text: state.email,
                       ),
                     ),
                     SizedBox(height: 1.h),
@@ -72,9 +75,13 @@ class MobileContactPage extends StatelessWidget {
                         launchUrl(
                             Uri.parse("https://goo.gl/maps/t4nwMCxLNN3kjs1C6"));
                       },
-                      child: const KHomeContact(
-                        icon: Icon(LineIcons.globe),
-                        text: 'Tampa, Fl, 33635',
+                      child: KHomeContact(
+                        icon: const Icon(LineIcons.globe),
+                        text: state.city +
+                            ', ' +
+                            state.state +
+                            ', ' +
+                            state.zip_code.toString(),
                       ),
                     ),
                   ],
