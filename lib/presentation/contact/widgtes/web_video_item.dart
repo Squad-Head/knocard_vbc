@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_network/image_network.dart';
+import 'package:knocard_ui/domain/profile/profile_video.dart';
 
 class WebVideoItem extends StatelessWidget {
+  final int index;
+  final ProfileVideo video;
   const WebVideoItem({
+    required this.index,
+    required this.video,
     Key? key,
   }) : super(key: key);
 
@@ -11,33 +17,48 @@ class WebVideoItem extends StatelessWidget {
     return Row(
       children: [
         Text(
-          '1',
+          // '1',
+          (index + 1).toString(),
           style: TextStyle(
             color: const Color(0xFF2A2A2A),
             fontSize: 7.sp,
           ),
         ),
         SizedBox(width: 2.w),
-        const Image(
-          image: AssetImage('assets/images/video.png'),
+        ImageNetwork(
+          height: 21.h,
+          width: MediaQuery.of(context).size.width * .03,
+          image: video.thumbnail,
         ),
-        SizedBox(width: 2.w),
+        SizedBox(width: 4.w),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Get MORE With Time Blocking',
+              // 'Get MORE With Time Blocking',
+              video.title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: const Color(0xFF2A2A2A),
                 fontSize: 4.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(
-              'Matt Bayrom',
-              style: TextStyle(
-                color: const Color(0xFF878788),
-                fontSize: 5.sp,
+            Container(
+              constraints: BoxConstraints(
+                maxWidth: MediaQuery.of(context).size.width * .06,
+              ),
+              child: Text(
+                // 'Matt Bayrom',
+                video.description,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: const Color(0xFF878788),
+                  fontSize: 5.sp,
+                ),
               ),
             ),
           ],

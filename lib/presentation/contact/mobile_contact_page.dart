@@ -131,32 +131,48 @@ class MobileContactPage extends HookConsumerWidget {
                     SizedBox(height: 5.h),
                     SizedBox(
                       height: MediaQuery.of(context).size.width * .4,
-                      // width: MediaQuery.of(context).size.width * .36,
-
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const KVideoItem(
-                            number: '1',
+                      width: MediaQuery.of(context).size.width * .5,
+                      child: Expanded(
+                        child: ListView.separated(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: state.playlists[0].videos.length <= 5
+                              ? state.playlists[0].videos.length
+                              : 5,
+                          itemBuilder: (context, index) => KVideoItem(
+                            index: index,
+                            video: state.playlists[0].videos[index],
                           ),
-                          SizedBox(height: 5.h),
-                          const KVideoItem(
-                            number: '2',
+                          separatorBuilder: (context, index) => SizedBox(
+                            height: 10.h,
                           ),
-                          SizedBox(height: 5.h),
-                          const KVideoItem(
-                            number: '3',
-                          ),
-                          SizedBox(height: 5.h),
-                          const KVideoItem(
-                            number: '4',
-                          ),
-                          SizedBox(height: 5.h),
-                          const KVideoItem(
-                            number: '5',
-                          ),
-                        ],
+                        ),
                       ),
+
+                      // child: Column(
+                      //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //   children: [
+                      //     const KVideoItem(
+                      //       number: '1',
+                      //     ),
+                      //     SizedBox(height: 5.h),
+                      //     const KVideoItem(
+                      //       number: '2',
+                      //     ),
+                      //     SizedBox(height: 5.h),
+                      //     const KVideoItem(
+                      //       number: '3',
+                      //     ),
+                      //     SizedBox(height: 5.h),
+                      //     const KVideoItem(
+                      //       number: '4',
+                      //     ),
+                      //     SizedBox(height: 5.h),
+                      //     const KVideoItem(
+                      //       number: '5',
+                      //     ),
+                      //   ],
+                      // ),
                     ),
                   ],
                 ),

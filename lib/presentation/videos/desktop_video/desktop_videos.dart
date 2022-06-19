@@ -24,14 +24,14 @@ class DesktopVideoPage extends HookConsumerWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(
-                      height: 520,
-                      width: 720,
+                      height: 520.h,
+                      width: 600.w,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            height: 400,
-                            width: 720,
+                            height: 400.h,
+                            width: 600.w,
                             color: Colors.red,
                             child: NetworkVideoPlayer(
                               state.playlists[0].videos[0].link,
@@ -96,31 +96,45 @@ class DesktopVideoPage extends HookConsumerWidget {
                         SizedBox(height: 15.h),
                         SizedBox(
                           height: 220.h,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              const KVideoItemdesktop(
-                                number: '1',
-                              ),
-                              SizedBox(height: 5.h),
-                              const KVideoItemdesktop(
-                                number: '2',
-                              ),
-                              SizedBox(height: 5.h),
-                              const KVideoItemdesktop(
-                                number: '3',
-                              ),
-                              SizedBox(height: 5.h),
-                              const KVideoItemdesktop(
-                                number: '4',
-                              ),
-                              SizedBox(height: 5.h),
-                              const KVideoItemdesktop(
-                                number: '5',
-                              ),
-                            ],
+                          width: 250.w,
+                          child: Expanded(
+                            child: ListView.separated(
+                                itemBuilder: (context, index) =>
+                                    KVideoItemdesktop(
+                                      number: (index + 1).toString(),
+                                      video: state.playlists[0].videos[index],
+                                    ),
+                                separatorBuilder: (context, index) => SizedBox(
+                                      height: 5.h,
+                                    ),
+                                itemCount:
+                                    state.playlists[0].videos.length - 1),
                           ),
+                          // child: Column(
+                          //   crossAxisAlignment: CrossAxisAlignment.start,
+                          //   mainAxisAlignment: MainAxisAlignment.start,
+                          //   children: [
+                          //     const KVideoItemdesktop(
+                          //       number: '1',
+                          //     ),
+                          //     SizedBox(height: 5.h),
+                          //     const KVideoItemdesktop(
+                          //       number: '2',
+                          //     ),
+                          //     SizedBox(height: 5.h),
+                          //     const KVideoItemdesktop(
+                          //       number: '3',
+                          //     ),
+                          //     SizedBox(height: 5.h),
+                          //     const KVideoItemdesktop(
+                          //       number: '4',
+                          //     ),
+                          //     SizedBox(height: 5.h),
+                          //     const KVideoItemdesktop(
+                          //       number: '5',
+                          //     ),
+                          //   ],
+                          // ),
                         ),
                         SizedBox(height: 20.h),
                         Text(
@@ -132,21 +146,39 @@ class DesktopVideoPage extends HookConsumerWidget {
                           ),
                         ),
                         SizedBox(height: 15.h),
-                        Column(
-                          children: [
-                            const KVideoItemdesktop(
-                              number: '1',
-                            ),
-                            SizedBox(height: 5.h),
-                            const KVideoItemdesktop(
-                              number: '2',
-                            ),
-                            SizedBox(height: 5.h),
-                            const KVideoItemdesktop(
-                              number: '3',
-                            ),
-                          ],
-                        ),
+                        SizedBox(
+                          height: 200.h,
+                          // height: double.infinity,
+                          width: 250.w,
+                          child: Expanded(
+                            child: ListView.separated(
+                                itemBuilder: (context, index) =>
+                                    KVideoItemdesktop(
+                                      number: (index + 1).toString(),
+                                      video: state.playlists[0].videos[index],
+                                    ),
+                                separatorBuilder: (context, index) => SizedBox(
+                                      height: 5.h,
+                                    ),
+                                itemCount:
+                                    state.playlists[0].videos.length - 1),
+                          ),
+                        )
+                        // Column(
+                        //   children: [
+                        //     const KVideoItemdesktop(
+                        //       number: '1',
+                        //     ),
+                        //     SizedBox(height: 5.h),
+                        //     const KVideoItemdesktop(
+                        //       number: '2',
+                        //     ),
+                        //     SizedBox(height: 5.h),
+                        //     const KVideoItemdesktop(
+                        //       number: '3',
+                        //     ),
+                        //   ],
+                        // ),
                       ],
                     ),
                   ],

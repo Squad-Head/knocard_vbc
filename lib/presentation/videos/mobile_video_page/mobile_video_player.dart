@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/presentation/videos/mobile_video_page/video_item.dart';
 import 'package:knocard_ui/presentation/videos/network_video_player.dart';
 
-class MobileVideosPage extends StatelessWidget {
+class MobileVideosPage extends ConsumerWidget {
   MobileVideosPage({Key? key}) : super(key: key);
 
   final videoList = [
@@ -29,7 +31,8 @@ class MobileVideosPage extends StatelessWidget {
         "Episode 19: Beyond Acts"),
   ];
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    final state = ref.watch(profileProvider).userProfile;
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -40,9 +43,11 @@ class MobileVideosPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    "Ijlal & Haris on How to Get Rich SUPER FAST |\nLIGHTS OUT PODCAST",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
+                  Text(
+                    // "Ijlal & Haris on How to Get Rich SUPER FAST |\nLIGHTS OUT PODCAST",
+                    state.playlists[0].videos[0].title,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 13),
                   ),
                   const SizedBox(
                     width: 15,
@@ -57,12 +62,13 @@ class MobileVideosPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(
+            SizedBox(
               height: 220,
               width: double.infinity,
               // color: Colors.black,
               child: NetworkVideoPlayer(
-                'https://firebasestorage.googleapis.com/v0/b/knocard-da3f9.appspot.com/o/News%2FKnoCard%20News.mp4?alt=media&token=23aab96c-9ee0-4bf7-b4df-fe9f87a67d3b',
+                state.playlists[0].videos[0].link,
+                // 'https://firebasestorage.googleapis.com/v0/b/knocard-da3f9.appspot.com/o/News%2FKnoCard%20News.mp4?alt=media&token=23aab96c-9ee0-4bf7-b4df-fe9f87a67d3b',
                 autoPlay: false,
               ),
             ),

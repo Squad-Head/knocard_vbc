@@ -20,6 +20,7 @@ class HeaderBackground extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    final state = ref.watch(profileProvider).userProfile;
     return SizedBox(
       width: double.infinity,
       child: Stack(
@@ -43,8 +44,11 @@ class HeaderBackground extends ConsumerWidget {
                       ),
                     )
                   : ImageNetwork(
-                      image: coverPhoto,
-                      imageCache: CachedNetworkImageProvider(coverPhoto),
+                      // image: coverPhoto,
+                      //   imageCache: CachedNetworkImageProvider(coverPhoto),
+                      image: state.company.profile_picture,
+                      imageCache: CachedNetworkImageProvider(
+                          state.company.profile_picture),
                       height: 150,
                       width: MediaQuery.of(context).size.width,
                       // duration: 1500,
@@ -84,9 +88,9 @@ class HeaderBackground extends ConsumerWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        "Brett Flemming",
-                        style: TextStyle(
+                      Text(
+                        state.first_name + " " + state.last_name,
+                        style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
                         ),
@@ -94,9 +98,9 @@ class HeaderBackground extends ConsumerWidget {
                       SizedBox(
                         height: 3.h,
                       ),
-                      const Text(
-                        "Contractor",
-                        style: TextStyle(
+                      Text(
+                        state.occupation,
+                        style: const TextStyle(
                           color: Color(0xFFB9BBBA),
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
@@ -124,9 +128,10 @@ class HeaderBackground extends ConsumerWidget {
                 ),
               ],
             ),
-            child: const Text(
-              'Dale\'s home services',
-              style: TextStyle(
+            child: Text(
+              state.company.business_page_title,
+              // 'Dale\'s home services',
+              style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 15,
@@ -155,7 +160,7 @@ class HeaderBackground extends ConsumerWidget {
               top: 10.h,
               right: 10.w,
               child: AnimatedOpacity(
-                opacity: index == 0 ? 0 : 1,
+                opacity: index == 0 ? 1 : 1,
                 duration: const Duration(milliseconds: 500),
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -163,7 +168,20 @@ class HeaderBackground extends ConsumerWidget {
                       shape: const StadiumBorder(),
                     ),
                     onPressed: goHome,
-                    child: const Text('Go home')),
+                    child: index == 0
+                        ? Row(
+                            children: [
+                              const Text('Get your own KnoCard'),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Icon(
+                                Icons.download_outlined,
+                                size: 15.sp,
+                              ),
+                            ],
+                          )
+                        : const Text('Go home')),
               )),
         ],
       ),

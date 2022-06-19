@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'package:knocard_ui/domain/profile/profile_video.dart';
+
 class KVideoItemdesktop extends StatelessWidget {
-  const KVideoItemdesktop({Key? key, required this.number}) : super(key: key);
+  final ProfileVideo video;
+  const KVideoItemdesktop({Key? key, required this.number, required this.video})
+      : super(key: key);
   final String number;
 
   @override
@@ -23,13 +27,22 @@ class KVideoItemdesktop extends StatelessWidget {
           height: 40.h,
           width: 70.w,
         ),
+        // ImageNetwork(
+        //   image: video.thumbnail,
+        //   height: 40.h,
+        //   width: 70.w,
+        //   imageCache: CachedNetworkImageProvider(video.thumbnail),
+        // ),
         SizedBox(width: 2.w),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
-              'Get MORE With Time Blocking',
+              // 'Get MORE With Time Blocking',
+              video.title,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: const Color(0xFF2A2A2A),
                 fontSize: 10.sp,
@@ -37,7 +50,10 @@ class KVideoItemdesktop extends StatelessWidget {
               ),
             ),
             Text(
-              'Matt Bayrom',
+              // 'Matt Bayrom',
+              video.description,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: const Color(0xFF878788),
                 fontSize: 6.sp,
