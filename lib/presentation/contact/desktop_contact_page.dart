@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart' hide MenuItem;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'widgtes/services_menu_item.dart';
@@ -10,7 +12,7 @@ import 'widgtes/w_review.dart';
 import 'widgtes/web_gallery.dart';
 import 'widgtes/web_video_item.dart';
 
-class DesktopContactPage extends StatelessWidget {
+class DesktopContactPage extends HookConsumerWidget {
   final VoidCallback moveToGallery;
   final VoidCallback moveToVideo;
   final topHeight = 200.0;
@@ -20,9 +22,10 @@ class DesktopContactPage extends StatelessWidget {
       : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+    final state = ref.watch(profileProvider).userProfile;
     return Container(
       margin: EdgeInsets.only(top: 15.h),
       width: double.infinity,
@@ -45,14 +48,14 @@ class DesktopContactPage extends StatelessWidget {
                         onTap: () {
                           final Uri telLaunchUri = Uri(
                             scheme: 'tel',
-                            path: '9788355889',
+                            path: state.mobile_number,
                           );
 
                           launchUrl(telLaunchUri);
                         },
-                        child: const WHomeContact(
+                        child: WHomeContact(
                           icon: FontAwesomeIcons.mobileScreen,
-                          text: '9788355889',
+                          text: state.mobile_number,
                         ),
                       ),
                       SizedBox(height: 5.w),
@@ -60,13 +63,13 @@ class DesktopContactPage extends StatelessWidget {
                         onTap: () {
                           final Uri emailLaunchUri = Uri(
                             scheme: 'mailto',
-                            path: 'bflemming@gmail.com',
+                            path: state.email,
                           );
                           launchUrl(emailLaunchUri);
                         },
-                        child: const WHomeContact(
+                        child: WHomeContact(
                           icon: Icons.email,
-                          text: 'bflemming@gmail.com',
+                          text: state.email,
                         ),
                       ),
                       SizedBox(height: 5.w),
@@ -75,9 +78,13 @@ class DesktopContactPage extends StatelessWidget {
                           launchUrl(Uri.parse(
                               "https://goo.gl/maps/t4nwMCxLNN3kjs1C6"));
                         },
-                        child: const WHomeContact(
+                        child: WHomeContact(
                           icon: FontAwesomeIcons.globe,
-                          text: 'Tampa, Fl, 33635',
+                          text: state.city +
+                              ', ' +
+                              state.state +
+                              ', ' +
+                              state.zip_code.toString(),
                         ),
                       ),
                     ],
