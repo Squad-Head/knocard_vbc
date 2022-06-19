@@ -27,7 +27,7 @@ class HeaderBackground extends StatelessWidget {
             children: [
               coverPhoto.isEmpty
                   ? Container(
-                      height: 120,
+                      height: 150,
                       decoration: const BoxDecoration(
                         gradient: LinearGradient(
                           colors: [
@@ -43,7 +43,7 @@ class HeaderBackground extends StatelessWidget {
                   : ImageNetwork(
                       image: coverPhoto,
                       imageCache: CachedNetworkImageProvider(coverPhoto),
-                      height: 120,
+                      height: 150,
                       width: MediaQuery.of(context).size.width,
                       // duration: 1500,
                       curve: Curves.easeIn,
@@ -133,7 +133,7 @@ class HeaderBackground extends StatelessWidget {
           ),
           Positioned(
             left: 40.w,
-            top: 60.h,
+            top: 100.h,
             child: Container(
               height: 80,
               width: 80,
