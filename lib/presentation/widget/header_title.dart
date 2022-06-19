@@ -1,15 +1,17 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:flutter/material.dart' hide MenuItem;
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/style/color.dart';
 
-class HeaderTitle extends StatelessWidget {
+class HeaderTitle extends ConsumerWidget {
   const HeaderTitle({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return Stack(
       alignment: AlignmentDirectional.topStart,
       children: <Widget>[
@@ -62,9 +64,9 @@ class HeaderTitle extends StatelessWidget {
             decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 border: Border.all(width: 2, color: Colors.white)),
-            child: const CircleAvatar(
-              backgroundImage: NetworkImage(
-                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWR89EvH9ioXbj_sjTwDAroSfvJVyNaN6tOgTlUQVrgkMBcSjQUAW-RlficXlTSfPQR7Q&usqp=CAU'),
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(ref.watch(profileProvider
+                  .select((value) => value.userProfile.profile_picture))),
             ),
           ),
         ),

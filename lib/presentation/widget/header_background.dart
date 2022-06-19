@@ -2,10 +2,12 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:flutter/material.dart' hide MenuItem;
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_network/image_network.dart';
+import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/style/color.dart';
 
-class HeaderBackground extends StatelessWidget {
+class HeaderBackground extends ConsumerWidget {
   final String coverPhoto;
   final int index;
   final VoidCallback goHome;
@@ -17,7 +19,7 @@ class HeaderBackground extends StatelessWidget {
       : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     return SizedBox(
       width: double.infinity,
       child: Stack(
@@ -132,20 +134,23 @@ class HeaderBackground extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: 40.w,
-            top: 100.h,
-            child: Container(
-              height: 80,
-              width: 80,
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  border: Border.all(width: 2, color: Colors.white)),
-              child: const CircleAvatar(
-                backgroundImage: NetworkImage(
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWR89EvH9ioXbj_sjTwDAroSfvJVyNaN6tOgTlUQVrgkMBcSjQUAW-RlficXlTSfPQR7Q&usqp=CAU'),
-              ),
-            ),
-          ),
+              left: 40.w,
+              top: 100.h,
+              child: Container(
+                height: 80,
+                width: 80,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(width: 2, color: Colors.white)),
+                child: CircleAvatar(
+                  child: ImageNetwork(
+                    image: ref.watch(profileProvider
+                        .select((value) => value.userProfile.profile_picture)),
+                    height: 80,
+                    width: 80,
+                  ),
+                ),
+              )),
           Positioned(
               top: 10.h,
               right: 10.w,
