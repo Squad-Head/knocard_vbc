@@ -158,7 +158,7 @@ class HeaderBackground extends StatelessWidget {
                       shape: const StadiumBorder(),
                     ),
                     onPressed: goHome,
-                    child: Text('Go home')),
+                    child: const Text('Go home')),
               )),
         ],
       ),

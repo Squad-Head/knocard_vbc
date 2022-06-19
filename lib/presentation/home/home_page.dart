@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart' hide MenuItem;
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/application/profile_provider.dart';
 
 import 'package:knocard_ui/presentation/contact/contact_page.dart';
 import 'package:knocard_ui/presentation/contractor_page/constractor_page.dart';
@@ -10,11 +12,11 @@ import 'package:knocard_ui/presentation/videos/videos_page.dart';
 import 'package:knocard_ui/presentation/widget/header_background.dart';
 import 'package:knocard_ui/presentation/widget/header_title_bottom.dart';
 
-class HomePage extends HookWidget {
+class HomePage extends HookConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     final ValueNotifier<int> index = useState(0);
     final controller = usePageController();
     useEffect(() {
@@ -23,6 +25,7 @@ class HomePage extends HookWidget {
           final i = controller.page!.toInt();
           index.value = i;
         });
+        ref.read(profileProvider.notifier).getProfile();
       });
       return null;
     }, []);

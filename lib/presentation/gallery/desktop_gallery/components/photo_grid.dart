@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:knocard_ui/presentation/gallery/desktop_gallery/components/imagelist.dart';
+
 import 'package:knocard_ui/presentation/gallery/gallery_image_view.dart';
 
 class PhotoGrid extends StatelessWidget {

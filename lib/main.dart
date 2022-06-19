@@ -1,3 +1,4 @@
+import 'package:clean_api/clean_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -6,6 +7,8 @@ import 'package:knocard_ui/style/color.dart';
 import 'presentation/home/home_page.dart';
 
 void main() {
+  CleanApi.instance()
+      .setup(baseUrl: 'http://dev.knocard.com/api/', showLogs: true);
   runApp(const ProviderScope(child: MyApp()));
 }
 
