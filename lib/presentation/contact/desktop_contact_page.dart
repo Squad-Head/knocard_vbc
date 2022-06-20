@@ -3,10 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
-import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
-
 import 'widgtes/services_menu_item.dart';
+import 'widgtes/show_knocard_dialog_desktop.dart';
 import 'widgtes/w_home_contact.dart';
 import 'widgtes/w_rates_item.dart';
 import 'widgtes/w_review.dart';
@@ -369,7 +368,10 @@ class DesktopContactPage extends HookConsumerWidget {
           bottom: 20.h,
           child: InkWell(
             onTap: () {
-              Share.share('http://dev.knocard.com/iamginofernando');
+              // Share.share('http://dev.knocard.com/iamginofernando');
+              showDialog(
+                  context: context,
+                  builder: (context) => const ShowKnocardDialogDesktop());
             },
             child: CircleAvatar(
               radius: 30.sp,

@@ -1,12 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:clean_api/clean_api.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:flutter/material.dart' hide MenuItem;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_network/image_network.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
-import 'package:knocard_ui/domain/profile/user_profile.dart';
 import 'package:knocard_ui/style/color.dart';
 
 class HeaderBackground extends ConsumerWidget {
@@ -176,7 +173,12 @@ class HeaderBackground extends ConsumerWidget {
                     //     showLogs: true,
                     //   );
                     // },
-                    onPressed: goHome,
+                    onPressed: () {
+                      if (index == 0) {
+                      } else {
+                        goHome;
+                      }
+                    },
                     child: index == 0
                         ? Row(
                             children: [
