@@ -2,6 +2,7 @@ import 'package:clean_api/clean_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/presentation/splash_screen.dart';
 import 'package:knocard_ui/style/color.dart';
 
 import 'presentation/home/home_page.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: const MaterialColor(0xFF088ac6, KColor.mapColor),
           scaffoldBackgroundColor: KColor.backgroundColor,
         ),
-        home: const HomePage(),
+        home: const SplashScreen(),
         // home: const ContactPage(),
       ),
     );

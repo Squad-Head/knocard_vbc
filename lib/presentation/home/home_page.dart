@@ -25,7 +25,7 @@ class HomePage extends HookConsumerWidget {
           final i = controller.page!.toInt();
           index.value = i;
         });
-        ref.read(profileProvider.notifier).getProfile();
+        // ref.read(profileProvider.notifier).getProfile();
       });
       return null;
     }, []);
