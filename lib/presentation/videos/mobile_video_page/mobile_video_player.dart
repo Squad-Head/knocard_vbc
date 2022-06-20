@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/presentation/videos/mobile_video_page/video_item.dart';
@@ -125,12 +126,16 @@ class MobileVideosPage extends ConsumerWidget {
               child: SizedBox(
                 height: 110,
                 child: ListView.builder(
+                  // itemCount: videoList.length,
+                  itemCount: state.playlists[0].videos.length - 1,
                   itemBuilder: (context, index) {
-                    final video = videoList[index];
+                    // final video = videoList[index];
+                    final video = state.playlists[0].videos;
                     return Container(
                       margin: const EdgeInsets.symmetric(horizontal: 3),
                       width: 125,
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
                             child: Stack(
@@ -143,7 +148,7 @@ class MobileVideosPage extends ConsumerWidget {
                                     borderRadius: BorderRadius.circular(3),
                                   ),
                                   child: Image.network(
-                                    video.thumbnail,
+                                    video[index + 1].thumbnail,
                                     fit: BoxFit.cover,
                                     width: 125,
                                   ),
@@ -178,7 +183,7 @@ class MobileVideosPage extends ConsumerWidget {
                             height: 5,
                           ),
                           Text(
-                            video.title,
+                            video[index + 1].title,
                             style: const TextStyle(
                               fontWeight: FontWeight.bold,
                             ),
@@ -187,7 +192,7 @@ class MobileVideosPage extends ConsumerWidget {
                       ),
                     );
                   },
-                  itemCount: videoList.length,
+
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                 ),
@@ -221,12 +226,18 @@ class MobileVideosPage extends ConsumerWidget {
               child: SizedBox(
                 height: 150,
                 child: ListView.builder(
+                  // itemCount: videoList.length,
+                  itemCount: state.playlists[0].videos.length - 1,
                   itemBuilder: (context, index) {
-                    final video = videoList[index];
+                    // final video = videoList[index];
+                    final video = state.playlists[0].videos;
+
                     return Container(
                       margin: const EdgeInsets.symmetric(horizontal: 3),
-                      width: 80,
+                      // height: 100.h,
+                      width: 250.w,
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Expanded(
                             child: Container(
@@ -236,7 +247,7 @@ class MobileVideosPage extends ConsumerWidget {
                                 borderRadius: BorderRadius.circular(3),
                               ),
                               child: Image.network(
-                                video.thumbnail,
+                                video[index + 1].thumbnail,
                                 fit: BoxFit.cover,
                                 width: 125,
                               ),
@@ -246,14 +257,16 @@ class MobileVideosPage extends ConsumerWidget {
                             height: 5,
                           ),
                           Text(
-                            video.title,
+                            video[index + 1].title,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
                             style: const TextStyle(fontWeight: FontWeight.bold),
                           ),
                         ],
                       ),
                     );
                   },
-                  itemCount: videoList.length,
+
                   shrinkWrap: true,
                   scrollDirection: Axis.horizontal,
                 ),
@@ -262,49 +275,49 @@ class MobileVideosPage extends ConsumerWidget {
             const SizedBox(
               height: 10,
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15),
-              child: SizedBox(
-                height: 150,
-                child: ListView.builder(
-                  itemBuilder: (context, index) {
-                    final video = videoList[index];
-                    return Container(
-                      margin: const EdgeInsets.symmetric(horizontal: 3),
-                      width: 80,
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              clipBehavior: Clip.hardEdge,
-                              decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(3),
-                              ),
-                              child: Image.network(
-                                video.thumbnail,
-                                fit: BoxFit.cover,
-                                width: 125,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 5,
-                          ),
-                          Text(
-                            video.title,
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                  itemCount: videoList.length,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.only(left: 15),
+            //   child: SizedBox(
+            //     height: 150,
+            //     child: ListView.builder(
+            //       itemBuilder: (context, index) {
+            //         final video = videoList[index];
+            //         return Container(
+            //           margin: const EdgeInsets.symmetric(horizontal: 3),
+            //           width: 80,
+            //           child: Column(
+            //             children: [
+            //               Expanded(
+            //                 child: Container(
+            //                   clipBehavior: Clip.hardEdge,
+            //                   decoration: BoxDecoration(
+            //                     color: Colors.black,
+            //                     borderRadius: BorderRadius.circular(3),
+            //                   ),
+            //                   child: Image.network(
+            //                     video.thumbnail,
+            //                     fit: BoxFit.cover,
+            //                     width: 125,
+            //                   ),
+            //                 ),
+            //               ),
+            //               const SizedBox(
+            //                 height: 5,
+            //               ),
+            //               Text(
+            //                 video.title,
+            //                 style: const TextStyle(fontWeight: FontWeight.bold),
+            //               ),
+            //             ],
+            //           ),
+            //         );
+            //       },
+            //       itemCount: videoList.length,
+            //       shrinkWrap: true,
+            //       scrollDirection: Axis.horizontal,
+            //     ),
+            //   ),
+            // ),
             const SizedBox(
               height: 10,
             ),

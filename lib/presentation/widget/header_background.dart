@@ -151,6 +151,7 @@ class HeaderBackground extends ConsumerWidget {
                     border: Border.all(width: 2, color: Colors.white)),
                 child: CircleAvatar(
                   child: ImageNetwork(
+                    borderRadius: BorderRadius.circular(50),
                     image: ref.watch(profileProvider
                         .select((value) => value.userProfile.profile_picture)),
                     height: 80,
@@ -169,14 +170,15 @@ class HeaderBackground extends ConsumerWidget {
                       primary: Colors.orange,
                       shape: const StadiumBorder(),
                     ),
-                    onPressed: () async {
-                      await CleanApi.instance().get(
-                        fromJson: ((json) =>
-                            UserProfile.fromMap(json['payload'])),
-                        endPoint: 'user/vbc/iamginofernando',
-                        showLogs: true,
-                      );
-                    }, //goHome,
+                    // onPressed: () async {
+                    //   await CleanApi.instance().get(
+                    //     fromJson: ((json) =>
+                    //         UserProfile.fromMap(json['data']['user'][0])),
+                    //     endPoint: 'user/vbc/iamginofernando',
+                    //     showLogs: true,
+                    //   );
+                    // },
+                    onPressed: goHome,
                     child: index == 0
                         ? Row(
                             children: [
