@@ -146,17 +146,15 @@ class HeaderBackground extends ConsumerWidget {
               child: Container(
                 height: 80,
                 width: 80,
+                clipBehavior: Clip.hardEdge,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     border: Border.all(width: 2, color: Colors.white)),
-                child: CircleAvatar(
-                  child: ImageNetwork(
-                    borderRadius: BorderRadius.circular(50),
-                    image: ref.watch(profileProvider
-                        .select((value) => value.userProfile.profile_picture)),
-                    height: 80,
-                    width: 80,
-                  ),
+                child: ImageNetwork(
+                  image: ref.watch(profileProvider
+                      .select((value) => value.userProfile.profile_picture)),
+                  height: 80,
+                  width: 80,
                 ),
               )),
           Positioned(
