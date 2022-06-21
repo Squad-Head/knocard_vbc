@@ -25,10 +25,10 @@ class WebVideoItem extends StatelessWidget {
           ),
         ),
         SizedBox(width: 2.w),
-        ImageNetwork(
+        Image.network(
+          video.thumbnail,
           height: 21.h,
           width: MediaQuery.of(context).size.width * .03,
-          image: video.thumbnail,
         ),
         SizedBox(width: 4.w),
         Column(
