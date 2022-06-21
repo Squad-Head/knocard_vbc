@@ -1,5 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:image_network/image_network.dart';
 
 import 'package:knocard_ui/domain/profile/profile_video.dart';
 
@@ -31,17 +33,11 @@ class KVideoItemdesktop extends StatelessWidget {
               ),
             ),
             SizedBox(width: 2.w),
-            Image(
-              image: const AssetImage('assets/images/video.png'),
+            CachedNetworkImage(
+              imageUrl: video.thumbnail,
               height: 60.h,
               width: 90.w,
             ),
-            // ImageNetwork(
-            //   image: video.thumbnail,
-            //   height: 40.h,
-            //   width: 70.w,
-            //   imageCache: CachedNetworkImageProvider(video.thumbnail),
-            // ),
             SizedBox(width: 2.w),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
