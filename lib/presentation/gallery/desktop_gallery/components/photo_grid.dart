@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:knocard_ui/presentation/gallery/gallery_image_view.dart';
+import 'package:knocard_ui/presentation/gallery/desktop_gallery/desktop_gallery_widgets/desktop_image_view.dart';
 
 class PhotoGrid extends StatelessWidget {
   const PhotoGrid({Key? key}) : super(key: key);
@@ -41,11 +40,17 @@ class PhotoGrid extends StatelessWidget {
         itemBuilder: (BuildContext ctx, int index) {
           return InkWell(
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => GalleryImageViewPage(
+                // Navigator.of(context).push(MaterialPageRoute(
+                //     builder: (context) => GalleryImageViewPage(
+                //           images: values,
+                //           index: index,
+                //         )));
+                showDialog(
+                    context: context,
+                    builder: (context) => DesktopImageView(
                           images: values,
                           index: index,
-                        )));
+                        ));
               },
               child: imageBuild(index));
         });
