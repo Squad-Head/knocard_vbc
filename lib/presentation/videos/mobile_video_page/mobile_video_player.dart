@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:image_network/image_network.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/presentation/videos/network_video_player.dart';
 
@@ -148,27 +147,18 @@ class MobileVideosPage extends HookConsumerWidget {
                                         alignment: Alignment.bottomCenter,
                                         children: [
                                           Container(
-                                            clipBehavior: Clip.hardEdge,
-                                            decoration: BoxDecoration(
-                                              color: Colors.black,
-                                              borderRadius:
-                                                  BorderRadius.circular(3),
-                                            ),
-                                            // child: ImageNetwork(
-                                            //     image: video[index].thumbnail,
-                                            //     height: 110,
-                                            //     width: 125)
-                                            // child: Image.network(
-                                            //   video[index].thumbnail,
-                                            //   fit: BoxFit.cover,
-                                            //   width: 125,
-                                            // ),
-                                            child: Image.asset(
-                                              'assets/images/video.png',
-                                              fit: BoxFit.contain,
-                                              width: 125,
-                                            ),
-                                          ),
+                                              clipBehavior: Clip.hardEdge,
+                                              decoration: BoxDecoration(
+                                                color: Colors.black,
+                                                borderRadius:
+                                                    BorderRadius.circular(3),
+                                              ),
+                                              child: CachedNetworkImage(
+                                                imageUrl:
+                                                    video[index].thumbnail,
+                                                height: 110,
+                                                width: 125,
+                                              )),
                                           Positioned(
                                             bottom: 5,
                                             child: Container(
@@ -275,23 +265,11 @@ class MobileVideosPage extends HookConsumerWidget {
                                     color: Colors.black,
                                     borderRadius: BorderRadius.circular(3),
                                   ),
-                                  // child: Image.network(
-                                  //   playlists[index].description,
-                                  //   fit: BoxFit.cover,
-                                  //   width: 140,
-                                  // ),
-                                  // child: ImageNetwork(
-                                  //   image: playlists[index].description,
-                                  //   height: 90.h,
-                                  //   width: 140,
-                                  //   imageCache: CachedNetworkImageProvider(
-                                  //       playlists[index].description),
-                                  // ),
-                                  child: Image.asset(
-                                    'assets/images/video.png',
-                                    fit: BoxFit.contain,
-                                    width: 125,
+                                  child: CachedNetworkImage(
+                                    imageUrl: playlists[index].description,
                                     height: 90.h,
+                                    width: 140,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
