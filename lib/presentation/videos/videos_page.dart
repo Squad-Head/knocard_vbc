@@ -12,7 +12,7 @@ class VideoPage extends StatelessWidget {
       if (width > 700) {
         return const DesktopVideoPage();
       } else {
-        return MobileVideosPage();
+        return const MobileVideosPage();
       }
     });
   }

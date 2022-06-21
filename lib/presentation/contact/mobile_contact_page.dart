@@ -12,7 +12,6 @@ import '../widgets/k_home_menu_item.dart';
 import '../widgets/k_rates_item.dart';
 import '../widgets/k_review_articles.dart';
 import '../widgets/k_video_item.dart';
-import 'widgtes/show_knocard_dialog_desktop.dart';
 
 class MobileContactPage extends HookConsumerWidget {
   final VoidCallback moveToGallery;

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart' hide MenuItem;
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:knocard_ui/application/profile_provider.dart';
 
 import 'package:knocard_ui/presentation/contact/contact_page.dart';
 import 'package:knocard_ui/presentation/contractor_page/constractor_page.dart';

@@ -1,3 +1,4 @@
+import 'package:clean_api/clean_api.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_state.dart';
 import 'package:knocard_ui/domain/i_profile_repo.dart';
@@ -15,9 +16,9 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
   getProfile() async {
     state = state.copyWith(loading: true);
     final data = await profileRepo.getProfile();
-    print(data);
+    Logger.i(data);
     state = data.fold((l) => state.copyWith(loading: false, failure: l),
         (r) => state.copyWith(loading: false, userProfile: r));
-    print(state);
+    Logger.i(state);
   }
 }

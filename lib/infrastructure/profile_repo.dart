@@ -1,9 +1,6 @@
-import 'dart:convert';
-
 import 'package:clean_api/clean_api.dart';
 import 'package:knocard_ui/domain/i_profile_repo.dart';
 import 'package:knocard_ui/domain/profile/user_profile.dart';
-import 'package:knocard_ui/infrastructure/data.dart';
 
 class ProfileRepo extends IProfileRepo {
   final cleanApi = CleanApi.instance();
