@@ -5,8 +5,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/presentation/splash_screen.dart';
 import 'package:knocard_ui/style/color.dart';
 
-import 'presentation/home/home_page.dart';
-
 void main() {
   CleanApi.instance()
       .setup(baseUrl: 'http://dev.knocard.com/api/', showLogs: true);
