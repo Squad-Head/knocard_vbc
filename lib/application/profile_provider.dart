@@ -6,19 +6,23 @@ import 'package:knocard_ui/infrastructure/profile_repo.dart';
 
 final profileProvider =
     StateNotifierProvider<ProfileNotifier, ProfileState>((ref) {
-  return ProfileNotifier(ProfileRepo());
+  return ProfileNotifier(
+    profileRepo: ProfileRepo(),
+  );
 });
 
 class ProfileNotifier extends StateNotifier<ProfileState> {
   final IProfileRepo profileRepo;
-  ProfileNotifier(this.profileRepo) : super(ProfileState.init());
+  ProfileNotifier({
+    required this.profileRepo,
+  }) : super(ProfileState.init());
 
-  getProfile() async {
-    state = state.copyWith(loading: true);
-    final data = await profileRepo.getProfile();
-    Logger.i(data);
+  getProfile(String userName) async {
+    state = state.copyWith(loading: true, failure: CleanFailure.none());
+    final data = await profileRepo.getProfile(userName);
     state = data.fold((l) => state.copyWith(loading: false, failure: l),
         (r) => state.copyWith(loading: false, userProfile: r));
-    Logger.i(state);
+
+    Logger.i(state.userProfile.company);
   }
 }

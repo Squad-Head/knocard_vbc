@@ -1,12 +1,16 @@
 import "package:flutter/material.dart";
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/application/profile_provider.dart';
+import 'package:knocard_ui/domain/profile/photo.dart';
 
-import '../../components/imagelist.dart';
-
-class PhotoGrid extends StatelessWidget {
+class PhotoGrid extends HookConsumerWidget {
   const PhotoGrid({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    final photos = ref.watch(
+        profileProvider.select((value) => value.userProfile.photo_galleries));
+
     return GridView.builder(
         shrinkWrap: true,
         physics: const NeverScrollableScrollPhysics(),
@@ -16,19 +20,19 @@ class PhotoGrid extends StatelessWidget {
         ),
         itemCount: photos.length,
         itemBuilder: (BuildContext ctx, int index) {
-          return imageBuild(index);
+          return imageBuild(photos[index]);
         });
   }
 
-  Widget imageBuild(int index) => Column(
+  Widget imageBuild(Photo photo) => Column(
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 5),
-            child: Text(photos[index].title),
+            child: Text(photo.title),
           ),
           Expanded(
             child: Image.asset(
-              photos[index].images,
+              photo.link,
               fit: BoxFit.cover,
             ),
           ),

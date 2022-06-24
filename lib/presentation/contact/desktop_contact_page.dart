@@ -58,7 +58,9 @@ class DesktopContactPage extends HookConsumerWidget {
                             },
                             child: WHomeContact(
                               icon: FontAwesomeIcons.mobileScreen,
-                              text: state.mobile_number,
+                              text: state.mobile_number.isNotEmpty
+                                  ? state.mobile_number
+                                  : state.phone_number,
                             ),
                           ),
                           SizedBox(height: 5.w),

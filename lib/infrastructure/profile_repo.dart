@@ -5,7 +5,7 @@ import 'package:knocard_ui/domain/profile/user_profile.dart';
 class ProfileRepo extends IProfileRepo {
   final cleanApi = CleanApi.instance();
   @override
-  Future<Either<CleanFailure, UserProfile>> getProfile() async {
+  Future<Either<CleanFailure, UserProfile>> getProfile(String userName) async {
     // await Future.delayed(const Duration(seconds: 2));
     // final mapData = jsonDecode(data);
     // Logger.i(mapData);
@@ -13,8 +13,8 @@ class ProfileRepo extends IProfileRepo {
     // return right(profile);
     return await cleanApi.get(
       fromJson: ((json) => UserProfile.fromMap(json['data']["user"][0])),
-      endPoint: 'user/vbc/iamginofernando',
-      showLogs: true,
+      endPoint: 'user/vbc/$userName',
+      // showLogs: true,
     );
   }
 }

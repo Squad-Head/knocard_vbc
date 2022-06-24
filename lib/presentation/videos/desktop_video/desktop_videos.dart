@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/presentation/videos/desktop_video/widgets/k_video_item.dart';
 import 'package:knocard_ui/presentation/videos/desktop_video/widgets/playlist_card.dart';
-import 'package:knocard_ui/presentation/videos/network_video_player.dart';
+import 'package:knocard_ui/presentation/videos/profile_video_player.dart';
 
 class DesktopVideoPage extends HookConsumerWidget {
   const DesktopVideoPage({Key? key}) : super(key: key);
@@ -18,6 +18,7 @@ class DesktopVideoPage extends HookConsumerWidget {
     final selectedVideo = useState(0);
     final videoScrollController = useScrollController();
     final playlistScrollController = useScrollController();
+    final controller = usePageController(keepPage: false);
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -45,16 +46,21 @@ class DesktopVideoPage extends HookConsumerWidget {
                                 ? Text(
                                     'No Video Available',
                                     style: TextStyle(
-                                      fontSize: 16.sp,
+                                      fontSize: 16,
                                       color: Theme.of(context).canvasColor,
                                     ),
                                   )
-                                : NetworkVideoPlayer(
-                                    state.playlists[selectPlaylist.value]
-                                        .videos[selectedVideo.value].link,
-                                    // 'https://firebasestorage.googleapis.com/v0/b/knocard-da3f9.appspot.com/o/News%2FKnoCard%20News.mp4?alt=media&token=23aab96c-9ee0-4bf7-b4df-fe9f87a67d3b',
-                                    autoPlay: false,
-                                  ),
+                                : PageView.builder(
+                                    controller: controller,
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemBuilder: (context, index) {
+                                      return ProfileVideoPlayer(
+                                        video: state
+                                            .playlists[selectPlaylist.value]
+                                            .videos[index],
+                                      );
+                                    }),
                           ),
                           SizedBox(height: 5.h),
                           Row(
@@ -70,17 +76,16 @@ class DesktopVideoPage extends HookConsumerWidget {
                                         : state.playlists[selectPlaylist.value]
                                             .videos[selectedVideo.value].title,
                                     // 'Video Title',
-                                    style: TextStyle(
-                                        color: Colors.black, fontSize: 15.sp),
+                                    style: const TextStyle(
+                                        color: Colors.black, fontSize: 15),
                                   ),
                                   SizedBox(height: 5.h),
                                   Row(
                                     children: [
-                                      Text(
+                                      const Text(
                                         'view count : ',
                                         style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 12.sp),
+                                            color: Colors.grey, fontSize: 12),
                                       ),
                                       Text(
                                         state.playlists[selectPlaylist.value]
@@ -91,25 +96,24 @@ class DesktopVideoPage extends HookConsumerWidget {
                                                 .videos[selectedVideo.value]
                                                 .created_at
                                                 .toString(),
-                                        style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 12.sp),
+                                        style: const TextStyle(
+                                            color: Colors.grey, fontSize: 12),
                                       ),
                                     ],
                                   ),
                                 ],
                               ),
                               Row(
-                                children: [
+                                children: const [
                                   Icon(
                                     FontAwesomeIcons.shareNodes,
-                                    color: const Color(0xFF048AC6),
-                                    size: 15.sp,
+                                    color: Color(0xFF048AC6),
+                                    size: 15,
                                   ),
                                   Text(
                                     'Share',
                                     style: TextStyle(
-                                        color: Colors.black, fontSize: 12.sp),
+                                        color: Colors.black, fontSize: 12),
                                   ),
                                 ],
                               ),
@@ -122,11 +126,11 @@ class DesktopVideoPage extends HookConsumerWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
+                        const Text(
                           'Videos',
                           style: TextStyle(
-                            color: const Color(0xFF088AC6),
-                            fontSize: 15.sp,
+                            color: Color(0xFF088AC6),
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -142,7 +146,7 @@ class DesktopVideoPage extends HookConsumerWidget {
                                   child: Text(
                                     'Empty Playlist',
                                     style: TextStyle(
-                                      fontSize: 14.sp,
+                                      fontSize: 14,
                                       color: Theme.of(context).hintColor,
                                     ),
                                   ),
@@ -152,6 +156,7 @@ class DesktopVideoPage extends HookConsumerWidget {
                                       controller: videoScrollController,
                                       itemBuilder: (context, index) => InkWell(
                                             onTap: () {
+                                              controller.jumpToPage(index);
                                               selectedVideo.value = index;
                                             },
                                             child: KVideoItemdesktop(
@@ -175,11 +180,11 @@ class DesktopVideoPage extends HookConsumerWidget {
                                 ),
                         ),
                         SizedBox(height: 20.h),
-                        Text(
+                        const Text(
                           'Playlist',
                           style: TextStyle(
-                            color: const Color(0xFF088AC6),
-                            fontSize: 15.sp,
+                            color: Color(0xFF088AC6),
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -193,10 +198,12 @@ class DesktopVideoPage extends HookConsumerWidget {
                               controller: playlistScrollController,
                               itemBuilder: (context, index) => InkWell(
                                 onTap: () {
+                                  selectPlaylist.value = index;
+
                                   if (selectPlaylist.value != index) {
+                                    controller.jumpTo(0);
                                     selectedVideo.value = 0;
                                   }
-                                  selectPlaylist.value = index;
                                 },
                                 child: PlaylistCard(
                                   selected: selectPlaylist.value == index,

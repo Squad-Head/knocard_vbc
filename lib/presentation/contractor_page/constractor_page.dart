@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:knocard_ui/presentation/contractor_page/desktop_contractor_page.dart';
 import 'package:knocard_ui/presentation/contractor_page/mobile_contractor_page.dart';
 
-class ConstractorPage extends StatelessWidget {
-  const ConstractorPage({Key? key}) : super(key: key);
+class BusinessPage extends StatelessWidget {
+  const BusinessPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

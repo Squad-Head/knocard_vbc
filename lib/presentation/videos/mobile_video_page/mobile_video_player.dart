@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
-import 'package:knocard_ui/presentation/videos/network_video_player.dart';
+import 'package:knocard_ui/presentation/videos/profile_video_player.dart';
 
 class MobileVideosPage extends HookConsumerWidget {
   const MobileVideosPage({Key? key}) : super(key: key);
@@ -16,6 +16,7 @@ class MobileVideosPage extends HookConsumerWidget {
     final selectedPlaylist = useState(0);
     final videoScrollController = useScrollController();
     final playlistScrollController = useScrollController();
+    final controller = usePageController(keepPage: false);
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
@@ -56,17 +57,20 @@ class MobileVideosPage extends HookConsumerWidget {
                   ? Text(
                       'No Video Available',
                       style: TextStyle(
-                        fontSize: 55.sp,
+                        fontSize: 55,
                         fontWeight: FontWeight.bold,
                         color: Theme.of(context).canvasColor,
                       ),
                     )
-                  : NetworkVideoPlayer(
-                      state.playlists[selectedPlaylist.value]
-                          .videos[selectedVideo.value].link,
-                      // 'https://firebasestorage.googleapis.com/v0/b/knocard-da3f9.appspot.com/o/News%2FKnoCard%20News.mp4?alt=media&token=23aab96c-9ee0-4bf7-b4df-fe9f87a67d3b',
-                      autoPlay: false,
-                    ),
+                  : PageView.builder(
+                      controller: controller,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return ProfileVideoPlayer(
+                          video: state
+                              .playlists[selectedPlaylist.value].videos[index],
+                        );
+                      }),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20, top: 15),
@@ -132,6 +136,7 @@ class MobileVideosPage extends HookConsumerWidget {
                           return InkWell(
                             onTap: () {
                               selectedVideo.value = index;
+                              controller.jumpToPage(index);
                             },
                             child: Material(
                               elevation: selectedVideo.value == index ? 10 : 0,
@@ -244,10 +249,12 @@ class MobileVideosPage extends HookConsumerWidget {
                     final playlists = state.playlists;
                     return InkWell(
                       onTap: () {
+                        selectedPlaylist.value = index;
+
                         if (selectedPlaylist.value != index) {
                           selectedVideo.value = 0;
+                          controller.jumpToPage(0);
                         }
-                        selectedPlaylist.value = index;
                       },
                       child: Material(
                         elevation: selectedPlaylist.value == index ? 10 : 0,

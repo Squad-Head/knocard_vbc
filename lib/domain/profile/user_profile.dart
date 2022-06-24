@@ -3,6 +3,7 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:knocard_ui/domain/profile/photo.dart';
 
 import 'company/company.dart';
 import 'external_page/external_page.dart';
@@ -20,7 +21,7 @@ class UserProfile extends Equatable {
   final dynamic email_verified_at;
   final String api_token;
   final String phone_country_code;
-  final dynamic mobile_number;
+  final String mobile_number;
   final String street1;
   final String street2;
   final String city;
@@ -47,6 +48,7 @@ class UserProfile extends Equatable {
 
   final Company company;
   final Knocard knocard;
+  final List<Photo> photo_galleries;
 
   final List<SocialMedia> social_media;
   final List<ExternalPageData> external_pages;
@@ -88,6 +90,7 @@ class UserProfile extends Equatable {
     required this.go_live_code,
     required this.company,
     required this.knocard,
+    required this.photo_galleries,
     required this.social_media,
     required this.external_pages,
     required this.playlists,
@@ -130,6 +133,7 @@ class UserProfile extends Equatable {
     dynamic? go_live_code,
     Company? company,
     Knocard? knocard,
+    List<Photo>? photo_galleries,
     List<SocialMedia>? social_media,
     List<ExternalPageData>? external_pages,
     List<Playlist>? playlists,
@@ -171,6 +175,7 @@ class UserProfile extends Equatable {
       go_live_code: go_live_code ?? this.go_live_code,
       company: company ?? this.company,
       knocard: knocard ?? this.knocard,
+      photo_galleries: photo_galleries ?? this.photo_galleries,
       social_media: social_media ?? this.social_media,
       external_pages: external_pages ?? this.external_pages,
       playlists: playlists ?? this.playlists,
@@ -215,6 +220,7 @@ class UserProfile extends Equatable {
       'go_live_code': go_live_code,
       'company': company.toMap(),
       'knocard': knocard.toMap(),
+      'photo_galleries': photo_galleries.map((x) => x.toMap()).toList(),
       'social_media': social_media.map((x) => x.toMap()).toList(),
       'external_pages': external_pages.map((x) => x.toMap()).toList(),
       'playlists': playlists.map((x) => x.toMap()).toList(),
@@ -234,7 +240,7 @@ class UserProfile extends Equatable {
       email_verified_at: map['email_verified_at'],
       api_token: map['api_token'] ?? '',
       phone_country_code: map['phone_country_code'] ?? '',
-      mobile_number: map['mobile_number'],
+      mobile_number: map['mobile_number'] ?? '',
       street1: map['street1'] ?? '',
       street2: map['street2'] ?? '',
       city: map['city'] ?? '',
@@ -259,6 +265,8 @@ class UserProfile extends Equatable {
       go_live_code: map['go_live_code'],
       company: Company.fromMap(map['company']),
       knocard: Knocard.fromMap(map['knocard']),
+      photo_galleries: List<Photo>.from(
+          map['photo_galleries']?.map((x) => Photo.fromMap(x))),
       social_media: List<SocialMedia>.from(
           map['social_media']?.map((x) => SocialMedia.fromMap(x))),
       external_pages: List<ExternalPageData>.from(
@@ -284,7 +292,7 @@ class UserProfile extends Equatable {
 
   @override
   String toString() {
-    return 'UserProfile(id: $id, name: $name, username: $username, first_name: $first_name, last_name: $last_name, email: $email, email_verified_at: $email_verified_at, api_token: $api_token, phone_country_code: $phone_country_code, mobile_number: $mobile_number, street1: $street1, street2: $street2, city: $city, state: $state, zip_code: $zip_code, profile_picture: $profile_picture, occupation: $occupation, tagline: $tagline, about_me: $about_me, phone_number: $phone_number, integration_id: $integration_id, gateway: $gateway, card_brand: $card_brand, card_last_four: $card_last_four, role: $role, get_started: $get_started, meta_tags: $meta_tags, is_legacy: $is_legacy, create_and_share_id: $create_and_share_id, show_profile_picture: $show_profile_picture, status: $status, go_live_code: $go_live_code, company: $company, knocard: $knocard, social_media: $social_media, external_pages: $external_pages, playlists: $playlists, longitude: $longitude, latitude: $latitude)';
+    return 'UserProfile(id: $id, name: $name, username: $username, first_name: $first_name, last_name: $last_name, email: $email, email_verified_at: $email_verified_at, api_token: $api_token, phone_country_code: $phone_country_code, mobile_number: $mobile_number, street1: $street1, street2: $street2, city: $city, state: $state, zip_code: $zip_code, profile_picture: $profile_picture, occupation: $occupation, tagline: $tagline, about_me: $about_me, phone_number: $phone_number, integration_id: $integration_id, gateway: $gateway, card_brand: $card_brand, card_last_four: $card_last_four, role: $role, get_started: $get_started, meta_tags: $meta_tags, is_legacy: $is_legacy, create_and_share_id: $create_and_share_id, show_profile_picture: $show_profile_picture, status: $status, go_live_code: $go_live_code, company: $company, knocard: $knocard, photo_galleries: $photo_galleries, social_media: $social_media, external_pages: $external_pages, playlists: $playlists, longitude: $longitude, latitude: $latitude)';
   }
 
   @override
@@ -324,6 +332,7 @@ class UserProfile extends Equatable {
       go_live_code,
       company,
       knocard,
+      photo_galleries,
       social_media,
       external_pages,
       playlists,
@@ -375,5 +384,6 @@ class UserProfile extends Equatable {
       external_pages: const [],
       playlists: const [],
       longitude: '',
-      latitude: '');
+      latitude: '',
+      photo_galleries: const []);
 }

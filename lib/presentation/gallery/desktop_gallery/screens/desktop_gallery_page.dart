@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../components/album_tab.dart';
 import '../components/photo_grid.dart';
 
 class DesktopGalleryPage extends StatelessWidget {
@@ -15,7 +14,7 @@ class DesktopGalleryPage extends StatelessWidget {
             maxWidth: 900,
           ),
           child: ListView(shrinkWrap: true, children: const <Widget>[
-            Albumtab(),
+            // Albumtab(),
             PhotoGrid(),
           ]),
         ),

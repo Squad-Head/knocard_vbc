@@ -54,7 +54,9 @@ class MobileContactPage extends HookConsumerWidget {
                           },
                           child: KHomeContact(
                             icon: const Icon(FontAwesomeIcons.mobileScreen),
-                            text: state.mobile_number,
+                            text: state.mobile_number.isNotEmpty
+                                ? state.mobile_number
+                                : state.phone_number,
                           ),
                         ),
                         SizedBox(height: 1.h),

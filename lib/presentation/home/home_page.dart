@@ -73,7 +73,7 @@ class HomePage extends HookConsumerWidget {
           ),
           const GalleryPage(),
           const VideoPage(),
-          const ConstractorPage(),
+          const BusinessPage(),
           const Review(),
           // BlankRatesPage()
         ],

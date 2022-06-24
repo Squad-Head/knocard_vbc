@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:knocard_ui/domain/profile/photo.dart';
 
 class DesktopImageView extends HookWidget {
-  final List<String> images;
+  final List<Photo> images;
   final int index;
   const DesktopImageView({Key? key, required this.images, required this.index})
       : super(key: key);
@@ -18,7 +19,7 @@ class DesktopImageView extends HookWidget {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Image.network(images[activeIndex.value]),
+            Image.network(images[activeIndex.value].link),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -42,7 +43,7 @@ class DesktopImageView extends HookWidget {
                   },
                   child: Icon(
                     Icons.arrow_forward_ios,
-                    size: 30.sp,
+                    size: 30,
                     color: Theme.of(context).canvasColor,
                   ),
                 ),

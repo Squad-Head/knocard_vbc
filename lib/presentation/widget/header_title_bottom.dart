@@ -1,17 +1,21 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/presentation/contact/widgtes/menu_item.dart';
 
 import 'package:flutter/material.dart' hide MenuItem;
 
-class HeaderBottom extends StatelessWidget with PreferredSizeWidget {
+class HeaderBottom extends ConsumerWidget with PreferredSizeWidget {
   final int index;
   final Function(int) onTap;
   const HeaderBottom({Key? key, required this.index, required this.onTap})
       : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    final user =
+        ref.watch(profileProvider.select((value) => value.userProfile));
     return LayoutBuilder(builder: (context, constraints) {
       final screenWidth = constraints.maxWidth;
       return Container(
@@ -46,7 +50,7 @@ class HeaderBottom extends StatelessWidget with PreferredSizeWidget {
             if (screenWidth > 700) SizedBox(width: 12.w),
             MenuItem(
               icon: FontAwesomeIcons.leaf,
-              text: 'Contractor',
+              text: user.company.business_page_title,
               selected: index == 3,
               onTap: () => onTap(3),
             ),

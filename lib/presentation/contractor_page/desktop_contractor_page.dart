@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/application/profile_provider.dart';
 
 import 'widgets/content_model.dart';
 
@@ -12,9 +13,9 @@ class DesktopContractorPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // ignore: unused_local_variable
-    final weddingImage =
-        'https://www.pexels.com/photo/couple-standing-on-grass-field-while-looking-at-each-other-1603884/';
     var chipSelected = useState(0);
+    final company =
+        ref.watch(profileProvider.select((value) => value.userProfile.company));
     return LayoutBuilder(builder: (context, constraint) {
       return Scaffold(
           body: SafeArea(
@@ -36,7 +37,7 @@ class DesktopContractorPage extends HookConsumerWidget {
                           Column(
                             children: [
                               Text(
-                                "Baxter Photos",
+                                company.business_page_title,
                                 style: TextStyle(
                                   color: Theme.of(context).primaryColor,
                                   fontWeight: FontWeight.w600,
@@ -47,8 +48,8 @@ class DesktopContractorPage extends HookConsumerWidget {
                               ),
                               Padding(
                                 padding: EdgeInsets.symmetric(horizontal: 20.w),
-                                child: Image.asset(
-                                  'assets/images/weddingImage.jpg',
+                                child: Image.network(
+                                  company.profile_picture,
                                   fit: BoxFit.cover,
                                   // height: 160.h,
                                 ),
