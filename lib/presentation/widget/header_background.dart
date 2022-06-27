@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_network/image_network.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/style/color.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class HeaderBackground extends ConsumerWidget {
   final String coverPhoto;
@@ -175,6 +176,9 @@ class HeaderBackground extends ConsumerWidget {
                     // },
                     onPressed: () {
                       if (index == 0) {
+                        const url =
+                            'https://play.google.com/store/apps/details?id=com.vbc.knocard.app';
+                        launchUrlString(url);
                       } else {
                         goHome;
                       }

@@ -6,6 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/presentation/home/home_page.dart';
 import 'package:knocard_ui/presentation/unknown_screen.dart';
+import 'package:knocard_ui/presentation/username_not_found.dart';
 
 class SplashScreen extends HookConsumerWidget {
   final String userName;
@@ -18,7 +19,11 @@ class SplashScreen extends HookConsumerWidget {
     useEffect(() {
       Logger.i(userName);
       Future.delayed(const Duration(milliseconds: 100), () {
+        // if (userName == ':userName' || userName == 'unknown-screen') {
+        //   AutoRouter.of(context).replace(const UserNameNotFound());
+        // } else {
         ref.read(profileProvider.notifier).getProfile(userName);
+        // }
       });
       return null;
     }, []);
@@ -28,7 +33,7 @@ class SplashScreen extends HookConsumerWidget {
     //     if (next.failure == CleanFailure.none()) {
     //       AutoRouter.of(context).replace(const HomeRoute());
     //     } else {
-    //       AutoRouter.of(context).replace(const UnknownRoute());
+    //       AutoRouter.of(context).replace(const UserNameNotFoundRoute());
     //     }
     //   }
     // });
@@ -39,7 +44,7 @@ class SplashScreen extends HookConsumerWidget {
             )
           : state.failure == CleanFailure.none()
               ? const HomePage()
-              : const UnknownScreen(),
+              : const UserNameNotFoundPage(),
     );
   }
 }

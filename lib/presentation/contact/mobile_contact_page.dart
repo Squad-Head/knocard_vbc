@@ -343,7 +343,7 @@ class MobileContactPage extends HookConsumerWidget {
                 child: CircleAvatar(
                   radius: 100.sp,
                   backgroundColor: Colors.transparent,
-                  backgroundImage: const AssetImage('icons/SHARE-REFER.png'),
+                  backgroundImage: const AssetImage('icons/share_refer.png'),
                 ),
               ),
             ),
