@@ -6,7 +6,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/application/profile_state.dart';
 import 'package:knocard_ui/presentation/home/home_page.dart';
-import 'package:knocard_ui/presentation/unknown_screen.dart';
 import 'package:knocard_ui/presentation/username_not_found.dart';
 
 import 'router/router.gr.dart';
