@@ -26,6 +26,8 @@ class DesktopContactPage extends HookConsumerWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     final state = ref.watch(profileProvider).userProfile;
+    final photos = ref.watch(
+        profileProvider.select((value) => value.userProfile.photo_galleries));
 
     return Stack(
       children: [
@@ -95,28 +97,31 @@ class DesktopContactPage extends HookConsumerWidget {
                         ],
                       ),
                       SizedBox(height: 18.h),
-                      Column(
-                        children: [
-                          TextButton(
-                            onPressed: moveToGallery,
-                            child: (Text(
-                              'Gallery',
-                              style: TextStyle(
-                                color: const Color(0xFF088AC6),
-                                fontSize: 11.sp,
-                                fontWeight: FontWeight.bold,
+                      if (photos.isNotEmpty)
+                        Column(
+                          children: [
+                            TextButton(
+                              onPressed: moveToGallery,
+                              child: (Text(
+                                'Gallery',
+                                style: TextStyle(
+                                  color: const Color(0xFF088AC6),
+                                  fontSize: 11.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              )),
+                            ),
+                            SizedBox(height: 8.h),
+                            SizedBox(
+                              height: height * 0.19,
+                              width: width * 0.1,
+                              child: WebGallery(
+                                photos: photos,
                               ),
-                            )),
-                          ),
-                          SizedBox(height: 8.h),
-                          SizedBox(
-                            height: height * 0.19,
-                            width: width * 0.1,
-                            child: const WebGallery(),
-                            //color: Colors.grey,
-                          ),
-                        ],
-                      ),
+                              //color: Colors.grey,
+                            ),
+                          ],
+                        ),
                       SizedBox(height: 18.h),
                       Column(
                         children: [
