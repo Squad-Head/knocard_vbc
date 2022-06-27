@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:knocard_ui/domain/profile/photo.dart';
 
 class MobileGallery extends StatelessWidget {
-  const MobileGallery({Key? key}) : super(key: key);
+  final List<Photo> photos;
+  const MobileGallery({Key? key, required this.photos}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GridView.count(
-        crossAxisCount: 4,
-        children: [...myImagesAdapted],
+      body: GridView.builder(
+        itemCount: photos.length,
+        gridDelegate:
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+        itemBuilder: (context, index) => Image(
+          image: NetworkImage(photos[index].link),
+          fit: BoxFit.cover,
+        ),
       ),
     );
   }

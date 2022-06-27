@@ -23,6 +23,8 @@ class MobileContactPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final state = ref.watch(profileProvider).userProfile;
+    final photos = ref.watch(
+        profileProvider.select((value) => value.userProfile.photo_galleries));
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -96,29 +98,32 @@ class MobileContactPage extends HookConsumerWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Column(
-                      children: [
-                        TextButton(
-                          onPressed: moveToGallery,
-                          child: Text(
-                            'Gallery',
-                            style: TextStyle(
-                              color: const Color(0xFF088AC6),
-                              fontSize: 50.sp,
-                              fontWeight: FontWeight.bold,
+                    if (photos.isNotEmpty)
+                      Column(
+                        children: [
+                          TextButton(
+                            onPressed: moveToGallery,
+                            child: Text(
+                              'Gallery',
+                              style: TextStyle(
+                                color: const Color(0xFF088AC6),
+                                fontSize: 50.sp,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
-                        ),
-                        SizedBox(height: 5.h),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.width * .4,
-                          width: MediaQuery.of(context).size.width * .36,
-                          child: const MobileGallery(),
-                          //color: Colors.grey,
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 40.w),
+                          SizedBox(height: 5.h),
+                          SizedBox(
+                            height: MediaQuery.of(context).size.width * .4,
+                            width: MediaQuery.of(context).size.width * .36,
+                            child: MobileGallery(
+                              photos: photos,
+                            ),
+                            //color: Colors.grey,
+                          ),
+                        ],
+                      ),
+                    if (photos.isNotEmpty) SizedBox(width: 40.w),
                     Column(
                       children: [
                         TextButton(
@@ -152,31 +157,6 @@ class MobileContactPage extends HookConsumerWidget {
                               ),
                             ),
                           ),
-
-                          // child: Column(
-                          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          //   children: [
-                          //     const KVideoItem(
-                          //       number: '1',
-                          //     ),
-                          //     SizedBox(height: 5.h),
-                          //     const KVideoItem(
-                          //       number: '2',
-                          //     ),
-                          //     SizedBox(height: 5.h),
-                          //     const KVideoItem(
-                          //       number: '3',
-                          //     ),
-                          //     SizedBox(height: 5.h),
-                          //     const KVideoItem(
-                          //       number: '4',
-                          //     ),
-                          //     SizedBox(height: 5.h),
-                          //     const KVideoItem(
-                          //       number: '5',
-                          //     ),
-                          //   ],
-                          // ),
                         ),
                       ],
                     ),
