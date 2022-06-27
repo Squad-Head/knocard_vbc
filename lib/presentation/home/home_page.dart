@@ -63,6 +63,9 @@ class HomePage extends HookConsumerWidget {
         physics: const NeverScrollableScrollPhysics(),
         controller: controller,
         children: [
+          // Container(
+          //   color: Colors.red,
+          // ),
           ContactPage(
             moveToGallery: () {
               controller.jumpToPage(1);
@@ -81,5 +84,3 @@ class HomePage extends HookConsumerWidget {
     ));
   }
 }
-
-onTap(int i) {}
