@@ -141,20 +141,18 @@ class MobileContactPage extends HookConsumerWidget {
                         SizedBox(
                           height: MediaQuery.of(context).size.width * .4,
                           width: MediaQuery.of(context).size.width * .5,
-                          child: Expanded(
-                            child: ListView.separated(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: state.playlists[0].videos.length <= 5
-                                  ? state.playlists[0].videos.length
-                                  : 5,
-                              itemBuilder: (context, index) => KVideoItem(
-                                index: index,
-                                video: state.playlists[0].videos[index],
-                              ),
-                              separatorBuilder: (context, index) => SizedBox(
-                                height: 10.h,
-                              ),
+                          child: ListView.separated(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: state.playlists[0].videos.length <= 5
+                                ? state.playlists[0].videos.length
+                                : 5,
+                            itemBuilder: (context, index) => KVideoItem(
+                              index: index,
+                              video: state.playlists[0].videos[index],
+                            ),
+                            separatorBuilder: (context, index) => SizedBox(
+                              height: 10.h,
                             ),
                           ),
                         ),
