@@ -18,11 +18,12 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
   }) : super(ProfileState.init());
 
   getProfile(String userName) async {
+    Logger.i(userName);
     state = state.copyWith(loading: true, failure: CleanFailure.none());
     final data = await profileRepo.getProfile(userName);
     state = data.fold((l) => state.copyWith(loading: false, failure: l),
         (r) => state.copyWith(loading: false, userProfile: r));
-
-    Logger.i(state.userProfile.company);
+    // Logger.i(state.userProfile);
+    // Logger.i(state.userProfile.company);
   }
 }
