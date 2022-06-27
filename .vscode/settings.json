@@ -1,3 +1,4 @@
 {
-  "dart.flutterSdkPath": "/Users/kousikambani/Dev/flutter"
+  "dart.flutterSdkPath": "/Users/kousikambani/Dev/flutter",
+  "dart_data_class_generator.json.key_format": "snake_case"
 }

@@ -17,7 +17,7 @@ class HomePage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final ValueNotifier<int> index = useState(0);
-    final controller = usePageController();
+    final controller = usePageController(initialPage: 0);
     useEffect(() {
       Future.delayed(const Duration(milliseconds: 100), () {
         controller.addListener(() {

@@ -29,7 +29,8 @@ class TextInputBox extends StatelessWidget {
               width: 5.w,
             ),
             Expanded(
-              child: TextField(
+              child: TextFormField(
+                validator: validate,
                 controller: controller,
                 decoration: const InputDecoration(
                   isDense: true,
@@ -41,5 +42,13 @@ class TextInputBox extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  String? validate(String? value) {
+    if (value != null && value.isNotEmpty) {
+      return null;
+    } else {
+      return 'You must fill this field';
+    }
   }
 }
