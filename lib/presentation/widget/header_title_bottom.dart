@@ -2,6 +2,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
+import 'package:knocard_ui/domain/profile/constants.dart';
 import 'package:knocard_ui/presentation/contact/widgtes/menu_item.dart';
 
 import 'package:flutter/material.dart' hide MenuItem;
@@ -49,18 +50,12 @@ class HeaderBottom extends ConsumerWidget with PreferredSizeWidget {
             ),
             if (screenWidth > 700) SizedBox(width: 12.w),
             MenuItem(
-              icon: FontAwesomeIcons.leaf,
+              icon: Constants.externalIcons[user.company.icon].icon,
               text: user.company.business_page_title,
               selected: index == 3,
               onTap: () => onTap(3),
             ),
             if (screenWidth > 700) SizedBox(width: 12.w),
-            MenuItem(
-              icon: FontAwesomeIcons.handshake,
-              text: 'Reviews',
-              selected: index == 4,
-              onTap: () => onTap(4),
-            ),
           ],
         ),
       );

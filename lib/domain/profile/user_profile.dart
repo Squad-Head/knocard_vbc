@@ -9,6 +9,7 @@ import 'company/company.dart';
 import 'external_page/external_page.dart';
 import 'kno_card.dart';
 import 'playlist.dart';
+import 'profile_background.dart';
 import 'social_media.dart';
 
 class UserProfile extends Equatable {
@@ -18,7 +19,6 @@ class UserProfile extends Equatable {
   final String first_name;
   final String last_name;
   final String email;
-  final dynamic email_verified_at;
   final String api_token;
   final String phone_country_code;
   final String mobile_number;
@@ -62,7 +62,6 @@ class UserProfile extends Equatable {
     required this.first_name,
     required this.last_name,
     required this.email,
-    required this.email_verified_at,
     required this.api_token,
     required this.phone_country_code,
     required this.mobile_number,
@@ -105,7 +104,6 @@ class UserProfile extends Equatable {
     String? first_name,
     String? last_name,
     String? email,
-    dynamic? email_verified_at,
     String? api_token,
     String? phone_country_code,
     dynamic? mobile_number,
@@ -147,7 +145,6 @@ class UserProfile extends Equatable {
       first_name: first_name ?? this.first_name,
       last_name: last_name ?? this.last_name,
       email: email ?? this.email,
-      email_verified_at: email_verified_at ?? this.email_verified_at,
       api_token: api_token ?? this.api_token,
       phone_country_code: phone_country_code ?? this.phone_country_code,
       mobile_number: mobile_number ?? this.mobile_number,
@@ -184,6 +181,9 @@ class UserProfile extends Equatable {
     );
   }
 
+  ProfileBackground getBackGround() =>
+      ProfileBackground.set(knocard.background_image);
+
   Map<String, dynamic> toMap() {
     return {
       'id': id,
@@ -192,7 +192,6 @@ class UserProfile extends Equatable {
       'first_name': first_name,
       'last_name': last_name,
       'email': email,
-      'email_verified_at': email_verified_at,
       'api_token': api_token,
       'phone_country_code': phone_country_code,
       'mobile_number': mobile_number,
@@ -237,7 +236,6 @@ class UserProfile extends Equatable {
       first_name: map['first_name'] ?? '',
       last_name: map['last_name'] ?? '',
       email: map['email'] ?? '',
-      email_verified_at: map['email_verified_at'],
       api_token: map['api_token'] ?? '',
       phone_country_code: map['phone_country_code'] ?? '',
       mobile_number: map['mobile_number'] ?? '',
@@ -292,7 +290,7 @@ class UserProfile extends Equatable {
 
   @override
   String toString() {
-    return 'UserProfile(id: $id, name: $name, username: $username, first_name: $first_name, last_name: $last_name, email: $email, email_verified_at: $email_verified_at, api_token: $api_token, phone_country_code: $phone_country_code, mobile_number: $mobile_number, street1: $street1, street2: $street2, city: $city, state: $state, zip_code: $zip_code, profile_picture: $profile_picture, occupation: $occupation, tagline: $tagline, about_me: $about_me, phone_number: $phone_number, integration_id: $integration_id, gateway: $gateway, card_brand: $card_brand, card_last_four: $card_last_four, role: $role, get_started: $get_started, meta_tags: $meta_tags, is_legacy: $is_legacy, create_and_share_id: $create_and_share_id, show_profile_picture: $show_profile_picture, status: $status, go_live_code: $go_live_code, company: $company, knocard: $knocard, photo_galleries: $photo_galleries, social_media: $social_media, external_pages: $external_pages, playlists: $playlists, longitude: $longitude, latitude: $latitude)';
+    return 'UserProfile(id: $id, name: $name, username: $username, first_name: $first_name, last_name: $last_name, email: $email,  api_token: $api_token, phone_country_code: $phone_country_code, mobile_number: $mobile_number, street1: $street1, street2: $street2, city: $city, state: $state, zip_code: $zip_code, profile_picture: $profile_picture, occupation: $occupation, tagline: $tagline, about_me: $about_me, phone_number: $phone_number, integration_id: $integration_id, gateway: $gateway, card_brand: $card_brand, card_last_four: $card_last_four, role: $role, get_started: $get_started, meta_tags: $meta_tags, is_legacy: $is_legacy, create_and_share_id: $create_and_share_id, show_profile_picture: $show_profile_picture, status: $status, go_live_code: $go_live_code, company: $company, knocard: $knocard, photo_galleries: $photo_galleries, social_media: $social_media, external_pages: $external_pages, playlists: $playlists, longitude: $longitude, latitude: $latitude)';
   }
 
   @override
@@ -304,7 +302,6 @@ class UserProfile extends Equatable {
       first_name,
       last_name,
       email,
-      email_verified_at,
       api_token,
       phone_country_code,
       mobile_number,
@@ -352,7 +349,6 @@ class UserProfile extends Equatable {
       first_name: '',
       last_name: '',
       email: '',
-      email_verified_at: null,
       api_token: '',
       phone_country_code: '',
       mobile_number: '',

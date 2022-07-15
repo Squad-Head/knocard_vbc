@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       designSize: const Size(1034, 620),
       builder: (context, child) => MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Knocard VBC',
         theme: ThemeData(
           primaryColor: KColor.primaryColor,
           primarySwatch: const MaterialColor(0xFF088ac6, KColor.mapColor),

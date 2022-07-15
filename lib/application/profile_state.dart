@@ -33,7 +33,7 @@ class ProfileState extends Equatable {
       'ProfileState(loading: $loading, failure: $failure, userProfile: $userProfile)';
 
   factory ProfileState.init() => ProfileState(
-      loading: false,
+      loading: true,
       failure: CleanFailure.none(),
       userProfile: UserProfile.init());
 }

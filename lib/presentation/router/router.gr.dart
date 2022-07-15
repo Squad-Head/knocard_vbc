@@ -10,95 +10,114 @@
 //
 // ignore_for_file: type=lint
 
-import 'package:auto_route/auto_route.dart' as _i5;
-import 'package:clean_api/clean_api.dart' as _i7;
-import 'package:flutter/material.dart' as _i6;
+import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:clean_api/clean_api.dart' as _i10;
+import 'package:flutter/material.dart' as _i9;
 
-import '../home/home_page.dart' as _i2;
-import '../splash_screen.dart' as _i1;
-import '../unknown_screen.dart' as _i3;
-import '../username_not_found.dart' as _i4;
+import '../contact/contact_page.dart' as _i4;
+import '../contractor_page/business_page.dart' as _i7;
+import '../gallery/gallery_page.dart' as _i5;
+import '../home/home_page.dart' as _i1;
+import '../unknown_screen.dart' as _i2;
+import '../username_not_found.dart' as _i3;
+import '../videos/videos_page.dart' as _i6;
 
-class AppRouter extends _i5.RootStackRouter {
-  AppRouter([_i6.GlobalKey<_i6.NavigatorState>? navigatorKey])
+class AppRouter extends _i8.RootStackRouter {
+  AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
   @override
-  final Map<String, _i5.PageFactory> pagesMap = {
-    SplashRoute.name: (routeData) {
-      final pathParams = routeData.inheritedPathParams;
-      final args = routeData.argsAs<SplashRouteArgs>(
-          orElse: () =>
-              SplashRouteArgs(userName: pathParams.getString('userName')));
-      return _i5.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i1.SplashScreen(key: args.key, userName: args.userName));
-    },
+  final Map<String, _i8.PageFactory> pagesMap = {
     HomeRoute.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.HomePage());
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<HomeRouteArgs>(
+          orElse: () =>
+              HomeRouteArgs(userName: pathParams.getString('userName')));
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData,
+          child: _i1.HomePage(key: args.key, userName: args.userName));
     },
     UnknownRoute.name: (routeData) {
       final args = routeData.argsAs<UnknownRouteArgs>();
-      return _i5.MaterialPageX<dynamic>(
+      return _i8.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i3.UnknownScreen(key: args.key, failure: args.failure));
+          child: _i2.UnknownScreen(key: args.key, failure: args.failure));
     },
     UserNameNotFoundRoute.name: (routeData) {
-      return _i5.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i4.UserNameNotFoundPage());
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i3.UserNameNotFoundPage());
+    },
+    ContactRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i4.ContactPage());
+    },
+    GalleryRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i5.GalleryPage());
+    },
+    VideoRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i6.VideoPage());
+    },
+    BusinessRoute.name: (routeData) {
+      return _i8.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i7.BusinessPage());
     }
   };
 
   @override
-  List<_i5.RouteConfig> get routes => [
-        _i5.RouteConfig('/#redirect',
+  List<_i8.RouteConfig> get routes => [
+        _i8.RouteConfig('/#redirect',
             path: '/', redirectTo: '/:userName', fullMatch: true),
-        _i5.RouteConfig(SplashRoute.name, path: '/:userName'),
-        _i5.RouteConfig(HomeRoute.name, path: '/home-page'),
-        _i5.RouteConfig(UnknownRoute.name, path: '/unknown-screen'),
-        _i5.RouteConfig(UserNameNotFoundRoute.name,
+        _i8.RouteConfig(HomeRoute.name, path: '/:userName', children: [
+          _i8.RouteConfig(ContactRoute.name,
+              path: 'contact', parent: HomeRoute.name),
+          _i8.RouteConfig(GalleryRoute.name,
+              path: 'gallery', parent: HomeRoute.name),
+          _i8.RouteConfig(VideoRoute.name,
+              path: 'playlist', parent: HomeRoute.name),
+          _i8.RouteConfig(BusinessRoute.name,
+              path: 'business', parent: HomeRoute.name)
+        ]),
+        _i8.RouteConfig(UnknownRoute.name, path: '/unknown-screen'),
+        _i8.RouteConfig(UserNameNotFoundRoute.name,
             path: '/user-name-not-found-page')
       ];
 }
 
 /// generated route for
-/// [_i1.SplashScreen]
-class SplashRoute extends _i5.PageRouteInfo<SplashRouteArgs> {
-  SplashRoute({_i6.Key? key, required String userName})
-      : super(SplashRoute.name,
+/// [_i1.HomePage]
+class HomeRoute extends _i8.PageRouteInfo<HomeRouteArgs> {
+  HomeRoute(
+      {_i9.Key? key,
+      required String userName,
+      List<_i8.PageRouteInfo>? children})
+      : super(HomeRoute.name,
             path: '/:userName',
-            args: SplashRouteArgs(key: key, userName: userName),
-            rawPathParams: {'userName': userName});
+            args: HomeRouteArgs(key: key, userName: userName),
+            rawPathParams: {'userName': userName},
+            initialChildren: children);
 
-  static const String name = 'SplashRoute';
+  static const String name = 'HomeRoute';
 }
 
-class SplashRouteArgs {
-  const SplashRouteArgs({this.key, required this.userName});
+class HomeRouteArgs {
+  const HomeRouteArgs({this.key, required this.userName});
 
-  final _i6.Key? key;
+  final _i9.Key? key;
 
   final String userName;
 
   @override
   String toString() {
-    return 'SplashRouteArgs{key: $key, userName: $userName}';
+    return 'HomeRouteArgs{key: $key, userName: $userName}';
   }
 }
 
 /// generated route for
-/// [_i2.HomePage]
-class HomeRoute extends _i5.PageRouteInfo<void> {
-  const HomeRoute() : super(HomeRoute.name, path: '/home-page');
-
-  static const String name = 'HomeRoute';
-}
-
-/// generated route for
-/// [_i3.UnknownScreen]
-class UnknownRoute extends _i5.PageRouteInfo<UnknownRouteArgs> {
-  UnknownRoute({_i6.Key? key, required _i7.CleanFailure failure})
+/// [_i2.UnknownScreen]
+class UnknownRoute extends _i8.PageRouteInfo<UnknownRouteArgs> {
+  UnknownRoute({_i9.Key? key, required _i10.CleanFailure failure})
       : super(UnknownRoute.name,
             path: '/unknown-screen',
             args: UnknownRouteArgs(key: key, failure: failure));
@@ -109,9 +128,9 @@ class UnknownRoute extends _i5.PageRouteInfo<UnknownRouteArgs> {
 class UnknownRouteArgs {
   const UnknownRouteArgs({this.key, required this.failure});
 
-  final _i6.Key? key;
+  final _i9.Key? key;
 
-  final _i7.CleanFailure failure;
+  final _i10.CleanFailure failure;
 
   @override
   String toString() {
@@ -120,10 +139,42 @@ class UnknownRouteArgs {
 }
 
 /// generated route for
-/// [_i4.UserNameNotFoundPage]
-class UserNameNotFoundRoute extends _i5.PageRouteInfo<void> {
+/// [_i3.UserNameNotFoundPage]
+class UserNameNotFoundRoute extends _i8.PageRouteInfo<void> {
   const UserNameNotFoundRoute()
       : super(UserNameNotFoundRoute.name, path: '/user-name-not-found-page');
 
   static const String name = 'UserNameNotFoundRoute';
+}
+
+/// generated route for
+/// [_i4.ContactPage]
+class ContactRoute extends _i8.PageRouteInfo<void> {
+  const ContactRoute() : super(ContactRoute.name, path: 'contact');
+
+  static const String name = 'ContactRoute';
+}
+
+/// generated route for
+/// [_i5.GalleryPage]
+class GalleryRoute extends _i8.PageRouteInfo<void> {
+  const GalleryRoute() : super(GalleryRoute.name, path: 'gallery');
+
+  static const String name = 'GalleryRoute';
+}
+
+/// generated route for
+/// [_i6.VideoPage]
+class VideoRoute extends _i8.PageRouteInfo<void> {
+  const VideoRoute() : super(VideoRoute.name, path: 'playlist');
+
+  static const String name = 'VideoRoute';
+}
+
+/// generated route for
+/// [_i7.BusinessPage]
+class BusinessRoute extends _i8.PageRouteInfo<void> {
+  const BusinessRoute() : super(BusinessRoute.name, path: 'business');
+
+  static const String name = 'BusinessRoute';
 }

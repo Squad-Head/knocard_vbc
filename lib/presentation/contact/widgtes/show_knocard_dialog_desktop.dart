@@ -140,51 +140,41 @@ class ShowKnocardDialogDesktop extends HookConsumerWidget {
                 SizedBox(
                   // width: 300.w,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      SizedBox(
-                        width: 1.w,
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(right: 30.w),
-                        height: 40.h,
-                        width: 70.w,
-                        child: ElevatedButton(
-                          onPressed: () async {
-                            final id = ref.watch(profileProvider
-                                .select((value) => value.userProfile.id));
-                            final ShareAndRefer shareAndRefer = ShareAndRefer(
-                                senderId: id,
-                                senderFirstName: infoFirstnameController.text,
-                                senderLastName: infoLastnameController.text,
-                                senderEmail: infoEmailController.text,
-                                senderPhoneNumber: infoMobileController.text,
-                                recipientFirstName:
-                                    shareFirstnameController.text,
-                                recipientLastName: shareLastnameController.text,
-                                recipientEmail: emailController.text,
-                                recipientPhoneNumber:
-                                    shareMobileController.text);
-                            if (formKey.currentState!.validate()) {
-                              loading.value = true;
-                              await CleanApi.instance().post(
-                                  fromJson: (json) => unit,
-                                  showLogs: true,
-                                  body: shareAndRefer.toMap(),
-                                  endPoint: 'share-and-refer');
-                              loading.value = false;
-                              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                                  content: Text(
-                                      'Email sent to ${shareAndRefer.recipientEmail}')));
-                              Navigator.pop(context);
-                            }
-                          },
-                          child: loading.value
-                              ? const CircularProgressIndicator(
-                                  color: Colors.white,
-                                )
-                              : const Text('Submit'),
-                        ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          final id = ref.watch(profileProvider
+                              .select((value) => value.userProfile.id));
+                          final ShareAndRefer shareAndRefer = ShareAndRefer(
+                              senderId: id,
+                              senderFirstName: infoFirstnameController.text,
+                              senderLastName: infoLastnameController.text,
+                              senderEmail: infoEmailController.text,
+                              senderPhoneNumber: infoMobileController.text,
+                              recipientFirstName: shareFirstnameController.text,
+                              recipientLastName: shareLastnameController.text,
+                              recipientEmail: emailController.text,
+                              recipientPhoneNumber: shareMobileController.text);
+                          if (formKey.currentState!.validate()) {
+                            loading.value = true;
+                            await CleanApi.instance().post(
+                                fromJson: (json) => unit,
+                                showLogs: true,
+                                body: shareAndRefer.toMap(),
+                                endPoint: 'share-and-refer');
+                            loading.value = false;
+                            ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                content: Text(
+                                    'Email sent to ${shareAndRefer.recipientEmail}')));
+                            Navigator.pop(context);
+                          }
+                        },
+                        child: loading.value
+                            ? const CircularProgressIndicator(
+                                color: Colors.white,
+                              )
+                            : const Text('Submit'),
                       ),
                     ],
                   ),

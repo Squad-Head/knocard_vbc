@@ -21,14 +21,14 @@ class WebVideoItem extends StatelessWidget {
           (index + 1).toString(),
           style: TextStyle(
             color: const Color(0xFF2A2A2A),
-            fontSize: 7.sp,
+            fontSize: 9.sp,
           ),
         ),
         SizedBox(width: 2.w),
         Image.network(
           video.thumbnail,
-          height: 21.h,
-          width: MediaQuery.of(context).size.width * .03,
+          height: 50.h,
+          width: MediaQuery.of(context).size.width * .05,
         ),
         SizedBox(width: 4.w),
         Column(
@@ -36,29 +36,22 @@ class WebVideoItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              // 'Get MORE With Time Blocking',
               video.title,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 color: const Color(0xFF2A2A2A),
-                fontSize: 4.sp,
+                fontSize: 10.sp,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Container(
-              constraints: BoxConstraints(
-                maxWidth: MediaQuery.of(context).size.width * .06,
-              ),
-              child: Text(
-                // 'Matt Bayrom',
-                video.description,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  color: const Color(0xFF878788),
-                  fontSize: 5.sp,
-                ),
+            Text(
+              video.description,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                color: const Color(0xFF878788),
+                fontSize: 8.sp,
               ),
             ),
           ],
