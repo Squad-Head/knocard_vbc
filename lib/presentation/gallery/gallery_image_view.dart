@@ -1,20 +1,44 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:knocard_ui/application/profile_provider.dart';
+import 'package:knocard_ui/domain/profile/photo.dart';
 
 class GalleryImageViewPage extends HookConsumerWidget {
   final int index;
-  const GalleryImageViewPage({Key? key, required this.index}) : super(key: key);
+  final List<Photo> photos;
+  const GalleryImageViewPage(
+      {Key? key, required this.index, required this.photos})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context, ref) {
-    final photos = ref.watch(
-        profileProvider.select((value) => value.userProfile.photo_galleries));
+    final selectedIndex = useState(index);
     final controller = usePageController(initialPage: index);
+    useEffect(() {
+      Future.delayed(const Duration(milliseconds: 100), () {
+        controller.addListener(() {
+          selectedIndex.value = controller.page?.toInt() ?? 0;
+        });
+      });
+      return null;
+    }, []);
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        titleTextStyle: const TextStyle(color: Colors.black),
+        title: Text(photos[selectedIndex.value].title),
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context),
+          icon: const Icon(
+            CupertinoIcons.arrow_left,
+            color: Colors.black,
+          ),
+          color: Colors.black,
+        ),
+      ),
       backgroundColor: Colors.black12,
       body: SafeArea(
         child: Center(
@@ -31,46 +55,57 @@ class GalleryImageViewPage extends HookConsumerWidget {
                       child: PageView.builder(
                         itemCount: photos.length,
                         controller: controller,
-                        itemBuilder: (context, indx) => Image(
-                          image: NetworkImage(
-                            photos[indx].link,
-                          ),
+                        itemBuilder: (context, indx) => CachedNetworkImage(
+                          imageUrl: photos[indx].link,
                         ),
                       ),
                     ),
+
                     Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Icon(
-                            FontAwesomeIcons.solidHeart,
-                            color: Colors.red,
-                            size: 25.sp,
-                          ),
-                          SizedBox(height: 10.h),
-                          Text(
-                            '21 likes',
-                            style:
-                                TextStyle(fontSize: 25.sp, color: Colors.black),
-                          ),
-                        ],
-                      ),
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(photos[selectedIndex.value].description),
                     ),
-                    SizedBox(height: 10.h),
-                    SizedBox(
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 10),
+                    //   child: Column(
+                    //     crossAxisAlignment: CrossAxisAlignment.start,
+                    //     children: [
+                    //       Icon(
+                    //         FontAwesomeIcons.solidHeart,
+                    //         color: Colors.red,
+                    //         size: 20.sp,
+                    //       ),
+                    //       SizedBox(height: 10.h),
+                    //       Text(
+                    //         '21 likes',
+                    //         style:
+                    //             TextStyle(fontSize: 20.sp, color: Colors.black),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    Container(
                       height: 600,
                       width: double.infinity,
                       child: GridView.builder(
                         itemCount: photos.length,
                         itemBuilder: (context, index) {
-                          return Card(
+                          return Container(
+                            decoration: BoxDecoration(
+                                border: Border.all(
+                                    color: index == selectedIndex.value
+                                        ? Colors.orange
+                                        : const Color(0xFF000000))),
                             child: InkWell(
-                              onTap: () {},
-                              child: Image(
-                                image: NetworkImage(
-                                  photos[index].link,
-                                ),
+                              onTap: () {
+                                controller.jumpToPage(index);
+                              },
+                              child: CachedNetworkImage(
+                                imageUrl: photos[index].link,
+                                fit: BoxFit.cover,
                               ),
                             ),
                           );

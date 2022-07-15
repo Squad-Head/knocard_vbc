@@ -1,44 +1,98 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/application/collage_provider.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/presentation/gallery/gallery_image_view.dart';
 
-class MobileGalleryPage extends ConsumerWidget {
+class MobileGalleryPage extends HookConsumerWidget {
   const MobileGalleryPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ref) {
     final photos = ref.watch(
         profileProvider.select((value) => value.userProfile.photo_galleries));
+
+    final collages = ref.watch(collageProvider);
+    useEffect(() {
+      Future.delayed(
+          const Duration(
+            milliseconds: 100,
+          ), () {
+        ref.read(collageProvider.notifier).loadCollage();
+      });
+      return null;
+    }, []);
+
     return Scaffold(
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
+        body: SafeArea(
+            child: SingleChildScrollView(
+      child: Column(children: [
+        SizedBox(
+          height: 110,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
             children: [
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: const [
-              //     KAlbums(image: 'assets/images/album.png', text: 'Album 1'),
-              //     KAlbums(image: 'assets/images/album2.png', text: 'Album 2'),
-              //     KAlbums(image: 'assets/images/album3.png', text: 'Album 3'),
-              //     KAlbums(image: 'assets/images/album4.png', text: 'Album 4'),
-              //   ],
-              // ),
-              SizedBox(height: 5.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Icon(Icons.post_add_sharp),
-                  Icon(
-                    Icons.crop_square,
-                    color: Color(0xFF9A9A9A),
-                  ),
-                  Icon(
-                    Icons.account_box,
-                    color: Color(0xFF9A9A9A),
-                  ),
-                ],
+              SizedBox(
+                width: 100,
+                child: Column(
+                  children: [
+                    if (collages.isNotEmpty)
+                      ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: collages.length,
+                          itemBuilder: (context, index) {
+                            final collage = collages[index];
+                            return collage.photoGallery.isNotEmpty
+                                ? InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  GalleryImageViewPage(
+                                                    photos:
+                                                        collage.photoGallery,
+                                                    index: 0,
+                                                  )));
+                                    },
+                                    child: SizedBox(
+                                      width: 100,
+                                      child: Column(
+                                        children: [
+                                          SizedBox(
+                                            height: 80,
+                                            width: 80,
+                                            child: CircleAvatar(
+                                              backgroundImage:
+                                                  CachedNetworkImageProvider(
+                                                      collages[index]
+                                                          .photoGallery
+                                                          .first
+                                                          .link),
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            collage.title,
+                                            style: const TextStyle(
+                                                fontWeight: FontWeight.bold),
+                                            maxLines: 1,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  )
+                                : const SizedBox.shrink();
+                          }),
+                  ],
+                ),
               ),
               SizedBox(height: 10.h),
               SizedBox(
@@ -47,19 +101,23 @@ class MobileGalleryPage extends ConsumerWidget {
                 child: GridView.builder(
                   itemCount: photos.length,
                   itemBuilder: (context, index) {
-                    return Card(
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => GalleryImageViewPage(
-                                        index: index,
-                                      )));
-                        },
-                        child: Image(
-                          image: NetworkImage(photos[index].link),
-                        ),
+                    return InkWell(
+                      onTap: () async {
+                        final data = await Navigator.push<bool>(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => GalleryImageViewPage(
+                                      photos: photos,
+                                      index: index,
+                                    )));
+
+                        if (data ?? false) {
+                          ref.read(collageProvider.notifier).loadCollage();
+                        }
+                      },
+                      child: CachedNetworkImage(
+                        fit: BoxFit.cover,
+                        imageUrl: photos[index].link,
                       ),
                     );
                   },
@@ -71,7 +129,7 @@ class MobileGalleryPage extends ConsumerWidget {
             ],
           ),
         ),
-      ),
-    );
+      ]),
+    )));
   }
 }
