@@ -60,8 +60,8 @@ class MobileBusinessPage extends HookConsumerWidget {
                         children: [
                           Text(
                             company.business_page_title,
-                            style: TextStyle(
-                              fontSize: 25.sp,
+                            style: const TextStyle(
+                              fontSize: 25,
                               color: Colors.blue,
                               fontWeight: FontWeight.w600,
                             ),
@@ -69,7 +69,6 @@ class MobileBusinessPage extends HookConsumerWidget {
                           SizedBox(
                             height: 10.h,
                           ),
-
                           if (company.promotional_video.isNotEmpty)
                             AspectRatio(
                               aspectRatio: 16 / 9,
@@ -91,7 +90,6 @@ class MobileBusinessPage extends HookConsumerWidget {
                           SizedBox(
                             height: 5.h,
                           ),
-
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10.w),
                             child: Row(
@@ -115,7 +113,6 @@ class MobileBusinessPage extends HookConsumerWidget {
                               ],
                             ),
                           ),
-
                           SizedBox(
                             width: double.infinity,
                             child: Wrap(
@@ -135,44 +132,10 @@ class MobileBusinessPage extends HookConsumerWidget {
                                       child: Text(element.title)))),
                             ),
                           ),
-
                           Divider(
                             thickness: 2,
                             color: Theme.of(context).primaryColorDark,
                           ),
-                          // SizedBox(
-                          //   height: 40.h,
-                          //   child: ListView.separated(
-                          //     scrollDirection: Axis.horizontal,
-                          //     itemCount: 4,
-                          //     separatorBuilder: (context, index) =>
-                          //         SizedBox(
-                          //       width: 10.w,
-                          //     ),
-                          //     itemBuilder: (context, index) =>
-                          //         ChoiceChip(
-                          //       avatar: const CircleAvatar(
-                          //         backgroundColor: Colors.white,
-                          //       ),
-                          //       label: const Text("LINK"),
-                          //       labelStyle: TextStyle(
-                          //         fontWeight: FontWeight.w400,
-                          //         color: Colors.white,
-                          //         fontSize: 14.sp,
-                          //       ),
-                          //       labelPadding: EdgeInsets.symmetric(
-                          //           horizontal: 10.w),
-                          //       backgroundColor:
-                          //           const Color(0xff20a0df),
-                          //       selectedColor: const Color(0xff16729f),
-                          //       pressElevation: 5,
-                          //       selected: chipSelected.value == index,
-                          //       onSelected: (value) {
-                          //         chipSelected.value = index;
-                          //       },
-                          //     ),
-                          //   ),
-                          // ),
                         ],
                       ),
                       SizedBox(
@@ -245,16 +208,16 @@ class MobileBusinessPage extends HookConsumerWidget {
                                       style: TextStyle(
                                         color: Theme.of(context).primaryColor,
                                         fontWeight: FontWeight.w500,
-                                        fontSize: 14.sp,
+                                        fontSize: 16,
                                       ),
                                     ),
                                     Text(
                                       formatDate(content.createdAt,
                                           [M, ' ', d, ', ', yy]),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         color: Colors.black38,
                                         fontWeight: FontWeight.w400,
-                                        fontSize: 12.sp,
+                                        fontSize: 12,
                                       ),
                                     ),
                                   ],
@@ -264,10 +227,10 @@ class MobileBusinessPage extends HookConsumerWidget {
                                 ),
                                 Text(
                                   content.title,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.black,
                                     fontWeight: FontWeight.w400,
-                                    fontSize: 20.sp,
+                                    fontSize: 14,
                                   ),
                                 ),
                               ],

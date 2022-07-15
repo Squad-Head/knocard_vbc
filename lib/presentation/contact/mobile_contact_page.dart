@@ -4,14 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
-import 'package:knocard_ui/presentation/contact/widgtes/mobile_gallery.dart';
+import 'package:knocard_ui/presentation/contact/widgtes/mobile_gallery_widget.dart';
 import 'package:knocard_ui/presentation/contact/widgtes/show_knocard_dialog_desktop.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/k_home_contact.dart';
-import '../widgets/k_home_menu_item.dart';
-import '../widgets/k_rates_item.dart';
-import '../widgets/k_review_articles.dart';
 import '../widgets/k_video_item.dart';
 
 class MobileContactPage extends HookConsumerWidget {
@@ -117,7 +114,7 @@ class MobileContactPage extends HookConsumerWidget {
                           SizedBox(
                             height: MediaQuery.of(context).size.width * .4,
                             width: MediaQuery.of(context).size.width * .36,
-                            child: MobileGallery(
+                            child: MobileGalleryWidget(
                               photos: photos,
                             ),
                             //color: Colors.grey,

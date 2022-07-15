@@ -1,7 +1,5 @@
 import 'package:equatable/equatable.dart';
 
-import 'package:meta/meta.dart';
-
 import '../domain/profile/company/company_external_link.dart';
 import '../domain/profile/company/company_feed.dart';
 

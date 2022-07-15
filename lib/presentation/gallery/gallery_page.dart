@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import 'package:knocard_ui/presentation/gallery/desktop_gallery/screens/desktop_gallery_page.dart';
 
-import 'package:knocard_ui/presentation/gallery/mobile_gallery_widgets/mobile_gallery.dart';
+import 'package:knocard_ui/presentation/gallery/mobile_gallery_widgets/mobile_gallery_page.dart';
 
 class GalleryPage extends StatelessWidget {
   const GalleryPage({Key? key}) : super(key: key);
