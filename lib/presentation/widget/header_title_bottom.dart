@@ -49,12 +49,13 @@ class HeaderBottom extends ConsumerWidget with PreferredSizeWidget {
               onTap: () => onTap(2),
             ),
             if (screenWidth > 700) SizedBox(width: 12.w),
-            MenuItem(
-              icon: Constants.externalIcons[user.company.icon].icon,
-              text: user.company.business_page_title,
-              selected: index == 3,
-              onTap: () => onTap(3),
-            ),
+            if (user.company.business_page_title.isNotEmpty)
+              MenuItem(
+                icon: Constants.externalIcons[user.company.icon].icon,
+                text: user.company.business_page_title,
+                selected: index == 3,
+                onTap: () => onTap(3),
+              ),
             if (screenWidth > 700) SizedBox(width: 12.w),
           ],
         ),

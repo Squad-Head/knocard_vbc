@@ -159,6 +159,7 @@ class MobileVideosPage extends HookConsumerWidget {
                                                     BorderRadius.circular(3),
                                               ),
                                               child: CachedNetworkImage(
+                                                fit: BoxFit.cover,
                                                 imageUrl:
                                                     video[index].thumbnail,
                                                 height: 110,

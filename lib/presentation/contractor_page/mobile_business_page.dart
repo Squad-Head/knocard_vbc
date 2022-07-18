@@ -117,19 +117,23 @@ class MobileBusinessPage extends HookConsumerWidget {
                             width: double.infinity,
                             child: Wrap(
                               alignment: WrapAlignment.start,
-                              children: List<ElevatedButton>.from(companyState
-                                  .buttons
-                                  .map((element) => ElevatedButton(
-                                      style: ElevatedButton.styleFrom(
-                                          primary:
-                                              Color(int.parse(element.color)),
-                                          shape: const StadiumBorder()),
-                                      onPressed: element.status == 'ACT'
-                                          ? () {
-                                              launchUrlString(element.link);
-                                            }
-                                          : null,
-                                      child: Text(element.title)))),
+                              children: List<Widget>.from(
+                                  companyState.buttons.map((element) => Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 5),
+                                        child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                                primary: Color(
+                                                    int.parse(element.color)),
+                                                shape: const StadiumBorder()),
+                                            onPressed: element.status == 'ACT'
+                                                ? () {
+                                                    launchUrlString(
+                                                        element.link);
+                                                  }
+                                                : null,
+                                            child: Text(element.title)),
+                                      ))),
                             ),
                           ),
                           Divider(

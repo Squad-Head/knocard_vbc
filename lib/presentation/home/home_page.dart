@@ -45,11 +45,13 @@ class HomePage extends HookConsumerWidget {
                 child: CircularProgressIndicator(),
               )
             : AutoTabsRouter.pageView(
-                routes: const [
-                    ContactRoute(),
-                    GalleryRoute(),
-                    VideoRoute(),
-                    BusinessRoute()
+                routes: [
+                    const ContactRoute(),
+                    const GalleryRoute(),
+                    const VideoRoute(),
+                    if (state
+                        .userProfile.company.business_page_title.isNotEmpty)
+                      const BusinessRoute()
                   ],
                 builder: (context, child, controller) {
                   return HookBuilder(builder: (context) {

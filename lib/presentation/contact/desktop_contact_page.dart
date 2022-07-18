@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
+import 'package:knocard_ui/domain/profile/profile_video.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'widgtes/show_knocard_dialog_desktop.dart';
 import 'widgtes/w_home_contact.dart';
@@ -22,7 +23,9 @@ class DesktopContactPage extends HookConsumerWidget {
     final state = ref.watch(profileProvider).userProfile;
     final photos = ref.watch(
         profileProvider.select((value) => value.userProfile.photo_galleries));
-
+    final videosCollection =
+        List<List<ProfileVideo>>.from(state.playlists.map((e) => e.videos));
+    final videos = videosCollection.expand((i) => i).toList().reversed.toList();
     return Scaffold(
       floatingActionButton: InkWell(
         onTap: () {
@@ -151,12 +154,10 @@ class DesktopContactPage extends HookConsumerWidget {
                             child: ListView.builder(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
-                              itemCount: state.playlists[0].videos.length <= 4
-                                  ? state.playlists[0].videos.length
-                                  : 4,
+                              itemCount: videos.length > 4 ? 4 : videos.length,
                               itemBuilder: (context, index) => WebVideoItem(
                                 index: index,
-                                video: state.playlists[0].videos[index],
+                                video: videos[index],
                               ),
                             ),
                           ),

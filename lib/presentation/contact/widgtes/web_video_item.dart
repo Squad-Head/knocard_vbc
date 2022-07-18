@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,7 +18,6 @@ class WebVideoItem extends StatelessWidget {
     return Row(
       children: [
         Text(
-          // '1',
           (index + 1).toString(),
           style: TextStyle(
             color: const Color(0xFF2A2A2A),
@@ -25,10 +25,15 @@ class WebVideoItem extends StatelessWidget {
           ),
         ),
         SizedBox(width: 2.w),
-        Image.network(
-          video.thumbnail,
+        CachedNetworkImage(
+          imageUrl: video.thumbnail,
           height: 50.h,
           width: MediaQuery.of(context).size.width * .05,
+          errorWidget: (context, url, error) => Container(
+            height: 50.h,
+            width: MediaQuery.of(context).size.width * .05,
+            color: Colors.blue[300],
+          ),
         ),
         SizedBox(width: 4.w),
         Column(
