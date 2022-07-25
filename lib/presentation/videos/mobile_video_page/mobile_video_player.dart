@@ -123,7 +123,7 @@ class MobileVideosPage extends HookConsumerWidget {
             Padding(
               padding: const EdgeInsets.only(left: 15),
               child: SizedBox(
-                height: 110.h,
+                height: 130,
                 child: state.playlists[selectedPlaylist.value].videos.isEmpty
                     ? const Center(child: Text('Empty Playlist'))
                     : ListView.builder(
@@ -143,11 +143,12 @@ class MobileVideosPage extends HookConsumerWidget {
                               child: Container(
                                 margin:
                                     const EdgeInsets.symmetric(horizontal: 3),
-                                width: 125,
+                                width: 130,
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Expanded(
+                                    AspectRatio(
+                                      aspectRatio: 3 / 2,
                                       child: Stack(
                                         alignment: Alignment.bottomCenter,
                                         children: [
@@ -160,9 +161,14 @@ class MobileVideosPage extends HookConsumerWidget {
                                               ),
                                               child: CachedNetworkImage(
                                                 fit: BoxFit.cover,
+                                                errorWidget:
+                                                    (context, url, error) =>
+                                                        Container(
+                                                  color: Colors.blue,
+                                                ),
                                                 imageUrl:
                                                     video[index].thumbnail,
-                                                height: 110,
+                                                height: 100,
                                                 width: 125,
                                               )),
                                           Positioned(

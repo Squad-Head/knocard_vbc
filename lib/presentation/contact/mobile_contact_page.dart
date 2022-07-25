@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
+import 'package:knocard_ui/domain/profile/profile_video.dart';
 import 'package:knocard_ui/presentation/contact/widgtes/mobile_gallery_widget.dart';
 import 'package:knocard_ui/presentation/contact/widgtes/show_knocard_dialog_desktop.dart';
 import 'package:line_icons/line_icons.dart';
@@ -21,6 +22,9 @@ class MobileContactPage extends HookConsumerWidget {
     final state = ref.watch(profileProvider).userProfile;
     final photos = ref.watch(
         profileProvider.select((value) => value.userProfile.photo_galleries));
+    final videosCollection =
+        List<List<ProfileVideo>>.from(state.playlists.map((e) => e.videos));
+    final videos = videosCollection.expand((i) => i).toList().reversed.toList();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -144,12 +148,10 @@ class MobileContactPage extends HookConsumerWidget {
                           child: ListView.separated(
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
-                            itemCount: state.playlists[0].videos.length <= 5
-                                ? state.playlists[0].videos.length
-                                : 5,
+                            itemCount: videos.length <= 5 ? videos.length : 5,
                             itemBuilder: (context, index) => KVideoItem(
                               index: index,
-                              video: state.playlists[0].videos[index],
+                              video: videos[index],
                             ),
                             separatorBuilder: (context, index) => SizedBox(
                               height: 10.h,
@@ -175,7 +177,7 @@ class MobileContactPage extends HookConsumerWidget {
         child: CircleAvatar(
           radius: 100.sp,
           backgroundColor: Colors.transparent,
-          backgroundImage: const AssetImage('icons/share_refer.png'),
+          backgroundImage: const AssetImage('assets/icons/share_refer.png'),
         ),
       ),
     );

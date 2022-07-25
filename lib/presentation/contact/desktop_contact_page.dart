@@ -37,7 +37,7 @@ class DesktopContactPage extends HookConsumerWidget {
         child: CircleAvatar(
           radius: 30.sp,
           backgroundColor: Colors.transparent,
-          backgroundImage: const AssetImage('icons/share_refer.png'),
+          backgroundImage: const AssetImage('assets/icons/share_refer.png'),
         ),
       ),
       body: Container(

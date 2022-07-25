@@ -92,31 +92,18 @@ class MobileBusinessPage extends HookConsumerWidget {
                           ),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10.w),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  company.description,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                Text(
-                                  'Apr 30, 2022',
-                                  style: TextStyle(
-                                    color: Colors.black54,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 12.sp,
-                                  ),
-                                ),
-                              ],
+                            child: Text(
+                              company.description,
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ),
                           SizedBox(
                             width: double.infinity,
                             child: Wrap(
-                              alignment: WrapAlignment.start,
+                              alignment: WrapAlignment.spaceEvenly,
                               children: List<Widget>.from(
                                   companyState.buttons.map((element) => Padding(
                                         padding: const EdgeInsets.symmetric(
@@ -143,7 +130,7 @@ class MobileBusinessPage extends HookConsumerWidget {
                         ],
                       ),
                       SizedBox(
-                        height: 30.h,
+                        height: 20.h,
                       ),
                       ListView.separated(
                         shrinkWrap: true,
@@ -159,7 +146,8 @@ class MobileBusinessPage extends HookConsumerWidget {
                           return Container(
                             padding: EdgeInsets.symmetric(
                                 horizontal: 10.w, vertical: 10.w),
-                            margin: EdgeInsets.symmetric(horizontal: 10.w),
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 10.w, vertical: 5),
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10.r),
                               color: Colors.white,
@@ -226,15 +214,16 @@ class MobileBusinessPage extends HookConsumerWidget {
                                     ),
                                   ],
                                 ),
-                                SizedBox(
-                                  height: 10.h,
-                                ),
-                                Text(
-                                  content.title,
-                                  style: const TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14,
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 5),
+                                  child: Text(
+                                    content.description,
+                                    style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14,
+                                    ),
                                   ),
                                 ),
                               ],
