@@ -65,6 +65,7 @@ class ProfileBackground extends Equatable {
     } else if (categCode == Constants.uploadBackground) {
       final link = background.split('|')[2];
       return ProfileBackground(
+          imageUrl: link,
           textColor: Colors.black,
           id: int.parse(id),
           categCode: categCode,
@@ -75,41 +76,27 @@ class ProfileBackground extends Equatable {
             height: 190,
           ));
     } else {
-      return ProfileBackground(
-          textColor: Colors.black,
-          id: int.parse(id),
-          categCode: categCode,
-          widget: Container(
-            height: 190,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color(0xff1d92c8),
-                  Color(0xffc1ddef),
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-          ));
+      return defaultBg();
     }
 
-    return ProfileBackground(
-        textColor: Colors.black,
-        id: int.parse(id),
-        categCode: categCode,
-        widget: Container(
-          height: 190,
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                Color(0xff1d92c8),
-                Color(0xffc1ddef),
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-          ),
-        ));
+    return defaultBg();
   }
+
+  static ProfileBackground defaultBg() => ProfileBackground(
+      textColor: Colors.black,
+      id: -1,
+      categCode: '',
+      widget: Container(
+        height: 190,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              Color(0xff1d92c8),
+              Color(0xffc1ddef),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+      ));
 }

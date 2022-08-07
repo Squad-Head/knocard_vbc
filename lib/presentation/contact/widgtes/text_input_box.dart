@@ -4,9 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class TextInputBox extends StatelessWidget {
   final TextEditingController controller;
   final String text;
+  final bool required;
   const TextInputBox({
     required this.text,
     required this.controller,
+    this.required = true,
     Key? key,
   }) : super(key: key);
 
@@ -30,7 +32,7 @@ class TextInputBox extends StatelessWidget {
             ),
             Expanded(
               child: TextFormField(
-                validator: validate,
+                validator: required ? validate : null,
                 controller: controller,
                 decoration: const InputDecoration(
                   isDense: true,
@@ -48,7 +50,7 @@ class TextInputBox extends StatelessWidget {
     if (value != null && value.isNotEmpty) {
       return null;
     } else {
-      return 'You must fill this field';
+      return 'This is a mandatory field';
     }
   }
 }

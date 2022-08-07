@@ -20,7 +20,7 @@ class HeaderBottom extends ConsumerWidget with PreferredSizeWidget {
     return LayoutBuilder(builder: (context, constraints) {
       final screenWidth = constraints.maxWidth;
       return Container(
-        height: 50,
+        height: 60,
         width: MediaQuery.of(context).size.width,
         color: const Color(0xffF6F6FF),
         child: Row(

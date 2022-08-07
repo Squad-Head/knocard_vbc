@@ -81,6 +81,7 @@ class ShowKnocardDialogDesktop extends HookConsumerWidget {
                       TextInputBox(
                         controller: shareLastnameController,
                         text: 'Last Name',
+                        required: false,
                       ),
                       SizedBox(
                         height: 15.h,
@@ -119,6 +120,7 @@ class ShowKnocardDialogDesktop extends HookConsumerWidget {
                       TextInputBox(
                         controller: infoLastnameController,
                         text: 'Last Name',
+                        required: false,
                       ),
                       SizedBox(
                         height: 15.h,
@@ -126,6 +128,9 @@ class ShowKnocardDialogDesktop extends HookConsumerWidget {
                       TextInputBox(
                         controller: infoMobileController,
                         text: 'Mobile Number*',
+                      ),
+                      SizedBox(
+                        height: 15.h,
                       ),
                       TextInputBox(
                         controller: infoEmailController,

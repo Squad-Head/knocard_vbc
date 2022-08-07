@@ -70,8 +70,10 @@ class HomePage extends HookConsumerWidget {
                       headerSliverBuilder: (context, innerBoxIsScrolled) {
                         return [
                           SliverAppBar(
-                            expandedHeight: 300,
-                            toolbarHeight: 50,
+                            expandedHeight: 260,
+                            elevation: 0,
+                            collapsedHeight: 60,
+                            toolbarHeight: 60,
                             pinned: true,
                             bottom: HeaderBottom(
                                 index: index.value,

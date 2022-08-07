@@ -8,16 +8,23 @@ class ProfileRepo extends IProfileRepo {
   final cleanApi = CleanApi.instance();
   @override
   Future<Either<CleanFailure, UserProfile>> getProfile(String userName) async {
-    // await Future.delayed(const Duration(seconds: 2));
-    // final mapData = jsonDecode(data);
-    // Logger.i(mapData);
-    // final profile = UserProfile.fromMap(mapData['data']["user"][0]);
-    // return right(profile);
-    return await cleanApi.get(
+    final data = await cleanApi.get(
       fromJson: ((json) => UserProfile.fromMap(json['data']["user"][0])),
       endPoint: 'user/vbc/$userName',
-      // showLogs: true,
     );
+
+    return await data.fold((l) => left(l), (r) async {
+      await cleanApi.post(
+          fromJson: (json) => unit,
+          body: {
+            "user_id": r.id,
+            "log_name": "copied",
+            "activity_code": "contact_page",
+          },
+          showLogs: true,
+          endPoint: 'tracking/desktop/click/save');
+      return right(r);
+    });
   }
 
   @override
@@ -33,7 +40,10 @@ class ProfileRepo extends IProfileRepo {
         },
         endPoint: "company-feeds?company_id=$companyId");
 
-    return data;
+    return data.fold((l) => left(l), (r) {
+      r.sort(((a, b) => b.createdAt.compareTo(a.createdAt)));
+      return right(r);
+    });
   }
 
   @override

@@ -7,6 +7,7 @@ import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/domain/profile/profile_video.dart';
 import 'package:knocard_ui/presentation/contact/widgtes/mobile_gallery_widget.dart';
 import 'package:knocard_ui/presentation/contact/widgtes/show_knocard_dialog_desktop.dart';
+import 'package:knocard_ui/presentation/contact/widgtes/show_knocard_dialog_mobile.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/k_home_contact.dart';
@@ -172,7 +173,7 @@ class MobileContactPage extends HookConsumerWidget {
           // Share.share('http://dev.knocard.com/iamginofernando');
           showDialog(
               context: context,
-              builder: (context) => const ShowKnocardDialogDesktop());
+              builder: (context) => const ShowKnocardDialogMobile());
         },
         child: CircleAvatar(
           radius: 100.sp,
