@@ -2,6 +2,7 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chewie/chewie.dart';
+import 'package:clean_api/clean_api.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -40,6 +41,16 @@ class DesktopBusinessPage extends HookConsumerWidget {
     useEffect(() {
       Future.delayed(const Duration(milliseconds: 200), () {
         ref.read(companyProvider(company.id).notifier).getFeed();
+        CleanApi.instance().post(
+            fromJson: (json) => unit,
+            body: {
+              "user_id": ref.watch(
+                  profileProvider.select((value) => value.userProfile.id)),
+              "log_name": "viewed",
+              "activity_code": "company_page",
+            },
+            showLogs: true,
+            endPoint: 'tracking/desktop/click/save');
       });
       return null;
     }, []);

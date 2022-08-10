@@ -45,26 +45,32 @@ class MobileContactPage extends HookConsumerWidget {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        InkWell(
-                          onTap: () {
-                            final number = state.phone_country_code +
-                                (state.mobile_number.isNotEmpty
-                                    ? state.mobile_number
-                                    : state.phone_number);
-                            final Uri telLaunchUri = Uri(
-                              scheme: 'tel',
-                              path: number,
-                            );
+                        if ((state.phone_number.isNotEmpty &&
+                                state.showPhoneNumber == 1) ||
+                            state.company.business_mobile_phone.isNotEmpty)
+                          InkWell(
+                            onTap: () {
+                              final number = state.phone_country_code +
+                                  (state.phone_number.isNotEmpty &&
+                                          state.showPhoneNumber == 1
+                                      ? state.phone_number
+                                      : state.company.business_mobile_phone);
+                              final Uri telLaunchUri = Uri(
+                                scheme: 'tel',
+                                path: number,
+                              );
 
-                            launchUrl(telLaunchUri);
-                          },
-                          child: KHomeContact(
-                            icon: const Icon(FontAwesomeIcons.mobile),
-                            text: state.mobile_number.isNotEmpty
-                                ? state.mobile_number
-                                : state.phone_number,
+                              launchUrl(telLaunchUri);
+                            },
+                            child: KHomeContact(
+                              icon: const Icon(FontAwesomeIcons.mobile),
+                              text: state.phone_country_code +
+                                  (state.phone_number.isNotEmpty &&
+                                          state.showPhoneNumber == 1
+                                      ? state.phone_number
+                                      : state.company.business_mobile_phone),
+                            ),
                           ),
-                        ),
                         SizedBox(height: 1.h),
                         InkWell(
                           onTap: () {

@@ -55,7 +55,9 @@ class UserProfile extends Equatable {
   final List<Playlist> playlists;
   final String longitude;
   final String latitude;
+  final int showPhoneNumber;
   const UserProfile({
+    required this.showPhoneNumber,
     required this.id,
     required this.name,
     required this.username,
@@ -97,48 +99,49 @@ class UserProfile extends Equatable {
     required this.latitude,
   });
 
-  UserProfile copyWith({
-    int? id,
-    String? name,
-    String? username,
-    String? first_name,
-    String? last_name,
-    String? email,
-    String? api_token,
-    String? phone_country_code,
-    dynamic? mobile_number,
-    String? street1,
-    String? street2,
-    String? city,
-    String? state,
-    int? zip_code,
-    String? profile_picture,
-    String? occupation,
-    dynamic? tagline,
-    dynamic? about_me,
-    String? phone_number,
-    dynamic? integration_id,
-    dynamic? gateway,
-    dynamic? card_brand,
-    dynamic? card_last_four,
-    String? role,
-    int? get_started,
-    dynamic? meta_tags,
-    int? is_legacy,
-    dynamic? create_and_share_id,
-    int? show_profile_picture,
-    String? status,
-    dynamic? go_live_code,
-    Company? company,
-    Knocard? knocard,
-    List<Photo>? photo_galleries,
-    List<SocialMedia>? social_media,
-    List<ExternalPageData>? external_pages,
-    List<Playlist>? playlists,
-    String? longitude,
-    String? latitude,
-  }) {
+  UserProfile copyWith(
+      {int? id,
+      String? name,
+      String? username,
+      String? first_name,
+      String? last_name,
+      String? email,
+      String? api_token,
+      String? phone_country_code,
+      dynamic? mobile_number,
+      String? street1,
+      String? street2,
+      String? city,
+      String? state,
+      int? zip_code,
+      String? profile_picture,
+      String? occupation,
+      dynamic? tagline,
+      dynamic? about_me,
+      String? phone_number,
+      dynamic? integration_id,
+      dynamic? gateway,
+      dynamic? card_brand,
+      dynamic? card_last_four,
+      String? role,
+      int? get_started,
+      dynamic? meta_tags,
+      int? is_legacy,
+      dynamic? create_and_share_id,
+      int? show_profile_picture,
+      String? status,
+      dynamic? go_live_code,
+      Company? company,
+      Knocard? knocard,
+      List<Photo>? photo_galleries,
+      List<SocialMedia>? social_media,
+      List<ExternalPageData>? external_pages,
+      List<Playlist>? playlists,
+      String? longitude,
+      String? latitude,
+      int? showPhoneNumber}) {
     return UserProfile(
+      showPhoneNumber: showPhoneNumber ?? this.showPhoneNumber,
       id: id ?? this.id,
       name: name ?? this.name,
       username: username ?? this.username,
@@ -186,6 +189,7 @@ class UserProfile extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
+      'show_phone_number': showPhoneNumber,
       'id': id,
       'name': name,
       'username': username,
@@ -230,6 +234,7 @@ class UserProfile extends Equatable {
 
   factory UserProfile.fromMap(Map<String, dynamic> map) {
     return UserProfile(
+      showPhoneNumber: map['show_phone_number']?.toInt() ?? 0,
       id: map['id']?.toInt() ?? 0,
       name: map['name'] ?? '',
       username: map['username'] ?? '',
@@ -296,6 +301,7 @@ class UserProfile extends Equatable {
   @override
   List<Object> get props {
     return [
+      showPhoneNumber,
       id,
       name,
       username,
@@ -343,6 +349,7 @@ class UserProfile extends Equatable {
   factory UserProfile.fromJson(String source) =>
       UserProfile.fromMap(json.decode(source));
   factory UserProfile.init() => UserProfile(
+      showPhoneNumber: 0,
       id: 0,
       name: '',
       username: '',

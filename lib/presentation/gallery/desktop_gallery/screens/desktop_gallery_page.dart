@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:clean_api/clean_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/collage_provider.dart';
+import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/presentation/gallery/gallery_image_view.dart';
 
 import '../components/photo_grid.dart';
@@ -20,6 +22,16 @@ class DesktopGalleryPage extends HookConsumerWidget {
             milliseconds: 100,
           ), () {
         ref.read(collageProvider.notifier).loadCollage();
+        CleanApi.instance().post(
+            fromJson: (json) => unit,
+            body: {
+              "user_id": ref.watch(
+                  profileProvider.select((value) => value.userProfile.id)),
+              "log_name": "viewed",
+              "activity_code": "photo_gallery_page",
+            },
+            showLogs: true,
+            endPoint: 'tracking/desktop/click/save');
       });
       return null;
     }, []);

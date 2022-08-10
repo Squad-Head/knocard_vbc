@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:clean_api/clean_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,6 +18,28 @@ class MobileVideosPage extends HookConsumerWidget {
     final videoScrollController = useScrollController();
     final playlistScrollController = useScrollController();
     final controller = usePageController(keepPage: false);
+    useEffect(() {
+      Future.delayed(const Duration(milliseconds: 100), () {
+        Logger.i('calling plauylist');
+        Logger.i({
+          "user_id": ref
+              .watch(profileProvider.select((value) => value.userProfile.id)),
+          "log_name": "viewed",
+          "activity_code": "playlist_page",
+        });
+        CleanApi.instance().post(
+            fromJson: (json) => unit,
+            body: {
+              "user_id": ref.watch(
+                  profileProvider.select((value) => value.userProfile.id)),
+              "log_name": "copied",
+              "activity_code": "playlist_page",
+            },
+            showLogs: true,
+            endPoint: 'tracking/desktop/click/save');
+      });
+      return null;
+    }, []);
     return Scaffold(
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
