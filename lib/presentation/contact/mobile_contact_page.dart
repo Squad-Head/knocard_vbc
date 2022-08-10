@@ -6,7 +6,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/domain/profile/profile_video.dart';
 import 'package:knocard_ui/presentation/contact/widgtes/mobile_gallery_widget.dart';
-import 'package:knocard_ui/presentation/contact/widgtes/show_knocard_dialog_desktop.dart';
 import 'package:knocard_ui/presentation/contact/widgtes/show_knocard_dialog_mobile.dart';
 import 'package:line_icons/line_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -48,15 +47,19 @@ class MobileContactPage extends HookConsumerWidget {
                       children: [
                         InkWell(
                           onTap: () {
+                            final number = state.phone_country_code +
+                                (state.mobile_number.isNotEmpty
+                                    ? state.mobile_number
+                                    : state.phone_number);
                             final Uri telLaunchUri = Uri(
                               scheme: 'tel',
-                              path: state.mobile_number,
+                              path: number,
                             );
 
                             launchUrl(telLaunchUri);
                           },
                           child: KHomeContact(
-                            icon: const Icon(FontAwesomeIcons.mobileScreen),
+                            icon: const Icon(FontAwesomeIcons.mobile),
                             text: state.mobile_number.isNotEmpty
                                 ? state.mobile_number
                                 : state.phone_number,
@@ -88,6 +91,10 @@ class MobileContactPage extends HookConsumerWidget {
                                 ', ' +
                                 state.state +
                                 ', ' +
+                                state.street1 +
+                                ', ' +
+                                state.street2 +
+                                ', ' +
                                 state.zip_code.toString(),
                           ),
                         ),
@@ -98,6 +105,7 @@ class MobileContactPage extends HookConsumerWidget {
                 SizedBox(height: 20.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     if (photos.isNotEmpty)
                       Column(
@@ -116,13 +124,17 @@ class MobileContactPage extends HookConsumerWidget {
                             ),
                           ),
                           SizedBox(height: 5.h),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.width * .4,
-                            width: MediaQuery.of(context).size.width * .36,
-                            child: MobileGalleryWidget(
-                              photos: photos,
+                          GestureDetector(
+                            onTap: () {
+                              AutoTabsRouter.of(context).setActiveIndex(1);
+                            },
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * .36,
+                              child: MobileGalleryWidget(
+                                photos: photos,
+                              ),
+                              //color: Colors.grey,
                             ),
-                            //color: Colors.grey,
                           ),
                         ],
                       ),
@@ -143,19 +155,23 @@ class MobileContactPage extends HookConsumerWidget {
                           ),
                         ),
                         SizedBox(height: 5.h),
-                        SizedBox(
-                          height: MediaQuery.of(context).size.width * .4,
-                          width: MediaQuery.of(context).size.width * .5,
-                          child: ListView.separated(
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: videos.length <= 5 ? videos.length : 5,
-                            itemBuilder: (context, index) => KVideoItem(
-                              index: index,
-                              video: videos[index],
-                            ),
-                            separatorBuilder: (context, index) => SizedBox(
-                              height: 10.h,
+                        GestureDetector(
+                          onTap: () {
+                            AutoTabsRouter.of(context).setActiveIndex(2);
+                          },
+                          child: SizedBox(
+                            width: MediaQuery.of(context).size.width * .5,
+                            child: ListView.separated(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: videos.length <= 5 ? videos.length : 5,
+                              itemBuilder: (context, index) => KVideoItem(
+                                index: index,
+                                video: videos[index],
+                              ),
+                              separatorBuilder: (context, index) => SizedBox(
+                                height: 10.h,
+                              ),
                             ),
                           ),
                         ),

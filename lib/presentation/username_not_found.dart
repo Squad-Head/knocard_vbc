@@ -45,6 +45,12 @@ class UserNameNotFoundPage extends HookConsumerWidget {
                 padding: EdgeInsets.symmetric(horizontal: 60.w),
                 child: TextField(
                   controller: usernameController,
+                  onSubmitted: (_) {
+                    if (usernameController.text.isNotEmpty) {
+                      AutoRouter.of(context).replace(
+                          HomeRoute(userName: usernameController.text));
+                    }
+                  },
                   decoration: InputDecoration(
                     suffix: InkWell(
                         onTap: () {

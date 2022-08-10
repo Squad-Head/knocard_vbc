@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart' hide MenuItem;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
-import 'package:knocard_ui/domain/profile/profile_background.dart';
+import 'package:knocard_ui/domain/profile/constants.dart';
 import 'package:knocard_ui/style/color.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -24,11 +24,19 @@ class HeaderBackground extends ConsumerWidget {
             Container(
               height: 50,
               color: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Image.asset('assets/images/knocard_logo.png'),
+                  InkWell(
+                      onTap: () async {
+                        final can = await canLaunchUrlString(
+                            'https://www.knocard.com/');
+                        if (can) {
+                          launchUrlString('https://www.knocard.com/');
+                        }
+                      },
+                      child: Image.asset('assets/images/knocard_logo.png')),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: Colors.orange,
@@ -41,7 +49,7 @@ class HeaderBackground extends ConsumerWidget {
                       },
                       child: Row(
                         children: const [
-                          Text('Get your own KnoCard'),
+                          Text('Get KnoCard'),
                           SizedBox(
                             width: 5,
                           ),
@@ -118,54 +126,42 @@ class HeaderBackground extends ConsumerWidget {
               ),
             ),
           ),
-        state.getBackGround() == ProfileBackground.defaultBg()
-            ? Center(
-                child: Container(
-                    height: 100,
-                    width: 100,
-                    margin: const EdgeInsets.only(bottom: 60),
+        if (state.profile_picture.isEmpty && state.show_profile_picture != 0)
+          state.getBackGround().categCode != Constants.uploadBackground
+              ? Center(
+                  child: Container(
+                      height: 135,
+                      width: 135,
+                      margin: const EdgeInsets.only(bottom: 60),
+                      clipBehavior: Clip.hardEdge,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 2, color: Colors.white),
+                          image: DecorationImage(
+                              image: state.profile_picture.isEmpty
+                                  ? const AssetImage(
+                                      'assets/images/placeholder_profile.png')
+                                  : CachedNetworkImageProvider(
+                                          state.profile_picture)
+                                      as ImageProvider))))
+              : Positioned(
+                  left: 20,
+                  bottom: 80,
+                  child: Container(
+                    height: 80,
+                    width: 80,
                     clipBehavior: Clip.hardEdge,
                     decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(width: 2, color: Colors.white),
                         image: DecorationImage(
-                            image: state.profile_picture.isEmpty
+                            image: state.profile_picture.isEmpty ||
+                                    state.show_profile_picture == 0
                                 ? const AssetImage(
                                     'assets/images/placeholder_profile.png')
                                 : CachedNetworkImageProvider(
-                                    state.profile_picture) as ImageProvider))))
-            : Positioned(
-                left: 20,
-                bottom: 80,
-                child: Container(
-                  height: 80,
-                  width: 80,
-                  clipBehavior: Clip.hardEdge,
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      border: Border.all(width: 2, color: Colors.white),
-                      image: DecorationImage(
-                          image: state.profile_picture.isEmpty ||
-                                  state.show_profile_picture == 0
-                              ? const AssetImage(
-                                  'assets/images/placeholder_profile.png')
-                              : CachedNetworkImageProvider(
-                                  state.profile_picture) as ImageProvider)),
-                )),
-        // Positioned(
-        //     left: 40.w,
-        //     top: 150,
-        //     child: Container(
-        //       height: 80,
-        //       width: 80,
-        //       decoration: BoxDecoration(
-        //           shape: BoxShape.circle,
-        //           border: Border.all(width: 2, color: Colors.white),
-        //           image: DecorationImage(
-        //               image: CachedNetworkImageProvider(ref.watch(
-        //                   profileProvider.select(
-        //                       (value) => value.userProfile.profile_picture))))),
-        //     )),
+                                    state.profile_picture) as ImageProvider)),
+                  )),
         Positioned(
             top: 60.h,
             right: 10.w,

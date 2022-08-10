@@ -10,6 +10,8 @@ class MobileGalleryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.builder(
       itemCount: photos.length,
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
       gridDelegate:
           const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
       itemBuilder: (context, index) => CachedNetworkImage(

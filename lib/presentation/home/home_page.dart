@@ -70,7 +70,7 @@ class HomePage extends HookConsumerWidget {
                       headerSliverBuilder: (context, innerBoxIsScrolled) {
                         return [
                           SliverAppBar(
-                            expandedHeight: 260,
+                            expandedHeight: 350,
                             elevation: 0,
                             collapsedHeight: 60,
                             toolbarHeight: 60,
@@ -100,26 +100,6 @@ class HomePage extends HookConsumerWidget {
                         ];
                       },
                       body: child,
-                      // body: PageView(
-                      //   physics: const NeverScrollableScrollPhysics(),
-                      //   controller: controller,
-                      //   children: [
-                      //     // Container(
-                      //     //   color: Colors.red,
-                      //     // ),
-                      //     ContactPage(
-                      //       moveToGallery: () {
-                      //         controller.jumpToPage(1);
-                      //       },
-                      //       moveToVideo: () {
-                      //         controller.jumpToPage(2);
-                      //       },
-                      //     ),
-                      //     const GalleryPage(),
-                      //     const VideoPage(),
-                      //     const BusinessPage(),
-                      //   ],
-                      // ),
                     );
                   });
                 }));
