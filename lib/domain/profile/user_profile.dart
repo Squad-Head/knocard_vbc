@@ -389,4 +389,17 @@ class UserProfile extends Equatable {
       longitude: '',
       latitude: '',
       photo_galleries: const []);
+
+  String getUserAddress() {
+    final isNotEmpty = (street1 + street2).isNotEmpty;
+
+    final strt = street1.isNotEmpty && street2.isNotEmpty
+        ? street1 + ', ' + street2
+        : street1 + street2;
+    final address = [if (isNotEmpty) strt, city, state, zip_code.toString()];
+
+    return address
+        .where((element) => element.isNotEmpty && element != '0')
+        .join(', ');
+  }
 }

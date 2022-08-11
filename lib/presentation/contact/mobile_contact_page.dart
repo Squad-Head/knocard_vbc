@@ -47,14 +47,14 @@ class MobileContactPage extends HookConsumerWidget {
                       children: [
                         if ((state.phone_number.isNotEmpty &&
                                 state.showPhoneNumber == 1) ||
-                            state.company.business_mobile_phone.isNotEmpty)
+                            state.company.business_phone.isNotEmpty)
                           InkWell(
                             onTap: () {
                               final number = state.phone_country_code +
                                   (state.phone_number.isNotEmpty &&
                                           state.showPhoneNumber == 1
                                       ? state.phone_number
-                                      : state.company.business_mobile_phone);
+                                      : state.company.business_phone);
                               final Uri telLaunchUri = Uri(
                                 scheme: 'tel',
                                 path: number,
@@ -68,7 +68,7 @@ class MobileContactPage extends HookConsumerWidget {
                                   (state.phone_number.isNotEmpty &&
                                           state.showPhoneNumber == 1
                                       ? state.phone_number
-                                      : state.company.business_mobile_phone),
+                                      : state.company.business_phone),
                             ),
                           ),
                         SizedBox(height: 1.h),
@@ -93,15 +93,7 @@ class MobileContactPage extends HookConsumerWidget {
                           },
                           child: KHomeContact(
                             icon: const Icon(LineIcons.globe),
-                            text: state.city +
-                                ', ' +
-                                state.state +
-                                ', ' +
-                                state.street1 +
-                                ', ' +
-                                state.street2 +
-                                ', ' +
-                                state.zip_code.toString(),
+                            text: state.getUserAddress(),
                           ),
                         ),
                       ],

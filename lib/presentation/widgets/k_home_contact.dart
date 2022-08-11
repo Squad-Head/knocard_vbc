@@ -8,22 +8,28 @@ class KHomeContact extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 20.h,
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: 300),
+      // height: 20.h,
       child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           IconButton(
             icon: icon,
+            padding: EdgeInsets.zero,
             iconSize: 50.sp,
             color: const Color(0xFF088AC6),
             onPressed: () {},
           ),
           SizedBox(width: 10.w),
-          Text(
-            text,
-            style: TextStyle(
-              color: const Color(0xFF7A7C79),
-              fontSize: 50.sp,
+          Flexible(
+            child: Text(
+              text,
+              style: TextStyle(
+                color: const Color(0xFF7A7C79),
+                fontSize: 50.sp,
+              ),
             ),
           ),
         ],

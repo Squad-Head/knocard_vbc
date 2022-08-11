@@ -126,7 +126,7 @@ class HeaderBackground extends ConsumerWidget {
               ),
             ),
           ),
-        if (state.profile_picture.isEmpty && state.show_profile_picture != 0)
+        if (state.profile_picture.isNotEmpty && state.show_profile_picture != 0)
           state.getBackGround().categCode != Constants.uploadBackground
               ? Center(
                   child: Container(

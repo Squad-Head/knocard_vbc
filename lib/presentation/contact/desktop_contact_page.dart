@@ -52,22 +52,32 @@ class DesktopContactPage extends HookConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               //mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                InkWell(
-                  onTap: () {
-                    final Uri telLaunchUri = Uri(
-                      scheme: 'tel',
-                      path: state.mobile_number,
-                    );
+                if ((state.phone_number.isNotEmpty &&
+                        state.showPhoneNumber == 1) ||
+                    state.company.business_phone.isNotEmpty)
+                  InkWell(
+                    onTap: () {
+                      final number = state.phone_country_code +
+                          (state.phone_number.isNotEmpty &&
+                                  state.showPhoneNumber == 1
+                              ? state.phone_number
+                              : state.company.business_phone);
+                      final Uri telLaunchUri = Uri(
+                        scheme: 'tel',
+                        path: number,
+                      );
 
-                    launchUrl(telLaunchUri);
-                  },
-                  child: WHomeContact(
-                    icon: FontAwesomeIcons.mobileScreen,
-                    text: state.mobile_number.isNotEmpty
-                        ? state.mobile_number
-                        : state.phone_number,
+                      launchUrl(telLaunchUri);
+                    },
+                    child: WHomeContact(
+                      icon: FontAwesomeIcons.mobileScreen,
+                      text: state.phone_country_code +
+                          (state.phone_number.isNotEmpty &&
+                                  state.showPhoneNumber == 1
+                              ? state.phone_number
+                              : state.company.business_phone),
+                    ),
                   ),
-                ),
                 SizedBox(height: 5.w),
                 InkWell(
                   onTap: () {
@@ -90,11 +100,7 @@ class DesktopContactPage extends HookConsumerWidget {
                   },
                   child: WHomeContact(
                     icon: FontAwesomeIcons.globe,
-                    text: state.city +
-                        ', ' +
-                        state.state +
-                        ', ' +
-                        state.zip_code.toString(),
+                    text: state.getUserAddress(),
                   ),
                 ),
                 SizedBox(height: 18.h),
