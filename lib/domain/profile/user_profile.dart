@@ -51,7 +51,7 @@ class UserProfile extends Equatable {
   final List<Photo> photo_galleries;
 
   final List<SocialMedia> social_media;
-  final List<ExternalPageData> external_pages;
+  final ExternalPageData? external_pages;
   final List<Playlist> playlists;
   final String longitude;
   final String latitude;
@@ -135,12 +135,13 @@ class UserProfile extends Equatable {
       Knocard? knocard,
       List<Photo>? photo_galleries,
       List<SocialMedia>? social_media,
-      List<ExternalPageData>? external_pages,
+      ExternalPageData? external_pages,
       List<Playlist>? playlists,
       String? longitude,
       String? latitude,
       int? showPhoneNumber}) {
     return UserProfile(
+      external_pages: external_pages ?? this.external_pages,
       showPhoneNumber: showPhoneNumber ?? this.showPhoneNumber,
       id: id ?? this.id,
       name: name ?? this.name,
@@ -177,7 +178,6 @@ class UserProfile extends Equatable {
       knocard: knocard ?? this.knocard,
       photo_galleries: photo_galleries ?? this.photo_galleries,
       social_media: social_media ?? this.social_media,
-      external_pages: external_pages ?? this.external_pages,
       playlists: playlists ?? this.playlists,
       longitude: longitude ?? this.longitude,
       latitude: latitude ?? this.latitude,
@@ -225,7 +225,7 @@ class UserProfile extends Equatable {
       'knocard': knocard.toMap(),
       'photo_galleries': photo_galleries.map((x) => x.toMap()).toList(),
       'social_media': social_media.map((x) => x.toMap()).toList(),
-      'external_pages': external_pages.map((x) => x.toMap()).toList(),
+      'external_pages': external_pages?.toMap(),
       'playlists': playlists.map((x) => x.toMap()).toList(),
       'longitude': longitude,
       'latitude': latitude,
@@ -272,8 +272,9 @@ class UserProfile extends Equatable {
           map['photo_galleries']?.map((x) => Photo.fromMap(x))),
       social_media: List<SocialMedia>.from(
           map['social_media']?.map((x) => SocialMedia.fromMap(x))),
-      external_pages: List<ExternalPageData>.from(
-          map['external_pages']?.map((x) => ExternalPageData.fromMap(x))),
+      external_pages: map['external_pages'] != null
+          ? ExternalPageData.fromMap(map['external_pages'])
+          : null,
       playlists: List<Playlist>.from(
           map['playlists']?.map((x) => Playlist.fromMap(x))),
       longitude: map['longitude'] ?? '',
@@ -299,7 +300,7 @@ class UserProfile extends Equatable {
   }
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       showPhoneNumber,
       id,
@@ -384,7 +385,7 @@ class UserProfile extends Equatable {
       company: Company.init(),
       knocard: Knocard.init(),
       social_media: const [],
-      external_pages: const [],
+      external_pages: null,
       playlists: const [],
       longitude: '',
       latitude: '',

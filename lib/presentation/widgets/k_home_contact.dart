@@ -1,38 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class KHomeContact extends StatelessWidget {
-  const KHomeContact({Key? key, required this.icon, required this.text})
+  const KHomeContact(
+      {Key? key, required this.icon, required this.text, required this.onTap})
       : super(key: key);
-  final Icon icon;
+  final IconData icon;
   final String text;
+  final void Function() onTap;
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
-      constraints: const BoxConstraints(maxWidth: 300),
-      // height: 20.h,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          IconButton(
-            icon: icon,
-            padding: EdgeInsets.zero,
-            iconSize: 50.sp,
-            color: const Color(0xFF088AC6),
-            onPressed: () {},
+      constraints: const BoxConstraints(maxWidth: 200),
+      child: ListTile(
+        contentPadding: EdgeInsets.zero,
+        dense: true,
+        visualDensity: VisualDensity.compact,
+        horizontalTitleGap: 0,
+        onTap: onTap,
+        leading: Icon(
+          icon,
+          color: const Color(0xFF088AC6),
+        ),
+        title: Text(
+          text,
+          style: const TextStyle(
+            color: Color(0xFF7A7C79),
+            fontSize: 14,
           ),
-          SizedBox(width: 10.w),
-          Flexible(
-            child: Text(
-              text,
-              style: TextStyle(
-                color: const Color(0xFF7A7C79),
-                fontSize: 50.sp,
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

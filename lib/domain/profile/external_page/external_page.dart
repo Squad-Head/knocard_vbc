@@ -4,8 +4,6 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-import 'external_page_file.dart';
-
 class ExternalPageData extends Equatable {
   final int id;
   final int user_id;
@@ -15,7 +13,6 @@ class ExternalPageData extends Equatable {
   final int is_selected;
   final DateTime created_at;
   final DateTime updated_at;
-  final List<ExternalPageFile> external_page_files;
   const ExternalPageData({
     required this.id,
     required this.user_id,
@@ -25,7 +22,6 @@ class ExternalPageData extends Equatable {
     required this.is_selected,
     required this.created_at,
     required this.updated_at,
-    required this.external_page_files,
   });
 
   ExternalPageData copyWith({
@@ -37,7 +33,6 @@ class ExternalPageData extends Equatable {
     int? is_selected,
     DateTime? created_at,
     DateTime? updated_at,
-    List<ExternalPageFile>? external_page_files,
   }) {
     return ExternalPageData(
       id: id ?? this.id,
@@ -48,7 +43,6 @@ class ExternalPageData extends Equatable {
       is_selected: is_selected ?? this.is_selected,
       created_at: created_at ?? this.created_at,
       updated_at: updated_at ?? this.updated_at,
-      external_page_files: external_page_files ?? this.external_page_files,
     );
   }
 
@@ -73,7 +67,6 @@ class ExternalPageData extends Equatable {
       'is_selected': is_selected,
       'created_at': created_at.millisecondsSinceEpoch,
       'updated_at': updated_at.millisecondsSinceEpoch,
-      'external_page_files': external_page_files.map((x) => x.toMap()).toList(),
     };
   }
 
@@ -87,14 +80,12 @@ class ExternalPageData extends Equatable {
       is_selected: map['is_selected']?.toInt() ?? 0,
       created_at: DateTime.parse(map['created_at']),
       updated_at: DateTime.parse(map['updated_at']),
-      external_page_files: List<ExternalPageFile>.from(
-          map['external_page_files']?.map((x) => ExternalPageFile.fromMap(x))),
     );
   }
 
   @override
   String toString() {
-    return 'ExternalPageData(id: $id, user_id: $user_id, name: $name, link: $link, icon: $icon, is_selected: $is_selected, created_at: $created_at, updated_at: $updated_at, external_page_files: $external_page_files)';
+    return 'ExternalPageData(id: $id, user_id: $user_id, name: $name, link: $link, icon: $icon, is_selected: $is_selected, created_at: $created_at, updated_at: $updated_at,)';
   }
 
   @override
@@ -108,7 +99,6 @@ class ExternalPageData extends Equatable {
       is_selected,
       created_at,
       updated_at,
-      external_page_files,
     ];
   }
 
@@ -118,13 +108,13 @@ class ExternalPageData extends Equatable {
       ExternalPageData.fromMap(json.decode(source));
 
   factory ExternalPageData.init() => ExternalPageData(
-      id: 0,
-      user_id: 0,
-      name: '',
-      link: '',
-      icon: '',
-      is_selected: 0,
-      created_at: DateTime.now(),
-      updated_at: DateTime.now(),
-      external_page_files: const []);
+        id: 0,
+        user_id: 0,
+        name: '',
+        link: '',
+        icon: '',
+        is_selected: 0,
+        created_at: DateTime.now(),
+        updated_at: DateTime.now(),
+      );
 }

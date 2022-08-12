@@ -48,7 +48,13 @@ class MobileContactPage extends HookConsumerWidget {
                         if ((state.phone_number.isNotEmpty &&
                                 state.showPhoneNumber == 1) ||
                             state.company.business_phone.isNotEmpty)
-                          InkWell(
+                          KHomeContact(
+                            icon: FontAwesomeIcons.mobile,
+                            text: state.phone_country_code +
+                                (state.phone_number.isNotEmpty &&
+                                        state.showPhoneNumber == 1
+                                    ? state.phone_number
+                                    : state.company.business_phone),
                             onTap: () {
                               final number = state.phone_country_code +
                                   (state.phone_number.isNotEmpty &&
@@ -62,17 +68,9 @@ class MobileContactPage extends HookConsumerWidget {
 
                               launchUrl(telLaunchUri);
                             },
-                            child: KHomeContact(
-                              icon: const Icon(FontAwesomeIcons.mobile),
-                              text: state.phone_country_code +
-                                  (state.phone_number.isNotEmpty &&
-                                          state.showPhoneNumber == 1
-                                      ? state.phone_number
-                                      : state.company.business_phone),
-                            ),
                           ),
                         SizedBox(height: 1.h),
-                        InkWell(
+                        KHomeContact(
                           onTap: () {
                             final Uri emailLaunchUri = Uri(
                               scheme: 'mailto',
@@ -80,21 +78,17 @@ class MobileContactPage extends HookConsumerWidget {
                             );
                             launchUrl(emailLaunchUri);
                           },
-                          child: KHomeContact(
-                            icon: const Icon(Icons.email),
-                            text: state.email,
-                          ),
+                          icon: Icons.email,
+                          text: state.email,
                         ),
                         SizedBox(height: 1.h),
-                        InkWell(
+                        KHomeContact(
                           onTap: () {
                             launchUrl(Uri.parse(
                                 "https://goo.gl/maps/t4nwMCxLNN3kjs1C6"));
                           },
-                          child: KHomeContact(
-                            icon: const Icon(LineIcons.globe),
-                            text: state.getUserAddress(),
-                          ),
+                          icon: LineIcons.globe,
+                          text: state.getUserAddress(),
                         ),
                       ],
                     ),
