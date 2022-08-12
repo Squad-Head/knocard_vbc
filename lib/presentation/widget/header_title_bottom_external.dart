@@ -3,8 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/domain/profile/constants.dart';
-import 'package:knocard_ui/domain/profile/user_profile.dart';
-import 'package:knocard_ui/presentation/app/external_link_page.dart';
 import 'package:knocard_ui/presentation/contact/widgtes/menu_item.dart';
 
 import 'package:flutter/material.dart' hide MenuItem;
@@ -75,7 +73,7 @@ class HeaderBottomExternal extends ConsumerWidget with PreferredSizeWidget {
                         .icon
                     : FontAwesomeIcons.handshake,
                 text: user.external_pages!.name,
-                selected: false,
+                selected: true,
                 onTap: () {},
               ),
           ],
@@ -85,5 +83,5 @@ class HeaderBottomExternal extends ConsumerWidget with PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => const Size.fromHeight(0);
+  Size get preferredSize => const Size.fromHeight(60);
 }
