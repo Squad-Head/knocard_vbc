@@ -6,6 +6,7 @@ import 'package:knocard_ui/domain/profile/constants.dart';
 import 'package:knocard_ui/presentation/contact/widgtes/menu_item.dart';
 
 import 'package:flutter/material.dart' hide MenuItem;
+import 'package:url_launcher/url_launcher_string.dart';
 
 class HeaderBottom extends ConsumerWidget with PreferredSizeWidget {
   final int index;
@@ -57,6 +58,24 @@ class HeaderBottom extends ConsumerWidget with PreferredSizeWidget {
                 onTap: () => onTap(3),
               ),
             if (screenWidth > 700) SizedBox(width: 12.w),
+            if (user.external_pages != null)
+              MenuItem(
+                icon: user.external_pages!.icon.isNotEmpty &&
+                        user.external_pages?.icon != '-1'
+                    ? Constants
+                        .externalIcons[int.parse(user.external_pages!.icon)]
+                        .icon
+                    : FontAwesomeIcons.handshake,
+                text: user.external_pages!.name,
+                selected: index == 4,
+                onTap: () async {
+                  final canLaunch =
+                      await canLaunchUrlString(user.external_pages!.link);
+                  if (canLaunch) {
+                    launchUrlString(user.external_pages!.link);
+                  }
+                },
+              ),
           ],
         ),
       );
