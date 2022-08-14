@@ -31,7 +31,7 @@ class HeaderBottom extends ConsumerWidget with PreferredSizeWidget {
           children: [
             MenuItem(
               icon: FontAwesomeIcons.mobileScreen,
-              text: 'Contacts',
+              text: 'Contact',
               selected: index == 0,
               onTap: () => onTap(0),
             ),

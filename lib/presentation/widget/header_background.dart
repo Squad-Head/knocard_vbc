@@ -138,11 +138,11 @@ class HeaderBackground extends ConsumerWidget {
                           shape: BoxShape.circle,
                           border: Border.all(width: 2, color: Colors.white),
                           image: DecorationImage(
+                              fit: BoxFit.cover,
                               image: state.profile_picture.isEmpty
                                   ? const AssetImage(
                                       'assets/images/placeholder_profile.png')
-                                  : CachedNetworkImageProvider(
-                                          state.profile_picture)
+                                  : NetworkImage(state.profile_picture)
                                       as ImageProvider))))
               : Positioned(
                   left: 20,
@@ -155,6 +155,7 @@ class HeaderBackground extends ConsumerWidget {
                         shape: BoxShape.circle,
                         border: Border.all(width: 2, color: Colors.white),
                         image: DecorationImage(
+                            fit: BoxFit.cover,
                             image: state.profile_picture.isEmpty ||
                                     state.show_profile_picture == 0
                                 ? const AssetImage(

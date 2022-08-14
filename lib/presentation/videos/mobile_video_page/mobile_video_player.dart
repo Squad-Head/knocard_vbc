@@ -27,16 +27,16 @@ class MobileVideosPage extends HookConsumerWidget {
           "log_name": "viewed",
           "activity_code": "playlist_page",
         });
-        CleanApi.instance().post(
-            fromJson: (json) => unit,
-            body: {
-              "user_id": ref.watch(
-                  profileProvider.select((value) => value.userProfile.id)),
-              "log_name": "copied",
-              "activity_code": "playlist_page",
-            },
-            showLogs: true,
-            endPoint: 'tracking/desktop/click/save');
+        // CleanApi.instance().post(
+        //     fromJson: (json) => unit,
+        //     body: {
+        //       "user_id": ref.watch(
+        //           profileProvider.select((value) => value.userProfile.id)),
+        //       "log_name": "copied",
+        //       "activity_code": "playlist_page",
+        //     },
+        //     showLogs: true,
+        //     endPoint: 'tracking/desktop/click/save');
       });
       return null;
     }, []);

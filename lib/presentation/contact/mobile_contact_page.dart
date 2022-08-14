@@ -84,8 +84,13 @@ class MobileContactPage extends HookConsumerWidget {
                         SizedBox(height: 1.h),
                         KHomeContact(
                           onTap: () {
-                            launchUrl(Uri.parse(
-                                "https://goo.gl/maps/t4nwMCxLNN3kjs1C6"));
+                            if (state.latitude != 0 && state.longitude != 0) {
+                              launchUrl(Uri.parse(
+                                  "https://www.google.com/maps/@${state.latitude},${state.longitude}"));
+                            } else {
+                              launchUrl(Uri.parse(
+                                  "https://maps.google.com/?q=${state.getUserAddress()}"));
+                            }
                           },
                           icon: LineIcons.globe,
                           text: state.getUserAddress(),

@@ -53,8 +53,8 @@ class UserProfile extends Equatable {
   final List<SocialMedia> social_media;
   final ExternalPageData? external_pages;
   final List<Playlist> playlists;
-  final String longitude;
-  final String latitude;
+  final double longitude;
+  final double latitude;
   final int showPhoneNumber;
   const UserProfile({
     required this.showPhoneNumber,
@@ -137,8 +137,8 @@ class UserProfile extends Equatable {
       List<SocialMedia>? social_media,
       ExternalPageData? external_pages,
       List<Playlist>? playlists,
-      String? longitude,
-      String? latitude,
+      double? longitude,
+      double? latitude,
       int? showPhoneNumber}) {
     return UserProfile(
       external_pages: external_pages ?? this.external_pages,
@@ -277,8 +277,8 @@ class UserProfile extends Equatable {
           : null,
       playlists: List<Playlist>.from(
           map['playlists']?.map((x) => Playlist.fromMap(x))),
-      longitude: map['longitude'] ?? '',
-      latitude: map['latitude'] ?? '',
+      longitude: double.tryParse(map['longitude'] ?? '') ?? 0,
+      latitude: double.tryParse(map['longitude'] ?? '') ?? 0,
     );
   }
 
@@ -387,8 +387,8 @@ class UserProfile extends Equatable {
       social_media: const [],
       external_pages: null,
       playlists: const [],
-      longitude: '',
-      latitude: '',
+      longitude: 0,
+      latitude: 0,
       photo_galleries: const []);
 
   String getUserAddress() {

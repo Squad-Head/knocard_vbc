@@ -3,26 +3,20 @@ import 'package:knocard_ui/domain/i_profile_repo.dart';
 import 'package:knocard_ui/domain/profile/company/company_external_link.dart';
 import 'package:knocard_ui/domain/profile/company/company_feed.dart';
 import 'package:knocard_ui/domain/profile/user_profile.dart';
+import 'package:knocard_ui/infrastructure/reporting_repo.dart';
 
 class ProfileRepo extends IProfileRepo {
   final cleanApi = CleanApi.instance();
   @override
   Future<Either<CleanFailure, UserProfile>> getProfile(String userName) async {
     final data = await cleanApi.get(
+      showLogs: true,
       fromJson: ((json) => UserProfile.fromMap(json['data']["user"][0])),
       endPoint: 'user/vbc/$userName',
     );
 
     return await data.fold((l) => left(l), (r) async {
-      await cleanApi.post(
-          fromJson: (json) => unit,
-          body: {
-            "user_id": r.id,
-            "log_name": "copied",
-            "activity_code": "contact_page",
-          },
-          showLogs: true,
-          endPoint: 'tracking/desktop/click/save');
+      await ReportingRepo.trackVbcView(r.id);
       return right(r);
     });
   }
