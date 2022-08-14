@@ -1,11 +1,11 @@
 {
-    "name": "knocard_ui",
-    "short_name": "knocard_ui",
+    "name": "Knocard VBC",
+    "short_name": "Knocard",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "attract new customers who are looking for your goods/services",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
