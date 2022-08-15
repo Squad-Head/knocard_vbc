@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:meta/meta.dart';
 
 import 'photo.dart';
 
@@ -7,7 +6,7 @@ class Collage extends Equatable {
   final String title;
   final int id;
   final List<Photo> photoGallery;
-  Collage({
+  const Collage({
     required this.title,
     required this.photoGallery,
     required this.id,
