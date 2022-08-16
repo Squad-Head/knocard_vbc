@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/application/profile_state.dart';
+import 'package:knocard_ui/infrastructure/reporting_repo.dart';
 
 import 'package:knocard_ui/presentation/router/router.gr.dart';
 import 'package:knocard_ui/presentation/widget/header_background.dart';
@@ -12,7 +13,11 @@ import 'package:knocard_ui/presentation/widget/header_title_bottom.dart';
 
 class HomePage extends HookConsumerWidget {
   final String userName;
-  const HomePage({Key? key, @PathParam('userName') required this.userName})
+  final String? shareCode;
+  const HomePage(
+      {Key? key,
+      @PathParam('userName') required this.userName,
+      @QueryParam('sc') this.shareCode})
       : super(key: key);
 
   @override
@@ -20,11 +25,13 @@ class HomePage extends HookConsumerWidget {
     final ValueNotifier<int> index = useState(0);
     // final controller = usePageController(initialPage: 0);
     useEffect(() {
-      Logger.i(userName);
+      Logger.i("username: $userName");
+      Logger.i("sharecode: $shareCode");
       Future.delayed(const Duration(milliseconds: 100), () {
         if (userName == ':userName' || userName == 'unknown-screen') {
           AutoRouter.of(context).replace(const UserNameNotFoundRoute());
         } else {
+          ReportingRepo.shareCode = shareCode;
           ref.read(profileProvider.notifier).getProfile(userName);
           Logger.i('called $userName');
         }

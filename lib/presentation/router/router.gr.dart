@@ -30,12 +30,17 @@ class AppRouter extends _i8.RootStackRouter {
   final Map<String, _i8.PageFactory> pagesMap = {
     HomeRoute.name: (routeData) {
       final pathParams = routeData.inheritedPathParams;
+      final queryParams = routeData.queryParams;
       final args = routeData.argsAs<HomeRouteArgs>(
-          orElse: () =>
-              HomeRouteArgs(userName: pathParams.getString('userName')));
+          orElse: () => HomeRouteArgs(
+              userName: pathParams.getString('userName'),
+              shareCode: queryParams.optString('sc')));
       return _i8.MaterialPageX<dynamic>(
           routeData: routeData,
-          child: _i1.HomePage(key: args.key, userName: args.userName));
+          child: _i1.HomePage(
+              key: args.key,
+              userName: args.userName,
+              shareCode: args.shareCode));
     },
     UnknownRoute.name: (routeData) {
       final args = routeData.argsAs<UnknownRouteArgs>();
@@ -91,26 +96,31 @@ class HomeRoute extends _i8.PageRouteInfo<HomeRouteArgs> {
   HomeRoute(
       {_i9.Key? key,
       required String userName,
+      String? shareCode,
       List<_i8.PageRouteInfo>? children})
       : super(HomeRoute.name,
             path: '/:userName',
-            args: HomeRouteArgs(key: key, userName: userName),
+            args: HomeRouteArgs(
+                key: key, userName: userName, shareCode: shareCode),
             rawPathParams: {'userName': userName},
+            rawQueryParams: {'sc': shareCode},
             initialChildren: children);
 
   static const String name = 'HomeRoute';
 }
 
 class HomeRouteArgs {
-  const HomeRouteArgs({this.key, required this.userName});
+  const HomeRouteArgs({this.key, required this.userName, this.shareCode});
 
   final _i9.Key? key;
 
   final String userName;
 
+  final String? shareCode;
+
   @override
   String toString() {
-    return 'HomeRouteArgs{key: $key, userName: $userName}';
+    return 'HomeRouteArgs{key: $key, userName: $userName, shareCode: $shareCode}';
   }
 }
 
