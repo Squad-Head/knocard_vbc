@@ -1,3 +1,4 @@
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +14,9 @@ class DesktopVideoPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final state = ref.watch(profileProvider).userProfile;
+    final playlists = ref.watch(profileProvider.select((value) => value
+        .userProfile.playlists.lock
+        .sort((a, b) => a.is_default.compareTo(b.is_default))));
     final selectPlaylist = useState(0);
     final selectedVideo = useState(0);
     final controller = usePageController(keepPage: false);
@@ -35,7 +38,7 @@ class DesktopVideoPage extends HookConsumerWidget {
                     height: 350.h,
                     width: 600.w,
                     color: Theme.of(context).shadowColor,
-                    child: state.playlists[selectPlaylist.value].videos.isEmpty
+                    child: playlists[selectPlaylist.value].videos.isEmpty
                         ? Text(
                             'No Video Available',
                             style: TextStyle(
@@ -48,7 +51,7 @@ class DesktopVideoPage extends HookConsumerWidget {
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
                               return ProfileVideoPlayer(
-                                video: state.playlists[selectPlaylist.value]
+                                video: playlists[selectPlaylist.value]
                                     .videos[index],
                               );
                             }),
@@ -61,10 +64,11 @@ class DesktopVideoPage extends HookConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            state.playlists[selectPlaylist.value].videos.isEmpty
+                            playlists[selectPlaylist.value].videos.isEmpty
                                 ? ''
-                                : state.playlists[selectPlaylist.value]
-                                    .videos[selectedVideo.value].title,
+                                : playlists[selectPlaylist.value]
+                                    .videos[selectedVideo.value]
+                                    .title,
                             // 'Video Title',
                             style: const TextStyle(
                                 color: Colors.black, fontSize: 15),
@@ -78,11 +82,11 @@ class DesktopVideoPage extends HookConsumerWidget {
                                     TextStyle(color: Colors.grey, fontSize: 12),
                               ),
                               Text(
-                                state.playlists[selectPlaylist.value].videos
-                                        .isEmpty
+                                playlists[selectPlaylist.value].videos.isEmpty
                                     ? ''
-                                    : state.playlists[selectPlaylist.value]
-                                        .videos[selectedVideo.value].created_at
+                                    : playlists[selectPlaylist.value]
+                                        .videos[selectedVideo.value]
+                                        .created_at
                                         .toString(),
                                 style: const TextStyle(
                                     color: Colors.grey, fontSize: 12),
@@ -126,7 +130,7 @@ class DesktopVideoPage extends HookConsumerWidget {
                   ),
                   SizedBox(height: 15.h),
                   SizedBox(
-                    child: state.playlists[selectPlaylist.value].videos.isEmpty
+                    child: playlists[selectPlaylist.value].videos.isEmpty
                         ? Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10.w),
                             child: Text(
@@ -148,15 +152,15 @@ class DesktopVideoPage extends HookConsumerWidget {
                                   child: KVideoItemdesktop(
                                     seleted: selectedVideo.value == index,
                                     number: (index + 1).toString(),
-                                    video: state.playlists[selectPlaylist.value]
+                                    video: playlists[selectPlaylist.value]
                                         .videos[index],
                                   ),
                                 ),
                             separatorBuilder: (context, index) => SizedBox(
                                   height: 5.h,
                                 ),
-                            itemCount: state
-                                .playlists[selectPlaylist.value].videos.length),
+                            itemCount:
+                                playlists[selectPlaylist.value].videos.length),
                   ),
                   SizedBox(height: 20.h),
                   const Text(
@@ -183,13 +187,13 @@ class DesktopVideoPage extends HookConsumerWidget {
                       child: PlaylistCard(
                         selected: selectPlaylist.value == index,
                         number: (index + 1).toString(),
-                        playlist: state.playlists[index],
+                        playlist: playlists[index],
                       ),
                     ),
                     separatorBuilder: (context, index) => SizedBox(
                       height: 5.h,
                     ),
-                    itemCount: state.playlists.length,
+                    itemCount: playlists.length,
                   )
                 ],
               ),

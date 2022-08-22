@@ -1,6 +1,9 @@
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
+import 'package:knocard_ui/domain/external_asset_icons_icons.dart';
 import 'package:knocard_ui/domain/external_icon.dart';
 import 'package:knocard_ui/domain/my_flutter_app_icons_all.dart';
+import 'package:knocard_ui/domain/profile/feature_selection_model.dart';
 
 import 'profile_background.dart';
 
@@ -417,5 +420,19 @@ class Constants {
     ExternalIcon(icon: MyFlutterAppAll.zz_planet_space, size: 20),
     ExternalIcon(icon: MyFlutterAppAll.zz_read_book, size: 20),
     ExternalIcon(icon: MyFlutterAppAll.zz_ring, size: 20),
+    ExternalIcon(icon: ExternalAssetIcons.globe, size: 20),
+    ExternalIcon(icon: ExternalAssetIcons.link, size: 20),
   ];
+
+  static final featureList = IMap<int, FeatureSelectionModel>(const {
+    6: FeatureSelectionModel(feature: 'Contacts', lookupId: 6, selected: false),
+    7: FeatureSelectionModel(
+        feature: "Photo Gallery", lookupId: 7, selected: false),
+    8: FeatureSelectionModel(
+        feature: "Video Playlist", lookupId: 8, selected: false),
+    9: FeatureSelectionModel(
+        feature: "Business Page", lookupId: 9, selected: false),
+    10: FeatureSelectionModel(
+        feature: "External Link", lookupId: 10, selected: false),
+  });
 }

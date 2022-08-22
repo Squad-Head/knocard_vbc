@@ -3,10 +3,14 @@
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:knocard_ui/domain/profile/photo.dart';
+import 'package:knocard_ui/domain/profile/user_feature.dart';
 
 import 'company/company.dart';
+import 'constants.dart';
 import 'external_page/external_page.dart';
+import 'feature_selection_model.dart';
 import 'kno_card.dart';
 import 'playlist.dart';
 import 'profile_background.dart';
@@ -37,7 +41,7 @@ class UserProfile extends Equatable {
   final dynamic card_brand;
   final dynamic card_last_four;
   final String role;
-
+  final List<UserFeature> userFeatures;
   final int get_started;
   final dynamic meta_tags;
   final int is_legacy;
@@ -57,6 +61,7 @@ class UserProfile extends Equatable {
   final double latitude;
   final int showPhoneNumber;
   const UserProfile({
+    required this.userFeatures,
     required this.showPhoneNumber,
     required this.id,
     required this.name,
@@ -139,8 +144,10 @@ class UserProfile extends Equatable {
       List<Playlist>? playlists,
       double? longitude,
       double? latitude,
+      List<UserFeature>? userFeatures,
       int? showPhoneNumber}) {
     return UserProfile(
+      userFeatures: userFeatures ?? this.userFeatures,
       external_pages: external_pages ?? this.external_pages,
       showPhoneNumber: showPhoneNumber ?? this.showPhoneNumber,
       id: id ?? this.id,
@@ -229,11 +236,14 @@ class UserProfile extends Equatable {
       'playlists': playlists.map((x) => x.toMap()).toList(),
       'longitude': longitude,
       'latitude': latitude,
+      'user_features': userFeatures,
     };
   }
 
   factory UserProfile.fromMap(Map<String, dynamic> map) {
     return UserProfile(
+      userFeatures: List<UserFeature>.from((map['user_features'] ?? const [])
+          .map((e) => UserFeature.fromMap(e))),
       showPhoneNumber: map['show_phone_number']?.toInt() ?? 0,
       id: map['id']?.toInt() ?? 0,
       name: map['name'] ?? '',
@@ -350,6 +360,7 @@ class UserProfile extends Equatable {
   factory UserProfile.fromJson(String source) =>
       UserProfile.fromMap(json.decode(source));
   factory UserProfile.init() => UserProfile(
+      userFeatures: const [],
       showPhoneNumber: 0,
       id: 0,
       name: '',
@@ -390,6 +401,22 @@ class UserProfile extends Equatable {
       longitude: 0,
       latitude: 0,
       photo_galleries: const []);
+
+  IMap<int, FeatureSelectionModel> get features {
+    IMap<int, FeatureSelectionModel> featuresMap = Constants.featureList;
+    for (UserFeature feature in userFeatures) {
+      if (featuresMap[feature.lookupId] != null) {
+        featuresMap = featuresMap.update(
+            feature.lookupId,
+            (value) => Constants.featureList[feature.lookupId]!
+                .copyWith(selected: true));
+      }
+    }
+    return featuresMap;
+  }
+
+  bool isSelected(int lookupId) =>
+      features[lookupId] != null ? features[lookupId]!.selected : false;
 
   String getUserAddress() {
     final isNotEmpty = (street1 + street2).isNotEmpty;

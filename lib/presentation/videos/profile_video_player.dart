@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/domain/profile/profile_video.dart';
 import 'package:knocard_ui/infrastructure/reporting_repo.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'network_video_player.dart';
 
@@ -29,10 +30,17 @@ class ProfileVideoPlayer extends HookConsumerWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 InkWell(
-                  onTap: () {
-                    tapped.value = true;
-                    ReportingRepo.trackPlaylistView(
-                        id: profile.id, videoId: video.id);
+                  onTap: () async {
+                    if (video.platform == 'youtube') {
+                      if (await canLaunchUrlString(
+                          'https://youtu.be/${video.link}')) {
+                        launchUrlString('https://youtu.be/${video.link}');
+                      }
+                    } else {
+                      tapped.value = true;
+                      ReportingRepo.trackPlaylistView(
+                          id: profile.id, videoId: video.id);
+                    }
                   },
                   child: const CircleAvatar(
                     radius: 40,

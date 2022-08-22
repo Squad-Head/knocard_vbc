@@ -54,10 +54,11 @@ class HomePage extends HookConsumerWidget {
             : AutoTabsRouter.pageView(
                 routes: [
                     const ContactRoute(),
-                    const GalleryRoute(),
-                    const VideoRoute(),
-                    if (state
-                        .userProfile.company.business_page_title.isNotEmpty)
+                    if (state.userProfile.isSelected(7)) const GalleryRoute(),
+                    if (state.userProfile.isSelected(8)) const VideoRoute(),
+                    if (state.userProfile.company.business_page_title
+                            .isNotEmpty &&
+                        state.userProfile.isSelected(9))
                       const BusinessRoute()
                   ],
                 builder: (context, child, controller) {

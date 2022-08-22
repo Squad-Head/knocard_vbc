@@ -18,6 +18,7 @@ class HeaderBottom extends ConsumerWidget with PreferredSizeWidget {
   Widget build(BuildContext context, ref) {
     final user =
         ref.watch(profileProvider.select((value) => value.userProfile));
+
     return LayoutBuilder(builder: (context, constraints) {
       final screenWidth = constraints.maxWidth;
       return Container(
@@ -35,30 +36,33 @@ class HeaderBottom extends ConsumerWidget with PreferredSizeWidget {
               selected: index == 0,
               onTap: () => onTap(0),
             ),
-            if (screenWidth > 700) SizedBox(width: 12.w),
-            MenuItem(
-              icon: FontAwesomeIcons.images,
-              text: 'Gallery',
-              selected: index == 1,
-              onTap: () => onTap(1),
-            ),
-            if (screenWidth > 700) SizedBox(width: 12.w),
-            MenuItem(
-              icon: FontAwesomeIcons.video,
-              text: 'Videos',
-              selected: index == 2,
-              onTap: () => onTap(2),
-            ),
-            if (screenWidth > 700) SizedBox(width: 12.w),
-            if (user.company.business_page_title.isNotEmpty)
+            if (screenWidth > 700 && user.isSelected(7)) SizedBox(width: 12.w),
+            if (user.isSelected(7))
+              MenuItem(
+                icon: FontAwesomeIcons.images,
+                text: 'Gallery',
+                selected: index == 1,
+                onTap: () => onTap(1),
+              ),
+            if (screenWidth > 700 && user.isSelected(8)) SizedBox(width: 12.w),
+            if (user.isSelected(8))
+              MenuItem(
+                icon: FontAwesomeIcons.video,
+                text: 'Videos',
+                selected: index == 2,
+                onTap: () => onTap(2),
+              ),
+            if (screenWidth > 700 && user.isSelected(9)) SizedBox(width: 12.w),
+            if (user.company.business_page_title.isNotEmpty &&
+                user.isSelected(9))
               MenuItem(
                 icon: Constants.externalIcons[user.company.icon].icon,
                 text: user.company.business_page_title,
                 selected: index == 3,
                 onTap: () => onTap(3),
               ),
-            if (screenWidth > 700) SizedBox(width: 12.w),
-            if (user.external_pages != null)
+            if (screenWidth > 700 && user.isSelected(10)) SizedBox(width: 12.w),
+            if (user.external_pages != null && user.isSelected(10))
               MenuItem(
                 icon: user.external_pages!.icon.isNotEmpty &&
                         user.external_pages?.icon != '-1'
