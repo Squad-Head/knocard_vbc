@@ -100,82 +100,86 @@ class MobileContactPage extends HookConsumerWidget {
                   ],
                 ),
                 SizedBox(height: 20.h),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (photos.isNotEmpty)
-                      Column(
-                        children: [
-                          TextButton(
-                            onPressed: () {
-                              AutoTabsRouter.of(context).setActiveIndex(1);
-                            },
-                            child: Text(
-                              'Gallery',
-                              style: TextStyle(
-                                color: const Color(0xFF088AC6),
-                                fontSize: 50.sp,
-                                fontWeight: FontWeight.bold,
+                if (state.isSelected(7) || state.isSelected(8))
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      if (state.isSelected(7))
+                        Column(
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                AutoTabsRouter.of(context).setActiveIndex(1);
+                              },
+                              child: Text(
+                                'Gallery',
+                                style: TextStyle(
+                                  color: const Color(0xFF088AC6),
+                                  fontSize: 50.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: 5.h),
-                          GestureDetector(
-                            onTap: () {
-                              AutoTabsRouter.of(context).setActiveIndex(1);
-                            },
-                            child: SizedBox(
-                              width: MediaQuery.of(context).size.width * .36,
-                              child: MobileGalleryWidget(
-                                photos: photos,
+                            SizedBox(height: 5.h),
+                            GestureDetector(
+                              onTap: () {
+                                AutoTabsRouter.of(context).setActiveIndex(1);
+                              },
+                              child: SizedBox(
+                                width: MediaQuery.of(context).size.width * .36,
+                                child: MobileGalleryWidget(
+                                  photos: photos,
+                                ),
+                                //color: Colors.grey,
                               ),
-                              //color: Colors.grey,
                             ),
-                          ),
-                        ],
-                      ),
-                    if (photos.isNotEmpty) SizedBox(width: 40.w),
-                    Column(
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            AutoTabsRouter.of(context).setActiveIndex(2);
-                          },
-                          child: Text(
-                            'Videos',
-                            style: TextStyle(
-                              color: const Color(0xFF088AC6),
-                              fontSize: 50.sp,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                          ],
                         ),
-                        SizedBox(height: 5.h),
-                        GestureDetector(
-                          onTap: () {
-                            AutoTabsRouter.of(context).setActiveIndex(2);
-                          },
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width * .5,
-                            child: ListView.separated(
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: videos.length <= 5 ? videos.length : 5,
-                              itemBuilder: (context, index) => KVideoItem(
-                                index: index,
-                                video: videos[index],
-                              ),
-                              separatorBuilder: (context, index) => SizedBox(
-                                height: 10.h,
+                      if (state.isSelected(7)) SizedBox(width: 40.w),
+                      if (state.isSelected(8))
+                        Column(
+                          children: [
+                            TextButton(
+                              onPressed: () {
+                                AutoTabsRouter.of(context).setActiveIndex(2);
+                              },
+                              child: Text(
+                                'Videos',
+                                style: TextStyle(
+                                  color: const Color(0xFF088AC6),
+                                  fontSize: 50.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                          ),
+                            SizedBox(height: 5.h),
+                            GestureDetector(
+                              onTap: () {
+                                AutoTabsRouter.of(context).setActiveIndex(2);
+                              },
+                              child: SizedBox(
+                                width: MediaQuery.of(context).size.width * .5,
+                                child: ListView.separated(
+                                  shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
+                                  itemCount:
+                                      videos.length <= 5 ? videos.length : 5,
+                                  itemBuilder: (context, index) => KVideoItem(
+                                    index: index,
+                                    video: videos[index],
+                                  ),
+                                  separatorBuilder: (context, index) =>
+                                      SizedBox(
+                                    height: 10.h,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ],
-                ),
+                    ],
+                  ),
               ],
             ),
           ],

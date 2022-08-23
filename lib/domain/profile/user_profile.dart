@@ -406,10 +406,15 @@ class UserProfile extends Equatable {
     IMap<int, FeatureSelectionModel> featuresMap = Constants.featureList;
     for (UserFeature feature in userFeatures) {
       if (featuresMap[feature.lookupId] != null) {
+        final selected = feature.lookupId == 7
+            ? photo_galleries.isNotEmpty
+            : feature.lookupId == 8
+                ? playlists.isNotEmpty
+                : true;
         featuresMap = featuresMap.update(
             feature.lookupId,
             (value) => Constants.featureList[feature.lookupId]!
-                .copyWith(selected: true));
+                .copyWith(selected: selected));
       }
     }
     return featuresMap;
