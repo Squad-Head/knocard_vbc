@@ -87,7 +87,7 @@ class GalleryImageViewPage extends HookConsumerWidget {
                     //     ],
                     //   ),
                     // ),
-                    Container(
+                    SizedBox(
                       height: 600,
                       width: double.infinity,
                       child: GridView.builder(

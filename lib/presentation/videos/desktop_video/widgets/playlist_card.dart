@@ -33,11 +33,6 @@ class PlaylistCard extends ConsumerWidget {
               ),
             ),
             SizedBox(width: 2.w),
-            // Image(
-            //   image: const AssetImage('assets/images/video.png'),
-            //   height: 60.h,
-            //   width: 90.w,
-            // ),
             ImageNetwork(
               image: playlist.description,
               height: 60.h,

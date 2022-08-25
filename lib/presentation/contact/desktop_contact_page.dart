@@ -18,7 +18,6 @@ class DesktopContactPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     final state = ref.watch(profileProvider).userProfile;
     final photos = ref.watch(
