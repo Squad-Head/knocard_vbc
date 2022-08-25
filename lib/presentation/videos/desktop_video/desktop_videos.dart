@@ -180,8 +180,11 @@ class DesktopVideoPage extends HookConsumerWidget {
                         selectPlaylist.value = index;
 
                         if (selectPlaylist.value != index) {
-                          controller.jumpTo(0);
+                          if (controller.positions.isNotEmpty) {
+                            controller.jumpToPage(0);
+                          }
                           selectedVideo.value = 0;
+                          selectPlaylist.value = index;
                         }
                       },
                       child: PlaylistCard(

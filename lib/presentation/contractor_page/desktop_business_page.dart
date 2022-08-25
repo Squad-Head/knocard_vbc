@@ -215,40 +215,30 @@ class DesktopBusinessPage extends HookConsumerWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Container(
-                                alignment: Alignment.center,
-                                // height: 160.h,
-                                child: content.image.isNotEmpty
-                                    ? CachedNetworkImage(
-                                        imageUrl: content.image,
-                                        fit: BoxFit.cover,
-                                      )
-                                    : content.title.isNotEmpty
-                                        ? Text(
-                                            content.title,
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 16.sp,
-                                              height: 1.3,
-                                            ),
-                                          )
-                                        : const Text('Nothing to show'),
-                              ),
+                              if (content.image.isNotEmpty)
+                                Container(
+                                  alignment: Alignment.center,
+                                  // height: 160.h,
+                                  child: CachedNetworkImage(
+                                    imageUrl: content.image,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              if (content.title.isNotEmpty)
+                                Text(
+                                  content.title,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 16.sp,
+                                    height: 1.3,
+                                  ),
+                                ),
                               SizedBox(
                                 height: 10.h,
                               ),
                               Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
-                                  Text(
-                                    content.title,
-                                    style: TextStyle(
-                                      color: Theme.of(context).primaryColor,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 14.sp,
-                                    ),
-                                  ),
                                   Text(
                                     formatDate(content.createdAt,
                                         [M, ' ', d, ', ', yy]),

@@ -217,8 +217,8 @@ class Constants {
     ProfileBackground(
         id: 1,
         categCode: 'pattern',
-        widget: Image.asset(
-          'assets/images/backgrounds/default.png',
+        widget: Image.network(
+          'https://knocard.com/img/patterns/default.png',
           height: 190,
           fit: BoxFit.fill,
         ),
@@ -226,8 +226,8 @@ class Constants {
     ProfileBackground(
         id: 2,
         categCode: 'pattern',
-        widget: Image.asset(
-          'assets/images/backgrounds/star_shower_blue.png',
+        widget: Image.network(
+          'https://knocard.com/img/patterns/star_shower_blue.png',
           height: 190,
           fit: BoxFit.fill,
         ),
@@ -235,8 +235,8 @@ class Constants {
     ProfileBackground(
         id: 3,
         categCode: 'pattern',
-        widget: Image.asset(
-          'assets/images/backgrounds/triangle_pattern_dots.png',
+        widget: Image.network(
+          'https://knocard.com/img/patterns/triangle_pattern_dots.png',
           height: 190,
           fit: BoxFit.fill,
         ),
@@ -244,8 +244,8 @@ class Constants {
     ProfileBackground(
         id: 4,
         categCode: 'pattern',
-        widget: Image.asset(
-          'assets/images/backgrounds/wave_grey_wood_pattern.png',
+        widget: Image.network(
+          'https://knocard.com/img/patterns/wave_grey_wood_pattern.png',
           height: 190,
           fit: BoxFit.fill,
         ),
@@ -253,8 +253,8 @@ class Constants {
     ProfileBackground(
         id: 5,
         categCode: 'pattern',
-        widget: Image.asset(
-          'assets/images/backgrounds/colorful_polka_dots.png',
+        widget: Image.network(
+          'https://knocard.com/img/patterns/colorful_polka_dots.png',
           height: 190,
           fit: BoxFit.fill,
         ),
@@ -262,8 +262,8 @@ class Constants {
     ProfileBackground(
         id: 6,
         categCode: 'pattern',
-        widget: Image.asset(
-          'assets/images/backgrounds/wave_grey_diagonal.png',
+        widget: Image.network(
+          'https://knocard.com/img/patterns/wave_grey_diagonal.png',
           height: 190,
           fit: BoxFit.fill,
         ),
@@ -271,16 +271,16 @@ class Constants {
     ProfileBackground(
         id: 7,
         categCode: 'pattern',
-        widget: Image.asset(
-          'assets/images/backgrounds/white_polka_dots.png',
+        widget: Image.network(
+          'https://knocard.com/img/patterns/white_polka_dots.png',
           height: 190,
         ),
         textColor: Colors.black),
     ProfileBackground(
         id: 8,
         categCode: 'pattern',
-        widget: Image.asset(
-          'assets/images/backgrounds/wave_grey.png',
+        widget: Image.network(
+          'https://knocard.com/img/patterns/wave_grey.png',
           height: 190,
           fit: BoxFit.fill,
         ),
@@ -288,8 +288,8 @@ class Constants {
     ProfileBackground(
         id: 9,
         categCode: 'pattern',
-        widget: Image.asset(
-          'assets/images/backgrounds/green_polka_dots.png',
+        widget: Image.network(
+          'https://knocard.com/img/patterns/green_polka_dots.png',
           height: 190,
           fit: BoxFit.fill,
         ),
@@ -297,29 +297,8 @@ class Constants {
     ProfileBackground(
         id: 10,
         categCode: 'pattern',
-        widget: Image.asset(
-          'assets/images/backgrounds/stripe_blue.png',
-          height: 190,
-          fit: BoxFit.fill,
-        ),
-        textColor: Colors.black),
-  ];
-
-  static List<ProfileBackground> upload = [
-    ProfileBackground(
-        id: 1,
-        categCode: 'upload',
-        widget: Image.asset(
-          'assets/images/backgrounds/default.png',
-          height: 190,
-          fit: BoxFit.fill,
-        ),
-        textColor: Colors.black),
-    ProfileBackground(
-        id: 2,
-        categCode: 'upload',
-        widget: Image.asset(
-          'assets/images/backgrounds/star_shower_blue.png',
+        widget: Image.network(
+          'https://knocard.com/img/patterns/stripe_blue.png',
           height: 190,
           fit: BoxFit.fill,
         ),

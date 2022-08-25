@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:knocard_ui/domain/profile/profile_video.dart';
+import 'package:knocard_ui/infrastructure/youtube_util.dart';
 
 class WebVideoItem extends StatelessWidget {
   final int index;
@@ -26,7 +27,7 @@ class WebVideoItem extends StatelessWidget {
         ),
         SizedBox(width: 2.w),
         CachedNetworkImage(
-          imageUrl: video.thumbnail,
+          imageUrl: YoutubeUtil.videoThumbnail(video),
           height: 50.h,
           width: MediaQuery.of(context).size.width * .05,
           errorWidget: (context, url, error) => Container(

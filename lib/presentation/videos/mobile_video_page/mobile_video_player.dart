@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:image_network/image_network.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
+import 'package:knocard_ui/infrastructure/youtube_util.dart';
 import 'package:knocard_ui/presentation/videos/profile_video_player.dart';
 
 class MobileVideosPage extends HookConsumerWidget {
@@ -156,7 +157,8 @@ class MobileVideosPage extends HookConsumerWidget {
                       itemCount:
                           playlists[selectedPlaylist.value].videos.length,
                       itemBuilder: (context, index) {
-                        final video = playlists[selectedPlaylist.value].videos;
+                        final video =
+                            playlists[selectedPlaylist.value].videos[index];
                         return InkWell(
                           onTap: () {
                             selectedVideo.value = index;
@@ -186,15 +188,11 @@ class MobileVideosPage extends HookConsumerWidget {
                                               fit: BoxFit.cover,
                                               errorWidget:
                                                   (context, url, error) =>
-                                                      ImageNetwork(
-                                                image: video[index].thumbnail,
-                                                height: 100,
-                                                width: 125,
-                                                imageCache:
-                                                    CachedNetworkImageProvider(
-                                                        video[index].thumbnail),
-                                              ),
-                                              imageUrl: video[index].thumbnail,
+                                                      Container(
+                                                          color: Colors.black),
+                                              imageUrl:
+                                                  YoutubeUtil.videoThumbnail(
+                                                      video),
                                               height: 100,
                                               width: 125,
                                             )),
@@ -230,7 +228,7 @@ class MobileVideosPage extends HookConsumerWidget {
                                     height: 5,
                                   ),
                                   Text(
-                                    video[index].title,
+                                    video.title,
                                     style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -282,11 +280,12 @@ class MobileVideosPage extends HookConsumerWidget {
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () {
-                      selectedPlaylist.value = index;
-
                       if (selectedPlaylist.value != index) {
                         selectedVideo.value = 0;
-                        controller.jumpToPage(0);
+                        selectedPlaylist.value = index;
+                        if (controller.positions.isNotEmpty) {
+                          controller.jumpToPage(0);
+                        }
                       }
                     },
                     child: Material(

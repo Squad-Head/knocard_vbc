@@ -5,6 +5,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/domain/profile/profile_video.dart';
 import 'package:knocard_ui/infrastructure/reporting_repo.dart';
+import 'package:knocard_ui/infrastructure/youtube_util.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'network_video_player.dart';
@@ -24,7 +25,8 @@ class ProfileVideoPlayer extends HookConsumerWidget {
           child: Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: CachedNetworkImageProvider(video.thumbnail))),
+                    image: CachedNetworkImageProvider(
+                        YoutubeUtil.videoThumbnail(video)))),
             alignment: Alignment.center,
             child: Row(
               mainAxisSize: MainAxisSize.min,

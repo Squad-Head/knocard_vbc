@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:knocard_ui/domain/profile/profile_video.dart';
+import 'package:knocard_ui/infrastructure/youtube_util.dart';
 
 class KVideoItemdesktop extends StatelessWidget {
   final bool seleted;
@@ -33,7 +34,7 @@ class KVideoItemdesktop extends StatelessWidget {
             ),
             SizedBox(width: 2.w),
             CachedNetworkImage(
-              imageUrl: video.thumbnail,
+              imageUrl: YoutubeUtil.videoThumbnail(video),
               height: 60.h,
               width: 90.w,
             ),
