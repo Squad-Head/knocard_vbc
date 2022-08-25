@@ -5,7 +5,6 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/application/profile_state.dart';
-import 'package:knocard_ui/infrastructure/reporting_repo.dart';
 
 import 'package:knocard_ui/presentation/router/router.gr.dart';
 import 'package:knocard_ui/presentation/widget/header_background.dart';
@@ -31,8 +30,7 @@ class HomePage extends HookConsumerWidget {
         if (userName == ':userName' || userName == 'unknown-screen') {
           AutoRouter.of(context).replace(const UserNameNotFoundRoute());
         } else {
-          ReportingRepo.shareCode = shareCode;
-          ref.read(profileProvider.notifier).getProfile(userName);
+          ref.read(profileProvider.notifier).getProfile(userName, shareCode);
           Logger.i('called $userName');
         }
       });

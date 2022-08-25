@@ -17,10 +17,12 @@ class MobileGalleryPage extends HookConsumerWidget {
         profileProvider.select((value) => value.userProfile.photo_galleries));
 
     final collages = ref.watch(collageProvider);
+    final shareCode =
+        ref.watch(profileProvider.select((value) => value.shareCode));
     useEffect(() {
       Future.delayed(
           const Duration(
-            milliseconds: 100,
+            milliseconds: 500,
           ), () {
         ref.read(collageProvider.notifier).loadCollage();
         CleanApi.instance().post(
@@ -30,6 +32,7 @@ class MobileGalleryPage extends HookConsumerWidget {
                   profileProvider.select((value) => value.userProfile.id)),
               "log_name": "viewed",
               "activity_code": "photo_gallery_page",
+              if (shareCode.isNotEmpty) 'viewer_code': shareCode
             },
             showLogs: true,
             endPoint: 'tracking/desktop/click/save');

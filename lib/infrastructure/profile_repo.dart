@@ -3,7 +3,6 @@ import 'package:knocard_ui/domain/i_profile_repo.dart';
 import 'package:knocard_ui/domain/profile/company/company_external_link.dart';
 import 'package:knocard_ui/domain/profile/company/company_feed.dart';
 import 'package:knocard_ui/domain/profile/user_profile.dart';
-import 'package:knocard_ui/infrastructure/reporting_repo.dart';
 
 class ProfileRepo extends IProfileRepo {
   final cleanApi = CleanApi.instance();
@@ -16,7 +15,6 @@ class ProfileRepo extends IProfileRepo {
     );
 
     return await data.fold((l) => left(l), (r) async {
-      await ReportingRepo.trackVbcView(r.id);
       return right(r);
     });
   }

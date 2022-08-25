@@ -19,6 +19,8 @@ class ProfileVideoPlayer extends HookConsumerWidget {
     final tapped = useState(false);
     final profile =
         ref.watch(profileProvider.select((value) => value.userProfile));
+    final shareCode =
+        ref.watch(profileProvider.select((value) => value.shareCode));
     if (!tapped.value) {
       return AspectRatio(
           aspectRatio: 16 / 9,
@@ -41,7 +43,9 @@ class ProfileVideoPlayer extends HookConsumerWidget {
                     } else {
                       tapped.value = true;
                       ReportingRepo.trackPlaylistView(
-                          id: profile.id, videoId: video.id);
+                          id: profile.id,
+                          videoId: video.id,
+                          shareCode: shareCode);
                     }
                   },
                   child: const CircleAvatar(
