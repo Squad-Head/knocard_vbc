@@ -21,6 +21,7 @@ class MobileBusinessPage extends HookConsumerWidget {
     final companyState = ref.watch(companyProvider(company.id));
     final videoPlayerController = useMemoized(
         () => VideoPlayerController.network(company.promotional_video));
+    final tapped = useState(false);
 
     final controller = useMemoized(() => ChewieController(
           showControlsOnInitialize: false,
@@ -33,7 +34,7 @@ class MobileBusinessPage extends HookConsumerWidget {
           aspectRatio: 16 / 9,
           autoInitialize: true,
           allowFullScreen: false,
-          autoPlay: false,
+          autoPlay: company.thumbnail.isNotEmpty,
           looping: false,
         ));
     final shareCode =
@@ -83,12 +84,41 @@ class MobileBusinessPage extends HookConsumerWidget {
                             height: 10.h,
                           ),
                           if (company.promotional_video.isNotEmpty)
-                            AspectRatio(
-                              aspectRatio: 16 / 9,
-                              child: Chewie(
-                                controller: controller,
-                              ),
-                            )
+                            if (company.thumbnail.isNotEmpty && !tapped.value)
+                              AspectRatio(
+                                  aspectRatio: 16 / 9,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: CachedNetworkImageProvider(
+                                                company.thumbnail))),
+                                    alignment: Alignment.center,
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        InkWell(
+                                          onTap: () => tapped.value = true,
+                                          child: const CircleAvatar(
+                                            radius: 40,
+                                            backgroundColor: Colors.white30,
+                                            child: Icon(
+                                              Icons.play_arrow,
+                                              size: 40,
+                                              color: Colors.white,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ))
+                            else
+                              AspectRatio(
+                                aspectRatio: 16 / 9,
+                                child: Chewie(
+                                  controller: controller,
+                                ),
+                              )
                           else
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 10.w),
