@@ -25,8 +25,8 @@ class MobileGalleryPage extends HookConsumerWidget {
             milliseconds: 500,
           ), () {
         ref.read(collageProvider.notifier).loadCollage();
-        CleanApi.instance().post(
-            fromJson: (json) => unit,
+        CleanApi.instance.post(
+            fromData: (json) => unit,
             body: {
               "user_id": ref.watch(
                   profileProvider.select((value) => value.userProfile.id)),

@@ -22,7 +22,7 @@ class Knocard extends Equatable {
   final dynamic about_me;
 
   final dynamic favicon;
-  final dynamic homepage;
+  final String homepage;
 
   Knocard copyWith({
     int? id,
@@ -95,5 +95,5 @@ class Knocard extends Equatable {
       background_image: '',
       about_me: null,
       favicon: null,
-      homepage: null);
+      homepage: '');
 }

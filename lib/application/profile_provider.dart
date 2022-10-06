@@ -25,6 +25,8 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
     state = data.fold(
         (l) => state.copyWith(loading: false, failure: l),
         (r) => state.copyWith(
-            loading: false, userProfile: r, shareCode: shareCode));
+            loading: false,
+            userProfile: r.profileWithoutEmptyPlaylist,
+            shareCode: shareCode));
   }
 }

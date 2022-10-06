@@ -5,10 +5,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/application/profile_state.dart';
+import 'package:knocard_ui/presentation/home/home_body.dart';
 
 import 'package:knocard_ui/presentation/router/router.gr.dart';
-import 'package:knocard_ui/presentation/widget/header_background.dart';
-import 'package:knocard_ui/presentation/widget/header_title_bottom.dart';
 
 class HomePage extends HookConsumerWidget {
   final String userName;
@@ -21,7 +20,7 @@ class HomePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final ValueNotifier<int> index = useState(0);
+    // final ValueNotifier<int> index = useState(0);
     // final controller = usePageController(initialPage: 0);
     useEffect(() {
       Logger.i("username: $userName");
@@ -60,52 +59,57 @@ class HomePage extends HookConsumerWidget {
                 ],
                 builder: (context, child, controller) {
                   return HookBuilder(builder: (context) {
-                    useEffect(() {
-                      Future.delayed(const Duration(milliseconds: 100), () {
-                        index.value = AutoTabsRouter.of(context).activeIndex;
-                        controller.addListener(() {
-                          final i = controller.page!.toInt();
-                          index.value = i;
-                        });
-                      });
+                    return HomeBody(
+                        controller: controller,
+                        child: child,
+                        profile: state.userProfile);
+                    // useEffect(() {
+                    //   Future.delayed(const Duration(milliseconds: 100), () {
+                    //     Logger.i("tadatada: ${state.userProfile.homeIndex}");
+                    //     index.value = AutoTabsRouter.of(context).activeIndex;
+                    //     controller.addListener(() {
+                    //       final i = controller.page!.toInt();
+                    //       index.value = i;
+                    //     });
+                    //   });
 
-                      return null;
-                    });
-                    return NestedScrollView(
-                      headerSliverBuilder: (context, innerBoxIsScrolled) {
-                        return [
-                          SliverAppBar(
-                            expandedHeight: 350,
-                            elevation: 0,
-                            collapsedHeight: 60,
-                            toolbarHeight: 60,
-                            pinned: true,
-                            bottom: HeaderBottom(
-                                index: index.value,
-                                onTap: (i) {
-                                  return controller.animateToPage(i,
-                                      duration:
-                                          const Duration(milliseconds: 300),
-                                      curve: Curves.easeInOut);
-                                }),
-                            flexibleSpace: FlexibleSpaceBar(
-                              expandedTitleScale: 1,
-                              background: HeaderBackground(
-                                index: index.value,
-                                goHome: () {
-                                  Logger.i(index.value);
-                                  controller.animateToPage(0,
-                                      duration:
-                                          const Duration(milliseconds: 300),
-                                      curve: Curves.easeInOut);
-                                },
-                              ),
-                            ),
-                          ),
-                        ];
-                      },
-                      body: child,
-                    );
+                    //   return null;
+                    // });
+                    // return NestedScrollView(
+                    //   headerSliverBuilder: (context, innerBoxIsScrolled) {
+                    //     return [
+                    //       SliverAppBar(
+                    //         expandedHeight: 350,
+                    //         elevation: 0,
+                    //         collapsedHeight: 60,
+                    //         toolbarHeight: 60,
+                    //         pinned: true,
+                    //         bottom: HeaderBottom(
+                    //             index: index.value,
+                    //             onTap: (i) {
+                    //               return controller.animateToPage(i,
+                    //                   duration:
+                    //                       const Duration(milliseconds: 300),
+                    //                   curve: Curves.easeInOut);
+                    //             }),
+                    //         flexibleSpace: FlexibleSpaceBar(
+                    //           expandedTitleScale: 1,
+                    //           background: HeaderBackground(
+                    //             index: index.value,
+                    //             goHome: () {
+                    //               Logger.i(index.value);
+                    //               controller.animateToPage(0,
+                    //                   duration:
+                    //                       const Duration(milliseconds: 300),
+                    //                   curve: Curves.easeInOut);
+                    //             },
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ];
+                    //   },
+                    //   body: child,
+                    // );
                   });
                 }));
   }

@@ -168,8 +168,8 @@ class ShowKnocardDialogMobile extends HookConsumerWidget {
                               recipientPhoneNumber: shareMobileController.text);
                           if (formKey.currentState!.validate()) {
                             loading.value = true;
-                            await CleanApi.instance().post(
-                                fromJson: (json) => unit,
+                            await CleanApi.instance.post(
+                                fromData: (json) => unit,
                                 showLogs: true,
                                 body: shareAndRefer.toMap(),
                                 endPoint: 'share-and-refer');

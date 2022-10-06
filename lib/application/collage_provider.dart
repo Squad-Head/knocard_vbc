@@ -12,7 +12,7 @@ final collageProvider = StateNotifierProvider<CollageNotifier, List<Collage>>((
 });
 
 class CollageNotifier extends StateNotifier<List<Collage>> {
-  final api = CleanApi.instance();
+  final api = CleanApi.instance;
   final int id;
   CollageNotifier({required this.id}) : super(const []);
 
@@ -23,7 +23,7 @@ class CollageNotifier extends StateNotifier<List<Collage>> {
     };
     final data = await api.post(
         showLogs: true,
-        fromJson: (json) {
+        fromData: (json) {
           final list = json['data'] as List;
           return List<Collage>.from(list.map((e) => Collage.fromMap(e)));
         },

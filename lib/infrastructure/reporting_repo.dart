@@ -10,8 +10,8 @@ class ReportingRepo {
       "activity_code": "contact_page",
       if (shareCode.isNotEmpty) "viewer_code": shareCode
     });
-    await CleanApi.instance().post(
-        fromJson: (json) => unit,
+    await CleanApi.instance.post(
+        fromData: (json) => unit,
         body: {
           "user_id": id,
           "log_name": "copied",
@@ -24,8 +24,8 @@ class ReportingRepo {
 
   static Future<void> trackPlaylistView(
       {required int id, required videoId, required String shareCode}) async {
-    await CleanApi.instance().post(
-        fromJson: (json) => unit,
+    await CleanApi.instance.post(
+        fromData: (json) => unit,
         body: {
           "user_id": id,
           'video_id': videoId,

@@ -435,4 +435,23 @@ class UserProfile extends Equatable {
         .where((element) => element.isNotEmpty && element != '0')
         .join(', ');
   }
+
+  int get homeIndex {
+    final int homeIndex = int.tryParse(knocard.homepage) ?? 0;
+    final features = userFeatures.map((e) => e.lookupId).toIList();
+    if (features.contains(homeIndex)) {
+      final allFeatures = Constants.featureList.keys.toIList();
+
+      final index = allFeatures.indexOf(homeIndex);
+      return index >= 0 ? index : 0;
+    }
+    return 0;
+  }
+
+  UserProfile get profileWithoutEmptyPlaylist {
+    final playlists =
+        this.playlists.where((element) => element.videos.isNotEmpty).toList();
+    final profile = copyWith(playlists: playlists);
+    return profile;
+  }
 }

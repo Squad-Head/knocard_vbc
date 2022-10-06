@@ -5,12 +5,12 @@ import 'package:knocard_ui/domain/profile/company/company_feed.dart';
 import 'package:knocard_ui/domain/profile/user_profile.dart';
 
 class ProfileRepo extends IProfileRepo {
-  final cleanApi = CleanApi.instance();
+  final cleanApi = CleanApi.instance;
   @override
   Future<Either<CleanFailure, UserProfile>> getProfile(String userName) async {
     final data = await cleanApi.get(
       showLogs: true,
-      fromJson: ((json) => UserProfile.fromMap(json['data']["user"][0])),
+      fromData: ((json) => UserProfile.fromMap(json['data']["user"][0])),
       endPoint: 'user/vbc/$userName',
     );
 
@@ -25,7 +25,7 @@ class ProfileRepo extends IProfileRepo {
   }) async {
     final data = await cleanApi.get(
         showLogs: true,
-        fromJson: (json) {
+        fromData: (json) {
           final list = json['company_feed'] as List;
           return List<CompanyFeed>.from(
               list.map((e) => CompanyFeed.fromMap(e)));
@@ -43,7 +43,7 @@ class ProfileRepo extends IProfileRepo {
       getCompanyButtons({required int companyId}) async {
     final data = await cleanApi.get(
         showLogs: true,
-        fromJson: (json) {
+        fromData: (json) {
           final list = json['company_external_links'] as List;
           return List<CompanyExternalLinkEntity>.from(
               list.map((e) => CompanyExternalLinkEntity.fromMap(e)));
