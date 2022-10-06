@@ -5,9 +5,9 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/application/profile_state.dart';
-import 'package:knocard_ui/presentation/home/home_body.dart';
-
 import 'package:knocard_ui/presentation/router/router.gr.dart';
+
+import 'home_body.dart';
 
 class HomePage extends HookConsumerWidget {
   final String userName;
@@ -20,7 +20,8 @@ class HomePage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    // final ValueNotifier<int> index = useState(0);
+    final ValueNotifier<int> index = useState(0);
+
     // final controller = usePageController(initialPage: 0);
     useEffect(() {
       Logger.i("username: $userName");
@@ -71,10 +72,15 @@ class HomePage extends HookConsumerWidget {
                     //       final i = controller.page!.toInt();
                     //       index.value = i;
                     //     });
+                    //     if (!state.setHome) {
+                    //       controller.jumpToPage(state.userProfile.homeIndex);
+                    //       ref.read(profileProvider.notifier).settedHome();
+                    //     }
                     //   });
 
                     //   return null;
                     // });
+
                     // return NestedScrollView(
                     //   headerSliverBuilder: (context, innerBoxIsScrolled) {
                     //     return [

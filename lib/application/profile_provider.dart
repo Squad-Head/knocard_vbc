@@ -29,4 +29,8 @@ class ProfileNotifier extends StateNotifier<ProfileState> {
             userProfile: r.profileWithoutEmptyPlaylist,
             shareCode: shareCode));
   }
+
+  settedHome() {
+    state = state.copyWith(setHome: true);
+  }
 }

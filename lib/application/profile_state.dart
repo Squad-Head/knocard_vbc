@@ -8,7 +8,9 @@ class ProfileState extends Equatable {
   final CleanFailure failure;
   final UserProfile userProfile;
   final String shareCode;
+  final bool setHome;
   const ProfileState({
+    required this.setHome,
     required this.loading,
     required this.failure,
     required this.userProfile,
@@ -22,8 +24,10 @@ class ProfileState extends Equatable {
       {bool? loading,
       CleanFailure? failure,
       UserProfile? userProfile,
+      bool? setHome,
       String? shareCode}) {
     return ProfileState(
+        setHome: setHome ?? this.setHome,
         loading: loading ?? this.loading,
         failure: failure ?? this.failure,
         userProfile: userProfile ?? this.userProfile,
@@ -35,6 +39,7 @@ class ProfileState extends Equatable {
       'ProfileState(loading: $loading, failure: $failure, userProfile: $userProfile)';
 
   factory ProfileState.init() => ProfileState(
+      setHome: false,
       shareCode: '',
       loading: true,
       failure: CleanFailure.none(),

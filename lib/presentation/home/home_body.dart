@@ -2,11 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:clean_api/clean_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/domain/profile/user_profile.dart';
 import 'package:knocard_ui/presentation/widget/header_background.dart';
 import 'package:knocard_ui/presentation/widget/header_title_bottom.dart';
 
-class HomeBody extends HookWidget {
+class HomeBody extends HookConsumerWidget {
   final PageController controller;
   final Widget child;
   final UserProfile profile;
@@ -18,8 +20,9 @@ class HomeBody extends HookWidget {
       : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
     final ValueNotifier<int> index = useState(0);
+    final state = ref.watch(profileProvider);
 
     useEffect(() {
       Future.delayed(const Duration(milliseconds: 100), () {
@@ -29,7 +32,10 @@ class HomeBody extends HookWidget {
           final i = controller.page!.toInt();
           index.value = i;
         });
-        controller.jumpToPage(profile.homeIndex);
+        if (!state.setHome) {
+          controller.jumpToPage(state.userProfile.homeIndex);
+          ref.read(profileProvider.notifier).settedHome();
+        }
       });
 
       return null;
