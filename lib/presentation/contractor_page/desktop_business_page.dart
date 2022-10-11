@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_declarations
 
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:chewie/chewie.dart';
 import 'package:clean_api/clean_api.dart';
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
@@ -10,8 +9,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/company_provider.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
+import 'package:knocard_ui/presentation/videos/custom_video_player.dart';
 import 'package:url_launcher/url_launcher_string.dart';
-import 'package:video_player/video_player.dart';
 
 class DesktopBusinessPage extends HookConsumerWidget {
   const DesktopBusinessPage({Key? key}) : super(key: key);
@@ -20,24 +19,6 @@ class DesktopBusinessPage extends HookConsumerWidget {
     final company =
         ref.watch(profileProvider.select((value) => value.userProfile.company));
     final companyState = ref.watch(companyProvider(company.id));
-    final videoPlayerController = useMemoized(
-        () => VideoPlayerController.network(company.promotional_video));
-    final tapped = useState(false);
-
-    final controller = useMemoized(() => ChewieController(
-          showControlsOnInitialize: false,
-          placeholder: Container(
-              color: Colors.white,
-              child: const Center(
-                child: CircularProgressIndicator(),
-              )),
-          videoPlayerController: videoPlayerController,
-          aspectRatio: 16 / 9,
-          autoInitialize: true,
-          allowFullScreen: false,
-          autoPlay: company.thumbnail.isNotEmpty,
-          looping: false,
-        ));
     final shareCode =
         ref.watch(profileProvider.select((value) => value.shareCode));
     useEffect(() {
@@ -84,41 +65,12 @@ class DesktopBusinessPage extends HookConsumerWidget {
                         ),
 
                         if (company.promotional_video.isNotEmpty)
-                          if (company.thumbnail.isNotEmpty && !tapped.value)
-                            AspectRatio(
-                                aspectRatio: 16 / 9,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                          fit: BoxFit.cover,
-                                          image: CachedNetworkImageProvider(
-                                              company.thumbnail))),
-                                  alignment: Alignment.center,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      InkWell(
-                                        onTap: () => tapped.value = true,
-                                        child: const CircleAvatar(
-                                          radius: 40,
-                                          backgroundColor: Colors.white30,
-                                          child: Icon(
-                                            Icons.play_arrow,
-                                            size: 40,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ))
-                          else
-                            AspectRatio(
-                              aspectRatio: 16 / 9,
-                              child: Chewie(
-                                controller: controller,
-                              ),
-                            )
+                          AspectRatio(
+                            aspectRatio: 16 / 9,
+                            child: CustomVideoPlayer(
+                                videoUrl: company.promotional_video,
+                                thumbnail: company.thumbnail),
+                          )
                         else
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -156,7 +108,7 @@ class DesktopBusinessPage extends HookConsumerWidget {
                                           horizontal: 5),
                                       child: ElevatedButton(
                                           style: ElevatedButton.styleFrom(
-                                              primary: Color(
+                                              backgroundColor: Color(
                                                   int.parse(element.color)),
                                               shape: const StadiumBorder()),
                                           onPressed: element.status == 'ACT'
@@ -211,93 +163,94 @@ class DesktopBusinessPage extends HookConsumerWidget {
                     SizedBox(
                       height: 30.h,
                     ),
-                    ListView.separated(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: companyState.feeds.length,
-                      separatorBuilder: (BuildContext context, int index) {
-                        return SizedBox(
-                          height: 30.h,
-                        );
-                      },
-                      itemBuilder: (BuildContext context, int index) {
-                        final content = companyState.feeds[index];
-                        return Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 10.w, vertical: 10.w),
-                          margin: EdgeInsets.symmetric(horizontal: 10.w),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10.r),
-                            color: Colors.white,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.shade300,
-                                offset: const Offset(-4, 4),
-                                blurRadius: 4,
-                                spreadRadius: 1.5,
-                              ),
-                              BoxShadow(
-                                color: Colors.grey.shade300,
-                                offset: const Offset(1.5, -1.5),
-                                blurRadius: 2.r,
-                                spreadRadius: .5.r,
-                              ),
-                            ],
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              if (content.image.isNotEmpty)
-                                Container(
-                                  alignment: Alignment.center,
-                                  // height: 160.h,
-                                  child: CachedNetworkImage(
-                                    imageUrl: content.image,
-                                    fit: BoxFit.cover,
-                                  ),
+                    if (companyState.feeds.isNotEmpty)
+                      ListView.separated(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: companyState.feeds.length,
+                        separatorBuilder: (BuildContext context, int index) {
+                          return SizedBox(
+                            height: 30.h,
+                          );
+                        },
+                        itemBuilder: (BuildContext context, int index) {
+                          final content = companyState.feeds[index];
+                          return Container(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 10.w, vertical: 10.w),
+                            margin: EdgeInsets.symmetric(horizontal: 10.w),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.r),
+                              color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  offset: const Offset(-4, 4),
+                                  blurRadius: 4,
+                                  spreadRadius: 1.5,
                                 ),
-                              if (content.title.isNotEmpty)
-                                Text(
-                                  content.title,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16.sp,
-                                    height: 1.3,
-                                  ),
+                                BoxShadow(
+                                  color: Colors.grey.shade300,
+                                  offset: const Offset(1.5, -1.5),
+                                  blurRadius: 2.r,
+                                  spreadRadius: .5.r,
                                 ),
-                              SizedBox(
-                                height: 10.h,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    formatDate(content.createdAt,
-                                        [M, ' ', d, ', ', yy]),
-                                    style: TextStyle(
-                                      color: Colors.black38,
-                                      fontWeight: FontWeight.w400,
-                                      fontSize: 12.sp,
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                if (content.image.isNotEmpty)
+                                  Container(
+                                    alignment: Alignment.center,
+                                    // height: 160.h,
+                                    child: CachedNetworkImage(
+                                      imageUrl: content.image,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10.h,
-                              ),
-                              Text(
-                                content.description,
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 12.sp,
+                                if (content.title.isNotEmpty)
+                                  Text(
+                                    content.title,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 25,
+                                      height: 1.3,
+                                    ),
+                                  ),
+                                SizedBox(
+                                  height: 10.h,
                                 ),
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      formatDate(content.createdAt,
+                                          [M, ' ', d, ', ', yy]),
+                                      style: TextStyle(
+                                        color: Colors.black38,
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 12.sp,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 10.h,
+                                ),
+                                Text(
+                                  content.description,
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12.sp,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
                   ],
                 ),
               ),
