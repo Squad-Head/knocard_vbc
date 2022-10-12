@@ -53,7 +53,7 @@ class DesktopBusinessPage extends HookConsumerWidget {
                     Column(
                       children: [
                         Text(
-                          company.business_page_title,
+                          company.title,
                           style: TextStyle(
                             fontSize: 25.sp,
                             color: Colors.blue,

@@ -22,8 +22,8 @@ class MobileContactPage extends HookConsumerWidget {
     final state = ref.watch(profileProvider).userProfile;
     final photos = ref.watch(
         profileProvider.select((value) => value.userProfile.photo_galleries));
-    final videosCollection =
-        List<List<ProfileVideo>>.from(state.playlists.map((e) => e.videos));
+    final videosCollection = List<List<ProfileVideo>>.from(
+        state.playlists.map((e) => e.videos.reversed.toList()));
     final videos = videosCollection.expand((i) => i).toList().reversed.toList();
     return Scaffold(
       backgroundColor: Colors.white,

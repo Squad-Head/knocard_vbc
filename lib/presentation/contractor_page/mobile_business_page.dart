@@ -55,7 +55,7 @@ class MobileBusinessPage extends HookConsumerWidget {
                       Column(
                         children: [
                           Text(
-                            company.business_page_title,
+                            company.title,
                             style: const TextStyle(
                               fontSize: 25,
                               color: Colors.blue,
