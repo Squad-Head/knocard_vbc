@@ -37,7 +37,7 @@ class NetworkVideoPlayer extends HookWidget {
         videoPlayerController.dispose();
         controller.dispose();
       };
-    });
+    }, []);
     return Chewie(
       controller: controller,
     );
