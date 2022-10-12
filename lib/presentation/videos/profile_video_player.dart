@@ -7,7 +7,9 @@ import 'package:knocard_ui/domain/profile/profile_video.dart';
 import 'package:knocard_ui/infrastructure/reporting_repo.dart';
 import 'package:knocard_ui/infrastructure/youtube_util.dart';
 import 'package:url_launcher/url_launcher_string.dart';
+import 'package:widget_visibility_detector/widget_visibility_detector.dart';
 
+import 'desktop_video/youtube_video_player.dart';
 import 'network_video_player.dart';
 
 class ProfileVideoPlayer extends HookConsumerWidget {
@@ -62,7 +64,14 @@ class ProfileVideoPlayer extends HookConsumerWidget {
             ),
           ));
     } else {
-      return NetworkVideoPlayer(video.link);
+      return WidgetVisibilityDetector(
+        onDisappear: () {
+          tapped.value = false;
+        },
+        child: video.platform == 'youtube'
+            ? YoutubeVideoPlayer(video.link)
+            : NetworkVideoPlayer(video.link),
+      );
     }
   }
 }

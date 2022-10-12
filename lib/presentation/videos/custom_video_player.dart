@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:widget_visibility_detector/widget_visibility_detector.dart';
 
 import 'network_video_player.dart';
 
@@ -45,9 +46,14 @@ class CustomVideoPlayer extends HookConsumerWidget {
             ),
           ));
     } else {
-      return NetworkVideoPlayer(
-        videoUrl,
-        autoPlay: thumbnail.isNotEmpty,
+      return WidgetVisibilityDetector(
+        onDisappear: () {
+          tapped.value = false;
+        },
+        child: NetworkVideoPlayer(
+          videoUrl,
+          autoPlay: thumbnail.isNotEmpty,
+        ),
       );
     }
   }
