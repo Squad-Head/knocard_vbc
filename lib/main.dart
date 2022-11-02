@@ -7,7 +7,9 @@ import 'presentation/router/router.gr.dart';
 
 void main() {
   // setPathUrlStrategy();
-  CleanApi.instance.setup(baseUrl: 'https://knocard.com/api/', showLogs: false);
+  const String prodServer = 'https://knocard.com/api/';
+  const String devServer = 'https://dev.knocard.com/api/';
+  CleanApi.instance.setup(baseUrl: devServer, showLogs: false);
   runApp(ProviderScope(child: MyApp()));
 }
 

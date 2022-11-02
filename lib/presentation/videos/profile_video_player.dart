@@ -37,6 +37,10 @@ class ProfileVideoPlayer extends HookConsumerWidget {
               children: [
                 InkWell(
                   onTap: () async {
+                    ReportingRepo.trackPlaylistView(
+                        id: profile.id,
+                        videoId: video.id,
+                        shareCode: shareCode);
                     if (video.platform == 'youtube') {
                       if (await canLaunchUrlString(
                           'https://youtu.be/${video.link}')) {
@@ -44,10 +48,6 @@ class ProfileVideoPlayer extends HookConsumerWidget {
                       }
                     } else {
                       tapped.value = true;
-                      ReportingRepo.trackPlaylistView(
-                          id: profile.id,
-                          videoId: video.id,
-                          shareCode: shareCode);
                     }
                   },
                   child: const CircleAvatar(

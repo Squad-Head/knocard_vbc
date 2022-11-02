@@ -26,7 +26,7 @@ class MobileVideosPage extends HookConsumerWidget {
         ref.watch(profileProvider.select((value) => value.shareCode));
     useEffect(() {
       Future.delayed(const Duration(milliseconds: 500), () {
-        Logger.i('calling plauylist');
+        Logger.i('calling playlist');
         Logger.i({
           "user_id": ref
               .watch(profileProvider.select((value) => value.userProfile.id)),
@@ -35,38 +35,22 @@ class MobileVideosPage extends HookConsumerWidget {
           if (shareCode.isNotEmpty) 'viewer_code': shareCode
         });
       });
+      CleanApi.instance.post(
+          fromData: (json) => unit,
+          body: {
+            "user_id": ref
+                .watch(profileProvider.select((value) => value.userProfile.id)),
+            "log_name": "copied",
+            "activity_code": "playlist_page",
+            if (shareCode.isNotEmpty) 'viewer_code': shareCode
+          },
+          showLogs: true,
+          endPoint: 'tracking/desktop/click/save');
       return null;
     }, []);
     return Scaffold(
       body: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  playlists[selectedPlaylist.value].videos.isEmpty
-                      ? ''
-                      : playlists[selectedPlaylist.value]
-                          .videos[selectedVideo.value]
-                          .title,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 13),
-                ),
-                const SizedBox(
-                  width: 15,
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.arrow_downward,
-                    size: 20,
-                  ),
-                ),
-              ],
-            ),
-          ),
           Container(
             alignment: Alignment.center,
             height: 220,
@@ -89,6 +73,30 @@ class MobileVideosPage extends HookConsumerWidget {
                         video: playlists[selectedPlaylist.value].videos[index],
                       );
                     }),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  playlists[selectedPlaylist.value].videos.isEmpty
+                      ? ''
+                      : playlists[selectedPlaylist.value]
+                          .videos[selectedVideo.value]
+                          .title,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 13),
+                ),
+                Text(
+                  playlists[selectedPlaylist.value].videos.isEmpty
+                      ? ''
+                      : playlists[selectedPlaylist.value]
+                          .videos[selectedVideo.value]
+                          .description,
+                ),
+              ],
+            ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, top: 15),

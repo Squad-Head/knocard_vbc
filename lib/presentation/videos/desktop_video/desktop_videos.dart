@@ -1,3 +1,4 @@
+import 'package:clean_api/clean_api.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -20,6 +21,33 @@ class DesktopVideoPage extends HookConsumerWidget {
     final selectPlaylist = useState(0);
     final selectedVideo = useState(0);
     final controller = usePageController(keepPage: false);
+    final shareCode =
+        ref.watch(profileProvider.select((value) => value.shareCode));
+
+    useEffect(() {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        Logger.i('calling playlist');
+        Logger.i({
+          "user_id": ref
+              .watch(profileProvider.select((value) => value.userProfile.id)),
+          "log_name": "viewed",
+          "activity_code": "playlist_page",
+          if (shareCode.isNotEmpty) 'viewer_code': shareCode
+        });
+      });
+      CleanApi.instance.post(
+          fromData: (json) => unit,
+          body: {
+            "user_id": ref
+                .watch(profileProvider.select((value) => value.userProfile.id)),
+            "log_name": "copied",
+            "activity_code": "playlist_page",
+            if (shareCode.isNotEmpty) 'viewer_code': shareCode
+          },
+          showLogs: true,
+          endPoint: 'tracking/desktop/click/save');
+      return null;
+    }, []);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(

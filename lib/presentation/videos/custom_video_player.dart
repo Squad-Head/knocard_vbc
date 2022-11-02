@@ -23,7 +23,8 @@ class CustomVideoPlayer extends HookConsumerWidget {
           child: Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: CachedNetworkImageProvider(thumbnail))),
+                    image: CachedNetworkImageProvider(thumbnail),
+                    fit: BoxFit.contain)),
             alignment: Alignment.center,
             child: Row(
               mainAxisSize: MainAxisSize.min,

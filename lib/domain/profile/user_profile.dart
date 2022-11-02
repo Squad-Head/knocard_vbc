@@ -30,7 +30,7 @@ class UserProfile extends Equatable {
   final String street2;
   final String city;
   final String state;
-  final int zip_code;
+  final String zip_code;
   final String profile_picture;
   final String occupation;
   final dynamic tagline;
@@ -45,7 +45,6 @@ class UserProfile extends Equatable {
   final int get_started;
   final dynamic meta_tags;
   final int is_legacy;
-  final dynamic create_and_share_id;
   final int show_profile_picture;
   final String status;
   final dynamic go_live_code;
@@ -90,7 +89,6 @@ class UserProfile extends Equatable {
     required this.get_started,
     required this.meta_tags,
     required this.is_legacy,
-    required this.create_and_share_id,
     required this.show_profile_picture,
     required this.status,
     required this.go_live_code,
@@ -118,7 +116,7 @@ class UserProfile extends Equatable {
       String? street2,
       String? city,
       String? state,
-      int? zip_code,
+      String? zip_code,
       String? profile_picture,
       String? occupation,
       dynamic? tagline,
@@ -132,7 +130,6 @@ class UserProfile extends Equatable {
       int? get_started,
       dynamic? meta_tags,
       int? is_legacy,
-      dynamic? create_and_share_id,
       int? show_profile_picture,
       String? status,
       dynamic? go_live_code,
@@ -177,7 +174,6 @@ class UserProfile extends Equatable {
       get_started: get_started ?? this.get_started,
       meta_tags: meta_tags ?? this.meta_tags,
       is_legacy: is_legacy ?? this.is_legacy,
-      create_and_share_id: create_and_share_id ?? this.create_and_share_id,
       show_profile_picture: show_profile_picture ?? this.show_profile_picture,
       status: status ?? this.status,
       go_live_code: go_live_code ?? this.go_live_code,
@@ -224,7 +220,6 @@ class UserProfile extends Equatable {
       'get_started': get_started,
       'meta_tags': meta_tags,
       'is_legacy': is_legacy,
-      'create_and_share_id': create_and_share_id,
       'show_profile_picture': show_profile_picture,
       'status': status,
       'go_live_code': go_live_code,
@@ -258,7 +253,7 @@ class UserProfile extends Equatable {
       street2: map['street2'] ?? '',
       city: map['city'] ?? '',
       state: map['state'] ?? '',
-      zip_code: map['zip_code']?.toInt() ?? 0,
+      zip_code: map['zip_code']?.toString() ?? '',
       profile_picture: map['profile_picture'] ?? '',
       occupation: map['occupation'] ?? '',
       tagline: map['tagline'],
@@ -272,7 +267,6 @@ class UserProfile extends Equatable {
       get_started: map['get_started']?.toInt() ?? 0,
       meta_tags: map['meta_tags'],
       is_legacy: map['is_legacy']?.toInt() ?? 0,
-      create_and_share_id: map['create_and_share_id'],
       show_profile_picture: map['show_profile_picture']?.toInt() ?? 0,
       status: map['status'] ?? '',
       go_live_code: map['go_live_code'],
@@ -306,7 +300,7 @@ class UserProfile extends Equatable {
 
   @override
   String toString() {
-    return 'UserProfile(id: $id, name: $name, username: $username, first_name: $first_name, last_name: $last_name, email: $email,  api_token: $api_token, phone_country_code: $phone_country_code, mobile_number: $mobile_number, street1: $street1, street2: $street2, city: $city, state: $state, zip_code: $zip_code, profile_picture: $profile_picture, occupation: $occupation, tagline: $tagline, about_me: $about_me, phone_number: $phone_number, integration_id: $integration_id, gateway: $gateway, card_brand: $card_brand, card_last_four: $card_last_four, role: $role, get_started: $get_started, meta_tags: $meta_tags, is_legacy: $is_legacy, create_and_share_id: $create_and_share_id, show_profile_picture: $show_profile_picture, status: $status, go_live_code: $go_live_code, company: $company, knocard: $knocard, photo_galleries: $photo_galleries, social_media: $social_media, external_pages: $external_pages, playlists: $playlists, longitude: $longitude, latitude: $latitude)';
+    return 'UserProfile(id: $id, name: $name, username: $username, first_name: $first_name, last_name: $last_name, email: $email,  api_token: $api_token, phone_country_code: $phone_country_code, mobile_number: $mobile_number, street1: $street1, street2: $street2, city: $city, state: $state, zip_code: $zip_code, profile_picture: $profile_picture, occupation: $occupation, tagline: $tagline, about_me: $about_me, phone_number: $phone_number, integration_id: $integration_id, gateway: $gateway, card_brand: $card_brand, card_last_four: $card_last_four, role: $role, get_started: $get_started, meta_tags: $meta_tags, is_legacy: $is_legacy, show_profile_picture: $show_profile_picture, status: $status, go_live_code: $go_live_code, company: $company, knocard: $knocard, photo_galleries: $photo_galleries, social_media: $social_media, external_pages: $external_pages, playlists: $playlists, longitude: $longitude, latitude: $latitude)';
   }
 
   @override
@@ -340,7 +334,6 @@ class UserProfile extends Equatable {
       get_started,
       meta_tags,
       is_legacy,
-      create_and_share_id,
       show_profile_picture,
       status,
       go_live_code,
@@ -375,7 +368,7 @@ class UserProfile extends Equatable {
       street2: '',
       city: '',
       state: '',
-      zip_code: 0,
+      zip_code: '',
       profile_picture: '',
       occupation: '',
       tagline: null,
@@ -389,7 +382,6 @@ class UserProfile extends Equatable {
       get_started: 0,
       meta_tags: '',
       is_legacy: 0,
-      create_and_share_id: null,
       show_profile_picture: 0,
       status: '',
       go_live_code: null,
