@@ -92,9 +92,10 @@ class MobileGalleryPage extends HookConsumerWidget {
         ),
       SizedBox(height: 10.h),
       SizedBox(
-        height: 600,
         width: double.infinity,
         child: GridView.builder(
+          physics: NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
           itemCount: photos.length,
           itemBuilder: (context, index) {
             return InkWell(
