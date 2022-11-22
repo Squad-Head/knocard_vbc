@@ -9,7 +9,7 @@ void main() {
   // setPathUrlStrategy();
   const String prodServer = 'https://knocard.com/api/';
   const String devServer = 'https://dev.knocard.com/api/';
-  CleanApi.instance.setup(baseUrl: devServer, showLogs: false);
+  CleanApi.instance.setup(baseUrl: prodServer, showLogs: false);
   runApp(ProviderScope(child: MyApp()));
 }
 
