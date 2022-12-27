@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
+import 'package:knocard_ui/application/reporting_provider.dart';
+import 'package:knocard_ui/domain/activity_data.dart';
 import 'package:knocard_ui/domain/profile/profile_video.dart';
 import 'package:knocard_ui/infrastructure/reporting_repo.dart';
 import 'package:knocard_ui/infrastructure/youtube_util.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:widget_visibility_detector/widget_visibility_detector.dart';
 
@@ -19,10 +22,10 @@ class ProfileVideoPlayer extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final tapped = useState(false);
-    final profile =
-        ref.watch(profileProvider.select((value) => value.userProfile));
-    final shareCode =
-        ref.watch(profileProvider.select((value) => value.shareCode));
+    // final profile =
+    //     ref.watch(profileProvider.select((value) => value.userProfile));
+    // final shareCode =
+    //     ref.watch(profileProvider.select((value) => value.shareCode));
     if (!tapped.value) {
       return AspectRatio(
           aspectRatio: 16 / 9,
@@ -37,10 +40,10 @@ class ProfileVideoPlayer extends HookConsumerWidget {
               children: [
                 InkWell(
                   onTap: () async {
-                    ReportingRepo.trackPlaylistView(
-                        id: profile.id,
-                        videoId: video.id,
-                        shareCode: shareCode);
+                    // ReportingRepo.trackPlaylistView(
+                    //     id: profile.id,
+                    //     videoId: video.id,
+                    //     shareCode: shareCode);
                     if (video.platform == 'youtube') {
                       if (await canLaunchUrlString(
                           'https://youtu.be/${video.link}')) {
@@ -68,10 +71,32 @@ class ProfileVideoPlayer extends HookConsumerWidget {
         onDisappear: () {
           tapped.value = false;
         },
-        child: video.platform == 'youtube'
-            ? YoutubeVideoPlayer(video.link)
-            : NetworkVideoPlayer(video.link),
+        child: ReportedVideoPlayer(video: video),
       );
     }
+  }
+}
+
+class ReportedVideoPlayer extends ConsumerWidget {
+  final ProfileVideo video;
+  const ReportedVideoPlayer({super.key, required this.video});
+
+  @override
+  Widget build(BuildContext context, ref) {
+    final data = ActivityData(
+        viewableId: 25,
+        actionType: 'view',
+        sourceType: 'link_share',
+        module: Module.videos,
+        targetId: video.user_id,
+        identifiableId: video.id);
+    final activitySaver = ref.watch(saveReportingProvider(data));
+    return activitySaver.maybeWhen(
+        loading: () => const Center(
+              child: CircularProgressIndicator(),
+            ),
+        orElse: () => video.platform == 'youtube'
+            ? YoutubeVideoPlayer(video.link)
+            : NetworkVideoPlayer(video.link));
   }
 }
