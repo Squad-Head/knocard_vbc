@@ -6,8 +6,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
+import 'package:knocard_ui/application/reporting_provider.dart';
 import 'package:knocard_ui/infrastructure/youtube_util.dart';
 import 'package:knocard_ui/presentation/videos/profile_video_player.dart';
+
+import '../../../domain/activity_data.dart';
 
 class MobileVideosPage extends HookConsumerWidget {
   const MobileVideosPage({Key? key}) : super(key: key);
@@ -48,6 +51,14 @@ class MobileVideosPage extends HookConsumerWidget {
           endPoint: 'tracking/desktop/click/save');
       return null;
     }, []);
+    final data = ActivityData(
+        viewableId: 25,
+        actionType: 'view',
+        sourceType: 'link_share',
+        module: Module.playlist,
+        targetId: playlists[selectedPlaylist.value].user_id,
+        identifiableId: playlists[selectedPlaylist.value].id);
+    final activitySaver = ref.watch(saveReportingProvider(data));
     return Scaffold(
       body: ListView(
         children: [
@@ -56,23 +67,29 @@ class MobileVideosPage extends HookConsumerWidget {
             height: 220,
             width: double.infinity,
             color: Theme.of(context).shadowColor,
-            child: playlists[selectedPlaylist.value].videos.isEmpty
-                ? Text(
-                    'No Video Available',
-                    style: TextStyle(
-                      fontSize: 55,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).canvasColor,
-                    ),
-                  )
-                : PageView.builder(
-                    controller: controller,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) {
-                      return ProfileVideoPlayer(
-                        video: playlists[selectedPlaylist.value].videos[index],
-                      );
-                    }),
+            child: activitySaver.maybeWhen(
+              loading: () => const Center(
+                child: CircularProgressIndicator(),
+              ),
+              orElse: () => playlists[selectedPlaylist.value].videos.isEmpty
+                  ? Text(
+                      'No Video Available',
+                      style: TextStyle(
+                        fontSize: 55,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).canvasColor,
+                      ),
+                    )
+                  : PageView.builder(
+                      controller: controller,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) {
+                        return ProfileVideoPlayer(
+                          video:
+                              playlists[selectedPlaylist.value].videos[index],
+                        );
+                      }),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

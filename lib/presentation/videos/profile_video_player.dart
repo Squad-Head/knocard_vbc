@@ -2,13 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/application/reporting_provider.dart';
 import 'package:knocard_ui/domain/activity_data.dart';
 import 'package:knocard_ui/domain/profile/profile_video.dart';
-import 'package:knocard_ui/infrastructure/reporting_repo.dart';
 import 'package:knocard_ui/infrastructure/youtube_util.dart';
-import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 import 'package:widget_visibility_detector/widget_visibility_detector.dart';
 

@@ -1,9 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:clean_api/clean_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/application/profile_provider.dart';
+import 'package:knocard_ui/application/reporting_provider.dart';
+import 'package:knocard_ui/domain/activity_data.dart';
 import 'package:knocard_ui/domain/profile/photo.dart';
 
 class GalleryImageViewPage extends HookConsumerWidget {
@@ -17,6 +21,7 @@ class GalleryImageViewPage extends HookConsumerWidget {
   Widget build(BuildContext context, ref) {
     final selectedIndex = useState(index);
     final controller = usePageController(initialPage: index);
+    final state = ref.watch(profileProvider);
     useEffect(() {
       Future.delayed(const Duration(milliseconds: 100), () {
         controller.addListener(() {
@@ -25,6 +30,14 @@ class GalleryImageViewPage extends HookConsumerWidget {
       });
       return null;
     }, []);
+    final data = ActivityData(
+        viewableId: 25,
+        actionType: 'view',
+        sourceType: 'link_share',
+        module: Module.images,
+        targetId: state.userProfile.id,
+        identifiableId: photos[selectedIndex.value].id);
+    final activitySaver = ref.watch(saveReportingProvider(data));
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -52,15 +65,19 @@ class GalleryImageViewPage extends HookConsumerWidget {
                   children: [
                     SizedBox(
                       height: 350.h,
-                      child: PageView.builder(
-                        itemCount: photos.length,
-                        controller: controller,
-                        itemBuilder: (context, indx) => CachedNetworkImage(
-                          imageUrl: photos[indx].link,
+                      child: activitySaver.maybeWhen(
+                        loading: () => const Center(
+                          child: CircularProgressIndicator(),
+                        ),
+                        orElse: () => PageView.builder(
+                          itemCount: photos.length,
+                          controller: controller,
+                          itemBuilder: (context, indx) => CachedNetworkImage(
+                            imageUrl: photos[indx].link,
+                          ),
                         ),
                       ),
                     ),
-
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 10),
                       child: Text(photos[selectedIndex.value].description),

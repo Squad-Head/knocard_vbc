@@ -6,7 +6,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/collage_provider.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
+import 'package:knocard_ui/domain/activity_data.dart';
 import 'package:knocard_ui/presentation/gallery/gallery_image_view.dart';
+
+import '../../../application/reporting_provider.dart';
 
 class MobileGalleryPage extends HookConsumerWidget {
   const MobileGalleryPage({Key? key}) : super(key: key);
@@ -15,7 +18,8 @@ class MobileGalleryPage extends HookConsumerWidget {
   Widget build(BuildContext context, ref) {
     final photos = ref.watch(
         profileProvider.select((value) => value.userProfile.photo_galleries));
-
+    final userId =
+        ref.watch(profileProvider.select((value) => value.userProfile.id));
     final collages = ref.watch(collageProvider);
     final shareCode =
         ref.watch(profileProvider.select((value) => value.shareCode));
@@ -54,6 +58,16 @@ class MobileGalleryPage extends HookConsumerWidget {
                 return collage.photoGallery.isNotEmpty
                     ? InkWell(
                         onTap: () {
+                          final data = ActivityData(
+                              viewableId: 25,
+                              actionType: 'view',
+                              sourceType: 'link_share',
+                              module: Module.collage,
+                              targetId: userId,
+                              identifiableId: collage.id);
+                          final activitySaver =
+                              ref.watch(saveReportingProvider(data));
+                          Logger.i(activitySaver);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
