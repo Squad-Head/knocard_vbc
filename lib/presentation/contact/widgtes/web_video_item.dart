@@ -51,13 +51,17 @@ class WebVideoItem extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            Text(
-              video.description,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                color: const Color(0xFF878788),
-                fontSize: 8.sp,
+            Container(
+              constraints: BoxConstraints(
+                  maxWidth: MediaQuery.of(context).size.width * 0.22),
+              child: Text(
+                video.description,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: const Color(0xFF878788),
+                  fontSize: 8.sp,
+                ),
               ),
             ),
           ],
