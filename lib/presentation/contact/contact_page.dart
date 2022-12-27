@@ -1,4 +1,5 @@
 import 'package:clean_api/clean_api.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -19,26 +20,30 @@ class ContactPage extends HookConsumerWidget {
     final state = ref.watch(profileProvider);
     useEffect(() {
       Future.delayed(const Duration(milliseconds: 500), () {
-        final data = ActivityData(
-            viewableId: 25,
-            actionType: 'view',
-            sourceType: 'link_share',
-            module: Module.profile,
-            targetId: state.userProfile.id,
-            identifiableId: state.userProfile.id);
-        final activitySaver = ref.watch(saveReportingProvider(data));
-        Logger.i(activitySaver.value);
         // ReportingRepo.trackVbcView(state.userProfile.id, state.shareCode);
       });
       return null;
     }, []);
-    return LayoutBuilder(builder: (context, constraints) {
-      final width = constraints.maxWidth;
-      if (width > 700) {
-        return const DesktopContactPage();
-      } else {
-        return const MobileContactPage();
-      }
-    });
+    final data = ActivityData(
+        viewableId: 25,
+        actionType: 'view',
+        sourceType: 'link_share',
+        module: Module.profile,
+        targetId: state.userProfile.id,
+        identifiableId: state.userProfile.id);
+    final activitySaver = ref.watch(saveReportingProvider(data));
+
+    return activitySaver.maybeWhen(
+        loading: () => const Center(
+              child: CircularProgressIndicator(),
+            ),
+        orElse: () => LayoutBuilder(builder: (context, constraints) {
+              final width = constraints.maxWidth;
+              if (width > 700) {
+                return const DesktopContactPage();
+              } else {
+                return const MobileContactPage();
+              }
+            }));
   }
 }
