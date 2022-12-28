@@ -20,25 +20,13 @@ class DesktopGalleryPage extends HookConsumerWidget {
     final collages = ref.watch(collageProvider);
     final userId =
         ref.watch(profileProvider.select((value) => value.userProfile.id));
-    final shareCode =
-        ref.watch(profileProvider.select((value) => value.shareCode));
+
     useEffect(() {
       Future.delayed(
           const Duration(
             milliseconds: 500,
           ), () {
         ref.read(collageProvider.notifier).loadCollage();
-        CleanApi.instance.post(
-            fromData: (json) => unit,
-            body: {
-              "user_id": ref.watch(
-                  profileProvider.select((value) => value.userProfile.id)),
-              "log_name": "viewed",
-              "activity_code": "photo_gallery_page",
-              if (shareCode.isNotEmpty) 'viewer_code': shareCode
-            },
-            showLogs: true,
-            endPoint: 'tracking/desktop/click/save');
       });
       return null;
     }, []);

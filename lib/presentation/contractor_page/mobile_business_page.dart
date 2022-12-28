@@ -21,26 +21,6 @@ class MobileBusinessPage extends HookConsumerWidget {
         ref.watch(profileProvider.select((value) => value.userProfile.company));
     final companyState = ref.watch(companyProvider(company.id));
 
-    final shareCode =
-        ref.watch(profileProvider.select((value) => value.shareCode));
-    useEffect(() {
-      Future.delayed(const Duration(milliseconds: 500), () {
-        ref.read(companyProvider(company.id).notifier).getFeed();
-        CleanApi.instance.post(
-            fromData: (json) => unit,
-            body: {
-              "user_id": ref.watch(
-                  profileProvider.select((value) => value.userProfile.id)),
-              "log_name": "viewed",
-              "activity_code": "company_page",
-              if (shareCode.isNotEmpty) 'viewer_code': shareCode
-            },
-            showLogs: true,
-            endPoint: 'tracking/desktop/click/save');
-      });
-      return null;
-    }, []);
-
     return Scaffold(
         body: Row(
       mainAxisAlignment: MainAxisAlignment.center,

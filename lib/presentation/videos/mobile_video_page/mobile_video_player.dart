@@ -25,32 +25,7 @@ class MobileVideosPage extends HookConsumerWidget {
     final videoScrollController = useScrollController();
     final playlistScrollController = useScrollController();
     final controller = usePageController(keepPage: false);
-    final shareCode =
-        ref.watch(profileProvider.select((value) => value.shareCode));
-    useEffect(() {
-      Future.delayed(const Duration(milliseconds: 500), () {
-        Logger.i('calling playlist');
-        Logger.i({
-          "user_id": ref
-              .watch(profileProvider.select((value) => value.userProfile.id)),
-          "log_name": "viewed",
-          "activity_code": "playlist_page",
-          if (shareCode.isNotEmpty) 'viewer_code': shareCode
-        });
-      });
-      CleanApi.instance.post(
-          fromData: (json) => unit,
-          body: {
-            "user_id": ref
-                .watch(profileProvider.select((value) => value.userProfile.id)),
-            "log_name": "copied",
-            "activity_code": "playlist_page",
-            if (shareCode.isNotEmpty) 'viewer_code': shareCode
-          },
-          showLogs: true,
-          endPoint: 'tracking/desktop/click/save');
-      return null;
-    }, []);
+
     final data = ActivityData(
         viewableId: 25,
         actionType: 'view',
