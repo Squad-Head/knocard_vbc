@@ -50,7 +50,7 @@ class ActivityData extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
-      'viewableId': viewableId,
+      // 'viewableId': viewableId,
       'actionType': actionType,
       'sourceType': sourceType,
       'module': module.toShortString(),
