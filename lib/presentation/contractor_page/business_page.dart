@@ -1,18 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/application/company_provider.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/application/reporting_provider.dart';
 import 'package:knocard_ui/domain/activity_data.dart';
 import 'package:knocard_ui/presentation/contractor_page/desktop_business_page.dart';
 import 'package:knocard_ui/presentation/contractor_page/mobile_business_page.dart';
 
-class BusinessPage extends ConsumerWidget {
+class BusinessPage extends HookConsumerWidget {
   const BusinessPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ref) {
     final company =
         ref.watch(profileProvider.select((value) => value.userProfile.company));
+    useEffect(() {
+      Future.delayed(const Duration(milliseconds: 300), () {
+        ref.read(companyProvider(company.id).notifier).getFeed();
+      });
+      return null;
+    }, []);
     final data = ActivityData(
         viewableId: 25,
         actionType: 'view',
