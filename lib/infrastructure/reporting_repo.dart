@@ -7,14 +7,10 @@ class ReportingRepo {
 
   static Future<Either<CleanFailure, ActivityResponse>> saveActivity(
       ActivityData data) async {
-    if (data.viewableId != data.targetId) {
-      return await CleanApi.instance.post(
-          fromData: (json) => ActivityResponse.fromMap(json["data"]),
-          body: data.toMap(),
-          showLogs: true,
-          endPoint: 'activity/save');
-    } else {
-      return left(CleanFailure.none());
-    }
+    return await CleanApi.instance.post(
+        fromData: (json) => ActivityResponse.fromMap(json["data"]),
+        body: data.toMap(),
+        showLogs: true,
+        endPoint: 'activity/save');
   }
 }

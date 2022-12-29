@@ -16,6 +16,8 @@ class MobileGalleryPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    final state = ref.watch(profileProvider);
+
     final photos = ref.watch(
         profileProvider.select((value) => value.userProfile.photo_galleries));
     final userId =
@@ -46,7 +48,7 @@ class MobileGalleryPage extends HookConsumerWidget {
                     ? InkWell(
                         onTap: () {
                           final data = ActivityData(
-                              viewableId: 25,
+                              viewerCode: state.shareCode,
                               actionType: 'view',
                               sourceType: 'link_share',
                               module: Module.collage,
@@ -95,7 +97,7 @@ class MobileGalleryPage extends HookConsumerWidget {
       SizedBox(
         width: double.infinity,
         child: GridView.builder(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           itemCount: photos.length,
           itemBuilder: (context, index) {

@@ -20,6 +20,7 @@ class DesktopGalleryPage extends HookConsumerWidget {
     final collages = ref.watch(collageProvider);
     final userId =
         ref.watch(profileProvider.select((value) => value.userProfile.id));
+    final state = ref.watch(profileProvider);
 
     useEffect(() {
       Future.delayed(
@@ -51,7 +52,7 @@ class DesktopGalleryPage extends HookConsumerWidget {
                           ? InkWell(
                               onTap: () {
                                 final data = ActivityData(
-                                    viewableId: 25,
+                                    viewerCode: state.shareCode,
                                     actionType: 'view',
                                     sourceType: 'link_share',
                                     module: Module.collage,

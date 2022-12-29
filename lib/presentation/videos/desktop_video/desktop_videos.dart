@@ -1,4 +1,3 @@
-import 'package:clean_api/clean_api.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
@@ -23,9 +22,10 @@ class DesktopVideoPage extends HookConsumerWidget {
     final selectPlaylist = useState(0);
     final selectedVideo = useState(0);
     final controller = usePageController(keepPage: false);
+    final state = ref.watch(profileProvider);
 
     final data = ActivityData(
-        viewableId: 25,
+        viewerCode: state.shareCode,
         actionType: 'view',
         sourceType: 'link_share',
         module: Module.playlist,

@@ -15,6 +15,8 @@ class BusinessPage extends HookConsumerWidget {
   Widget build(BuildContext context, ref) {
     final company =
         ref.watch(profileProvider.select((value) => value.userProfile.company));
+    final state = ref.watch(profileProvider);
+
     useEffect(() {
       Future.delayed(const Duration(milliseconds: 300), () {
         ref.read(companyProvider(company.id).notifier).getFeed();
@@ -22,7 +24,7 @@ class BusinessPage extends HookConsumerWidget {
       return null;
     }, []);
     final data = ActivityData(
-        viewableId: 25,
+        viewerCode: state.shareCode,
         actionType: 'view',
         sourceType: 'link_share',
         module: Module.businessPage,

@@ -18,7 +18,7 @@ class DesktopImageView extends HookConsumerWidget {
     final activeIndex = useState(index);
     final state = ref.watch(profileProvider);
     final data = ActivityData(
-        viewableId: 25,
+        viewerCode: state.shareCode,
         actionType: 'view',
         sourceType: 'link_share',
         module: Module.images,

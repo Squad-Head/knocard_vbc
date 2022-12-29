@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/application/reporting_provider.dart';
 import 'package:knocard_ui/domain/activity_data.dart';
 import 'package:knocard_ui/domain/profile/photo.dart';
@@ -16,8 +17,10 @@ class ShowImage extends HookConsumerWidget {
       required this.userId});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(profileProvider);
+
     final data = ActivityData(
-        viewableId: currentUserId,
+        viewerCode: state.shareCode,
         actionType: 'view',
         sourceType: 'link_share',
         module: Module.images,

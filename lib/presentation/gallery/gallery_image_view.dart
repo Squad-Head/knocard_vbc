@@ -1,13 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:clean_api/clean_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
-import 'package:knocard_ui/application/reporting_provider.dart';
-import 'package:knocard_ui/domain/activity_data.dart';
 import 'package:knocard_ui/domain/profile/photo.dart';
 import 'package:knocard_ui/presentation/gallery/show_image.dart';
 

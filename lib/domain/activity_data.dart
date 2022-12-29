@@ -15,14 +15,14 @@ extension ParseToString on Module {
 }
 
 class ActivityData extends Equatable {
-  final int viewableId;
+  final String viewerCode;
   final String actionType;
   final String sourceType;
   final Module module;
   final int targetId;
   final int identifiableId;
   const ActivityData({
-    required this.viewableId,
+    required this.viewerCode,
     required this.actionType,
     required this.sourceType,
     required this.module,
@@ -31,7 +31,7 @@ class ActivityData extends Equatable {
   });
 
   ActivityData copyWith({
-    int? viewableId,
+    String? viewerCode,
     String? actionType,
     String? sourceType,
     Module? module,
@@ -39,7 +39,7 @@ class ActivityData extends Equatable {
     int? identifiableId,
   }) {
     return ActivityData(
-      viewableId: viewableId ?? this.viewableId,
+      viewerCode: viewerCode ?? this.viewerCode,
       actionType: actionType ?? this.actionType,
       sourceType: sourceType ?? this.sourceType,
       module: module ?? this.module,
@@ -50,7 +50,7 @@ class ActivityData extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
-      // 'viewableId': viewableId,
+      if (viewerCode.isNotEmpty) 'viewer_code': viewerCode,
       'actionType': actionType,
       'sourceType': sourceType,
       'module': module.toShortString(),
@@ -61,7 +61,7 @@ class ActivityData extends Equatable {
 
   factory ActivityData.fromMap(Map<String, dynamic> map) {
     return ActivityData(
-      viewableId: map['viewableId']?.toInt() ?? 0,
+      viewerCode: map['viewableId']?.toInt() ?? 0,
       actionType: map['actionType'] ?? '',
       sourceType: map['sourceType'] ?? '',
       module: map['module'] ?? '',
@@ -77,13 +77,13 @@ class ActivityData extends Equatable {
 
   @override
   String toString() {
-    return 'ActivityData(viewableId: $viewableId, actionType: $actionType, sourceType: $sourceType, module: ${module.toShortString()}, targetId: $targetId, identifiableId: $identifiableId)';
+    return 'ActivityData(viewableId: $viewerCode, actionType: $actionType, sourceType: $sourceType, module: ${module.toShortString()}, targetId: $targetId, identifiableId: $identifiableId)';
   }
 
   @override
   List<Object> get props {
     return [
-      viewableId,
+      viewerCode,
       actionType,
       sourceType,
       module,

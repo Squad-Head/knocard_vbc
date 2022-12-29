@@ -39,7 +39,7 @@ class HeaderBackground extends ConsumerWidget {
                       child: Image.asset('assets/images/knocard_logo.png')),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        primary: Colors.orange,
+                        backgroundColor: Colors.orange,
                         shape: const StadiumBorder(),
                       ),
                       onPressed: () {
