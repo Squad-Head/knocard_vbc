@@ -9,6 +9,7 @@ import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/application/reporting_provider.dart';
 import 'package:knocard_ui/domain/activity_data.dart';
 import 'package:knocard_ui/domain/profile/photo.dart';
+import 'package:knocard_ui/presentation/gallery/show_image.dart';
 
 class GalleryImageViewPage extends HookConsumerWidget {
   final int index;
@@ -30,14 +31,7 @@ class GalleryImageViewPage extends HookConsumerWidget {
       });
       return null;
     }, []);
-    final data = ActivityData(
-        viewableId: 25,
-        actionType: 'view',
-        sourceType: 'link_share',
-        module: Module.images,
-        targetId: state.userProfile.id,
-        identifiableId: photos[selectedIndex.value].id);
-    final activitySaver = ref.watch(saveReportingProvider(data));
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -65,16 +59,13 @@ class GalleryImageViewPage extends HookConsumerWidget {
                   children: [
                     SizedBox(
                       height: 350.h,
-                      child: activitySaver.maybeWhen(
-                        loading: () => const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        orElse: () => PageView.builder(
-                          itemCount: photos.length,
-                          controller: controller,
-                          itemBuilder: (context, indx) => CachedNetworkImage(
-                            imageUrl: photos[indx].link,
-                          ),
+                      child: PageView.builder(
+                        itemCount: photos.length,
+                        controller: controller,
+                        itemBuilder: (context, indx) => ShowImage(
+                          photo: photos[indx],
+                          currentUserId: 25,
+                          userId: state.userProfile.id,
                         ),
                       ),
                     ),
