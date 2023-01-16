@@ -39,33 +39,34 @@ class KVideoItemdesktop extends StatelessWidget {
               width: 90.w,
             ),
             SizedBox(width: 2.w),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(
-                  // 'Get MORE With Time Blocking',
-                  video.title,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: const Color(0xFF2A2A2A),
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  // 'Matt Bayrom',
-                  video.description,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: const Color(0xFF878788),
-                    fontSize: 10.sp,
-                  ),
-                ),
-              ],
-            ),
+           Expanded(child:  Column(
+             crossAxisAlignment: CrossAxisAlignment.start,
+             mainAxisAlignment: MainAxisAlignment.start,
+             children: [
+
+               Text(
+                 // 'Get MORE With Time Blocking',
+                 video.title,
+                 maxLines: 1,
+                 overflow: TextOverflow.ellipsis,
+                 style: TextStyle(
+                   color: const Color(0xFF2A2A2A),
+                   fontSize: 14.sp,
+                   fontWeight: FontWeight.bold,
+                 ),
+               ),
+               Text(
+                 // 'Matt Bayrom',
+                 video.description,
+                 maxLines: 1,
+                 overflow: TextOverflow.ellipsis,
+                 style: TextStyle(
+                   color: const Color(0xFF878788),
+                   fontSize: 10.sp,
+                 ),
+               ),
+             ],
+           )),
           ],
         ),
       ),

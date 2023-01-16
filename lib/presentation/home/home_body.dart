@@ -26,7 +26,7 @@ class HomeBody extends HookConsumerWidget {
 
     useEffect(() {
       Future.delayed(const Duration(milliseconds: 100), () {
-        Logger.i("tadatada: ${profile.homeIndex}");
+
         index.value = AutoTabsRouter.of(context).activeIndex;
         controller.addListener(() {
           final i = controller.page!.toInt();

@@ -29,6 +29,7 @@ class KVideoItem extends StatelessWidget {
           height: 27.h,
           width: MediaQuery.of(context).size.width * .1,
           imageUrl: YoutubeUtil.videoThumbnail(video),
+          errorWidget: (context, url, error) => Container(),
         ),
         SizedBox(width: 15.w),
         Container(

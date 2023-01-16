@@ -37,34 +37,36 @@ class WebVideoItem extends StatelessWidget {
           ),
         ),
         SizedBox(width: 4.w),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              video.title,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                color: const Color(0xFF2A2A2A),
-                fontSize: 10.sp,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Container(
-              constraints: BoxConstraints(
-                  maxWidth: MediaQuery.of(context).size.width * 0.22),
-              child: Text(
-                video.description,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                video.title,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
-                  color: const Color(0xFF878788),
-                  fontSize: 8.sp,
+                  color: const Color(0xFF2A2A2A),
+                  fontSize: 10.sp,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-          ],
+              Container(
+                constraints: BoxConstraints(
+                    maxWidth: MediaQuery.of(context).size.width * 0.22),
+                child: Text(
+                  video.description,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    color: const Color(0xFF878788),
+                    fontSize: 8.sp,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ],
     );

@@ -73,6 +73,7 @@ class ProfileBackground extends Equatable {
             fit: BoxFit.cover,
             width: double.infinity,
             imageUrl: link,
+           errorWidget: (context, url, error) => Container(),
             height: 190,
           ));
     } else {

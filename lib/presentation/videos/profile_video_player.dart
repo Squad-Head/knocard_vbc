@@ -30,6 +30,7 @@ class ProfileVideoPlayer extends HookConsumerWidget {
           child: Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
+                  fit: BoxFit.cover,
                     image: CachedNetworkImageProvider(
                         YoutubeUtil.videoThumbnail(video)))),
             alignment: Alignment.center,

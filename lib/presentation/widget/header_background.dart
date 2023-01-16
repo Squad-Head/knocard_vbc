@@ -1,15 +1,21 @@
+import 'dart:io';
+import 'dart:ui';
+
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart' hide MenuItem;
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:knocard_ui/application/profile_provider.dart';
 import 'package:knocard_ui/domain/profile/constants.dart';
 import 'package:knocard_ui/style/color.dart';
+import 'package:knocard_ui/utils/const.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class HeaderBackground extends ConsumerWidget {
   final int index;
   final VoidCallback goHome;
+
   const HeaderBackground({Key? key, required this.index, required this.goHome})
       : super(key: key);
 
@@ -21,6 +27,53 @@ class HeaderBackground extends ConsumerWidget {
       children: <Widget>[
         Column(
           children: [
+            Container(
+              color: Colors.grey.shade300,
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                children: [
+                  Image.asset(
+                    'assets/icons/knocard.png',
+                    height: 60,
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Text(
+                          "KnoCard",
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(top: 3, bottom: 5),
+                          child: const Text("Your all in one business platform",
+                              style: TextStyle(color: Colors.black54)),
+                        ),
+                        Image.asset("assets/images/rating.png", height: 15),
+                      ],
+                    ),
+                  ),
+                  ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: const StadiumBorder(),
+                      ),
+                      onPressed: () {
+                        openApplicationStore();
+                      },
+                      child: Text(
+                        'OPEN',
+                        style: TextStyle(
+                            color: Colors.indigoAccent,
+                            fontWeight: FontWeight.w700),
+                      ))
+                ],
+              ),
+            ),
             Container(
               height: 50,
               color: Colors.white,
@@ -98,7 +151,7 @@ class HeaderBackground extends ConsumerWidget {
             ),
           ],
         ),
-        if (state.company.business_page_title.isNotEmpty)
+        /*if (state.company.business_page_title.isNotEmpty)
           Container(
             // margin: const EdgeInsets.only(top: 50),
             padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 5.h),
@@ -125,7 +178,7 @@ class HeaderBackground extends ConsumerWidget {
                 fontSize: 15,
               ),
             ),
-          ),
+          ),*/
         if (state.profile_picture.isNotEmpty && state.show_profile_picture != 0)
           state.getBackGround().categCode != Constants.uploadBackground
               ? Center(
@@ -164,7 +217,7 @@ class HeaderBackground extends ConsumerWidget {
                                     state.profile_picture) as ImageProvider)),
                   )),
         Positioned(
-            top: 60.h,
+            top: 120.h,
             right: 10.w,
             child: AnimatedOpacity(
               opacity: index == 0 ? 0 : 1,
@@ -179,5 +232,20 @@ class HeaderBackground extends ConsumerWidget {
             )),
       ],
     );
+  }
+
+  void openApplicationStore() {
+    try {
+
+      var url = Const.APP_STORE_URL;
+
+      if (defaultTargetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.fuchsia || defaultTargetPlatform == TargetPlatform.linux ||
+          defaultTargetPlatform == TargetPlatform.windows) {
+        url = Const.PLAY_STORE_URL;
+      }
+
+      launchUrlString(url);
+    }catch(e){
+    }
   }
 }
