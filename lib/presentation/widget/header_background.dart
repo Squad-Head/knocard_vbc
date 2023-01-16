@@ -90,7 +90,7 @@ class HeaderBackground extends ConsumerWidget {
                         }
                       },
                       child: Image.asset('assets/images/knocard_logo.png')),
-                  ElevatedButton(
+                 /* ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.orange,
                         shape: const StadiumBorder(),
@@ -111,7 +111,7 @@ class HeaderBackground extends ConsumerWidget {
                             size: 15,
                           ),
                         ],
-                      ))
+                      ))*/
                 ],
               ),
             ),
