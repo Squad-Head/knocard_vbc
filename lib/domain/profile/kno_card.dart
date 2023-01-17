@@ -44,14 +44,14 @@ class Knocard extends Equatable {
     );
   }
 
-  factory Knocard.fromMap(Map<String, dynamic> json) => Knocard(
-        id: json["id"],
-        user_id: json["user_id"],
-        theme: json["theme"],
-        background_image: json["background_image"],
-        about_me: json["about_me"],
-        favicon: json["favicon"],
-        homepage: json["homepage"],
+  factory Knocard.fromMap(Map<String, dynamic>? json) => Knocard(
+        id: json?["id"].toInt() ?? 0,
+        user_id: json?["user_id"].toInt() ?? 0,
+        theme: json?["theme"]??'',
+        background_image: json?["background_image"]??'',
+        about_me: json?["about_me"],
+        favicon: json?["favicon"],
+        homepage: json?["homepage"]??'',
       );
 
   Map<String, dynamic> toMap() {

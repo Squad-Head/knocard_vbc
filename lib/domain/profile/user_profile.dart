@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'package:knocard_ui/domain/profile/photo.dart';
+import 'package:knocard_ui/domain/profile/user_connections.dart';
 import 'package:knocard_ui/domain/profile/user_feature.dart';
 
 import 'company/company.dart';
@@ -52,6 +53,7 @@ class UserProfile extends Equatable {
   final Company company;
   final Knocard knocard;
   final List<Photo> photo_galleries;
+  final List<UserConnections> user_connections;
 
   final List<SocialMedia> social_media;
   final ExternalPageData? external_pages;
@@ -95,6 +97,7 @@ class UserProfile extends Equatable {
     required this.company,
     required this.knocard,
     required this.photo_galleries,
+    required this.user_connections,
     required this.social_media,
     required this.external_pages,
     required this.playlists,
@@ -136,6 +139,7 @@ class UserProfile extends Equatable {
       Company? company,
       Knocard? knocard,
       List<Photo>? photo_galleries,
+      List<UserConnections>? user_connections,
       List<SocialMedia>? social_media,
       ExternalPageData? external_pages,
       List<Playlist>? playlists,
@@ -180,6 +184,7 @@ class UserProfile extends Equatable {
       company: company ?? this.company,
       knocard: knocard ?? this.knocard,
       photo_galleries: photo_galleries ?? this.photo_galleries,
+      user_connections: user_connections ?? this.user_connections,
       social_media: social_media ?? this.social_media,
       playlists: playlists ?? this.playlists,
       longitude: longitude ?? this.longitude,
@@ -226,6 +231,7 @@ class UserProfile extends Equatable {
       'company': company.toMap(),
       'knocard': knocard.toMap(),
       'photo_galleries': photo_galleries.map((x) => x.toMap()).toList(),
+      'user_connections': user_connections.map((x) => x.toMap()).toList(),
       'social_media': social_media.map((x) => x.toMap()).toList(),
       'external_pages': external_pages?.toMap(),
       'playlists': playlists.map((x) => x.toMap()).toList(),
@@ -236,54 +242,56 @@ class UserProfile extends Equatable {
   }
 
   factory UserProfile.fromMap(Map<String, dynamic> map) {
-    return UserProfile(
-      userFeatures: List<UserFeature>.from((map['user_features'] ?? const [])
-          .map((e) => UserFeature.fromMap(e))),
-      showPhoneNumber: map['show_phone_number']?.toInt() ?? 0,
-      id: map['id']?.toInt() ?? 0,
-      name: map['name'] ?? '',
-      username: map['username'] ?? '',
-      first_name: map['first_name'] ?? '',
-      last_name: map['last_name'] ?? '',
-      email: map['email'] ?? '',
-      api_token: map['api_token'] ?? '',
-      phone_country_code: map['phone_country_code'] ?? '',
-      mobile_number: map['mobile_number'] ?? '',
-      street1: map['street1'] ?? '',
-      street2: map['street2'] ?? '',
-      city: map['city'] ?? '',
-      state: map['state'] ?? '',
-      zip_code: map['zip_code']?.toString() ?? '',
-      profile_picture: map['profile_picture'] ?? '',
-      occupation: map['occupation'] ?? '',
-      tagline: map['tagline'],
-      about_me: map['about_me'],
-      phone_number: map['phone_number'] ?? '',
-      integration_id: map['integration_id'],
-      gateway: map['gateway'],
-      card_brand: map['card_brand'],
-      card_last_four: map['card_last_four'],
-      role: map['role'] ?? '',
-      get_started: map['get_started']?.toInt() ?? 0,
-      meta_tags: map['meta_tags'],
-      is_legacy: map['is_legacy']?.toInt() ?? 0,
-      show_profile_picture: map['show_profile_picture']?.toInt() ?? 0,
-      status: map['status'] ?? '',
-      go_live_code: map['go_live_code'],
-      company: Company.fromMap(map['company']),
-      knocard: Knocard.fromMap(map['knocard']),
-      photo_galleries: List<Photo>.from(
-          map['photo_galleries']?.map((x) => Photo.fromMap(x))),
-      social_media: List<SocialMedia>.from(
-          map['social_media']?.map((x) => SocialMedia.fromMap(x))),
-      external_pages: map['external_pages'] != null
-          ? ExternalPageData.fromMap(map['external_pages'])
-          : null,
-      playlists: List<Playlist>.from(
-          map['playlists']?.map((x) => Playlist.fromMap(x))),
-      longitude: double.tryParse(map['longitude'] ?? '') ?? 0,
-      latitude: double.tryParse(map['longitude'] ?? '') ?? 0,
-    );
+      return UserProfile(
+        userFeatures: List<UserFeature>.from((map['user_features'] ?? const [])
+            .map((e) => UserFeature.fromMap(e))),
+        showPhoneNumber: map['show_phone_number']?.toInt() ?? 0,
+        id: map['id']?.toInt() ?? 0,
+        name: map['name'] ?? '',
+        username: map['username'] ?? '',
+        first_name: map['first_name'] ?? '',
+        last_name: map['last_name'] ?? '',
+        email: map['email'] ?? '',
+        api_token: map['api_token'] ?? '',
+        phone_country_code: map['phone_country_code'] ?? '',
+        mobile_number: map['mobile_number'] ?? '',
+        street1: map['street1'] ?? '',
+        street2: map['street2'] ?? '',
+        city: map['city'] ?? '',
+        state: map['state'] ?? '',
+        zip_code: map['zip_code']?.toString() ?? '',
+        profile_picture: map['profile_picture'] ?? '',
+        occupation: map['occupation'] ?? '',
+        tagline: map['tagline'],
+        about_me: map['about_me'],
+        phone_number: map['phone_number'] ?? '',
+        integration_id: map['integration_id'],
+        gateway: map['gateway'],
+        card_brand: map['card_brand'],
+        card_last_four: map['card_last_four'],
+        role: map['role'] ?? '',
+        get_started: map['get_started']?.toInt() ?? 0,
+        meta_tags: map['meta_tags'],
+        is_legacy: map['is_legacy']?.toInt() ?? 0,
+        show_profile_picture: map['show_profile_picture']?.toInt() ?? 0,
+        status: map['status'] ?? '',
+        go_live_code: map['go_live_code'],
+        company: Company.fromMap(map['company']),
+        knocard: Knocard.fromMap(map['knocard']),
+        photo_galleries: map['photo_galleries'] != null ? List<Photo>.from(map['photo_galleries']?.map((x) => Photo.fromMap(x))) : [],
+        user_connections: (map['user_connections'] != null || map['user_connections'] != [])  ? List<UserConnections>.from(map['user_connections']?.map((x) => UserConnections.fromMap(x))): [],
+        social_media: List<SocialMedia>.from(
+            map['social_media']?.map((x) => SocialMedia.fromMap(x))),
+        external_pages: map['external_pages'] != null
+            ? ExternalPageData.fromMap(map['external_pages'])
+            : null,
+        playlists: List<Playlist>.from(
+            map['playlists']?.map((x) => Playlist.fromMap(x))),
+        longitude: double.tryParse(map['longitude'] ?? '') ?? 0.0,
+        latitude: double.tryParse(map['longitude'] ?? '') ?? 0.0,
+      );
+
+
   }
 
   static double cnvrtDouble(dynamic data) {
@@ -300,7 +308,7 @@ class UserProfile extends Equatable {
 
   @override
   String toString() {
-    return 'UserProfile(id: $id, name: $name, username: $username, first_name: $first_name, last_name: $last_name, email: $email,  api_token: $api_token, phone_country_code: $phone_country_code, mobile_number: $mobile_number, street1: $street1, street2: $street2, city: $city, state: $state, zip_code: $zip_code, profile_picture: $profile_picture, occupation: $occupation, tagline: $tagline, about_me: $about_me, phone_number: $phone_number, integration_id: $integration_id, gateway: $gateway, card_brand: $card_brand, card_last_four: $card_last_four, role: $role, get_started: $get_started, meta_tags: $meta_tags, is_legacy: $is_legacy, show_profile_picture: $show_profile_picture, status: $status, go_live_code: $go_live_code, company: $company, knocard: $knocard, photo_galleries: $photo_galleries, social_media: $social_media, external_pages: $external_pages, playlists: $playlists, longitude: $longitude, latitude: $latitude)';
+    return 'UserProfile(id: $id, name: $name, username: $username, first_name: $first_name, last_name: $last_name, email: $email,  api_token: $api_token, phone_country_code: $phone_country_code, mobile_number: $mobile_number, street1: $street1, street2: $street2, city: $city, state: $state, zip_code: $zip_code, profile_picture: $profile_picture, occupation: $occupation, tagline: $tagline, about_me: $about_me, phone_number: $phone_number, integration_id: $integration_id, gateway: $gateway, card_brand: $card_brand, card_last_four: $card_last_four, role: $role, get_started: $get_started, meta_tags: $meta_tags, is_legacy: $is_legacy, show_profile_picture: $show_profile_picture, status: $status, go_live_code: $go_live_code, company: $company, knocard: $knocard, photo_galleries: $photo_galleries, user_connections: $user_connections social_media: $social_media, external_pages: $external_pages, playlists: $playlists, longitude: $longitude, latitude: $latitude)';
   }
 
   @override
@@ -340,6 +348,7 @@ class UserProfile extends Equatable {
       company,
       knocard,
       photo_galleries,
+      user_connections,
       social_media,
       external_pages,
       playlists,
@@ -392,7 +401,9 @@ class UserProfile extends Equatable {
       playlists: const [],
       longitude: 0,
       latitude: 0,
-      photo_galleries: const []);
+      photo_galleries: const [],
+      user_connections: const []
+  );
 
   IMap<int, FeatureSelectionModel> get features {
     IMap<int, FeatureSelectionModel> featuresMap = Constants.featureList;

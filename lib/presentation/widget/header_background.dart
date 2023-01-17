@@ -75,9 +75,9 @@ class HeaderBackground extends ConsumerWidget {
               ),
             ),
             Container(
-              height: 50,
+
               color: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.all( 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -89,8 +89,30 @@ class HeaderBackground extends ConsumerWidget {
                           launchUrlString('https://www.knocard.com/');
                         }
                       },
-                      child: Image.asset('assets/images/knocard_logo.png')),
-                 /* ElevatedButton(
+                      child: Image.asset('assets/images/knocard_logo.png',height: 60,)),
+                 Spacer(),
+                 if(state.user_connections.isNotEmpty)
+                   Expanded(child: Column(mainAxisSize: MainAxisSize.min,
+                     crossAxisAlignment: CrossAxisAlignment.end,children: [
+                     Text("Referred by", style: TextStyle(fontSize: 8),),
+                     Container(
+                         height: 40,
+                         width: 40,
+                         margin: EdgeInsets.all(3),
+                         clipBehavior: Clip.hardEdge,
+                         decoration: BoxDecoration(
+                             shape: BoxShape.circle,
+                             border: Border.all(width: 2, color: Colors.yellow),
+                             image: DecorationImage(
+                                 fit: BoxFit.cover,
+                                 image: state.user_connections[0].refferedUser.profile_picture.isEmpty
+                                     ? const AssetImage(
+                                     'assets/images/placeholder_profile.png')
+                                     : NetworkImage(state.user_connections[0].refferedUser.profile_picture)
+                                 as ImageProvider))),
+                     Text(state.user_connections[0].refferedUser.name, style: TextStyle(fontSize: 10,color: Colors.black54),),
+                   ],))
+                  /* ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.orange,
                         shape: const StadiumBorder(),

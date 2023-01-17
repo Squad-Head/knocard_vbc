@@ -76,20 +76,20 @@ class Playlist extends Equatable {
     };
   }
 
-  factory Playlist.fromMap(Map<String, dynamic> map) {
+  factory Playlist.fromMap(Map<String, dynamic>? map) {
     return Playlist(
-      id: map['id']?.toInt() ?? 0,
-      user_id: map['user_id']?.toInt() ?? 0,
-      name: map['name'] ?? '',
-      status: map['status'] ?? '',
-      created_at: DateTime.parse(map['created_at']),
-      updated_at: DateTime.parse(map['updated_at']),
-      deleted_at: map['deleted_at'],
-      is_favorite: map['is_favorite'],
-      description: map['description'] ?? '',
-      is_default: map['is_default']?.toInt() ?? 0,
+      id: map?['id']?.toInt() ?? 0,
+      user_id: map?['user_id']?.toInt() ?? 0,
+      name: map?['name'] ?? '',
+      status: map?['status'] ?? '',
+      created_at: DateTime.parse(map?['created_at']),
+      updated_at: DateTime.parse(map?['updated_at']),
+      deleted_at: map?['deleted_at'],
+      is_favorite: map?['is_favorite'],
+      description: map?['description'] ?? '',
+      is_default: map?['is_default']?.toInt() ?? 0,
       videos: List<ProfileVideo>.from(
-          map['videos']?.map((x) => ProfileVideo.fromMap(x))),
+          map?['videos']?.map((x) => ProfileVideo.fromMap(x))),
     );
   }
 

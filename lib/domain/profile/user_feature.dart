@@ -20,9 +20,9 @@ class UserFeature extends Equatable {
     };
   }
 
-  factory UserFeature.fromMap(Map<String, dynamic> map) {
+  factory UserFeature.fromMap(Map<String, dynamic>? map) {
     return UserFeature(
-      lookupId: map['lookup_id']?.toInt() ?? 0,
+      lookupId: map?['lookup_id']?.toInt() ?? 0,
     );
   }
 

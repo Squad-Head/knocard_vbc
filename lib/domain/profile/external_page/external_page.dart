@@ -70,16 +70,16 @@ class ExternalPageData extends Equatable {
     };
   }
 
-  factory ExternalPageData.fromMap(Map<String, dynamic> map) {
+  factory ExternalPageData.fromMap(Map<String, dynamic>? map) {
     return ExternalPageData(
-      id: map['id']?.toInt() ?? 0,
-      user_id: map['user_id']?.toInt() ?? 0,
-      name: map['name'] ?? '',
-      link: map['link'] ?? '',
-      icon: map['icon'] ?? '',
-      is_selected: map['is_selected']?.toInt() ?? 0,
-      created_at: DateTime.parse(map['created_at']),
-      updated_at: DateTime.parse(map['updated_at']),
+      id: map?['id']?.toInt() ?? 0,
+      user_id: map?['user_id']?.toInt() ?? 0,
+      name: map?['name'] ?? '',
+      link: map?['link'] ?? '',
+      icon: map?['icon'] ?? '',
+      is_selected: map?['is_selected']?.toInt() ?? 0,
+      created_at: DateTime.parse(map?['created_at']),
+      updated_at: DateTime.parse(map?['updated_at']),
     );
   }
 

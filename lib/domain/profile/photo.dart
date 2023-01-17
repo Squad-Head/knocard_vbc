@@ -42,13 +42,13 @@ class Photo extends Equatable {
     };
   }
 
-  factory Photo.fromMap(Map<String, dynamic> map) {
+  factory Photo.fromMap(Map<String, dynamic>? map) {
     return Photo(
-      link: map['link'] ?? '',
-      id: map['id']?.toInt() ?? 0,
-      type: map['type'] ?? '',
-      title: map['title'] ?? '',
-      description: map['description'] ?? '',
+      link: map?['link'] ?? '',
+      id: map?['id']?.toInt() ?? 0,
+      type: map?['type'] ?? '',
+      title: map?['title'] ?? '',
+      description: map?['description'] ?? '',
     );
   }
 

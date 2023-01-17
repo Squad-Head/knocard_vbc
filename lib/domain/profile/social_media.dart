@@ -87,15 +87,15 @@ class SocialMedia extends Equatable {
   factory SocialMedia.fromJson(String source) =>
       SocialMedia.fromMap(json.decode(source));
 
-  factory SocialMedia.fromMap(Map<String, dynamic> map) {
+  factory SocialMedia.fromMap(Map<String, dynamic>? map) {
     return SocialMedia(
-      id: map['id']?.toInt() ?? 0,
-      user_id: map['user_id']?.toInt() ?? 0,
-      name: map['name'] ?? '',
-      user_handle: map['user_handle'],
-      link: map['link'] ?? '',
-      created_at: DateTime.parse(map['created_at']),
-      updated_at: DateTime.parse(map['updated_at']),
+      id: map?['id']?.toInt() ?? 0,
+      user_id: map?['user_id']?.toInt() ?? 0,
+      name: map?['name'] ?? '',
+      user_handle: map?['user_handle'],
+      link: map?['link'] ?? '',
+      created_at: DateTime.parse(map?['created_at']),
+      updated_at: DateTime.parse(map?['updated_at']),
     );
   }
 }
