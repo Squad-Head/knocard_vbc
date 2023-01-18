@@ -17,55 +17,55 @@ class Constants {
     ProfileBackground(
         id: 1,
         categCode: 'solid',
-        widget: Container(height: 190, color: const Color(0xff088AC7)),
+        widget: Container(width: double.infinity, color: const Color(0xff088AC7)),
         textColor: Colors.black),
     ProfileBackground(
         id: 2,
         categCode: 'solid',
         widget: Container(
-          height: 190,
+        width: double.infinity,
           color: const Color(0xff24DCF1),
         ),
         textColor: Colors.black),
     ProfileBackground(
         id: 3,
         categCode: 'solid',
-        widget: Container(height: 190, color: const Color(0xffF58227)),
+        widget: Container(width: double.infinity, color: const Color(0xffF58227)),
         textColor: Colors.black),
     ProfileBackground(
         id: 4,
         categCode: 'solid',
-        widget: Container(height: 190, color: const Color(0xffEBA3E4)),
+        widget: Container(width: double.infinity, color: const Color(0xffEBA3E4)),
         textColor: Colors.black),
     ProfileBackground(
         id: 5,
         categCode: 'solid',
-        widget: Container(height: 190, color: const Color(0xff535353)),
+        widget: Container(width: double.infinity, color: const Color(0xff535353)),
         textColor: Colors.white),
     ProfileBackground(
         id: 6,
         categCode: 'solid',
-        widget: Container(height: 190, color: const Color(0xffFF9B9B)),
+        widget: Container(width: double.infinity, color: const Color(0xffFF9B9B)),
         textColor: Colors.black),
     ProfileBackground(
         id: 7,
         categCode: 'solid',
-        widget: Container(height: 190, color: const Color(0xff7B7B7B)),
+        widget: Container(width: double.infinity, color: const Color(0xff7B7B7B)),
         textColor: Colors.black),
     ProfileBackground(
         id: 8,
         categCode: 'solid',
-        widget: Container(height: 190, color: const Color(0xffF4F9A3)),
+        widget: Container(width: double.infinity, color: const Color(0xffF4F9A3)),
         textColor: Colors.black),
     ProfileBackground(
         id: 9,
         categCode: 'solid',
-        widget: Container(height: 190, color: const Color(0xffC6C5C5)),
+        widget: Container(width: double.infinity, color: const Color(0xffC6C5C5)),
         textColor: Colors.black),
     ProfileBackground(
         id: 10,
         categCode: 'solid',
-        widget: Container(height: 190, color: const Color(0xffFFFCE5)),
+        widget: Container(width: double.infinity, color: const Color(0xffFFFCE5)),
         textColor: Colors.black),
   ];
 
@@ -74,7 +74,7 @@ class Constants {
         id: 1,
         categCode: 'gradient',
         widget: Container(
-            height: 190,
+            width: double.infinity,
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
               begin: Alignment.topLeft,
@@ -87,7 +87,7 @@ class Constants {
         id: 2,
         categCode: 'gradient',
         widget: Container(
-            height: 190,
+            width: double.infinity,
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -100,7 +100,7 @@ class Constants {
         id: 3,
         categCode: 'gradient',
         widget: Container(
-            height: 190,
+            width: double.infinity,
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -114,7 +114,7 @@ class Constants {
         id: 4,
         categCode: 'gradient',
         widget: Container(
-            height: 190,
+            width: double.infinity,
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -128,7 +128,7 @@ class Constants {
         id: 5,
         categCode: 'gradient',
         widget: Container(
-            height: 190,
+            width: double.infinity,
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
               begin: Alignment.topLeft,
@@ -142,7 +142,7 @@ class Constants {
         id: 6,
         categCode: 'gradient',
         widget: Container(
-            height: 190,
+            width: double.infinity,
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -156,7 +156,7 @@ class Constants {
         id: 7,
         categCode: 'gradient',
         widget: Container(
-            height: 190,
+            width: double.infinity,
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -170,7 +170,7 @@ class Constants {
         id: 8,
         categCode: 'gradient',
         widget: Container(
-            height: 190,
+            width: double.infinity,
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -184,7 +184,7 @@ class Constants {
         id: 9,
         categCode: 'gradient',
         widget: Container(
-            height: 190,
+            width: double.infinity,
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -201,7 +201,7 @@ class Constants {
         id: 10,
         categCode: 'gradient',
         widget: Container(
-            height: 190,
+            width: double.infinity,
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -219,8 +219,8 @@ class Constants {
         categCode: 'pattern',
         widget: Image.network(
           'https://knocard.com/img/patterns/default.png',
-          height: 190,
-          fit: BoxFit.fill,
+          width: double.infinity,
+          fit: BoxFit.cover,
         ),
         textColor: Colors.black),
     ProfileBackground(
@@ -228,8 +228,8 @@ class Constants {
         categCode: 'pattern',
         widget: Image.network(
           'https://knocard.com/img/patterns/star_shower_blue.png',
-          height: 190,
-          fit: BoxFit.fill,
+          width: double.infinity,
+          fit: BoxFit.cover,
         ),
         textColor: Colors.black),
     ProfileBackground(
@@ -237,8 +237,8 @@ class Constants {
         categCode: 'pattern',
         widget: Image.network(
           'https://knocard.com/img/patterns/triangle_pattern_dots.png',
-          height: 190,
-          fit: BoxFit.fill,
+          width: double.infinity,
+          fit: BoxFit.cover,
         ),
         textColor: Colors.black),
     ProfileBackground(
@@ -246,8 +246,8 @@ class Constants {
         categCode: 'pattern',
         widget: Image.network(
           'https://knocard.com/img/patterns/wave_grey_wood_pattern.png',
-          height: 190,
-          fit: BoxFit.fill,
+          width: double.infinity,
+          fit: BoxFit.cover,
         ),
         textColor: Colors.black),
     ProfileBackground(
@@ -255,8 +255,8 @@ class Constants {
         categCode: 'pattern',
         widget: Image.network(
           'https://knocard.com/img/patterns/colorful_polka_dots.png',
-          height: 190,
-          fit: BoxFit.fill,
+          width: double.infinity,
+          fit: BoxFit.cover,
         ),
         textColor: Colors.black),
     ProfileBackground(
@@ -264,8 +264,8 @@ class Constants {
         categCode: 'pattern',
         widget: Image.network(
           'https://knocard.com/img/patterns/wave_grey_diagonal.png',
-          height: 190,
-          fit: BoxFit.fill,
+          width: double.infinity,
+          fit: BoxFit.cover,
         ),
         textColor: Colors.black),
     ProfileBackground(
@@ -273,7 +273,8 @@ class Constants {
         categCode: 'pattern',
         widget: Image.network(
           'https://knocard.com/img/patterns/white_polka_dots.png',
-          height: 190,
+          width: double.infinity,
+          fit: BoxFit.cover,
         ),
         textColor: Colors.black),
     ProfileBackground(
@@ -281,8 +282,8 @@ class Constants {
         categCode: 'pattern',
         widget: Image.network(
           'https://knocard.com/img/patterns/wave_grey.png',
-          height: 190,
-          fit: BoxFit.fill,
+          width: double.infinity,
+          fit: BoxFit.cover,
         ),
         textColor: Colors.black),
     ProfileBackground(
@@ -290,8 +291,8 @@ class Constants {
         categCode: 'pattern',
         widget: Image.network(
           'https://knocard.com/img/patterns/green_polka_dots.png',
-          height: 190,
-          fit: BoxFit.fill,
+          width: double.infinity,
+          fit: BoxFit.cover,
         ),
         textColor: Colors.black),
     ProfileBackground(
@@ -299,8 +300,8 @@ class Constants {
         categCode: 'pattern',
         widget: Image.network(
           'https://knocard.com/img/patterns/stripe_blue.png',
-          height: 190,
-          fit: BoxFit.fill,
+          width: double.infinity,
+          fit: BoxFit.cover,
         ),
         textColor: Colors.black),
   ];

@@ -74,7 +74,6 @@ class ProfileBackground extends Equatable {
             width: double.infinity,
             imageUrl: link,
            errorWidget: (context, url, error) => Container(),
-            height: 190,
           ));
     } else {
       return defaultBg();
@@ -88,7 +87,7 @@ class ProfileBackground extends Equatable {
       id: -1,
       categCode: '',
       widget: Container(
-        height: 190,
+        width: double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [

@@ -49,8 +49,8 @@ class MobileBusinessPage extends HookConsumerWidget {
                               child: CustomVideoPlayer(
                                   videoUrl: company.promotional_video,
                                   thumbnail: company.thumbnail),
-                            )
-                          else
+                            ),
+                         if (company.profile_picture.isNotEmpty)
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 10.w),
                               child: CachedNetworkImage(
