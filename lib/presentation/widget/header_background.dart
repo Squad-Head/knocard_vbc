@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:clean_api/clean_api.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart' hide MenuItem;
@@ -89,7 +90,7 @@ class HeaderBackground extends ConsumerWidget {
                       },
                       child: Image.asset('assets/images/knocard_logo.png',height: 60,)),
                  Spacer(),
-                 if(state.user_connections.isNotEmpty)
+                 //if(state.user_connections.isNotEmpty)
                    Expanded(child: Column(mainAxisSize: MainAxisSize.min,
                      crossAxisAlignment: CrossAxisAlignment.end,children: [
                      Text("Referred by", style: TextStyle(fontSize: 8),),
@@ -103,12 +104,12 @@ class HeaderBackground extends ConsumerWidget {
                              border: Border.all(width: 2, color: Colors.yellow),
                              image: DecorationImage(
                                  fit: BoxFit.cover,
-                                 image: state.user_connections[0].refferedUser.profile_picture.isEmpty
+                                 image: state.profile_picture.isEmpty
                                      ? const AssetImage(
                                      'assets/images/placeholder_profile.png')
-                                     : NetworkImage(state.user_connections[0].refferedUser.profile_picture)
+                                     : NetworkImage(state.profile_picture)
                                  as ImageProvider))),
-                     Text(state.user_connections[0].refferedUser.name, style: TextStyle(fontSize: 10,color: Colors.black54),),
+                     Text(state.name, style: TextStyle(fontSize: 10,color: Colors.black54),),
                    ],))
                   /* ElevatedButton(
                       style: ElevatedButton.styleFrom(
