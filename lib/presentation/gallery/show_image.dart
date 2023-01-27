@@ -17,9 +17,9 @@ class ShowImage extends HookConsumerWidget {
       required this.userId});
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(profileProvider);
+    /*    final state = ref.watch(profileProvider);
 
-    final data = ActivityData(
+   final data = ActivityData(
         viewerCode: state.shareCode,
         actionType: 'view',
         sourceType: 'link_share',
@@ -33,6 +33,9 @@ class ShowImage extends HookConsumerWidget {
             ),
         orElse: () => CachedNetworkImage(
               imageUrl: photo.link,
-            ));
+            ));*/
+    return CachedNetworkImage(
+      imageUrl: photo.link,
+    );
   }
 }

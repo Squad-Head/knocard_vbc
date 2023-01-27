@@ -17,7 +17,7 @@ class DesktopImageView extends HookConsumerWidget {
   Widget build(BuildContext context, ref) {
     final activeIndex = useState(index);
     final state = ref.watch(profileProvider);
-    final data = ActivityData(
+    /*final data = ActivityData(
         viewerCode: state.shareCode,
         actionType: 'view',
         sourceType: 'link_share',
@@ -68,6 +68,47 @@ class DesktopImageView extends HookConsumerWidget {
               )
             ],
           ),
+        ),
+      ),
+    );*/
+    return Dialog(
+      backgroundColor: Colors.transparent,
+      child: SizedBox(
+        width: 700.w,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            Image.network(images[activeIndex.value].link),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: () {
+                    activeIndex.value == 0
+                        ? activeIndex.value = images.length - 1
+                        : activeIndex.value--;
+                  },
+                  child: Icon(
+                    Icons.arrow_back_ios,
+                    size: 30.sp,
+                    color: Theme.of(context).canvasColor,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    activeIndex.value == images.length - 1
+                        ? activeIndex.value = 0
+                        : activeIndex.value++;
+                  },
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    size: 30,
+                    color: Theme.of(context).canvasColor,
+                  ),
+                ),
+              ],
+            )
+          ],
         ),
       ),
     );

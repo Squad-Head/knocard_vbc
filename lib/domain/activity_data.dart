@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
 
-enum Module { profile, playlist, businessPage, videos, collage, images }
+enum Module { profile, playlist,photo_gallery, businessPage, videos, collage, images }
 
 extension ParseToString on Module {
   String toShortString() {

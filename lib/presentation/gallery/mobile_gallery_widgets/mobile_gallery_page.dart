@@ -30,6 +30,15 @@ class MobileGalleryPage extends HookConsumerWidget {
           ), () {
         ref.read(collageProvider.notifier).loadCollage();
       });
+
+      final data = ActivityData(
+          viewerCode: state.shareCode,
+          actionType: 'view',
+          sourceType: 'community_search',
+          module: Module.photo_gallery,
+          targetId: userId,
+          identifiableId: userId);
+      final activitySaver = ref.watch(saveReportingProvider(data));
       return null;
     }, []);
 
@@ -47,7 +56,7 @@ class MobileGalleryPage extends HookConsumerWidget {
                 return collage.photoGallery.isNotEmpty
                     ? InkWell(
                         onTap: () {
-                          final data = ActivityData(
+                       /*   final data = ActivityData(
                               viewerCode: state.shareCode,
                               actionType: 'view',
                               sourceType: 'link_share',
@@ -56,7 +65,7 @@ class MobileGalleryPage extends HookConsumerWidget {
                               identifiableId: collage.id);
                           final activitySaver =
                               ref.watch(saveReportingProvider(data));
-                          Logger.i(activitySaver);
+                          Logger.i(activitySaver);*/
                           Navigator.push(
                               context,
                               MaterialPageRoute(
