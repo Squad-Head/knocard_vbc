@@ -28,12 +28,12 @@ class HeaderBackground extends ConsumerWidget {
           children: [
             Container(
               color: Colors.grey.shade300,
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(8),
               child: Row(
                 children: [
                   Image.asset(
                     'assets/icons/knocard.png',
-                    height: 60,
+                    height: 50,
                   ),
                   SizedBox(
                     width: 10,
@@ -45,10 +45,10 @@ class HeaderBackground extends ConsumerWidget {
                       children: [
                         const Text(
                           "KnoCard",
-                          style: TextStyle(fontSize: 18),
+                          style: TextStyle(fontSize: 16),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 3, bottom: 5),
+                          padding: const EdgeInsets.only( bottom: 1),
                           child: const Text("Your all in one business platform",
                               style: TextStyle(color: Colors.black54)),
                         ),
@@ -76,7 +76,7 @@ class HeaderBackground extends ConsumerWidget {
             Container(
 
               color: Colors.white,
-              padding: const EdgeInsets.all( 10),
+              padding: const EdgeInsets.only(left: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -88,29 +88,30 @@ class HeaderBackground extends ConsumerWidget {
                           launchUrlString('https://www.knocard.com/');
                         }
                       },
-                      child: Image.asset('assets/images/knocard_logo.png',height: 60,)),
+                      child: Image.asset('assets/images/knocard_logo.png',height: 50,)),
                  Spacer(),
                  //if(state.user_connections.isNotEmpty)
                    Expanded(child: Column(mainAxisSize: MainAxisSize.min,
+                     mainAxisAlignment: MainAxisAlignment.center,
                      crossAxisAlignment: CrossAxisAlignment.end,children: [
-                     Text("Referred by", style: TextStyle(fontSize: 8),),
-                     Container(
-                         height: 40,
-                         width: 40,
-                         margin: EdgeInsets.all(3),
-                         clipBehavior: Clip.hardEdge,
-                         decoration: BoxDecoration(
-                             shape: BoxShape.circle,
-                             border: Border.all(width: 2, color: Colors.yellow),
-                             image: DecorationImage(
-                                 fit: BoxFit.cover,
-                                 image: state.profile_picture.isEmpty
-                                     ? const AssetImage(
-                                     'assets/images/placeholder_profile.png')
-                                     : NetworkImage(state.profile_picture)
-                                 as ImageProvider))),
+                     Text("Referred by", style: TextStyle(fontSize: 8, color: Colors.black54),),
                      Text(state.name, style: TextStyle(fontSize: 10,color: Colors.black54),),
-                   ],))
+                   ],)),
+                  Container(
+                      height: 40,
+                      width: 40,
+                      margin: EdgeInsets.all(3),
+                      clipBehavior: Clip.hardEdge,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(width: 2, color: Colors.yellow),
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: state.profile_picture.isEmpty
+                                  ? const AssetImage(
+                                  'assets/images/placeholder_profile.png')
+                                  : NetworkImage(state.profile_picture)
+                              as ImageProvider)))
                   /* ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.orange,
