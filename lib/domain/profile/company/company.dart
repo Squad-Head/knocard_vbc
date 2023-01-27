@@ -29,6 +29,7 @@ class Company extends Equatable {
   final String icon_url;
   final String thumbnail;
   final String business_page_title;
+  final int isPageTitleEnable;
   const Company({
     required this.id,
     required this.user_id,
@@ -54,6 +55,7 @@ class Company extends Equatable {
     required this.icon_url,
     required this.thumbnail,
     required this.business_page_title,
+    required this.isPageTitleEnable,
   });
 
   Company copyWith({
@@ -81,6 +83,7 @@ class Company extends Equatable {
     String? icon_url,
     String? thumbnail,
     String? business_page_title,
+    int? isPageTitleEnable
   }) {
     return Company(
       id: id ?? this.id,
@@ -109,6 +112,7 @@ class Company extends Equatable {
       icon_url: icon_url ?? this.icon_url,
       thumbnail: thumbnail ?? this.thumbnail,
       business_page_title: business_page_title ?? this.business_page_title,
+      isPageTitleEnable: isPageTitleEnable ?? this.isPageTitleEnable
     );
   }
 
@@ -138,6 +142,7 @@ class Company extends Equatable {
       'icon_url': icon_url,
       'thumbnail': thumbnail,
       'business_page_title': business_page_title,
+      'is_pagetitle_enable': isPageTitleEnable
     };
   }
 
@@ -167,12 +172,13 @@ class Company extends Equatable {
       icon_url: map?['icon_url'] ?? '',
       thumbnail: map?['thumbnail'] ?? '',
       business_page_title: map?['business_page_title'] ?? '',
+      isPageTitleEnable: map?['is_pagetitle_enable']?.toInt() ?? 1
     );
   }
 
   @override
   String toString() {
-    return 'Company(id: $id, user_id: $user_id, profile_picture: $profile_picture, name: $name, tagline: $tagline, business_phone: $business_phone, business_mobile_phone: $business_mobile_phone, fax: $fax, business_email_address: $business_email_address, content: $content, lng: $lng, lat: $lat, promotional_video: $promotional_video, icon: $icon, title: $title, description: $description, street1: $street1, street2: $street2, city: $city, state: $state, zip_code: $zip_code, icon_url: $icon_url, thumbnail: $thumbnail, business_page_title: $business_page_title)';
+    return 'Company(id: $id, user_id: $user_id, profile_picture: $profile_picture, name: $name, tagline: $tagline, business_phone: $business_phone, business_mobile_phone: $business_mobile_phone, fax: $fax, business_email_address: $business_email_address, content: $content, lng: $lng, lat: $lat, promotional_video: $promotional_video, icon: $icon, title: $title, description: $description, street1: $street1, street2: $street2, city: $city, state: $state, zip_code: $zip_code, icon_url: $icon_url, thumbnail: $thumbnail, business_page_title: $business_page_title, isPageTitleEnable: $isPageTitleEnable)';
   }
 
   @override
@@ -202,6 +208,7 @@ class Company extends Equatable {
       icon_url,
       thumbnail,
       business_page_title,
+      isPageTitleEnable
     ];
   }
 
@@ -234,5 +241,6 @@ class Company extends Equatable {
       zip_code: 0,
       icon_url: '',
       thumbnail: '',
-      business_page_title: '');
+      business_page_title: '',
+      isPageTitleEnable:1);
 }

@@ -31,6 +31,7 @@ class DesktopBusinessPage extends HookConsumerWidget {
                   children: [
                     Column(
                       children: [
+                        if(company.isPageTitleEnable == 1)
                         Text(
                           company.title,
                           style: TextStyle(
@@ -39,6 +40,7 @@ class DesktopBusinessPage extends HookConsumerWidget {
                             fontWeight: FontWeight.w600,
                           ),
                         ),
+
                         SizedBox(
                           height: 10.h,
                         ),

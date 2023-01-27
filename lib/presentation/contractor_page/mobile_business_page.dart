@@ -32,6 +32,7 @@ class MobileBusinessPage extends HookConsumerWidget {
                     children: [
                       Column(
                         children: [
+                          if(company.isPageTitleEnable == 1)
                           Text(
                             company.title,
                             style: const TextStyle(
