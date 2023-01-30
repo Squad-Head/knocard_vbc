@@ -50,6 +50,7 @@ dependencies:
   hooks_riverpod: ^1.0.3
   image_network: ^2.5.1
   line_icons: ^2.0.1
+  page_view_dot_indicator: ^2.1.0
   percent_indicator: ^4.2.2
   pod_player: ^0.1.0
   share_plus: ^4.0.8
